@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="https://glitch.com/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--
+      This is the page head - it contains info the browser uses
+      Like the title, which appears on the browser tab but not inside the page
+      Further down you'll see the content that displays in the page
+    -->
+    <title>Lab 14: Creative coding, sound interaction with P5.js</title>
+
+    <!-- The website stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- The website JavaScript file -->
+    <script src="/script.js" defer></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="content" role="main">
+        <h1 class="title">
+          Lab 14: Creative coding, sound interaction with P5.js
+        </h1>
+
+        <!-- lab starts here  -->
+        <div class="instructions">
+          <p style="margin-left: 0">
+            In this lab, you will learn about <b>Creative Coding</b> and will continue experimenting with
+            <b>JavaScript</b> using <b>P5.js' sound library</b>. You will also
+            continue experimenting with <b>SVG images</b>
+          </p>
+
+          <h2 class="nocount">Learning Objectives</h2>
+          <ol>
+                        <li>Explore what is Creative Coding</li>
+
+            <li>
+              Continue learning and experimenting with JavaScript and P5.js
+            </li>
+            <li>Continue learning about Scalable Vector Graphics or SVGs</li>
+          </ol>
+
+          <!-- contents           -->
+          <h2 class="nocount">Contents</h2>
+          <hr />
+
+          <ol>
+            <!--           <li><a href="#tools">Tools you will use in this tutorial</a></li> -->
+            <li><a href="#introduction">What is Creative Coding</a></li>
+
+            <li>
+              <a href="#2activity">Start developing a Creative Coding artwork</a>
+            </li>
+            <li>
+              <a href="#3activity"
+                >Add sounds to your SVG potion illustration from last Tuesday</a
+              >
+            </li>
+            <li><a href="#break">Break: Take a 15-minute break</a></li>
+            <li><a href="#4activity">Add mouse interaction to play the sounds</a></li>
+            <li>
+              <a href="#conclusion">Conclusion</a>
+            </li>
+            <li><a href="#extras">Continue learning</a></li>
+          </ol>
+
+          <h2 id="introduction">What is Creative Coding</h2>
+          <hr />
+
+          <div class="definition">
+            <p>
+              <i class="fa fa-quote-left" style="font-size: 48px"></i> Creative
+              coding is a type of computer programming in which the goal is to
+              create something expressive instead of something functional. It is
+              used to create live visuals and for VJing, as well as creating
+              visual art and design, entertainment (e.g. video games), art
+              installations, projections and projection mapping, sound art,
+              advertising, product prototypes, and much more.
+              <a
+                href="https://en.wikipedia.org/wiki/Creative_coding"
+                target="_blank"
+                >... click to read the full article</a
+              >
+            </p>
+          </div>
+          <br />
+          <div class="myIframe">
+            <iframe
+              w
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/NtP1cxxqGos?si=QGEToGS-b7quvjou"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <h2 id="2activity">Start developing a Creative Coding artwork</h2>
+          <hr />
+
+          <h3>2.1 Extract the code from Tuesday's SVG illustration</h3>
+          <hr />
+          <ol>
+            <li>
+              <b>Remix</b> the following Glitch project:
+              <a href="https://glitch.com/edit/#!/creative-coding-exercise" target="_blank">https://glitch.com/edit/#!/creative-coding-exercise</a>
+            </li>
+            <li>
+              <b>Go to</b> the following Online SVG Code Editor at
+              <a href="https://editsvgcode.com/" target="_blank"
+                >https://editsvgcode.com/</a
+              >
+            </li>
+            <li>
+              <b>Click</b> the "Upload" button in the Online SVG Code Editor and
+              <b>upload</b> the SVG potion illustration you created last Tuesday
+            </li>
+            <li>
+              After uploading the SVG, you'll <b>see</b> a snippet of code is
+              shown. This means, that your SVG illustration has been converted to code!
+            </li>
+            <li>
+              <b>Copy</b> the code and <b>paste it</b> anywhere within the
+              <code>&lt;body&gt;&lt;/body&gt;</code> tags in Glitch's
+              <b>index.html</b> file
+            </li>
+            <li>
+              <b>Preview</b> Glitch's webpage and you should be able to see your
+              SVG illustration instead of the code. See the image below:
+            </li>
+          </ol>
+
+          <div class="centered-image">
+            <img
+              src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/lab14-1.png?v=1698883487213"
+              alt="an image of a webpage with a potion illustration"
+            />
+          </div>
+
+          <!-- 3rd activity           -->
+
+          <h2 id="3activity">Add sounds to your SVG potion illustration from last Tuesday</h2>
+          <hr />
+
+          <h3>3.1 Import the P5.js sound library into your Glitch project</h3>
+          <hr />
+
+          <ol>
+            <li>
+              <b>Import the P5.js library into your remixed Glitch </b> project
+              by copying the following lines of code and pasting it into the
+              <b>index.html</b> file below the between the
+              <code>&lt;head&gt;&lt;/head&gt;</code> tags:
+            </li>
+            <pre>
+  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"&gt;&lt;/script&gt;
+  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0//addons/p5.sound.min.js"&gt;  &lt;/script&gt;
+  </pre
+            >
+          </ol>
+
+          <h3>3.2 Find and download 3 sounds for your potion illustration</h3>
+          <hr />
+
+          <ol>
+            <li>
+              <b>Go to</b>
+              <a href="https://freesound.org" target="_blank"
+                >https://freesound.org</a
+              >
+            </li>
+            <li>
+              <b>Log in</b> if you have an account or <b>create</b> an account
+              <b>using your McMaster email</b>
+            </li>
+            <li>
+              <b>Search</b> for 1 sound for the <b>cork</b> of your
+              illustration, 1 sound for the <b>bottle</b>, and 1 sound for the
+              <b>potion</b> at the bottom of the bottle
+            </li>
+            <li><b>Download</b> the sounds to the computer</li>
+          </ol>
+
+          <h3>3.3 Upload the 3 sounds to your Glitch project</h3>
+          <hr />
+
+          <ol>
+            <li>
+              <b>Upload</b> your 3 sounds to the <b>Assets folder</b> in your Glitch
+              project
+            </li>
+            <li>
+              <b>Copy</b> the URL of each sound and add it to the variables
+              <code>corkSound</code>, <code>potionSound</code>, and
+              <code>bottleSound</code>, inside the function
+              <code>loadSound()</code>
+            </li>
+            <li><b>Check</b> the example code below: <br /></li>
+          </ol>
+
+          <pre>
+ function preload() {
+  soundFormats('mp3', 'ogg', 'wav');
+  corkSound = loadSound("https://cdn.glitch.global/44d1fb7d-cd17-451b-b8e9-485cbf9beee6/cork-sound.mp3?v=1698870814211");
+  potionSound = loadSound("https://cdn.glitch.global/44d1fb7d-cd17-451b-b8e9-485cbf9beee6/potion-sound.wav?v=1698880078239");
+  bottleSound = loadSound("https://cdn.glitch.global/44d1fb7d-cd17-451b-b8e9-485cbf9beee6/magic-sound.flac?v=1698881118513");
+}
+</pre>
+          
+       <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> At this point, you won't be able to 
+          hear anything if you preview the webpage. Continue to the next section
+          </p>
+
+          
+          <!--   BREAK         -->
+          <h2 id="break">
+            <i class="fa fa-coffee" style="font-size: 36px"></i> Take a
+            15-minute break
+          </h2>
+
+          <!-- 4th activity           -->
+          <h2 id="4activity">Add mouse interaction to play the sounds</h2>
+          <hr />
+
+          <h3>  5.1 Identify your illustration's <i>Id attributes</i> </h3>
+          <hr>
+
+          <ol>
+            <li><b>Go to</b> the <b>index.html</b> file where the code of your SVG potion illustration is located</li>
+            <li><b>Identify</b> the <code>Id=</code> attributes inside the <code>SVG</code> code</li>
+            <li><b>Find</b> the <code>id</code> properties that have the names containing the <b>cork</b>, the <b>bottle</b>, 
+            and the <b>potion</b>. In my case, each of them has the actual names "cork", "bottle", and "potion", but
+            in your code, these names might differ</li>
+            <li><b>See</b> my code below for informational purpose:</li>
+          </ol>
+
+       <div class="centered-image" >
+            <img
+              src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/svg-code.svg?v=1698886613966"
+              alt="an image of a webpage with the code of a SVG potion illustration"
+                 style="width:80%;"
+            />
+          </div>
+          
+          <h3> 5.2 Use the cork, bottle, and potion <i>Id selectors</i> to trigger the sounds </h3>
+          <hr>
+
+          <ol>
+            <li><b>Go to</b> the <b>sketch.js</b> file</li>
+            <li>Under the function setup(), <b>type</b> the <code>Id</code> names of the cork, bottle, and potion 
+             you identified in step 5.1 inside the <code>select()</code> function. Include a hashtag (#) before each name</li>
+            <li><b>See</b> the example code below:</li>
+          </ol>
+     
+           <pre>
+function setup() {
+  noCanvas();
+  select("#cork").mousePressed(playCork);
+  select("#potion").mousePressed(playPotion);
+  select("#bottle").mousePressed(playBottle);
+}
+</pre>
+          
+             <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> The functions <code style="color:black">select()</code> and 
+               <code style="color:black">mousePressed()</code> will trigger the functions <code style="color:black">playCork()</code>, 
+               <code style="color:black">playPotion()</code>, and <code style="color:black">playBottle()</code> 
+               which contain the function <code style="color:black">play()</code> which plays the sounds you defined in the variables
+               at the top of of the file, under the <code style="color:black">function preload() </code>
+          </p>
+
+
+   <h3> 5.3 Preview the webpage to test your sounds </h3>
+  <hr>
+
+  <ol>
+    <li><b>Preview</b> the webpage and <b>click</b> over the different sections of the bottle</li>
+    <li>When you click the cork, you should hear the <code>corkSound</code>. When you click the bottle, you should
+    hear the <code>bottleSound</code>. And, when you click the potion, you should hear the <code>potionSound</code></li>
+    <li>If everything works as expected, go to the next section to submit to Avenue to Learn; otherwise, ask for help from the TAs</li>
+    <li><b>Click</b> the cork, bottle or potion in the interactive webpage example below to see how yours should work</li>
+  </ol>
+          
+           <embed type="text/html" src="https://creative-coding-finished.glitch.me" width="1000" height="600" 
+          
+     <!--  conclusion          -->
+    <h2 id="conclusion">Conclusion: Submit your work to Avenue to Learn</h2>
+          <hr>
+  
+  <p>
+            You have reached the end of this lab!
+          <br><br>
+          
+            Submit the Glitch <b>Live site link</b> to the folder 
+           <b>Weekly exercise #6: Creative Coding</b>. 
+    
+          <b>You don't need to submit the exported SVG vector art individually, only the Glitch link</b>.
+           
+          <br><br>
+If you want to continue learning, see the section below; otherwise, you can close Glitch and this window.
+          </p>
+        
+        
+          <h2 id="extras">Continue learning</h2>
+          <hr />
+           <p>
+             The following are some activities you can do to continue learning:
+          </p>
+          
+          <ul>
+            <li><b>Explore what else can you </b> do with P5.js' sound library: <a href="https://p5js.org/reference/#/libraries/p5.sound"
+                                                                                   target="_blank">https://p5js.org/reference/#/libraries/p5.sound</a></li>
+            <li><b>Learn more about P5.js</b> and explore its interactive editor:
+              <a href="https://p5js.org/" target="_blank">https://p5js.org/</a></li>
+            <li><b>Explore the P5.js video tutorial series</b>: 
+              <a href="https://youtube.com/playlist?list=PLRqwX-V7Uu6Zy51Q-x9tMWIv9cueOFTFA&si=iG5_spAINw8D8r98" 
+                 target="_blank">https://youtube.com/playlist?list=PLRqwX-V7Uu6Zy51Q-x9tMWIv9cueOFTFA&si=iG5_spAINw8D8r98</a> </li>
+            <li><b>Help a classmate</b> by answering their questions and providing them
+              with strategies that worked for you
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+<!-- footer -->
+    <footer class="footer">
+    </footer>
+  </body>
+</html>

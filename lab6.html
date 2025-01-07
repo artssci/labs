@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="https://glitch.com/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--
+      This is the page head - it contains info the browser uses
+      Like the title, which appears on the browser tab but not inside the page
+      Further down you'll see the content that displays in the page
+    -->
+    <title>Lab 6: Web design grid layouts</title>
+
+    <!-- The website stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- The website JavaScript file -->
+        <script src="/script.js" defer></script>
+  </head>
+  <body>
+    <!--
+      The body includes the content you see in the page
+      Each element is defined using tags, like this <div></div>
+      The attributes like class="wrapper" let us style elements in the CSS
+    -->
+    <div class="wrapper">
+      <div class="content" role="main">
+        <h1 class="title"> Lab 6: Web design grid layouts</h1>
+
+        <!-- lab starts here  -->
+        <div class="instructions">
+          <p style="margin-left: 0">
+            In this lab, you will continue practising <b>editorial design </b> by implementing 
+            the <b>high-fidelity wireframe</b> on the Web using <b>HTML and CSS</b>. 
+          </p>
+
+          <h2 class="nocount">Learning Objectives</h2>
+          <ol>
+            <li>Continue practising editorial design</li>
+            <li>Transfer Illustrator's grid layout concepts into the web</li>
+            <li>Apply concepts of HTML and CSS seen in previous labs</li>
+            <li>Experience how your Illustrator wireframe starts coming to life on the Web!</li>
+          </ol>
+
+          <!-- contents           -->
+          <h2 class="nocount">Contents</h2>
+          <hr />
+
+          <ol>
+            <!--           <li><a href="#tools">Tools you will use in this tutorial</a></li> -->
+            <li><a href="#introduction">What is CSS grid layout</a></li>
+            <li><a href="#2activity">Define a CSS grid layout</a></li>
+            <li><a href="#3activity">Place each section of your high-fidelity wireframe into the CSS grid</a></li>
+            <li><a href="#4activity">Give each section the colors of your wireframe's color palette</a></li>
+            <li><a href="#break">Break: Take a 15-minute break</a></li>
+            <li><a href="#5activity">Add text, adjust the text color, and select font families accordingly</a></li>
+            <li><a href="#6activity">Add other media such as photos</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
+            <li><a href="#extras">Continue learning</a></li>
+          </ol>
+
+          <!-- what is photo opt          -->
+          <h2 id="introduction">What is CSS grid layout</h2>
+          <hr />
+          <div class="definition">
+            <p>
+             <i class="fa fa-quote-left" style="font-size:48px"></i> CSS Grid Layout provides a two dimensional layout
+          system, controlling layout in rows and columns. When creating a grid layout you define a grid with rows and columns.
+              Then you place items onto that grid, or allow the browser to auto-place them into the cells you have created.
+              <a href="https://web.dev/learn/css/grid/"
+                target="_blank">... click to hear a 30-min podcast about CSS Grid!</a>
+            </p>
+          </div>
+
+           <h3>Gather your materials </h3>
+          <hr>
+          <ol>
+            <li>In this lab, you will start practising how to <b>implement the high-fidelity wireframe</b> you did last Tuesday 
+          on the Web <b> using what you already know about HTML and CSS.</b></li>
+            <li> Start by <b>opening the high-fidelity wireframe you did last Tuesday</b>, then
+              follow along the instructions in the next sections </li>
+          </ol>
+          <!-- tips -->
+   <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i>  You will implement most of it, however, text and
+            image alignment as well as clipping masks will be covered next Thursday during lecture time.
+          </p>
+
+         
+          
+          <div class="sidebysideimageswithcaptions">
+            
+          <figure>
+          <img src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/high-fidelity-webpage-wireframe.jpg?v=1695726928105" alt="" >
+    <figcaption>High-fidelity wireframe made in Illustrator last Tuesday</figcaption>
+</figure>
+<figure>
+          <img src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/wireframe-implemented-in-the-web.PNG?v=1695840358021" alt="a high-fidelity wireframe implemented in the web">
+    <figcaption>Wireframe implemented as a webpage in Glitch today, Thursday </figcaption>
+</figure>
+          </div>
+<!-- 
+          <div  class="centered-image">
+          </div> -->
+          
+          <h3></h3>
+          
+          <!--  activity 2          -->
+          
+          <h2 id="2activity">Define a grid layout with CSS</h2>
+          <hr>
+          
+                  
+          <ol>
+            <li><b>Remix</b> the following Glitch webpage that contains some basic code to get you started:
+              <a href="https://glitch.com/edit/#!/web-grid-layout-lab" target="_blank">
+                https://glitch.com/edit/#!/web-grid-layout-lab </a></li>
+            <li><b>Go to the style.css file</b> and start defining a grid layout by typing the code <code>display: grid;</code>
+              inside the class selector named <code>.grid-layout</code></li>
+            <li>Then, <b>set the number of columns of the grid</b> by typing the code <code>grid-template-columns: repeat(5, 1fr);</code> 
+            still inside the <code>.grid-layout</code> selector </li>
+            
+            <!-- tips -->
+   <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> The grid-template-columns property defines the number of
+     columns in your grid layout, and it can define the width of each column.
+          </p>
+            
+            <li>Now, <b>set the number of rows of the grid</b> by typing the code <code>grid-template-rows: repeat(5, 1fr);</code> 
+                          still inside the <code>.grid-layout</code> selector </li>
+
+              <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> The grid-template-rows property defines 
+                the number of rows in your grid layout as well as the height of each row.
+          </p>
+   
+            <li><b>Check the example code and the resulting image below</b></li>
+          </ol> 
+          
+        <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Unlike Illustrator, in CSS it is not possible
+          to see/display the lines of the grid layout. That is why you have to use the wireframe from Illustrator to guide yourself
+          </p>
+
+<div class="codeandimagesidebyside">        
+<pre>
+.grid-layout {
+  width: 100vw;
+  height: 100vh; 
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+</pre>         
+          
+  <!-- tips -->
+<img src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/step2.PNG?v=1695849088285" alt="image of step 1">
+</div>
+                
+<!-- 3rd activity           -->
+          <h2 id="3activity">Place each section of your high-fidelity wireframe into the CSS grid</h2>           
+          <hr>
+          
+          <div class="definition" style="display:flex;">
+            <p>
+             <i class="fa fa-quote-left" style="font-size:48px"></i> Similarly to Illustrator, in CSS Grid layouts, the lines between columns are called column
+              lines. The lines between rows are called row lines. Refer to line numbers when placing a grid item in 
+              a grid layout.              
+              <br><br>
+              
+              <img src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/grid_lines.png?v=1695850954802"
+                   alt="an image of grid layout" style="width:50%;">
+            </p>
+          </div>   
+          
+    <ol>
+      <li><b>Still in the style.css file define in which column line each section will start</b>. For example, if your 
+     1st section starts in the 1st column line then type <code>grid-column-start:1;</code></li>
+      <li>Then, <b>define in which column line each section will end</b>. For example, if your 
+     1st section ends in the 6th column line then type <code>grid-column-end:6;</code></li>
+    <li>Now, <b>define in which row line each section will start</b>. For example, if your 1st section start in the 1st
+      row line then type <code>grid-row-start: 1;</code></li>
+      <li>Finally, <b>define in which row line each section will end</b>. For example, if your 1st section ends in the 2nd
+      row line then type <code>grid-row-end: 2;</code></li>
+    <li><b>Check the example code and the resulting image below</b></li>
+  </ol>   
+          
+<div class="codeandimagesidebyside">        
+<pre>
+.section-one {
+  background: #808080;
+  grid-column-start: 1;
+  grid-column-end: 6;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.section-two {
+  background: #989898;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 5;
+}
+
+
+.section-three {
+  background: #C0C0C0;
+  grid-column-start: 3;
+  grid-column-end: 6;
+  grid-row-start: 2;
+  grid-row-end: 5;
+}
+
+.section-four {
+  background: #808080;
+  grid-column-start: 1;
+  grid-column-end: 6;
+  grid-row-start: 5;
+  grid-row-end: 6;
+}
+</pre>         
+          
+<img src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/step3.PNG?v=1695850583279" alt="image of step 2">
+</div>
+
+          <!-- activity 4        -->
+          <h2 id="4activity">Give each section the colors of your Illustrator's wireframe color palette</h2>
+          <hr>
+          
+          <ul>
+            <li>In the style.css file <b>update</b> the <code>background</code> property of 
+              each section with the colors you picked for the wireframe in Illustrator. See the image example below</li>
+          </ul>
+          
+          <!-- tips -->
+         <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> If you can't remember the name or hex code of 
+           the colors, open your wireframe in Illustrator and click using the Selection tool on each section to display
+           the properties panel. Then under Appereance find the Fill option. <br> Another way to see what colors you used is
+           to upload the JPEG or PNG version of your wireframe to the following website which allows you to extract the
+           colors from an image:  <a href="https://color.adobe.com/create/image" target="_blank" style="color:white;">
+           https://color.adobe.com/create/image</a>
+          </p>
+          
+          
+  <div class="centered-image">         
+<img src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/step4.PNG?v=1695853772840" alt="image of step 2">
+</div>
+          <!--   BREAK         -->
+          <h2 id="break"><i class="fa fa-coffee" style="font-size:36px"></i> Take a 15-minute break </h2>
+        
+     
+             <!-- activity 5   -->
+          <h2 id="5activity">Add text, adjust the text color, and select font families accordingly</h2>
+          <hr>
+          
+          <ol>
+            <li><b>In the index.html file</b> use the <code> &lt;h1&gt; &lt;/h1&gt;</code> tags to add headings and subheadings 
+              as you see it fits, based on your <b>high-fidelity wireframe</b></li>
+              <!-- tips -->
+         <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> HTML headings are defined with the 
+            &lt;h1&gt; to &lt;h6&gt; tags. &lt;h1&gt; defines the most important heading. &lt;h6&gt; defines the least important heading.
+            More info here: <a style="color:white" href="https://www.w3schools.com/html/html_headings.asp" target="_blank"
+                               >https://www.w3schools.com/html/html_headings.asp</a>
+          </p>
+            
+            <li><b>Use</b> the <code> &lt;p&gt; &lt;/p&gt;</code> tags to add paragraphs of text as you see it fits</li>
+            <li><b>In the style.css file change the text color</b> using the <code>color</code> property we saw last week. 
+            For example <code>color:green;</code> or <code>color:#038C73</code></li>
+            <li><b>Select a font family</b> similar to the one in your wireframe from this page: 
+              <a href="https://www.w3schools.com/cssref/css_websafe_fonts.php" target="_blank">
+                https://www.w3schools.com/cssref/css_websafe_fonts.php</a> <b>Use</b> the <code>font-family</code> property.
+              For example: <code>  font-family: Arial, sans-serif;</code></li>
+            <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> You might not be able to find the exact
+              font family in the link above. For now, choose one that looks similar and I will show you how to access
+              more font families next week.
+          </p>
+            <li><b>See the code example and image below</b></li>
+          </ol>
+          
+                    
+<div class="codeandimagesidebyside">        
+<pre>
+.section-one {
+  background: black;
+  grid-column-start: 1;
+  grid-column-end: 6;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  color: white;
+  font-family: Garamond, serif;
+}
+
+.section-two {
+  background: #730202;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 5;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+
+.section-three {
+  background: #038C73;
+  grid-column-start: 3;
+  grid-column-end: 6;
+  grid-row-start: 2;
+  grid-row-end: 5;
+  font-family: Arial, sans-serif;
+}
+
+.section-four {
+  background: black;
+  grid-column-start: 1;
+  grid-column-end: 6;
+  grid-row-start: 5;
+  grid-row-end: 6;
+  color:white;
+  font-family: Garamond, serif;
+}
+</pre>         
+          
+<img src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/step6.PNG?v=1695856438104" alt="image of step 2">
+</div>
+
+<!--   activity 6         -->
+          
+             <h2 id="6activity"> Add other media such as photos</h2>
+          <hr>
+          
+          <ol>
+            <li><b>Upload</b> your photos to the <b>Assets folder</b> in Glitch</li>
+            <li><b>In the index.html file</b> locate the section that should contain the photo. 
+             <b>Use</b> the <code>&lt;img&gt;</code> tag that we saw last week to add the image</li>
+            <li><b>In the style.css file</b> use the <code>img</code> selector along with the <code>width</code> property
+              to adjust the size of the image, similar to how we did in the lab last week</li>
+            <li>See the example code and image below</li>
+          </ol>
+          
+          
+          <div class="codeandimagesidebyside">        
+<pre>
+&lt;!-- html code --&gt;
+ &lt;section class="section-three"&gt;
+   &lt;img src="image URL goes here" alt="image description"&gt;
+  &lt;/section&gt;
+  
+  
+  
+            
+/*   CSS code */
+img {
+  width: 50%;
+}
+</pre>
+  
+<img src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/step7.PNG?v=1695857876064" alt="image of step 7">
+</div>
+          
+   <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> We will leave our webpage as it is for now. Next Thursday, 
+     I will teach you how to align text and images during the lecture time so your webpage resembles even more the wireframe 
+     you made in Illustrator last Tuesday.
+  </p>
+          
+<!--  conclusion          -->
+    <h2 id="conclusion">Conclusion: Submit your work to Avenue to Learn</h2>
+          <hr />
+          <p>
+            You have reached the end of this lab!
+          </p>
+          <!-- tips -->
+   <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Remember that each weekly 
+     exercise is the sum of the work made in the Tuesday lab and the Thursday lab.
+          </p>
+          <p>
+            Submit the Glitch <b>Live site link and the exported image of your  high-fidelity Illustrator's wireframe 
+            in JPG, PNG or PDF format</b>. Submit to the folder <b>Weekly exercise#3: Wireframing. You don't need to submit the
+            Illustrator file.</b>
+          </p>
+         
+        
+          <p>If you feel you want to continue learning see the section below, otherwise, you can close this window now.</p>
+  
+          <h2 id="extras">Continue learning</h2>
+          <hr />
+           <p>
+             The following are some activities you can do to continue learning.
+          </p>
+          
+          <ul>
+           <li>
+           Explore how to align text with CSS: <a href="https://www.w3schools.com/cssref/pr_text_text-align.php" target="_blank">
+             https://www.w3schools.com/cssref/pr_text_text-align.php</a>                                                  
+            </li>
+            <li>
+           Explore how to align images with CSS: <br>
+              <a href="https://www.w3schools.com/howto/howto_css_image_center.asp" target="_blank">
+            https://www.w3schools.com/howto/howto_css_image_center.asp</a>       
+            </li>
+            <li>
+              Help a classmate by answering their questions and providing them
+              with strategies that worked for you
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+<!-- footer -->
+    <footer class="footer">
+    </footer>
+  </body>
+</html>

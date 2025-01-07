@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="https://glitch.com/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--
+      This is the page head - it contains info the browser uses
+      Like the title, which appears on the browser tab but not inside the page
+      Further down you'll see the content that displays in the page
+    -->
+    <title>Lab 15: Making an installable app</title>
+
+    <!-- The website stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- The website JavaScript file -->
+    <script src="/script.js" defer></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="content" role="main">
+        <h1 class="title">
+          Lab 15: Making an installable app
+        </h1>
+
+        <!-- lab starts here  -->
+        <div class="instructions">
+          <p style="margin-left: 0">
+            This is the final lab exercise of the course! In this lab, you will learn about <b>installable web apps</b> also known as 
+            <b>Progressive Web Apps (WPAs)</b>. You will transform your <b>Sketchbook</b> from week 6 (lab 9&10)
+            into a <b>Progressive Web App</b>
+          </p>
+
+          <h2 class="nocount">Learning Objectives</h2>
+          <ol>
+            <li>Explore what are Progressive Web Apps</li>
+            <li>
+              Put together all your lab exercises into one Web App
+            </li>
+          </ol>
+
+          <!-- contents           -->
+          <h2 class="nocount">Contents</h2>
+          <hr />
+
+          <ol>
+            <!--           <li><a href="#tools">Tools you will use in this tutorial</a></li> -->
+            <li><a href="#introduction">What are Progressive Web Apps</a></li>
+
+            <li>
+              <a href="#2activity">Gather your materials</a>
+            </li>
+            <li>
+              <a href="#3activity">Create your app's Web app manifest</a
+              >
+            </li>
+            <li><a href="#break">Break: Take a 15-minute break</a></li>
+            <li><a href="#4activity">Create your app's service worker</a></li>
+            <li><a href="#5activity">Install your application</a></li>
+
+            <li>
+              <a href="#conclusion">Conclusion: Submit to Avenue to Learn</a>
+            </li>
+            <li><a href="#extras">Continue learning</a></li>
+          </ol>
+
+          <h2 id="introduction">What are Progressive Web Apps</h2>
+          <hr />
+
+          <div class="definition">
+            <p>
+              <i class="fa fa-quote-left" style="font-size: 48px"></i> A progressive web application (PWA),
+              or progressive web app, is a type of application software delivered through the web, built using 
+              common web technologies including HTML, CSS, JavaScript, and WebAssembly. It is intended to work on 
+              any platform with a standards-compliant browser, including desktop and mobile devices. 
+              <a
+                href="https://en.wikipedia.org/wiki/Progressive_web_app"
+                target="_blank"
+                >... click to read the full article</a
+              >
+            </p>
+          </div>
+          <br />
+          
+          <div class="myIframe">
+           <iframe width="560" height="315" src="https://www.youtube.com/embed/Z8MjdQGyjfA?si=7Jmv52o976xhEKQL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+
+          <h2 id="2activity">Gather your materials</h2>
+          <hr />
+          
+          <h3>2.1 Get your Sketchbook from Week 6 </h3>
+          <hr>
+          <ol>
+            <li>
+              <b>Go to</b> the Dashboard on your Glitch account and <b>look for</b> the <b>Sketchbook</b> with links 
+              to your other lab exercises that you created during Week 6: User Interaction</li>
+            <li>
+              <b>Remix</b> your Sketchbook project</li>
+          </ol>
+          
+          <h3>2.2 Update the navigation links in your Sketchbook </h3>
+          <hr>
+          
+          <ol>
+            <li>
+              <b>Go to</b> the <b>index.html</b> file and <b>locate</b> the <b>navigation menu</b></li>
+            <li> <b>Add</b> the links to the Glitch projects from week 7: Generative art and week 8: Creative coding </li>
+            <li><b>Change</b> the value of the <code>target</code> attribute of the links to <code>"_self"</code>. This way, 
+            any link clicked in your web app will open in the same window</li>
+            <li><b>See</b> the code example below:</li>
+          </ol>
+
+<pre>
+&lt;nav class="navigation-bar"&gt; 
+  &lt;a href="https://mediaart2a06-lab1and2.glitch.me" target="_self"&gt;ASCII ART&lt;/a&gt; 
+  &lt;a href="https://mediaart2a06-lab3and4.glitch.me/" target="_self"&gt;CSS ART&lt;/a&gt; 
+  &lt;a href="https://mediaart-2a06-art-exhibition.glitch.me/" target="_self"&gt;EDITORIAL DESIGN&lt;/a&gt; 
+  &lt;a href="https://generative-art-finished.glitch.me" target="_self"&gt;GENERATIVE CODING&lt;/a&gt; 
+  &lt;a href="https://creative-coding-finished.glitch.me" target="_self"&gt;CREATIVE CODING&lt;/a&gt; 
+
+&lt;/nav&gt; 
+</pre>    
+
+          <!-- 3rd activity           -->
+
+          <h2 id="3activity">Create your app's <i>manifest file</i></h2>
+          <hr />
+          
+             <div class="definition">
+            <p>
+              <i class="fa fa-quote-left" style="font-size: 48px"></i> The web app manifest 
+              is a text file, usually labelled manifest.json, that that provides information about how
+              the browser needs to install the application:
+              
+              <ol>
+                
+                <li>  The name of the web application </li>
+  <li>  Links to the web app icons or image objects </li>
+  <li>  The preferred URL to launch or open the web app </li>
+  <li>  The web app configuration data </li>
+  <li>  Default orientation of the web app </li>
+  <li>  The option to set the display mode, e.g. full screen</li>
+
+               </ol>
+              This metadata is crucial for an app to be added to a home screen or otherwise listed alongside native apps. 
+           
+               <a
+                href="https://en.wikipedia.org/wiki/Progressive_web_app"
+                target="_blank"
+                >... click to read the full article</a
+              >
+            </p>
+          </div>
+              
+        <h3>
+          3.1 Create the <i>manifest.json</i> file
+        </h3>
+        <hr>
+<ol>
+  <li> <b>Create</b> a new file named <b>manifest.json</b> using the <b>Files</b> option in your Glitch project </li>
+  <li> <b>Add</b> the code below to your newly created <b>manifest.json</b> file</li>
+  <li><b>Modify</b> the <code>src</code> link under <code>icons</code> with the URL/link to the SVG illustration shown in your
+  sketchbook. You can find the illustration in the <b>Assets</b> folder</li>
+  </ol>
+
+<pre>        
+{
+	"name":"My Sketchbook",
+	"short_name":"MSB",
+	"start_url":"index.html",
+	"display":"standalone",
+	"background_color":"#5900b3",
+	"theme_color":"black",
+	"scope": ".",
+	"description":"This is my skecthbook from the course MEDIAART 2A06",
+	"icons":[
+	{
+	"src":"URL/link to the SVG illustration shown in your sketchbook",					 
+	"sizes":"192x192",
+  "type": "image/svg+xml"
+
+	}
+]
+}
+ </pre>
+ 
+        <h3>
+          3.2 Link the <i>manifest</i> file to the index file
+        </h3>
+        <hr>
+        
+        <ol>
+          <li><b>Go to</b> the <b>index.html</b> file </li>
+          <li><b>Link</b> the manifest.json file to the index.html file by pasting the following code
+          anywhere between the <code>&lt;head&gt;&lt;/head&gt;</code> tags: 
+            <code>  &lt;link rel="manifest"  href="manifest.json"&gt; </code></li>
+        </ol>
+
+         
+          
+          <!--   BREAK         -->
+          <h2 id="break">
+            <i class="fa fa-coffee" style="font-size: 36px"></i> Take a
+            15-minute break
+          </h2>
+
+          <!-- 4th activity           -->
+        <h2 id="4activity">Create your app's <i>service worker</i></h2>
+          <hr />
+
+<div class="definition">
+            <p>
+              <i class="fa fa-quote-left" style="font-size: 48px"></i> A Service Worker is a JavaScript file
+              with code that makes it possible to properly cache the assets of a website and make them available
+              when the user's device is offline. Service workers can also handle notifications and perform heavy calculations           
+               <a
+                href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Tutorials/js13kGames/Offline_Service_workers"
+                target="_blank"
+                >... click to read the full article</a
+              >
+            </p>
+          </div>
+              
+        <h3>
+          3.1 Create the <i>serviceworker.js</i> file
+        </h3>
+        <hr>
+<ol>
+  <li> <b>Create</b> a new file named <b>serviceworker.js</b> using the <b>Files</b> option in your Glitch project </li>
+  <li> <b>Paste</b> the code below to your newly created <b>serviceworker.js</b> file</li>
+  </ol>
+
+<pre>        
+var staticCacheName = "MSB";
+ 
+self.addEventListener("install", function (e) {
+  e.waitUntil(
+    caches.open(staticCacheName).then(function (cache) {
+      return cache.addAll(["/"]);
+    })
+  );
+});
+ 
+self.addEventListener("fetch", function (event) {
+  console.log(event.request.url);
+ 
+  event.respondWith(
+    caches.match(event.request).then(function (response) {
+      return response || fetch(event.request);
+    })
+  );
+});
+
+ </pre>
+ 
+        <h3>
+          3.2 Link the <i>service worker file</i> to the index file
+        </h3>
+        <hr>
+        <p>
+          This time, we will link the files <b>differently</b> by adding some JavaScript code to the <b>script.js</b>
+          file that you already have in your Glitch project. You made this file during week 6 (lab 9&10) when working on 
+          the Sketchbook project. Follow the steps below:
+        </p>
+        
+        <ol>
+          <li><b>Go to</b> the <b>script.js</b> file </li>
+          <li><b>Paste</b> the code below at the end of the <b>script.js</b> file</li>
+        </ol>
+        
+<pre>
+window.addEventListener('load', () =&gt; {
+registerSW();
+});
+
+// Register the Service Worker
+async function registerSW() {
+if ('serviceWorker' in navigator) {
+  try {
+  await navigator
+      .serviceWorker
+      .register('serviceworker.js');
+  }
+  catch (e) {
+  console.log('SW registration failed');
+  }
+}
+}
+</pre>
+
+        <h2 id="#5activity">Install your application</h2>
+        <hr>
+        
+        <p>
+          It's time to test your application by installing it on different devices. 
+        </p>
+        
+           <h3>
+            6.1 Install your app on the Computer
+        </h3>
+        <hr>
+         
+        <ol>
+          <li><b>Click</b> the  <b>Share</b> button in your Glitch project and <b>copy</b> the <b>Live site link</b></li>
+          <li><b>Open</b> the <b>Chrome browser</b></li>
+          <li><b>Paste</b> the <b>Live site link</b> in the search bar</li>
+          <li><b>Click</b> the <b>install icon </b><img src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/install-icon-small.png?v=1699372813697"
+                                                           style="width:5%; padding:0%">
+             and then the <b>install button</b> to install your app</li>
+          <li><b>See</b> the image below:</li>        
+          <div class="centered-image">
+            <img
+              src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/app-install-process2.png?v=1699373150206"
+              alt="an image of an app installing process"
+            />
+          </div>
+          
+          <li>After installing the app, you should <b>see</b> that the application pops up. If it doesn't pop up, you 
+          can search for the application using the <b>Finder</b> and typing <b>My Sketchbook App</b></li>
+          <li><b>Check out</b> what the app looks like in the picture below. <b>Click the links</b> and see how it 
+          reacts!</li>
+           </ol>
+        
+        <!-- tips -->
+        <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> If you <b>cannot see the installation icon</b>, most likely,
+     there is an error in your code. Go back to your code and make sure all is correct (e.g., no missing parentheses
+     or curly brackets, etc.).
+          </p>
+        
+        <div class="centered-image">
+        <img
+              src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/mysketchbookapp.png?v=1699373484013"
+              alt="an image of my sketchboo app"
+            />
+          </div>
+        
+       
+     
+        
+          <h3>
+            6.2 Install your app on the cellphone
+        </h3>
+        <hr>
+        
+           <p>
+          Now, try to install your application on the cellphone
+        </p>
+        
+        <ol>
+          <li><b>Send</b> the <b>Live site link</b> of your Glitch project to your cellphone, using your McMaster email</li>
+          <li><b>Follow</b> the steps in the following link depending if your cellphone is Apple or Android: 
+          <a href="https://ambitious-garnet-bite.glitch.me/install.html" target="_blank">https://ambitious-garnet-bite.glitch.me/install.html</a></li>
+          <li>Your app should look something like the images below on the screen of the cellphone. <b>Click the links</b> and see how the app 
+          reacts!</li>
+        </ol>
+        
+          <div class="centered-image">
+        <img
+              src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/appinscreen2.png?v=1699374691500"
+              alt="an image of my sketchboo app in Iphone screen"
+            />
+            
+             <img
+              src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/appiniphonescreen2.jpeg?v=1699374503986"
+              alt="an image of my sketchboo app in Iphone screen"
+            />
+          </div>
+        
+        
+     <!--  conclusion          -->
+    <h2 id="conclusion">Conclusion: Submit your work to Avenue to Learn</h2>
+          <hr>
+  
+  <p>
+            You have reached the end of this lab!
+          <br><br>
+          
+            Submit the Glitch <b>Live site link</b> to the folder 
+           <b>Weekly exercise #7: Making an Installable App</b>. 
+             
+          <br><br>
+If you want to continue learning, see the section below; otherwise, you can close Glitch and this window.
+          </p>
+        
+        
+          <h2 id="extras">Continue learning</h2>
+          <hr />
+           <p>
+             The following are some activities you can do to continue learning:
+          </p>
+          
+          <ul>
+            <li><b>Learn</b> more about <b>Progressive Web Apps</b> through the following playlist on 
+              "Progressive Web Apps (PWA) for Beginners": <a href="https://www.youtube.com/playlist?list=PLlrxD0HtieHjqO1pNqScMngrV7oFro-TY" 
+                 target="_blank">https://www.youtube.com/playlist?list=PLlrxD0HtieHjqO1pNqScMngrV7oFro-TY</a> </li>
+            <li><b>Help a classmate</b> by answering their questions and providing them
+              with strategies that worked for you
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+<!-- footer -->
+    <footer class="footer">
+    </footer>
+  </body>
+</html>

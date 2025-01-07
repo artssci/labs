@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="https://glitch.com/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--
+      This is the page head - it contains info the browser uses
+      Like the title, which appears on the browser tab but not inside the page
+      Further down you'll see the content that displays in the page
+    -->
+    <title>Lab 12: Generative art with P5.js</title>
+
+    <!-- The website stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- The website JavaScript file -->
+        <script src="/script.js" defer></script>
+  </head>
+  <body>
+   <div class="wrapper">
+      <div class="content" role="main">
+        <h1 class="title">Lab 12: Generative art with P5.js</h1>
+
+        <!-- lab starts here  -->
+        <div class="instructions">
+          <p style="margin-left: 0">
+            In this lab, you will continue experimenting with <b>JavaScript</b> by using the <b>JavaScript library P5.js</b> to
+            create <b>Generative Art</b>
+          </p>
+
+          <h2 class="nocount">Learning Objectives</h2>
+          <ol>
+            <li>Learn about Generative Art</li>
+            <li>Continue learning and practising JavaScript</li>
+            <li>Learn about the JavaScript library P5.js</li>
+          </ol>
+
+          <!-- contents           -->
+          <h2 class="nocount">Contents</h2>
+          <hr>
+
+          <ol>
+            <!--           <li><a href="#tools">Tools you will use in this tutorial</a></li> -->
+            <li><a href="#introduction">Recap: What is JavaScript (and what is P5.js)</a></li>
+            <li><a href="#2activity">What is Generative Art</a></li>
+            <li><a href="#3activity">Start creating a Generative Art piece</a></li>
+            <li><a href="#4activity">Create a row of your SVG illustrations</a></li>
+            <li><a href="#break">Break: Take a 15-minute break</a></li>
+            <li><a href="#5activity">Create columns for each row of your SVG illustrations</a></li>
+            <li><a href="#conclusion">Conclusion: Submit your work to Avenue to Learn</a></li>
+            <li><a href="#extras">Continue learning</a></li>
+          </ol>
+
+           <h2 id="introduction">Recap: What is JavaScript (and what is P5.js)</h2>
+          <hr>
+          
+                   
+          <div class="definition" style="display:flex;">
+            <p>
+             <i class="fa fa-quote-left" style="font-size:48px"></i> JavaScript is a programming language that allows you to implement complex
+              features on web pages — every time a web page does more than just sit there and display static information for you to 
+              look at — displaying timely content updates, interactive maps, animated 2D/3D graphics, scrolling video jukeboxes, 
+              etc. — you can bet that JavaScript is probably involved. It is the third layer of the layer cake of standard web technologies, namely
+              HTML and CSS <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript"
+                target="_blank">... click to read the full article</a>
+            
+              <img src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/web%20technologies%20cake.png?v=1697494288384"
+                   alt="an image of the web technologies cake" style="width:50%;">
+            </p>
+          </div>   
+          
+          <h3>  1.1 What is P5.js  </h3>
+          <hr>
+            <div class="myIframe">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/W6DtcmZXoTU?si=0tAZ7frT8fM1HvWF&amp;start=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>          <hr>
+          </div>
+          
+          <h3>  1.2 Import the P5.js library into a Glitch project  </h3>
+          <hr>
+          
+          <ol>            
+          <li><b>Remix</b> the following Glitch project: <a href="https://glitch.com/edit/#!/generative-art-exercise">
+      https://glitch.com/edit/#!/generative-art-exercise</a> </li>
+            <li><b>Import the P5.js library into your remixed Glitch </b> project by copying the following line of code and pasting 
+              it into the <b>index.html</b> file anywhere between the <code>&lt;head&gt;</code><code>&lt;/head&gt;</code> tags:</li>        
+  <pre>
+
+  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"&gt;&lt;/script&gt;
+  &lt;script src="https://unpkg.com/p5.js-svg@1.5.1"&gt;&lt;/script&gt;
+</pre>
+                      </ol>
+
+
+          
+            <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> At this point, you won't be able to 
+              see anything if you <b>preview</b> the webpage. That is just fine! Continue to the next section to 
+              keep developing your Generative Art piece 
+          </p>
+          
+              <h2 id="2activity">What is Generative Art</h2>
+          <hr>
+          <!-- definition -->
+<div class="definition">
+            <p>
+             <i class="fa fa-quote-left" style="font-size:48px"></i> Generative art refers to art that in 
+              whole or in part has been created with the use of an autonomous system. An autonomous system 
+              in this context is generally one that is non-human and can independently determine features 
+              of an artwork that would otherwise require decisions made directly by the artist. 
+              <br><br>
+              "Generative art" often refers to algorithmic art (algorithmically determined computer generated artwork) 
+              and synthetic media (general term for any algorithmically generated media), but artists can also make it 
+              using systems of chemistry, biology, mechanics and robotics, smart materials, manual randomization, mathematics, 
+              data mapping, symmetry, tiling, and more
+              <a href="https://en.wikipedia.org/wiki/Generative_art"
+                target="_blank">... click to read the full article</a>
+              
+                
+              <div class="centered-image">
+              <img src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/genArt.gif?v=1698279785722"
+                   alt="an image of the generative art" style="width:70%;">
+          </div>
+            </p>
+          </div>  
+          
+               
+          
+          <h2 id="3activity">Start creating a Generative Art piece</h2>
+          <hr>
+        
+        <p>
+        Let's start our Generative Art project! For this exercise, you will need the 3 SVG illustrations you did last Tuesday 
+        </p>
+        
+        <h3>3.1 Upload and load your SVG illustrations to Glitch </h3>
+        <hr>
+        
+        <p>
+          Start by uploading your 3 SVG illustrations to Glitch and loading them using P5.js code. Follow the instructions below:
+        </p>
+   <ol>
+    
+     <li><b>Upload</b> the <b>3 SVG illustrations</b> you created during last Tuesday's lab to your Glitch project</li>
+     <li>After, <b>go to the sketch.js file</b></li>
+     <li><b>Add the URL/link of each image</b> into each <b>P5.js function</b> <code>loadSVG</code>.
+       <b>Check</b> the following code: <br> <code> svg = loadSVG("https://cdn.glitch.global/cbf82460-ab64-4290-aac2-1067745b4088/car-version%201.svg?v=1698261191302");</code></li>
+     <li>Finally, <b>create a list</b> with the names of the variables containing your SVGs and <b>assign it</b> to the variable <code>svgList=</code>. 
+       Check the following code:  <code> svgList = [svg, svg2, svg3]; </code></li>
+          
+        <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> At this point you won't be able to 
+          see anything if your preview the page
+          </p>
+        
+     <li><b>Check</b> the example code below: <br></li>
+        </ol>
+       
+  <pre>
+
+  function setup() {
+  createCanvas(windowWidth, windowHeight, SVG);
+  frameRate(3);
+  svg =  loadSVG("URL to SVG goes here");
+  svg2 = loadSVG("URL to SVG goes here");
+  svg3 = loadSVG("URL to SVG goes here");
+  svgList = [svg, svg2, svg3];
+}
+</pre>
+
+    <h3>3.2 Display the 1st of your SVG illustration </h3>
+    <hr>
+        <p> Let's test the code from above by displaying the 1st of your SVG images </p>
+        
+        
+    <ol>
+     <li>In the sketch.js file, <b>locate</b> the P5.js function <code>function draw()</code></li>
+     <li>Under this function <b>write</b> the function <code>image()</code> with the
+       value <code>(svg, 0, 0, 100, 100);</code></li>
+      <li>If you <b>Preview</b> the webpage, you should be able to see the 1st of your illustrations displayed</li>
+    <li><b>Check</b> the example code below: <br></li>
+    </ol>
+        
+              
+        <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> The 1st parameter of the <b>image()</b> function,
+          is the source image to be drawn. The 2nd and 3rd parameters (i.e., 0, 0) set the coordinates of the destination image's 
+          top left corner. The 4th and fifth parameters (i.e., 100, 100) set the width and height of the image 
+          </p>
+        
+<div>        
+<pre>
+function draw() {
+    clear()
+    image(svg, 0, 0, 100, 100);
+} 
+</pre>    
+</div>
+          
+<div class="centered-image">
+<img style="width:70%;" src=" https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/gen-art-1.png?v=1698286198746" 
+     alt="an image of an SVG illustration">
+</div>
+        
+      <h3>3.3 Assign a <i>random list</i> of SVG illustrations to a <i>variable</i> </h3>
+        <hr>
+        
+    <ol>
+     <li>In the sketch.js file, <b>locate</b> the P5.js function <code>function draw()</code></li>
+     <li>Under this function, <b>write</b> the name of the variable <code>myRandomSVG=</code> 
+       and use the function <code>random()</code> with the value <code>svgList</code> to assign a randomized
+       list of your SVG illustrations. <b>Check</b> the following code:<code>  myRandomSVG = (random(svgList));</code></li>
+      <li>Finally, <b>substitute</b> the 1st parameter of the <code>image()</code> function with <code>myRandomSVG</code>. 
+      This way, the webpage will display the 3 SVG illustrations randomly, one at a time </li>
+      <li><b>Check</b> the example code and image below:</li>
+        </ol>
+        
+<div>        
+<pre>
+function draw() {
+    clear();
+    myRandomSVG = (random(svgList));
+    image(myRandomSVG, 0, 0, 100, 100);
+}
+ 
+</pre>    
+</div>
+          
+<div class="centered-image">
+<img style="width:70%;" src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/gen-art-2.gif?v=1698286458044" 
+     alt="an image of an SVG illustration">
+</div>
+               
+       
+<!-- 3rd activity           -->
+          <h2 id="4activity">Create a row of your SVG illustrations</h2>           
+          <hr>
+        
+          <p>Let's make your Generative Art piece more impactful by creating a row with multiple copies of your
+        SVG illustrations. To do this, you will use a <code>for</code> loop. Continue to the next section to
+        know what is a <code>for</code> loop.</p>
+        
+        
+   <h3> 4.1 Use a <i>for loop</i> to create multiple copies of your SVG illustrations displaying horizontally</h3>
+    <hr>
+        
+        
+        <div class="definition">
+            <p>
+              <i class="fa fa-quote-left" style="font-size:48px"></i> A "for loop" creates a loop that is useful for executing one section of 
+              code multiple times              
+              <a href="https://p5js.org/reference/#/p5/for"
+                target="_blank">... click to read the full article</a>
+            </p>
+          </div>      
+        
+  <ol>
+     <li><b>Add</b> a <code>for</code> loop in the sketch.js file, just in between the <code>myRandomSVG=</code> variable and the 
+       function <code>image()</code>. <b>Check</b> the following code: <br> <code> for (var x = 0; x &lt;= width; x = x+100)</code></li>
+    <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> A 'for loop' consists of three different expressions inside of a 
+        parenthesis to control the number of times the loop is run: 
+        <br>- The 1s expression is used to set the initial state for the loop
+        <br>- The 2nd expression is a condition that you would like the computer to check before each loop.
+          If this expression returns false, then the loop will exit 
+         <br>- The 3rd expression is executed at the end of each loop
+          </p>
+    
+    <li>Just after the <code>for</code> loop, <b> type</b> an opening curly bracket, <code>{</code>. Then, type a closing curly 
+      bracket, <code>}</code>, after the <code>image()</code> function. This way, the <code>image()</code> function will be
+      the section of code that will be executed multiple times by the <code>for</code> loop</li>
+    <li><b>Check</b> the example code: </li>
+</ol>    
+        
+<div>        
+<pre>
+for (var x = 0; x &lt= width; x = x+100) {
+  image(myRandomSVG, 0, 0, 100, 100);
+}
+</pre>    
+</div>
+          
+        <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> At this point, you won't be able to 
+          see the illustration copies because they are all stacked together. Continue to the next section to move each illustration 
+          to a different position horizontally
+          </p>
+        
+        <h3> 4.2 Move each illustration copied to a different <i>horizontal position</i> </h3>
+        <hr>
+          
+        <p>
+         To move each illustration to a different position horizontally, follow the next steps: 
+        </p>
+   <ol>
+    <li><b>Substitute</b> the 2nd parameter of the <code>image()</code> function with the variable <code>x</code></li>
+    <li><b>Check</b> the example code and the image below:</li>
+  </ol>
+        
+<div>        
+<pre>
+for (var x = 0; x &lt= width; x = x+100) {
+  image(myRandomSVG, x, 0, 100, 100);
+}
+</pre>    
+</div>
+        
+ <div class="centered-image">
+<img style="width:70%;" src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/gen-art-3.gif?v=1698290431264" 
+     alt="an image of an SVG illustration">
+</div>
+                
+          
+  <!--   BREAK         -->
+<h2 id="break"><i class="fa fa-coffee" style="font-size:36px"></i> Take a 15-minute break </h2>
+        
+          
+    
+<!--activity 5  -->
+        <h2 id="5activity">Create columns for each row of SVG illustrations</h2>
+        <hr>
+        
+        <p>Now, let's fill the rest of the webpage with copies of your illustrations positioned vertically in columns. 
+        You will use another <code>for</code> loop.</p>
+        
+        <h3> 6.1 Use a <i>for loop</i> to create multiple copies of your SVG illustrations vertically</h3>
+        <hr>
+         
+        <p>
+          Add a <code>for</code> loop inside of the previous <code>for</code> loop. Follow the instructions below to learn
+          how:
+        </p>
+        
+ <ol>
+   <li><b>Add</b> another <code>for</code> loop below the 1st <code>for</code> loop. <b>Change</b> the variable name
+     <code>x</code> to <code>y</code>. Also, change the variable <code>width</code> to <code>height</code>.
+     <b>Check</b> the following code: <code> for (var y = 0; y &lt;= height; y = y+100)</code> </li>  
+   
+       
+        <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Width and height are 
+          "system variables" that store the width and height of the drawing canvas or the screen in the case of our code
+          </p>
+   
+    <li>Just after the 2nd <code>for</code> loop, <b> type</b> an opening curly bracket, <code>{</code>. Then, type a closing curly 
+      bracket, <code>}</code>, after the <code>image()</code> function. This way, the 2nd <code>for</code> loop, 
+      along with the <code>image()</code> function, will be executed multiple times by the 1st <code>for</code> loop</li>
+    <li><b>Check</b> the example code: </li>
+</ol>    
+        
+        <div>        
+<pre>
+for (var x = 0; x &lt= width; x = x+100) {
+  for (var y = 0; y &lt= height; y = y+100) {
+   image(myRandomSVG, x, 0, 100, 100);
+ }
+}
+</pre>    
+</div>
+        
+     <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> You won't be able to 
+    see the vertical illustration copies because they are all stacked together. Continue to the next section to move 
+       each illustration to a different position vertically
+    </p>
+        
+        <h3> 6.2 Move each image copied to a different <i>vertical position</i> </h3>
+        <hr>
+          
+            <p>
+         To move each illustration to a different position vertically, follow the next steps: 
+        </p>
+   <ol>
+    <li><b>Substitute</b> the 3rd parameter of the <code>image()</code> function with the variable <code>y</code></li>
+    <li><b>Check</b> the example code and the image below:</li>
+  </ol>
+        
+<div>        
+<pre>
+for (var x = 0; x &lt= width; x = x+100) {
+  for (var y = 0; y &lt= height; y = y+100) {
+   image(myRandomSVG, x, y, 100, 100);
+ }
+}
+</pre>    
+</div>
+        
+ <div class="centered-image">
+<img style="width:70%;" src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/genArt.gif?v=1698279785722" 
+     alt="an image of an SVG illustration">
+</div>
+        
+<!--  conclusion          -->
+    <h2 id="conclusion">Conclusion: Submit your work to Avenue to Learn</h2>
+          <hr>
+  
+  <p>
+            You have reached the end of this lab!
+          <br><br>
+          
+            Submit the Glitch <b>Live site link</b> to the folder 
+           <b>Weekly exercise #5: Generative Art</b>. 
+    
+          <b>You don't need to submit the exported SVG vector art individually, only the Glitch link</b>.
+           
+          <br><br>
+           If you feel you want to continue learning see the section below, otherwise, you can close Glitch and this window.
+          </p>
+        
+        
+          <h2 id="extras">Continue learning</h2>
+          <hr />
+           <p>
+             The following are some activities you can do to continue learning:
+          </p>
+          
+          <ul>
+            <li><b>Explore what happens if </b> you include the randomized list <code>myRandomSVG = (random(svgList));</code> 
+            inside the <code>for</code> loop </li>
+            <li><b>Learn more about P5.js</b> and explore its interactive editor:
+              <a href="https://p5js.org/" target="_blank">https://p5js.org/</a></li>
+            <li><b>Explore the P5.js video tutorial series</b>: 
+              <a href="https://youtube.com/playlist?list=PLRqwX-V7Uu6Zy51Q-x9tMWIv9cueOFTFA&si=iG5_spAINw8D8r98" 
+                 target="_blank">https://youtube.com/playlist?list=PLRqwX-V7Uu6Zy51Q-x9tMWIv9cueOFTFA&si=iG5_spAINw8D8r98</a> </li>
+            <li><b>Help a classmate</b> by answering their questions and providing them
+              with strategies that worked for you
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+<!-- footer -->
+    <footer class="footer">
+    </footer>
+  </body>
+</html>
