@@ -23,7 +23,7 @@
     <title> Interface Design Lab 1: SVGs </title>
 
     <!-- The website stylesheet -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/style.css" />
 
     <!-- The website JavaScript file -->
         <script src="/script.js" defer></script>
@@ -61,7 +61,7 @@
 <!--             <li><a href="#break">Break: Take a 15-minute break</a></li> -->
             <li><a href="#1activity">Your First SVG</a></li>
             <li><a href="#2activity">Explore Basic Shapes</a></li>
-            <li><a href="#3activity">Styling and Transformations</a></li>
+            <li><a href="#3activity">Explore Styling and Transformations</a></li>
 <!--             <li><a href="#4activity">Animation</a></li> -->
 <!--             <li><a href="#5activity">Creative Project</a></li> -->
             <li><a href="#conclusion">Assignment submission and assessment</a></li>
@@ -87,8 +87,10 @@
           <h2 id="prerequisite">Pre-requisite: Install Visual Studio Code</h2>
           <hr />
             <p>
-             Follow the tutorials to install Visual Studio Code in Windows or Mac
-          </p>
+            Microsoft Visual Studio Code is a free, powerful, lightweight code editor for Windows, macOS and Linux.  
+            <br>
+            Follow the instructions below to install Visual Studio Code in Windows or Mac
+            </p>
               
             <ul>
               <li> Windows installation tutorial: <a href="https://docs.cse.lehigh.edu/vscode/installing-vscode-win/" target="_blank">https://docs.cse.lehigh.edu/vscode/installing-vscode-win/</a></li>
@@ -115,7 +117,7 @@
                <pre><code class="language-markup">
               <textarea class="myInput" rows="5" cols="50">
           
-<svg viewbox="0 0 1100 1100" xmlns="http://www.w3.org/2000/svg">
+<svg viewbox="0 0 1100 500" xmlns="http://www.w3.org/2000/svg">
     <rect width="100" height="100" x="50" y="50" />
 </svg>
                 
@@ -124,16 +126,12 @@
 
         </div>
             
-            
-         
-            
-            
             <li>Save the changes made to your VS Code file</li>
             <li>Open your VS code file in a web browser or image viewer. You should see a black square like the one below            </li> 
           </ol>
           
 <!-- rect image           -->
-<svg viewbox="0 0 200 15" xmlns="http://www.w3.org/2000/svg">
+<svg viewbox="0 0 100 10" xmlns="http://www.w3.org/2000/svg">
     <rect width="10" height="10" x="12" y="0"></rect>
 </svg>
 
@@ -143,18 +141,20 @@
                            
           <div style="display:flex">
 <pre style="width:50%"><code class="language-markup" >
-&lt;svg viewbox="0 0 1100 1100" xmlns="http://www.w3.org/2000/svg" /&gt;
+&lt;svg viewbox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" /&gt;
 </code></pre>
           
           <ol style="width:50%">
             <li>This is the opening SVG tag which creates a canvas for our drawing.</li>
             <li> <code class="code-custom-style">xmlns="http://www.w3.org/2000/svg"</code> tells the browser this is an SVG document. </li>
-            <li><code class="code-custom-style">viewBox="0 0 1100 1100"</code> defines our coordinate system:</li>
+            <li><code class="code-custom-style">viewBox="0 0 1000 1000"</code> defines our coordinate system:</li>
             <ul>
               <li>The first two numbers (0, 0) set the starting point (top-left corner). </li>
-              <li>The second two numbers (1100, 1100) define the width and height of our viewable area. </li>
-              <li>Think of it like a piece of paper that is 1100 units wide by 1100 units tall.</li>
+              <li>The second two numbers (1100, 500) define the width and height of our viewable area. </li>
+              <li>Think of it like a piece of paper that is 1000 units wide by 500 units tall. </li>
+              <img style="width:80%" src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/Graphics3D_DisplayCoord.png?v=1736290700208">
           </ul>
+            
             </ol>
             
             </div>
@@ -198,7 +198,7 @@
             <li>At the end of this activity you should see a row of shapes like the one below:</li>
           </ol>
           
-          <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/Screenshot%20from%202025-01-07%2011-40-16.png?v=1736268045303">
+          <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/Screenshot%20from%202025-01-07%2017-49-22.png?v=1736290170497">
             
 <!--  circle            -->
             
@@ -341,7 +341,7 @@
 <div class="definition" >                                 
           <div style="display:flex">
 <pre style="width:50%"><code class="language-markup" >
-&lt;path d="M1000 50 L1050 150 L950 150 Z" /&gt;
+&lt;path d="M1000 50 L1050 100 L1025 150 L975 150 L950 100 Z" /&gt;
 </code></pre>
           
           <ol style="width:50%">
@@ -349,8 +349,9 @@
             <li>The <code class="code-custom-style">d</code> attribute contains the drawing commands</li>
             <ul>           
               <li><code class="code-custom-style">M1000 50</code> means "Move to" position (1000,50) without drawing</li>
-              <li><code class="code-custom-style">L1050 150</code> means "Line to" position (1050,150)</li>
-              <li><code class="code-custom-style">L950</code> 150 means "Line to" position (950,150)</li>
+              <li><code class="code-custom-style">L1050 100</code> means "Line to" position (1050,100)</li>
+              <li><code class="code-custom-style">L1025 150</code> means "Line to" position (1025,150)</li>
+              <li><code class="code-custom-style">L975 100</code> means "Line to" position (975,100)</li>
               <li><code class="code-custom-style">Z</code> means "Close path" - draws a line back to starting point</li>
               </ul>
               </ol>
@@ -359,7 +360,7 @@
                 </div>                 
          
 <!-- Activity 3 -->
-        <h2 id="3activity">Styling and Transformations</h2>
+        <h2 id="3activity">Explore Styling and Transformations</h2>
           <hr>
           In this step, you will experiment with the commands/attributes <code class="code-custom-style">fill</code>, <code class="code-custom-style">transform</code>, and <code class="code-custom-style">translate</code>.
           
@@ -371,7 +372,7 @@
            <li>At the end of this activity you should see another row of shapes like the one below: </li>
           </ol>
           
-          <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/Screenshot%20from%202025-01-07%2011-44-22.png?v=1736268285897">
+          <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/Screenshot%20from%202025-01-07%2017-50-13.png?v=1736290223749">
                     <!--  rectangle w/style and tranformation           -->
             
             <h4> Rectangle </h4>
@@ -537,7 +538,7 @@ stroke-width="12"/&gt;
 </code></pre>
           
           <ol style="width:50%">
-            <li><code class="code-custom-style">transform="translate(0 200)"</code> moves (translates) the ellipse from its original position</li>
+            <li><code class="code-custom-style">transform="translate(0 200)"</code> moves (translates) the line from its original position</li>
             <ul>
               <li>The values (0, 200) mean:</li>
               <ul>
@@ -581,22 +582,14 @@ style="fill:lime;stroke:purple;stroke-width:3"/&gt;
 </code></pre>
           
           <ol style="width:50%">
-            <li><code class="code-custom-style">transform="translate(0 200)"</code> moves (translates) the ellipse from its original position</li>
+            <li><code class="code-custom-style">transform="translate(0 200)"</code> moves (translates) the polygon down 200 units from its original position</li>
             <ul>
-              <li>The values (0, 200) mean:</li>
-              <ul>
-                <li>0 units horizontally (no left/right movement)</li>
-                <li>200 units down vertically</li>
-                <li>This translation happens AFTER the initial positioning (x1="600" y1="100" x2="750" y2="100")</li>
-                <li>So the final position would be:</li>
-                <ul>
-                <li>600 and 700 units from the left (from x1="600" and x2="750")</li>
-                <li>300 units from the top (100 from y1="100" and y2="100" plus 200 from translate)</li>
-                </ul>
-              </ul>
-              </ul>
-            <li><code class="code-custom-style">stroke="orange"</code> sets the line color to orange.</li>
-            <li><code class="code-custom-style">stroke-width="12"</code> sets the line width to 12 pixels/units</li>
+            <li>So all points shift down 200 units from their original position</li>
+            <li>The top point is now at (850,250)</li>
+            </ul>
+            <li><code class="code-custom-style">fill:lime</code> sets the shape color to lime green.</li>
+            <li><code class="code-custom-style">stroke:purple</code> sets the line color to purple.</li>            
+            <li><code class="code-custom-style">stroke-width="3"</code> sets the line width to 3 pixels/units</li>
               </ol>
             </div>
                 </div>  
@@ -618,29 +611,16 @@ style="fill:lime;stroke:purple;stroke-width:3"/&gt;
            <div class="definition" >                                 
           <div style="display:flex">
 <pre style="width:50%"><code class="language-markup" >
-&lt;path 
-d="M1000 50 L1050 150 L950 150 Z" 
+&lt;path d="M1000 50 L1050 100 L1025 150 L975 150 L950 100 Z" 
 transform="translate(0 200)" 
-style="fill:none;stroke:black;stroke-width:3" /&gt;
+style="fill:brown;stroke:black;stroke-width:3" /&gt;
 </code></pre>
           
           <ol style="width:50%">
-            <li><code class="code-custom-style">transform="translate(0 200)"</code> moves (translates) the ellipse from its original position</li>
-            <ul>
-              <li>The values (0, 200) mean:</li>
-              <ul>
-                <li>0 units horizontally (no left/right movement)</li>
-                <li>200 units down vertically</li>
-                <li>This translation happens AFTER the initial positioning (x1="600" y1="100" x2="750" y2="100")</li>
-                <li>So the final position would be:</li>
-                <ul>
-                <li>600 and 700 units from the left (from x1="600" and x2="750")</li>
-                <li>300 units from the top (100 from y1="100" and y2="100" plus 200 from translate)</li>
-                </ul>
-              </ul>
-              </ul>
-            <li><code class="code-custom-style">stroke="orange"</code> sets the line color to orange.</li>
-            <li><code class="code-custom-style">stroke-width="12"</code> sets the line width to 12 pixels/units</li>
+            <li><code class="code-custom-style">transform="translate(0 200)"</code> moves (translates) the shape 200 units down from its original position</li>
+           <li><code class="code-custom-style">fill:brown</code> sets the shape color to brown.</li>
+            <li><code class="code-custom-style">stroke:black </code> sets the line color to purple.</li>            
+            <li><code class="code-custom-style">stroke-width:3"</code> sets the line width to 3 pixels/units</li>
               </ol>
             </div>
                 </div>  
@@ -704,7 +684,7 @@ style="fill:none;stroke:black;stroke-width:3" /&gt;
 </b></button>
         <div class="additionalInfo">   
 <pre style="width:100%"><code class="language-markup" >
-&lt;svg viewBox="0 0 1100 1100" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;svg viewBox="0 0 1100 500" xmlns="http://www.w3.org/2000/svg"&gt;
     
     &lt;rect width="100" height="100" x="50" y="50" /&gt;
     
@@ -716,7 +696,7 @@ style="fill:none;stroke:black;stroke-width:3" /&gt;
   
     &lt;polygon points="850,50 900,150 800,150" /&gt;
 
-    &lt;path d="M1000 50 L1050 150 L950 150 Z" /&gt;
+    &lt;path d="M1000 50 L1050 100 L1025 150 L975 150 L950 100 Z" /&gt;
 
 
 
@@ -730,7 +710,7 @@ style="fill:none;stroke:black;stroke-width:3" /&gt;
 
     &lt;polygon points="850,50 900,150 800,150" transform="translate(0 200)" style="fill:lime;stroke:purple;stroke-width:3" /&gt;
 
-   &lt;path d="M1000 50 L1050 150 L950 150 Z" transform="translate(0 200)" style="fill:none;stroke:black;stroke-width:3" /&gt;
+   &lt;path d="M1000 50 L1050 100 L1025 150 L975 150 L950 100 Z" transform="translate(0 200)" style="fill:brown;stroke:black;stroke-width:3"/&gt;
 
 &lt;/svg&gt;
 
