@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="https://glitch.com/favicon.ico" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+      <link rel="manifest"  href="manifest.json">
+
+    <!--
+      This is the page head - it contains info the browser uses
+      Like the title, which appears on the browser tab but not inside the page
+      Further down you'll see the content that displays in the page
+    -->
+    <title>Lab 1 - Ascii Art</title>
+
+    <!-- The website stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- The website JavaScript file -->
+    <script src="/script.js" defer></script>
+  </head>
+  <body>
+    <!--
+      The body includes the content you see in the page
+      Each element is defined using tags, like this <div></div>
+      The attributes like class="wrapper" let us style elements in the CSS
+    -->
+    <div class="wrapper">
+      <div class="content" role="main">
+        <h1 class="title">Lab 1: Ascii Art with HTML and Glitch</h1>
+
+<!--         <img
+          src="https://cdn.glitch.com/a9975ea6-8949-4bab-addb-8a95021dc2da%2Fillustration.svg?v=1618177344016"
+          class="illustration"
+          alt="Editor illustration"
+          title="Click the image!"
+        /> -->
+        <div class="instructions">
+          
+        <p style="margin-left:0;">
+          In this first lab, you will learn <b>Ascii Art</b> using the computer language <b>HTML</b>, the online editor <b>Glitch.com</b> and the AI tool <b>ChatGPT</b>.
+        </p>
+        
+          <h2>Learning Objectives</h2>
+          <ol>
+          <li>Learn about a type of graphic design called Ascii Art</li>
+          <li>Familiarize yourself with coding by experimenting with HTML and Glitch</li>
+          <li>Practice how to debug HTML code using tools like ChatGPT</li>
+          </ol>
+
+<!-- contents           -->
+          <h2>Contents</h2>
+          <hr>
+
+          <ol>
+<!--           <li><a href="#tools">Tools you will use in this tutorial</a></li> -->
+          <li><a href="#introduction">What is Ascii Art</a></li>
+          <li><a href="#learning">Getting introduced to HTML and Glitch.com</a></li>
+          <li><a href="#break">Break: Take a 15-minute break</a></li>
+          <li><a href="#creating">Creating your own Ascii Art</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
+          <li><a href="#extra">Continue learning</a></li>
+            <li><a href="https://mediaart2a06.glitch.me/lab2.html" target="_blank">https://mediaart2a06.glitch.me/lab2.html</a></li>
+
+          </ol>
+
+<!-- tutorial starts here!           -->
+                 
+<!-- What is Ascii Art           -->
+          
+          <h2 id="introduction">What is Ascii Art</h2>
+          <hr>
+          <div class="definition">
+            <p>
+             <i class="fa fa-quote-left" style="font-size:48px"></i> ASCII art is a graphic design technique that uses computers for 
+              presentation and consists of pictures pieced together from characters defined by the ASCII Standard 
+              from 1963. The term is also loosely used to refer to text-based visual art in general. 
+              ASCII art can be created with any text editor, and is often used with free-form languages 
+              <br>
+              <a href="https://en.wikipedia.org/wiki/ASCII_art" target="_blank">... click to read the full article</a> 
+            
+          </p>
+          </div>     
+          <p>
+            Here is an example of Ascii Art:
+            <pre>
+ _____ _     _       _          _             _ _      _         _   
+|_   _| |__ (_)___  (_)___     / \   ___  ___(_|_)    / \   _ __| |_ 
+  | | | '_ \| / __| | / __|   / _ \ / __|/ __| | |   / _ \ | '__| __|
+  | | | | | | \__ \ | \__ \  / ___ \\__ \ (__| | |  / ___ \| |  | |_ 
+  |_| |_| |_|_|___/ |_|___/ /_/   \_\___/\___|_|_| /_/   \_\_|   \__|
+                                                                     
+           </pre>
+          </p>
+
+        <button type="button" class="collapsible"><i class="fa fa-info-circle"></i> <b>Do you want to know more about character-based art?</b></button>
+        <div class="additionalInfo">           
+            <p>
+              Watch the following video to learn more about the history of <b>Ansi Art</b> - an art form similar to Ascii art. This video lasts 45 mins, 
+              so just watch the first 10-15 mins. You are also welcome to skip sections or just watch the introduction. 
+          </p>
+        <br>
+          <iframe class="videos" width="560" height="315" src="https://www.youtube.com/embed/oQrBbm5ZMlo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>  
+        </div>
+                 
+<!--  Learning HTML          -->
+          
+           <h2 id="learning">Getting introduced to HTML and Glitch.com</h2>
+           <hr>
+      
+        <p>Before you create your own Ascii Art, you'll need to know some basics of <b>HTML</b>. 
+          In this section, you will start learning about <b>HTML</b>.
+          You will experiment with it using the coding editor <b>Glitch.com</b>. 
+          You will also have the chance to practice how to debug your code using the artificial intelligence tool <b>ChatGPT</b>.
+        </p>
+      
+          <div class="definition">
+            <p>
+             <i class="fa fa-quote-left" style="font-size:48px"></i> HTML stands for HyperText Markup Language. It is the standard markup language for documents designed to be 
+              displayed in a web browser. It defines the meaning and structure of web content. It is often assisted by 
+              other languages such as Cascading Style Sheets (CSS) and JavaScript
+              <a href="https://en.wikipedia.org/wiki/HTML" target="_blank"> ... click to read the full article </a>
+            </p>
+        </div>
+             
+            <p> To start experimenting with HTML follow the next steps: </p>            
+      
+            <h4>1. Create an account at Glitch.com and open the link provided below</h4>
+            <hr>
+              
+              <ul>
+                <li><a href="https://glitch.com/" target="_blank">Glitch</a> is an online coding editor. Use your <a>McMaster email</a> to create an account in Glitch. 
+                Here are some instructions to do it: 
+                  <a href="https://glitch.happyfox.com/kb/article/35-creating-an-account/" target="_blank">https://glitch.happyfox.com/kb/article/35-creating-an-account/</a></li>
+           <br>
+                     
+              <li> Once you have a Glitch account, go to the following link to start experimenting with HTML: 
+                <a href="https://glitch.com/edit/#!/mediaart2a06-labs" target="_blank">https://glitch.com/edit/#!/mediaart2a06-labs</a></li>
+        </ul>
+        
+                  <!-- tips -->
+                <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"><b> Did you know? </b></i> McMaster students have the choice to “opt-out” from 
+                  using third-party platforms such as <b>Glitch</b> or <b>ChatGPT</b>. <b>If you don't want to use Glitch tell
+                  the instructor so they can provide you with alternative ways of working/submitting</b>.
+          </p>
+        
+             <h4>2. Copy the following HTML code in the file called index.html</h4>
+             <hr>
+                           
+              <ul>
+                <li> The link above will take you to an empty Glitch file. Click the <b> remix </b> button at the top-right corner to get your 
+                  own editable copy of this file (see <a href="https://glitch.com/~remix" target="_blank">https://glitch.com/~remix</a> for more info). </li>
+                <br>
+                <li> Inside your remixed Glitch file, you will see a file called <b>index.html</b>. If you click that file, you will see it is empty. 
+                  Copy the following HTML code in the <b>index.html</b> file.</li>
+        </ul>
+       
+         
+        <div style="display:flex; margin: auto; width: 50%;">     
+              <br><br>
+              <button onclick="myFunction()">Copy code</button>
+              <textarea id="myInput" rows="9" cols="50">
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+<h1></h1>
+<p></p>
+</body>
+</html>
+        </textarea>
+        </div>
+              <ul>
+                <li>Once you have pasted the code, preview the resulting webpage. Go to the menu at the bottom of your Glitch document and click <b>Preview</b>. Then click <b>Preview in a new window</b>. 
+                This will open a new window where you can preview the results from the HTML code you just copied. </li>
+        </ul>  
+                <br> <br>
+        <button type="button" class="collapsible"><i class="fa fa-info-circle"></i> <b>Why I can't see anything?</b></button>
+        <div class="additionalInfo">   
+               <p>
+                 
+               If you look at the preview window you'll probably notice it is blank. When you don't see what you expect from your code, 
+               it might indicate you had an error or a <i>bug</i>.                          
+               </p>
+        
+             <p>
+               To help you <i>debug</i> your code, you can now use Artificial Intelligence tools such as ChatGPT. For this course, 
+               you are welcome to use chatGPT to help you <i>debug</i> your code. 
+               
+               <p>
+                To do this, follow the instructions below. 
+                <b>Note: </b>If you don't want to do this, then skip to the next step (step 3).
+
+            </p>   
+               <ol>
+                 
+                <li>Create an account or log in at <a href="=https://chat.openai.com/auth/login" target="_blank">https://chat.openai.com/auth/login</a></li>
+                <li>In ChatGPT's chat box ask something like "why I can't see anything when I execute this code?" </li>
+                <li> Then paste the HTML code from <b>step 2</b> into ChatGPT's chat box and read/follow ChatGPT's suggestions</li>
+        </ol>
+        </p>
+      </div>
+              <h4>3. Add some text to your HTML file</h4>
+              <hr>
+              
+              <p>
+              The reason why you weren't able to see anything in the <b>preview window</b> is that the HTML code I provided you
+                doesn't include any content. 
+      </p>
+      <p>
+                If you used ChatGPT to <i>debug</i> your code, it probably suggested solutions such as adding text between
+                the tags <code>&lt;h1&gt;&lt;/h1&gt;</code> and <code>&lt;p&gt;&lt;/p&gt;</code>. Try adding some text following the example below:
+        
+                <pre><code>
+                &lt;h1&gt; This is my first web-art project &lt;/h1&gt; 
+                &lt;p&gt; This is an Ascii Art project! &lt;p&gt; 
+                </code></pre>
+      </p>
+    
+      <hr>
+          <h2 id="break"><i class="fa fa-coffee" style="font-size:36px"></i> Take a 15-minute break </h2>
+<hr>
+    
+<!-- creating         -->
+           <h2 id="creating">Creating your own Ascii Art</h2>
+           <hr>
+    
+    <p>
+      Now that you have experimented with HTML and Glitch.com, follow the next steps to create your own Ascii Art.
+    </p>
+             <ol> 
+               <li>Go to the following Ascii generator page: <a href="https://www.ascii-art-generator.org/" target="_blank">https://www.ascii-art-generator.org/</a></li>
+               <li>Follow the instructions on how to generate Ascii Art from a picture or text</li>  
+               <li>Once it has been generated, click <b>Download result</b> and save it in the computer's Desktop</li>
+               <li>Open the downloaded file and copy the generated Ascii Art</li>
+               <li>Go to your HTML code in Glitch and add the tags <code>&lt;pre&gt;&lt;/pre&gt; </code>
+                 below the <code>&lt;p&gt;&lt;/p&gt;</code> tags</li>
+               <li>Paste the Ascii Art between <code>&lt;pre&gt;&lt;/pre&gt;</code>. The &lt;pre&gt; tag 
+               allows the format of the text to stay unchanged. See the example below:</li>
+             </ol>
+    
+    <pre>
+    &lt;pre&gt;
+ _____ _     _       _          _             _ _      _         _   
+|_   _| |__ (_)___  (_)___     / \   ___  ___(_|_)    / \   _ __| |_ 
+  | | | '_ \| / __| | / __|   / _ \ / __|/ __| | |   / _ \ | '__| __|
+  | | | | | | \__ \ | \__ \  / ___ \\__ \ (__| | |  / ___ \| |  | |_ 
+  |_| |_| |_|_|___/ |_|___/ /_/   \_\___/\___|_|_| /_/   \_\_|   \__|
+    
+    &lt;/pre&gt;
+    </pre>
+    
+<!--  solution    -->
+    <button type="button" class="collapsible"><i class="fa fa-info-circle"></i> <b>Lab solution: Check the complete code</b></button>
+    <div class="additionalInfo">   
+    
+    <p>
+      The following is the complete code that we worked on today.
+      Feel free to compare it {
+  "name": "My PWA",
+  "icons": [
+    {
+      "src": "icons/512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
+against yours or even copy sections of it to help you complete this lab. 
+    </p>
+    
+    <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;This is my first web-art project &lt;/h1&gt;
+&lt;p&gt; This is an Ascii Art project! &lt;/p&gt;  
+&lt;pre&gt;
+    
+ _____ _     _       _          _             _ _      _         _   
+|_   _| |__ (_)___  (_)___     / \   ___  ___(_|_)    / \   _ __| |_ 
+  | | | '_ \| / __| | / __|   / _ \ / __|/ __| | |   / _ \ | '__| __|
+  | | | | | | \__ \ | \__ \  / ___ \\__ \ (__| | |  / ___ \| |  | |_ 
+  |_| |_| |_|_|___/ |_|___/ /_/   \_\___/\___|_|_| /_/   \_\_|   \__|
+    
+&lt;/pre&gt; 
+&lt;/body&gt;
+&lt;/html&gt;
+
+    </pre>
+    </div>
+    
+    <h2 id="conclusion"> Conclusion </h2>
+    <hr>
+      <p>
+      You have reached the end of this lab and you should be proud of yourself! 
+    </p>
+    <p>
+        Once you have finished your lab work, log off from Glitch.com and close this window 
+        (everything has been saved automatically). <b>If you downloaded files to the computer, 
+      back them up in a USB key or a hard drive.</b>
+    </p>
+      <p>
+        
+        Don't hesitate to reach the prof or the TAs if you have additional questions!
+    </p>
+    <p>
+      If you feel you want to continue learning see the section below 
+    </p>
+    
+    
+    <h2 id="extra">Continue learning</h2>
+    <hr>
+<p>
+  The following are some activities you can do to continue learning about HTML and Ascii Art. 
+      </p>
+    
+    <ul>
+      <li>Watch other sections of the video on Ansi Art in the <a href="#introduction">introduction</a></li>
+      <li>Check more examples of Ascii Art in the following link:
+      <a href="https://www.asciiart.eu/" target="_blank">https://www.asciiart.eu/</a></li>
+      <li>Explore the definitions of the HTML elements seen today:
+        <a href="https://www.w3schools.com/tags/default.asp" target="_blank">https://www.w3schools.com/tags/default.asp</a></li>
+      <li>Help a classmate by answering their questions and providing them with strategies that worked for you</li>
+  
+    </ul>
+    
+
+        </div>
+      </div>
+
+  <script>
+	window.addEventListener('load', () => {
+	registerSW();
+	});
+
+	// Register the Service Worker
+	async function registerSW() {
+	if ('serviceWorker' in navigator) {
+		try {
+		await navigator
+				.serviceWorker
+				.register('serviceworker.js');
+		}
+		catch (e) {
+		console.log('SW registration failed');
+		}
+	}
+	}
+</script>
+
+    </div>
+    
+
+<!--footer  -->
+    <footer class="footer">
+
+    </footer>
+  </body>
+</html>

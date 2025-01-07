@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="https://glitch.com/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--
+      This is the page head - it contains info the browser uses
+      Like the title, which appears on the browser tab but not inside the page
+      Further down you'll see the content that displays in the page
+    -->
+    <title>Lab 9: User Interaction with JavaScript, CSS, and HTML</title>
+
+    <!-- The website stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- The website JavaScript file -->
+        <script src="/script.js" defer></script>
+  </head>
+  <body>
+   <div class="wrapper">
+      <div class="content" role="main">
+        <h1 class="title"> Lab 9: User Interaction with JavaScript, CSS, and HTML</h1>
+
+        <!-- lab starts here  -->
+        <div class="instructions">
+          <p style="margin-left: 0">
+            In this lab, you will <b>learn about interaction design</b> and you will experiment with it by 
+            <b>coding a navigation bar</b> using HTML. You will also start learning about another
+            programming language for the web called <b>JavaScript</b> to <b>program interactive colors and fonts</b>.
+          </p>
+
+          <h2 class="nocount">Learning Objectives</h2>
+          <ol>
+            <li>Learn about user interaction and interaction design</li>
+            <li>Continue learning HTML by coding a navigation bar</li>
+            <li>Familiarize yourself with the programming language JavaScript</li>
+            <li>Learn how to program interactive colors and fonts using JavaScript, HTML, and CSS</li>
+          </ol>
+
+          <!-- contents           -->
+          <h2 class="nocount">Contents</h2>
+          <hr />
+
+          <ol>
+            <!--           <li><a href="#tools">Tools you will use in this tutorial</a></li> -->
+            <li><a href="#introduction">What is user interaction and interaction design</a></li>
+            <li><a href="#2activity">User interaction: Create a navigation bar with HTML (and CSS) </a></li>
+            <li><a href="#3activity">More user interaction with JavaScript</a></li>
+            <li><a href="#4activity">Add a high color contrast mode with HTML, CSS, and JavaScript</a></li>
+            <li><a href="#break">Break: Take a 15-minute break</a></li>
+            <li><a href="#5activity">Add a font resizing option to make the text more legible</a></li>
+<!--             <li><a href="#4activity">Give each section the colors of your wireframe's color palette</a></li>
+            <li><a href="#break">Break: Take a 15-minute break</a></li>
+            <li><a href="#5activity">Add text, adjust the text color, and select font families accordingly</a></li>
+            <li><a href="#6activity">Add other media such as photos</a></li> -->
+            <li><a href="#conclusion">Conclusion</a></li>
+            <li><a href="#extras">Continue learning</a></li>
+          </ol>
+
+          <!-- what is photo opt          -->
+          <h2 id="introduction">What is user interaction and interaction design</h2>
+          <hr />
+          
+          <p>
+          Watch the following video to learn about <b>user interaction</b> and <b>interaction design</b> (8 min):
+          </p>
+         
+          <div class="myIframe">
+         <iframe width="560" height="315" src="https://www.youtube.com/embed/U7rS_2ch_Ps?si=-LBvKzSdR9_YDwl5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+
+       
+          
+          <h2 id="2activity">User interaction: Create a navigation bar with HTML (and CSS)</h2>
+          <hr>
+          <!-- definition -->
+      <div class="definition">
+            <p>
+             <i class="fa fa-quote-left" style="font-size:48px"></i> A navigation bar is a link to appropriate sections/pages in a website that helps readers in traversing the online document.
+          Considered a traditional method of navigation, a navigation bar can be implemented in a number of ways, namely, horizontally 
+          or vertically, or fixed or dynamic. A navigation bar implementation is considered one of the key points of Web design and usability.
+              <a href="https://www.techopedia.com/definition/20934/navigation-bar"
+                target="_blank">... click to read the full article</a>
+            </p>
+          </div>   
+          
+       <p>Follow the instructions below to create a navigation bar on a webpage:</p>
+          
+                  
+          <ol>
+            <li><b>Remix</b> the following Glitch webpage that contains the homepage of a digital sketchbook:
+              <a href="https://glitch.com/edit/#!/user-interaction-exercise" target="_blank">
+                https://glitch.com/edit/#!/user-interaction-exercise </a></li>
+            <li><b>Go to the index.html file</b> and add the navigation element, <code>&lt;nav&gt; &lt;/nav&gt;</code>, below the first section. 
+            Include the <code>class=</code> attribute with the value <code>"navigation-bar"</code></li>
+            <li>Then, <b>use the anchor element</b>, <code>&lt;a&gt; &lt;/a&gt;</code> and its <code>href=</code> attribute to add the <b>Live site</b> 
+              link to the webpage project you created for the 1st weekly exercise (i.e., ASCII Art)</li>
+            
+            <!-- tips -->
+            <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> You can access your 1st project/weekly exercise and other weekly exercises
+     by going to the <b>Dashboard </b> on your Glitch account. Then, open the desired project/weekly exercise, click <b>Share</b> and copy the <b>Live site</b> link.
+          </p>
+
+            
+              <li>Now, <b>choose a title for the link and type it between the anchor elements</b>. For mine, I chose the title ASCII ART. 
+                See example:</li>         
+               <code> &lt;a href="URL/LINK GOES HERE" target="_blank"&gt;ASCII ART&lt;/a&gt; </code>
+            
+            <!-- tips -->
+          <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> The <code style="color:#BF40BF">target=</code> attribute in the example above,
+            along with the value <code style="color:#BF40BF">"_blank"</code>, specifies to open the linked document in a new window or tab
+          </p>
+            
+            <li>Finally, <b>repeat the steps 3 and 4</b> to add links to your other 2 weekly exercises (i.e., CSS Art and Editorial Design) </li>
+            <li><b>Check the example code </b> and the resulting image below:</li>
+          </ol> 
+          
+<div>        
+<pre>
+&lt;nav class="navigation-bar"&gt; 
+  &lt;a href="https://mediaart2a06-lab1and2.glitch.me" target="_blank"&gt;ASCII ART&lt;/a&gt; 
+  &lt;a href="https://mediaart2a06-lab3and4.glitch.me/" target="_blank"&gt;CSS ART&lt;/a&gt; 
+  &lt;a href="https://mediaart-2a06-art-exhibition.glitch.me/" target="_blank"&gt;EDITORIAL DESIGN&lt;/a&gt; 
+&lt;/nav&gt; 
+</pre>    
+        </div>
+          
+<div class="centered-image">
+<img src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/lab9-1.png?v=1697542274112" alt="an image of a webpage with a navigation bar">
+</div>
+                
+<!-- 3rd activity           -->
+          <h2 id="3activity">More user interaction with JavaScript</h2>           
+          <hr>
+          
+          <div class="definition" style="display:flex;">
+            <p>
+             <i class="fa fa-quote-left" style="font-size:48px"></i> JavaScript is a programming language that allows you to implement complex
+              features on web pages — every time a web page does more than just sit there and display static information for you to 
+              look at — displaying timely content updates, interactive maps, animated 2D/3D graphics, scrolling video jukeboxes, 
+              etc. — you can bet that JavaScript is probably involved. It is the third layer of the layer cake of standard web technologies, namely
+              HTML and CSS <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript"
+                target="_blank">... click to read the full article</a>
+              <br><br>
+              <img src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/web%20technologies%20cake.png?v=1697494288384"
+                   alt="an image of the web technologies cake" style="width:50%;">
+            </p>
+          </div>   
+          
+    
+<!--activity 4   -->
+        <h2 id="4activity">Add a high color contrast mode with HTML, CSS, and JavaScript</h2>
+        <hr>
+          
+        <p>
+          You may have found that sometimes, websites have a high-contrast mode that allows users to read the text better by switching from a regular color palette to 
+          a high-contrast one, such as a black-and-white one. Follow the instructions below to add a high-contrast mode using either a black
+          background and white text or a white background and black text:
+        </p>
+          
+          <h3>4.1 Add buttons for the user to switch from the initial color palette to a high-contrast color palette  </h3>
+            <hr>
+            
+    <ol>
+      <li><b>Go to the index.html file</b> and add a <b>button element</b> using the <code>&lt;button&gt; &lt;/button&gt;</code> tags. 
+       Add it to the first section</li>
+      <li>Then, <b>add</b> the <code>onclick=</code> attribute along with a name made by you, such as <code>"highContrastCSS()"</code>. 
+        Make sure that the name is <b>between quotation marks</b> and ends with a <b>parenthesis</b></li>
+      <li>Now, <b>choose a title for the button </b> and type it between the button tags. For mine, I chose High Contrast Mode. See example:</li>
+      <br>
+      <code>  &lt;button onclick="highContrastPaletteCSS()"&gt;High-Contrast Mode&lt;/button&gt;</code>
+      <br><br>
+      
+      <li>Finally, <b>repeat the same process</b> for another button, which will allow the user to switch back to the initial
+      color palette with lower contrast</li>
+      <li><b>Check the example code </b>and the resulting image below:</li>
+    </ol> 
+        
+<div>        
+<pre>
+&lt;section class="section-one"&gt; 
+  &lt;h2&gt;MEDIAART 2A06 - DESIGN AND CODE&lt;/h2&gt;
+  &lt;button onclick="highContrastPaletteCSS()"&gt;High Contrast Mode&lt;/button&gt;
+  &lt;button onclick="initialPaletteCSS()"&gt;Initial Contrast Mode&lt;/button&gt;
+&lt;/section&gt; 
+</pre>    
+        </div>
+          
+<div class="centered-image">
+<img src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/lab9-2.png?v=1697543390732" 
+     alt="an image of a webpage with two contrast mode buttons">
+</div>
+          
+  <h3>4.2 Use JavaScript to program the High Contrast Mode button</h3>
+    <hr>
+
+          <p>At this point, you might have noticed that by clicking the buttons you coded above, nothing changes. 
+            This is because <b>you need to program these changes with JavaScript</b>. Follow the steps below to learn how to program them:</p>
+          
+  <ol>  
+  <li><b>Create a new JavaScript file</b> by clicking on <b>Files</b> in your Glitch project. Then, give it a name such as 
+    <b>script.js</b> and <b>press enter</b></li>
+    <li><b>Go to the newly created script.js file</b>, which should be found listed along with the index.html and the style.css files</li>
+    <li> <b>Create a new function</b> using the <code>function</code> command followed by 
+    the name of the 1st button you created in the section above and two curly brackets. See example: </li>
+    <code>function highContrastPaletteCSS(){}</code>
+    <li>Inside the curly brackets, type the following line of code:
+      <code> document.getElementsByClassName("section-one")[0].style.background = "black";</code></li>
+    <li>Now, <b>click the High Contrast Mode button</b> and see how the background color of the 1st section changes to black</li>
+    <li><b>Repeat step 4 to change the color of other sections to black</b>. For each line of code you add, 
+      you will need to change the class name from "section-one" to "section-two" and so on</li>
+    <li><b>See example code</b> and image below:</li>
+          </ol>
+          
+<div>        
+<pre>
+function highContrastPaletteCSS(){
+  document.getElementsByClassName("section-one")[0].style.background = "black";
+  document.getElementsByClassName("navigation-bar")[0].style.background = "black";
+  document.getElementsByClassName("section-two")[0].style.background = "black";
+  document.getElementsByClassName("section-three")[0].style.background = "black";
+}
+</pre>    
+        </div>
+          
+<div class="centered-image">
+<img src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/lab9-revisedblack.png?v=1697555577574" 
+     alt="an image of a webpage with black background and white text">
+</div>
+          
+          
+    <h3>4.3 Use JavaScript to program the Initial Contrast Mode button</h3>
+          <hr>
+          <p>Now, let's program the Initial Contrast Mode Button for the user to be able to switch back to the Initial Contrast Mode. 
+          Follow the steps below:</p>
+  <ol>  
+    <li>Still in the script.js file, <b>create another function</b> using the <code>function</code> command followed by 
+    the name of the initial contrast button and two curly brackets. See example: </li>
+    <code>function initialPaletteCSS(){}</code>
+    <li>Inside the curly brackets, type the following line of code:
+      <code>   document.getElementsByClassName("section-one")[0].style.background = "#8C1B24";</code></li>
+    <li>Now, <b>click the Initial Contrast Mode button</b> and see how the background color of the 1st section changes back to the initial 
+      color (i.e., #8C1B24) </li>
+    <li><b>Repeat step 2 to change the color of other sections</b> to their initial color and contrast. You can <b>find the initial color of each section
+      by looking at the style.css file</b>. For each line of code you add, you will need to change the class name from "section-one" 
+      to "section-two" and so on</li>
+    <li><b>See example code</b> and image below:</li>
+          </ol>
+          
+<div>        
+<pre>
+function initialPaletteCSS(){
+  document.getElementsByClassName("section-one")[0].style.background = "#8C1B24";
+  document.getElementsByClassName("navigation-bar")[0].style.background = "#F25252";
+  document.getElementsByClassName("section-two")[0].style.background = "#162040";
+  document.getElementsByClassName("section-three")[0].style.background = "#8C1B24";
+}
+
+</pre>    
+        </div>
+          
+<div class="centered-image">
+<img src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/lab9-2.png?v=1697543390732" 
+     alt="an image of a webpage with the initial color palette">
+</div>
+  
+          
+  <!--   BREAK         -->
+<h2 id="break"><i class="fa fa-coffee" style="font-size:36px"></i> Take a 15-minute break </h2>
+        
+          
+          <!-- activity 5        -->
+          <h2 id="5activity">Add a font resizing option to make the text more legible</h2>
+          <hr>
+          
+         <!-- definition -->
+<div class="definition">
+            <p>
+             <i class="fa fa-quote-left" style="font-size:48px"></i> The Web Content Accessibility Guidelines (WCAG), 
+              an organization that defines standards for web content accessibility, does not specify a minimum font size for the web.
+              But we know there’s such a thing as text that is too small to be legible, just as text that can be too large to consume.
+              So, how can we make sure our font sizes are accessible? What sort of best practices can we rely on to make for an accessible 
+              reading experience? <br><br>
+              We want to provide users with low vision a way to choose how fonts are displayed. Not in a crazy way. More like the ability to 
+              increase the size by 200% while maintaining readability and avoiding content collisions and overlaps
+              <a href="https://css-tricks.com/accessible-font-sizing-explained/"
+                target="_blank">... click to read the full article</a>
+            </p>
+          </div>   
+          
+        <h3>5.1 Add buttons for the user to switch from the initial font size to a larger font size </h3>
+            <hr>
+            
+    <ol>
+     <li><b>Go to the index.html file</b> and add a button element, using the <code>&lt;button&gt; &lt;/button&gt;</code> tags. 
+       Add it to the first section, below the buttons you added in section 4</li>
+      <li>Then, <b>add</b> the <code>onclick=</code> attribute along with a name made by you, such as <code>"fontSizeLarge()"</code>. 
+        Make sure that the name is <b>between quotation marks</b> and ends with a <b>parenthesis</b></li>
+      <li>Now, <b>choose a title for the button</b> and type it between the button tags.For mine, I chose <i>Large Font-Size</i>. 
+        <b>See example:</b></li>
+      <code>  &lt;button  onclick="fontSizeLarge()""&gt;Large Font-Size&lt;/button&gt;</code>
+      <br><br>
+      
+      <li>Finally, <b>repeat the steps 2 and 3</b> to add a second button that will allow the user to switch back to the initial
+      font size</li>
+      <li><b>Check the example code and the resulting image below</b></li>
+    </ol> 
+
+          
+<div>        
+<pre>
+&lt;section class="section-one"&gt; 
+  &lt;h2&gt;MEDIAART 2A06 - DESIGN AND CODE&lt;/h2&gt;
+  &lt;button onclick="highContrastPaletteCSS()"&gt;High Contrast Mode&lt;/button&gt;
+  &lt;button onclick="initialPaletteCSS()"&gt;Initial Contrast Mode&lt;/button&lt;
+  &lt;button onclick="fontSizeLarge()"&gt;Large Font Size&lt;/button&gt;
+  &lt;button onclick="fontSizeInitial()"&gt;Initial Font Size&lt;/button&lt;
+&lt;/section&gt; 
+</pre>    
+        </div>
+          
+<div class="centered-image">
+<img src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/lab9-3.png?v=1697544927218" 
+     alt="an image of a webpage with two text resizing buttons">
+</div>
+          
+          
+   <h3>6.2 Use JavaScript to program the Large Font Size button</h3>
+          <hr>
+          <p>Now, let's program the Large Font Size button. Follow the steps below:</p>
+  <ol>  
+    <li>In the script.js file, <b>create a function</b> with the name of the large font size button. See example: 
+    <code>function fontSizeLarge(){}</code></li>
+    <li>Inside the curly brackets, type the following line of code:
+      <code> document.getElementsByClassName("section-one")[0].style.fontSize = "x-large";</code></li>
+    <li>Now, <b>click the Large Font Size button</b> and see how the font size of the 1st section changes to extra large </li>
+    <li><b>Repeat step 2 to change the font size of other sections</b> to extra large font</li>
+    <li><b>See example code</b> and image below:</li>
+          </ol>
+          
+<div>        
+<pre>
+function fontSizeLarge(){
+  document.getElementsByClassName("section-one")[0].style.fontSize = "x-large";
+  document.getElementsByClassName("navigation-bar")[0].style.fontSize = "x-large";
+  document.getElementsByClassName("section-two")[0].style.fontSize = "x-large";
+  document.getElementsByClassName("section-three")[0].style.fontSize = "x-large";
+}
+
+</pre>    
+        </div>
+          
+<div class="centered-image">
+<img src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/lab9-5.png?v=1697548448529" 
+     alt="an image of a webpage with extra large font">
+</div>
+            
+          
+          
+          <h3>6.3 Use JavaScript to program the Initial Font Size button</h3>
+          <hr>
+          
+          <p>Finally, let's program the Initial Font Size button for the user to switch back to the initial font size.
+            Follow the steps below:</p>
+  <ol>  
+    <li>In the script.js file, <b>create a function</b> with the name of the initial font size button. See example: 
+    <code>function fontSizeInitial(){}</code></li>
+    <li>Inside the curly brackets, type the following line of code:
+      <code>document.getElementsByClassName("section-one")[0].style.fontSize = "initial";</code></li>
+    <li>Now, <b>click the Initial Font Size button</b> and see how the font of section 1 resizes to its initial size </li>
+    <li><b>Repeat step 2 to change the font size of other sections</b> to their initial size</li>
+    <li><b>See the example code</b> and image below:</li>
+          </ol>
+          
+<div>        
+<pre>
+function fontSizeInitial(){
+  document.getElementsByClassName("section-one")[0].style.fontSize = "initial";
+  document.getElementsByClassName("navigation-bar")[0].style.fontSize = "initial";
+  document.getElementsByClassName("section-two")[0].style.fontSize = "initial";
+  document.getElementsByClassName("section-three")[0].style.fontSize = "initial";
+}
+</pre>    
+        </div>
+          
+<div class="centered-image">
+<img src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/lab9-3.png?v=1697544927218" 
+     alt="an image of a webpage with its initial font size">
+</div>
+            
+
+      
+          
+<!--  conclusion          -->
+    <h2 id="conclusion">Conclusion</h2>
+          <hr />
+         <p>
+            You have reached the end of this lab!
+          <br><br>
+           If you feel you want to continue learning see the section below, otherwise, you can close h and Glitcthis window now.
+          </p>
+  
+          <h2 id="extras">Continue learning</h2>
+          <hr />
+           <p>
+             The following are some activities you can do to continue learning.
+          </p>
+          
+          <ul>
+            <li>Review other navigation bar examples with HTML and CSS:
+              <a href="https://www.w3schools.com/css/css_navbar.asp"
+                 target="_blank">https://www.w3schools.com/css/css_navbar.asp</a></li>
+            <li>Learn how the <code>document</code> object and the <code>getElementsByClassName</code> method work in JavaScript:
+              <a href="https://www.w3schools.com/js/js_htmldom_document.asp"
+                 target="_blank">https://www.w3schools.com/js/js_htmldom_document.asp</a></li>
+           <li>
+             Check out other examples on how to change HTML content with JavaScript: 
+             <a href="https://www.w3schools.com/js/js_intro.asp" target="_blank">
+             https://www.w3schools.com/js/js_intro.asp</a>                                                  
+            </li>
+            <li>
+           Here are even more other examples on how to change HTML content with JavaScript: <br>
+              <a href="https://www.w3schools.com/js/js_examples.asp" target="_blank">
+            https://www.w3schools.com/js/js_examples.asp</a>       
+            </li>
+            <li>
+              Help a classmate by answering their questions and providing them
+              with strategies that worked for you
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+<!-- footer -->
+    <footer class="footer">
+    </footer>
+  </body>
+</html>

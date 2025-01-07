@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+
+    <link rel="icon" href="https://glitch.com/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--
+      This is the page head - it contains info the browser uses
+      Like the title, which appears on the browser tab but not inside the page
+      Further down you'll see the content that displays in the page
+    -->
+    <title> Interface Design Lab 1: SVGs </title>
+
+    <!-- The website stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- The website JavaScript file -->
+        <script src="/script.js" defer></script>
+  </head>
+  <body>
+    <!--
+      The body includes the content you see in the page
+      Each element is defined using tags, like this <div></div>
+      The attributes like class="wrapper" let us style elements in the CSS
+    -->
+    <div class="wrapper">
+      <div class="content" role="main">
+        <h1 class="title">Interface Design Lab 1: SVG</h1>
+
+        <!-- lab starts here  -->
+        <div class="instructions">
+          <p style="margin-left: 0">
+            In this first lab, you will learn about Scalable Vector Graphics, also known as SVG.
+          </p>
+
+          <h2 class="nocount">Learning Objectives</h2>
+          <ol>
+          <li>Create basic SVG shapes and understand the coordinate system</li>
+          <li>Manipulate SVG attributes for styling and positioning</li>
+          </ol>
+
+          <!-- contents           -->
+          <h2 class="nocount">Table of Contents</h2>
+          <hr />
+
+          <ol>
+            
+            <li><a href="#introduction">What are Scalable Vector Graphics</a></li>
+            <li><a href="#prerequisite">Pre-requisite: Install Visual Studio Code</a></li>            
+<!--             <li><a href="#break">Break: Take a 15-minute break</a></li> -->
+            <li><a href="#1activity">Your First SVG</a></li>
+            <li><a href="#2activity">Explore Basic Shapes</a></li>
+            <li><a href="#3activity">Styling and Transformations</a></li>
+<!--             <li><a href="#4activity">Animation</a></li> -->
+<!--             <li><a href="#5activity">Creative Project</a></li> -->
+            <li><a href="#conclusion">Assignment submission and assessment</a></li>
+            <li><a href="#extras">Continue learning</a></li>
+            <li><a href="#solution">Solution</a></li>
+
+          </ol>
+
+          <!-- intro         -->
+          <h2 id="introduction">What are Scalable Vector Graphics</h2>
+          <hr />
+          <div class="definition">
+            <p>
+              <i class="fa fa-quote-left" style="font-size:48px"></i> Scalable Vector Graphics (SVG) is an <a href="https://en.wikipedia.org/wiki/XML" target="_blank"> XML-based markup language </a> for describing two-dimensional based vector graphics. As such, it's a text-based, open Web standard for describing images that can be rendered at any size. It works well with other web standards including HTML and JavaScript
+              <a
+                href="https://developer.mozilla.org/en-US/docs/Web/SVG"
+                target="_blank">... click to read the full article</a
+              >
+            </p>
+          </div>
+          
+              <!-- prerequisites         -->
+          <h2 id="prerequisite">Pre-requisite: Install Visual Studio Code</h2>
+          <hr />
+            <p>
+             Follow the tutorials to install Visual Studio Code in Windows or Mac
+          </p>
+              
+            <ul>
+              <li> Windows installation tutorial: <a href="https://docs.cse.lehigh.edu/vscode/installing-vscode-win/" target="_blank">https://docs.cse.lehigh.edu/vscode/installing-vscode-win/</a></li>
+            <li>Mac installation tutorial: <a href="https://docs.cse.lehigh.edu/vscode/installing-vscode-mac/" target="_blank">https://docs.cse.lehigh.edu/vscode/installing-vscode-mac/</a></li>  
+          </ul>
+            
+          
+
+          <!--  activity1          -->
+
+          <h2 id="1activity">Your First SVG</h2>
+          <hr />
+
+          <ol>
+            <li>Start by creating a new VS Code file with the name "lab1.svg"</li>
+            <li>Copy the following SVG element and paste it in the VS Code file</li>
+            
+            
+                        
+
+            
+<div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+
+               <pre><code class="language-markup">
+              <textarea class="myInput" rows="5" cols="50">
+          
+<svg viewbox="0 0 1100 1100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" x="50" y="50" />
+</svg>
+                
+               </textarea>
+               </code></pre>
+
+        </div>
+            
+            
+         
+            
+            
+            <li>Save the changes made to your VS Code file</li>
+            <li>Open your VS code file in a web browser or image viewer. You should see a black square like the one below            </li> 
+          </ol>
+          
+<!-- rect image           -->
+<svg viewbox="0 0 200 15" xmlns="http://www.w3.org/2000/svg">
+    <rect width="10" height="10" x="12" y="0"></rect>
+</svg>
+
+<!--  rect explanation          -->
+<button type="button" class="collapsible"><i class="fa fa-info-circle"></i> <b>Code Explanation</b></button>
+        <div class="additionalInfo" >           
+                           
+          <div style="display:flex">
+<pre style="width:50%"><code class="language-markup" >
+&lt;svg viewbox="0 0 1100 1100" xmlns="http://www.w3.org/2000/svg" /&gt;
+</code></pre>
+          
+          <ol style="width:50%">
+            <li>This is the opening SVG tag which creates a canvas for our drawing.</li>
+            <li> <code class="code-custom-style">xmlns="http://www.w3.org/2000/svg"</code> tells the browser this is an SVG document. </li>
+            <li><code class="code-custom-style">viewBox="0 0 1100 1100"</code> defines our coordinate system:</li>
+            <ul>
+              <li>The first two numbers (0, 0) set the starting point (top-left corner). </li>
+              <li>The second two numbers (1100, 1100) define the width and height of our viewable area. </li>
+              <li>Think of it like a piece of paper that is 1100 units wide by 1100 units tall.</li>
+          </ul>
+            </ol>
+            
+            </div>
+          
+          <div style="display:flex">
+            
+            <div style="width:50%">
+              
+            
+<pre><code class="language-markup">
+&lt;rect width="100" height="100" x="50" y="50" /&gt;
+</code></pre>
+            </div>
+            
+   <ul style="width:50%">
+     <li>This line of code creates a rectangle with the following properties:</li>
+     <ul>
+       
+     <li> <code class="code-custom-style"> width="100" </code> makes the rectangle 100 units wide </li>
+     <li> <code class="code-custom-style">height="100" </code> makes it 100 units tall </li>
+     <li> <code class="code-custom-style">x="50"</code> positions it 50 units from the left edge </li>
+     <li> <code class="code-custom-style">y="50"</code> positions it 50 units from the top edge </li>
+     </ul>
+<!-- This code places a square (100×100) with its top-left corner 50 units right and 50 units down from the top-left corner of the paper. -->
+   </ul>
+          </div>
+          
+          </div>
+   
+          
+          <!--  activity 2          -->
+
+          <h2 id="2activity">Explore Basic Shapes</h2>
+          <hr />
+
+          <ol>
+            <li>Continue working in the same VS Code file "lab1.svg"</li>
+            <li> Copy the shapes below by typing them inside the same SVG tag you created above</li>
+            <li>Save the changes after copying each shape</li> 
+            <li>See the changes by opening your file with a web browser or an image viewer</li>
+            <li>At the end of this activity you should see a row of shapes like the one below:</li>
+          </ol>
+          
+          <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/Screenshot%20from%202025-01-07%2011-40-16.png?v=1736268045303">
+            
+<!--  circle            -->
+            
+            <h4> Circle </h4>
+<!--               <div style="display:flex; margin: auto; width: 100%;">     
+              <br><br>
+              <button onclick="myFunction()">Copy code</button>
+              <textarea class="myInput" rows="5" cols="100">
+                
+<circle r="50" cx="250" cy="100"/>
+                </textarea>
+          </div> -->
+                
+           <!--  circle explanation          -->
+<!-- <button type="button" class="collapsible"><i class="fa fa-info-circle"></i> <b>Code Explanation</b></button> -->
+        <div class="definition" >                                 
+          <div style="display:flex">
+<pre style="width:50%"><code class="language-markup" >
+&lt;circle r="50" cx="250" cy="100" /&gt;
+</code></pre>
+          
+          <ol style="width:50%">
+            <li><code class="code-custom-style">circle</code>is the SVG element that creates a circle.</li>
+            <li><code class="code-custom-style">r="50"</code> sets the radius to 50 units - this determines how big the circle is.</li>
+            <li><code class="code-custom-style">cx="250"</code> positions the center of the circle 250 units from the left edge.</li>
+            <li><code class="code-custom-style">cy="100"</code> positions the center of the circle 100 units from the top edge.</li>
+            </ol>
+            
+            </div>
+                </div>          
+          
+<!-- Ellipse           -->
+          
+             <h4> Ellipse </h4>
+<!--               <div style="display:flex; margin: auto; width: 100%;">     
+              <br><br>
+              <button onclick="myFunction()">Copy code</button>
+              <textarea class="myInput" rows="5" cols="100">
+                
+<ellipse rx="100" ry="50" cx="450" cy="100" />
+                
+        </textarea>
+        </div> -->
+          
+         <div class="definition" >                                 
+          <div style="display:flex">
+<pre style="width:50%"><code class="language-markup" >
+&lt;ellipse rx="100" ry="50" cx="450" cy="100" /&gt;
+</code></pre>
+          
+          <ol style="width:50%">
+            <li><code class="code-custom-style">ellipse</code>is the SVG element that creates an oval shape.</li>
+            <li><code class="code-custom-style">rx="100"</code> sets the horizontal radius to 100 units - this determines how wide the ellipse is.</li>
+            <li><code class="code-custom-style">ry="50"</code>  sets the vertical radius to 50 units - this determines how tall the ellipse is.</li>
+            <li><code class="code-custom-style">cx="450"</code> positions the center of the ellipse 450 units from the left edge.</li>
+            <li><code class="code-custom-style">cy="100"</code> positions the center of the ellipse 100 units from the top edge.</li>
+            </ol>
+            
+            </div>
+                </div>      
+             
+        
+        <!-- Line           -->
+          
+             <h4> Line </h4>
+<!--               <div style="display:flex; margin: auto; width: 100%;">     
+              <br><br>
+              <button onclick="myFunction()">Copy code</button>
+              <textarea class="myInput" rows="5" cols="100">
+                
+<line x1="600" y1="100" x2="750" y2="100" stroke="black"/>
+                
+               </textarea>
+        </div> -->
+          
+        <div class="definition" >                                 
+          <div style="display:flex">
+<pre style="width:50%"><code class="language-markup" >
+&lt;line x1="600" y1="100" x2="750" y2="100" stroke="black" /&gt;
+</code></pre>
+          
+          <ol style="width:50%">
+            <li><code class="code-custom-style">line</code> creates a straight line between two points</li>
+            <li><code class="code-custom-style">x1="600"</code> sets the starting point 600 units from the left edge</li>
+            <li><code class="code-custom-style">y1="100"</code> sets the starting point 100 units from the top edge</li>
+            <li><code class="code-custom-style">x2="750"</code> sets the ending point 750 units from the left edge</li>
+            <li><code class="code-custom-style">y2="100"</code> sets the ending point 100 units from the top edge</li>
+            <li><code class="code-custom-style">stroke="black"</code> sets the line color to black</li>
+            </ol>
+            
+            </div>
+                </div>      
+      
+ <!-- Polygon           -->
+          
+             <h4> Polygon </h4>
+<!--               <div style="display:flex; margin: auto; width: 100%;">     
+              <br><br>
+              <button onclick="myFunction()">Copy code</button>
+              <textarea class="myInput" rows="5" cols="100">
+                
+<polygon points="850,50 900,150 800,150" />
+                
+               </textarea>
+        </div> -->
+          
+<div class="definition" >                                 
+          <div style="display:flex">
+<pre style="width:50%"><code class="language-markup" >
+&lt;polygon points="850,50 900,150 800,150" /&gt;
+</code></pre>
+          
+          <ol style="width:50%">
+            <li><code class="code-custom-style">polygon</code> creates a closed shape made up of straight lines between points</li>
+            <li><code class="code-custom-style">points="850,50 900,150 800,150"</code> defines the coordinates for each corner:</li>
+            <ul>           
+              <li>First point: (850,50) - 850 units from left, 50 units from top</li>
+              <li>Second point: (900,150) - 900 units from left, 150 units from top</li>
+              <li>Third point: (800,150) - 800 units from left, 150 units from top</li>
+              </ul>
+              </ol>
+            
+            </div>
+                </div>      
+                   
+    
+ <!-- Path           -->
+          
+             <h4> Path </h4>
+<!--               <div style="display:flex; margin: auto; width: 100%;">     
+              <br><br>
+              <button onclick="myFunction()">Copy code</button>
+              <textarea class="myInput" rows="5" cols="100">
+                
+<path d="M1000 50 L1050 150 L950 150 Z"  />
+                
+               </textarea>
+        </div> -->
+          
+<div class="definition" >                                 
+          <div style="display:flex">
+<pre style="width:50%"><code class="language-markup" >
+&lt;path d="M1000 50 L1050 150 L950 150 Z" /&gt;
+</code></pre>
+          
+          <ol style="width:50%">
+            <li><code class="code-custom-style">path</code> is the most flexible SVG element - it can create any shape using commands</li>
+            <li>The <code class="code-custom-style">d</code> attribute contains the drawing commands</li>
+            <ul>           
+              <li><code class="code-custom-style">M1000 50</code> means "Move to" position (1000,50) without drawing</li>
+              <li><code class="code-custom-style">L1050 150</code> means "Line to" position (1050,150)</li>
+              <li><code class="code-custom-style">L950</code> 150 means "Line to" position (950,150)</li>
+              <li><code class="code-custom-style">Z</code> means "Close path" - draws a line back to starting point</li>
+              </ul>
+              </ol>
+            
+            </div>
+                </div>                 
+         
+<!-- Activity 3 -->
+        <h2 id="3activity">Styling and Transformations</h2>
+          <hr>
+          In this step, you will experiment with the commands/attributes <code class="code-custom-style">fill</code>, <code class="code-custom-style">transform</code>, and <code class="code-custom-style">translate</code>.
+          
+         <ol>
+           <li>Continue working in the same VS Code file "lab1.svg" </li>
+           <li>Copy the shapes below by typing them inside the same SVG tag you created above and below the shapes from the previous step</li>
+           <li>Save the changes after copying each shape </li>
+           <li>See the changes by opening your file with a web browser or an image viewer </li>
+           <li>At the end of this activity you should see another row of shapes like the one below: </li>
+          </ol>
+          
+          <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/Screenshot%20from%202025-01-07%2011-44-22.png?v=1736268285897">
+                    <!--  rectangle w/style and tranformation           -->
+            
+            <h4> Rectangle </h4>
+<!--               <div style="display:flex; margin: auto; width: 100%;">     
+              <br><br>
+              <button onclick="myFunction()">Copy code</button>
+              <textarea class="myInput" rows="5" cols="100">
+                
+<rect width="100" height="100" x="50" y="50" transform="translate(0 200)" fill="blue" />
+
+                </textarea>
+        </div> -->
+          
+<div class="definition" >                                 
+          <div style="display:flex">
+<pre style="width:50%"><code class="language-markup" >
+&lt;rect 
+width="100" 
+height="100" 
+x="50" 
+y="50" 
+transform="translate(0 200)" 
+fill="blue"  /&gt;
+</code></pre>
+          
+          <ol style="width:50%">
+            <li><code class="code-custom-style">transform="translate(0 200)"</code> moves (translates) the rectangle from its original position</li>
+            <ul>
+              <li>The values (0, 200) mean:</li>
+              <ul>
+                <li>0 units horizontally (no left/right movement)</li>
+                <li>200 units down vertically</li>
+                <li>This translation happens AFTER the initial positioning (x="50" y="50")</li>
+                <li>So the final position would be:</li>
+                <ul>
+                <li>50 units from the left (from x="50")</li>
+                <li>250 units from the top (50 from y="50" plus 200 from translate)</li>
+                </ul>
+              </ul>
+              </ul>
+            <li><code class="code-custom-style">fill="blue"</code> changes the color from the default black to blue</li>
+              </ol>
+            </div>
+                </div>  
+          
+          <!--  circle w/style and tranformation           -->
+            
+            <h4> Circle </h4>
+<!--               <div style="display:flex; margin: auto; width: 100%;">     
+              <br><br>
+              <button onclick="myFunction()">Copy code</button>
+              <textarea class="myInput" rows="5" cols="100">
+                
+<circle r="50" cx="250" cy="100" transform="translate(0 200)" fill="red" />
+
+                </textarea>
+        </div> -->
+          
+           <div class="definition" >                                 
+          <div style="display:flex">
+<pre style="width:50%"><code class="language-markup" >
+&lt;circle 
+r="50" 
+cx="250" 
+cy="100" 
+transform="translate(0 200)" 
+fill="red" /&gt;
+</code></pre>
+          
+          <ol style="width:50%">
+            <li><code class="code-custom-style">transform="translate(0 200)"</code> moves (translates) the circle from its original position</li>
+            <ul>
+              <li>The values (0, 200) mean:</li>
+              <ul>
+                <li>0 units horizontally (no left/right movement)</li>
+                <li>200 units down vertically</li>
+                <li>This translation happens AFTER the initial positioning (cx="250" cy="100")</li>
+                <li>So the final position would be:</li>
+                <ul>
+                <li>250 units from the left (from cx="250")</li>
+                <li>300 units from the top (100 from cy="100" plus 200 from translate)</li>
+                </ul>
+              </ul>
+              </ul>
+            <li><code class="code-custom-style">fill="red"</code> changes the color from the default black to red</li>
+              </ol>
+            </div>
+                </div>  
+          
+          
+<!-- Ellipse  w/style and tranformation         -->
+          
+             <h4> Ellipse </h4>
+<!--               <div style="display:flex; margin: auto; width: 100%;">     
+              <br><br>
+              <button onclick="myFunction()">Copy code</button>
+              <textarea class="myInput" rows="5" cols="100">
+                
+<ellipse rx="100" ry="50" cx="450" cy="100" transform="translate(0 200)" fill="yellow"/>
+
+                
+        </textarea>
+        </div>
+           -->
+ <div class="definition" >                                 
+          <div style="display:flex">
+<pre style="width:50%"><code class="language-markup" >
+&lt;ellipse 
+rx="100" 
+ry="50" 
+cx="450" 
+cy="100" 
+transform="translate(0 200)" 
+fill="yellow" /&gt;
+</code></pre>
+          
+          <ol style="width:50%">
+            <li><code class="code-custom-style">transform="translate(0 200)"</code> moves (translates) the ellipse from its original position</li>
+            <ul>
+              <li>The values (0, 200) mean:</li>
+              <ul>
+                <li>0 units horizontally (no left/right movement)</li>
+                <li>200 units down vertically</li>
+                <li>This translation happens AFTER the initial positioning (cx="450" cy="100")</li>
+                <li>So the final position would be:</li>
+                <ul>
+                <li>450 units from the left (from cx="450")</li>
+                <li>300 units from the top (100 from cy="100" plus 200 from translate)</li>
+                </ul>
+              </ul>
+              </ul>
+            <li><code class="code-custom-style">fill="yellow"</code> changes the color from the default black to yellow</li>
+              </ol>
+            </div>
+                </div>  
+                       
+        
+        <!-- Line  w/style and tranformation         -->
+          
+             <h4> Line </h4>
+<!--               <div style="display:flex; margin: auto; width: 100%;">     
+              <br><br>
+              <button onclick="myFunction()">Copy code</button>
+              <textarea class="myInput" rows="5" cols="100">
+                
+<line x1="600" y1="100" x2="750" y2="100" transform="translate(0 200)" style="stroke:orange;stroke-width:12" />
+
+                
+               </textarea>
+        </div>
+           -->
+          <div class="definition" >                                 
+          <div style="display:flex">
+<pre style="width:50%"><code class="language-markup" >
+&lt;line 
+x1="600" 
+y1="100" 
+x2="750" 
+y2="100" 
+transform="translate(0 200)" 
+stroke="orange" 
+stroke-width="12"/&gt;
+</code></pre>
+          
+          <ol style="width:50%">
+            <li><code class="code-custom-style">transform="translate(0 200)"</code> moves (translates) the ellipse from its original position</li>
+            <ul>
+              <li>The values (0, 200) mean:</li>
+              <ul>
+                <li>0 units horizontally (no left/right movement)</li>
+                <li>200 units down vertically</li>
+                <li>This translation happens AFTER the initial positioning (x1="600" y1="100" x2="750" y2="100")</li>
+                <li>So the final position would be:</li>
+                <ul>
+                <li>600 and 700 units from the left (from x1="600" and x2="750")</li>
+                <li>300 units from the top (100 from y1="100" and y2="100" plus 200 from translate)</li>
+                </ul>
+              </ul>
+              </ul>
+            <li><code class="code-custom-style">stroke="orange"</code> sets the line color to orange.</li>
+            <li><code class="code-custom-style">stroke-width="12"</code> sets the line width to 12 pixels/units</li>
+              </ol>
+            </div>
+                </div>  
+      
+ <!-- Polygon w/style and tranformation          -->
+          
+             <h4> Polygon </h4>
+<!--               <div style="display:flex; margin: auto; width: 100%;">     
+              <br><br>
+              <button onclick="myFunction()">Copy code</button>
+              <textarea class="myInput" rows="5" cols="100">
+                
+<polygon points="850,50 900,150 800,150" transform="translate(0 200)" style="fill:lime;stroke:purple;stroke-width:3" />
+
+                
+               </textarea>
+        </div> -->
+          
+            <div class="definition" >                                 
+          <div style="display:flex">
+<pre style="width:50%"><code class="language-markup" >
+&lt;polygon 
+points="850,50 900,150 800,150" 
+transform="translate(0 200)" 
+style="fill:lime;stroke:purple;stroke-width:3"/&gt;
+</code></pre>
+          
+          <ol style="width:50%">
+            <li><code class="code-custom-style">transform="translate(0 200)"</code> moves (translates) the ellipse from its original position</li>
+            <ul>
+              <li>The values (0, 200) mean:</li>
+              <ul>
+                <li>0 units horizontally (no left/right movement)</li>
+                <li>200 units down vertically</li>
+                <li>This translation happens AFTER the initial positioning (x1="600" y1="100" x2="750" y2="100")</li>
+                <li>So the final position would be:</li>
+                <ul>
+                <li>600 and 700 units from the left (from x1="600" and x2="750")</li>
+                <li>300 units from the top (100 from y1="100" and y2="100" plus 200 from translate)</li>
+                </ul>
+              </ul>
+              </ul>
+            <li><code class="code-custom-style">stroke="orange"</code> sets the line color to orange.</li>
+            <li><code class="code-custom-style">stroke-width="12"</code> sets the line width to 12 pixels/units</li>
+              </ol>
+            </div>
+                </div>  
+             
+    
+ <!-- Path w/style and transformation          -->
+          
+             <h4> Path </h4>
+<!--               <div style="display:flex; margin: auto; width: 100%;">     
+              <br><br>
+              <button onclick="myFunction()">Copy code</button>
+              <textarea class="myInput" rows="5" cols="100">
+                
+<path d="M1000 50 L1050 150 L950 150 Z"  />
+                
+               </textarea>
+        </div> -->
+          
+           <div class="definition" >                                 
+          <div style="display:flex">
+<pre style="width:50%"><code class="language-markup" >
+&lt;path 
+d="M1000 50 L1050 150 L950 150 Z" 
+transform="translate(0 200)" 
+style="fill:none;stroke:black;stroke-width:3" /&gt;
+</code></pre>
+          
+          <ol style="width:50%">
+            <li><code class="code-custom-style">transform="translate(0 200)"</code> moves (translates) the ellipse from its original position</li>
+            <ul>
+              <li>The values (0, 200) mean:</li>
+              <ul>
+                <li>0 units horizontally (no left/right movement)</li>
+                <li>200 units down vertically</li>
+                <li>This translation happens AFTER the initial positioning (x1="600" y1="100" x2="750" y2="100")</li>
+                <li>So the final position would be:</li>
+                <ul>
+                <li>600 and 700 units from the left (from x1="600" and x2="750")</li>
+                <li>300 units from the top (100 from y1="100" and y2="100" plus 200 from translate)</li>
+                </ul>
+              </ul>
+              </ul>
+            <li><code class="code-custom-style">stroke="orange"</code> sets the line color to orange.</li>
+            <li><code class="code-custom-style">stroke-width="12"</code> sets the line width to 12 pixels/units</li>
+              </ol>
+            </div>
+                </div>  
+             
+            
+        
+          <!-- activity 4   -->
+<!--           <h2 id="4activity">Animation</h2>
+          <hr />
+           -->
+<!--           <h2 id="5activity">Creative Project</h2> -->
+<!--           <hr> -->
+          
+         
+          
+<!--  conclusion          -->
+          
+          <h2 id="conclusion">Assignment submission and assessment</h2>
+          <hr />
+<!--           <h3>
+            Submission 
+          </h3>
+ -->
+          <p>
+          <b>Submit your "lab1.svg" file to the folder Interface Design Lab 1: SVG</b> on Avenue to Learn under Assessments &gt; Assignments. 
+          </p>
+          
+          <h3>
+            Assessment 
+          </h3>
+          <ol>
+            <li><b>File Validity:</b> The SVG file opens without errors in a web browser or image viewer (2.5 points)</li>
+            <li><b>Basic Shapes:</b> The file includes all shapes specified in Section 4: "Explore Basic Shapes" (2.5 points)</li>
+            <li><b>Styles and Transformations:</b> The file incorporates all shapes, styles, and transformations outlined in Section 5: "Styling and Transformations" (2.5 points)</li>
+            <li><b>Structure:</b> The file contains a single main &lt;svg&gt; tag, and all shapes are coded within this tag (2.5 points</li>
+          </ol>
+  
+        
+          
+          <h2 id="extras">Continue learning</h2>
+          <hr />
+          <p>
+           Check out these activities if you want to continue learning.
+          </p>
+          
+          <ol>
+             <li>Read the full article from the section <a href="#introduction">What are Scalable Vector Graphics</a></li>
+             <li>Explore other SVG transformations like <code class="code-custom-style">rotate</code>, and <code class="code-custom-style">scale</code>: 
+               <a href="https://www.w3schools.com/graphics/svg_transformations.asp" target="_blank"
+                >https://www.w3schools.com/graphics/svg_transformations.asp</a></li>
+            <li>Learn how to animate SVGs:
+              <a href="https://www.w3schools.com/graphics/svg_animation.asp" target="_blank"
+                >https://www.w3schools.com/graphics/svg_animation.asp</a>
+            </li>
+          </ol>
+          
+          <h2 id="solution">Solution</h2>
+          <hr />
+            
+      <button type="button" class="collapsible"><i class="fa fa-info-circle"></i> <b> Click to see the completed SVG code.
+</b></button>
+        <div class="additionalInfo">   
+<pre style="width:100%"><code class="language-markup" >
+&lt;svg viewBox="0 0 1100 1100" xmlns="http://www.w3.org/2000/svg"&gt;
+    
+    &lt;rect width="100" height="100" x="50" y="50" /&gt;
+    
+    &lt;circle r="50" cx="250" cy="100" /&gt;
+    
+    &lt;ellipse rx="100" ry="50" cx="450" cy="100" /&gt;
+
+    &lt;line x1="600" y1="100" x2="750" y2="100" stroke="black" /&gt;
+  
+    &lt;polygon points="850,50 900,150 800,150" /&gt;
+
+    &lt;path d="M1000 50 L1050 150 L950 150 Z" /&gt;
+
+
+
+    &lt;rect width="100" height="100" x="50" y="50" transform="translate(0 200)" fill="blue" /&gt;
+
+    &lt;circle r="50" cx="250" cy="100" transform="translate(0 200)" fill="red" /&gt;
+
+    &lt;ellipse rx="100" ry="50" cx="450" cy="100" transform="translate(0 200)" fill="yellow"/&gt;
+
+    &lt;line x1="600" y1="100" x2="750" y2="100" transform="translate(0 200)" stroke="orange" stroke-width="12" /&gt;
+
+    &lt;polygon points="850,50 900,150 800,150" transform="translate(0 200)" style="fill:lime;stroke:purple;stroke-width:3" /&gt;
+
+   &lt;path d="M1000 50 L1050 150 L950 150 Z" transform="translate(0 200)" style="fill:none;stroke:black;stroke-width:3" /&gt;
+
+&lt;/svg&gt;
+
+
+</code></pre>      
+         
+                </div>  
+          
+        </div>
+      </div>
+    </div>
+<!-- footer -->
+    <footer class="footer">
+    </footer>
+  </body>
+</html>

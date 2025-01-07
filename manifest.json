@@ -1,0 +1,22 @@
+{
+	"name":"Mediaart 2a06 Labs",
+	"short_name":"MAL",
+	"start_url":"index.html",
+	"display":"standalone",
+	"background_color":"#5900b3",
+	"theme_color":"black",
+	"scope": ".",
+	"description":"This is my skecthbook from the course MEDIAART 2A06",
+	"icons":[
+	{
+	"src":"https://cdn.glitch.global/2318f821-d7ce-4c17-bbd9-3c21c2eaae9a/tree%20artwork.svg?v=1697723942367",					 
+	"sizes":"192x192",
+	"type":"image/png"
+	},
+	{
+	"src":"ihttps://cdn.glitch.global/2318f821-d7ce-4c17-bbd9-3c21c2eaae9a/tree%20artwork.svg?v=1697723942367",
+	"sizes":"512x512",
+	"type":"image/png"
+	}
+]
+}
