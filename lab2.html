@@ -65,7 +65,7 @@
           <h2 class="nocount">Learning Objectives</h2>
           <ol>
             <li>Learn about Figma and experiment with its basic tools for SVG drawing</li>
-            <li>Create a simple interface using Figma</li>
+            <li>Create a simple interface using SVG in Figma</li>
           </ol>
 
           <!-- contents           -->
@@ -116,13 +116,13 @@
             <hr>
             <ul>              
               <li>When you create designs in Figma, you are essentially working with vector elements that can be exported as SVG files. </li>
-              <li>Figma is "What You See Is What You Get" (WYSIWYG) interface where you manipulate visual elements directly and see exactly how the final result will look while you are working. </li>
                 <li>In Figma, when you drag a rectangle or adjust its properties, you're actually creating and modifying SVG code behind the scenes. For example, when you:</li>
               <ul>
-                  <li>Draw a rectangle → Creates a &lt;rect&gt; element </li>
-                  <li>Round its corners → Adds rx and ry attributes</li>
-                  <li>Change its color → Modifies the fill attribute</li>
+                <li>Draw a rectangle, Figma creates a <code class="code-custom-style">&lt;rect&gt; </code>element </li>
+                <li>Round its corners, Figma adds <code class="code-custom-style">rx</code> and <code class="code-custom-style">ry</code> attributes</li>
+                <li>Change its color, Figma modifies the <code class="code-custom-style">fill</code> attribute</li>
                 </ul>
+             <li>Figma is a "What You See Is What You Get" (WYSIWYG) interface where you manipulate visual elements directly and see exactly how the final result will look while you are working. </li>
             </ul>
 
           
@@ -145,7 +145,7 @@
           Explore the links below to learn about different sections of Figma's interface.
           <ol>
             <li>
-              Access design tools from the toolbar: 
+              Access design tools from the <b>toolbar</b>: 
               <a
                 href="https://help.figma.com/hc/en-us/articles/360041064174-Access-design-tools-from-the-toolbar"
                 target="_blank"
@@ -153,7 +153,7 @@
               >
             </li>
             <li>
-              View layers and pages in the left sidebar:
+              View layers and pages in the <b>navigation panel (left sidebar)</b>:
               <a
                 href="https://help.figma.com/hc/en-us/articles/360039831974-View-layers-and-pages-in-the-left-sidebar"
                 target="_blank"
@@ -161,14 +161,14 @@
               >
             </li>
             <li>
-              Use the properties panel with edit access:
+              Use the <b>properties panel (right sidebar)</b> with edit access:
               <a
                 href="https://help.figma.com/hc/en-us/articles/360039832014-Design-prototype-and-explore-layer-properties-in-the-right-sidebar"
                 target="_blank"
                 >https://help.figma.com/hc/en-us/articles/360039832014-Design-prototype-and-explore-layer-properties-in-the-right-sidebar</a
               >
             </li>
-            <li>
+<!--             <li>
               Adjust your zoom and view options:
               <a
                 href="https://help.figma.com/hc/en-us/articles/360041065034-Adjust-your-zoom-and-view-options"
@@ -176,7 +176,7 @@
               >
                 https://help.figma.com/hc/en-us/articles/360041065034-Adjust-your-zoom-and-view-options</a
               >
-            </li>
+            </li> -->
           </ol>
             
           
@@ -187,481 +187,88 @@
           <hr />
 
           <ol>
-            <li>Read the following article about <b>shape tools</b> in Figma: <a href="https://help.figma.com/hc/en-us/articles/360040450133-Shape-tools">https://help.figma.com/hc/en-us/articles/360040450133-Shape-tools</a></li>
             <li>Open Figma and click <b>Create New &gt; Design File</b></li>
             <li>Name your file to "lab2 - basic shapes" through the naming option on the navigation panel (left panel)</li>
             <li>Draw a frame of 1100 x 500 using the <b>frame tool</b> in the toolbar </li>
-            <li>Draw a <b>square</b>, a <b>circle</b>, an <b>ellipse</b>, a <b>line</b>, a <b>triangle</b>, and a <b>pentagon</b> inside the newly created frame using the <b> Shape tools</b></li>
+            <li>Draw a <b>square</b>, a <b>circle</b>, an <b>ellipse</b>, a <b>line</b>, a <b>triangle</b>, and a <b>pentagon</b> inside the newly created frame using the <b> Shape tools</b>. Use the following tutorial as reference:  <a href="https://help.figma.com/hc/en-us/articles/360040450133-Shape-tools">https://help.figma.com/hc/en-us/articles/360040450133-Shape-tools</a></li>
             <li>At the end of the exercise your Figma project should look like the one below:</li>
-            <li></li>
           </ol>
-            <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/Screenshot%20from%202025-01-08%2013-17-45.png?v=1736360283404">
-          
-          <h3>Add color and transformations</h3>
+            <img  src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/Screenshot%20from%202025-01-08%2013-17-45.png?v=1736360283404">
+
           <hr>
+          <h3>Styling</h3>
           
            <ol>
-            <li>Change the color of each shape using <b>fill</b> option on the <b>properties panel</b> (right panel)</li>
-         
-             <li>At the end of the exercise your Figma project should look like the one below:</li>
-            <li></li>
+             <li>Make click on any of the shapes to activate the shape properties in the <b>properties panel (right sidebar)</b></li>
+              <li>Change the color of each shape using <b>fill</b> option on the <b>properties panel</b></li>
+              <li>At the end of the exercise your Figma project should look like the one below:</li>
           </ol>
-            <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/Screenshot%20from%202025-01-08%2013-17-45.png?v=1736360283404">
+            <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/Screenshot%20from%202025-01-08%2015-23-15.png?v=1736367804325">
+          <hr>
+          <h3>
+            Export your file to SVG
+          </h3>
           
+          
+          <p>
+            Follow the interactive tutorial below to learn how to export your Figma file to SVG format.
+          </p>
+          
+          <div style="width:60%">
+          <div style="max-width: 100%; width: 800px; margin: 0 auto;"> <div style="display: none;"> <p style="display: none; text-align: center; margin-top: 10px;"> <i style="font-style: italic; font-weight: bold; color: #CCCCCC; font-size: 18px;">6 STEPS</i> </p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 1. Click the frame that contains all the shapes </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2493912&step_number=1&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 1 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 2. Locate the Export option at the bottom of the properties panel (right sidebar) </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2493912&step_number=2&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 2 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 3. Click to see the format options </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2493912&step_number=3&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 3 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 4. Select the SVG format </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2493912&step_number=4&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 4 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 5. Click Export and save the file in your computer </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2493912&step_number=5&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 5 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 6. That's it. You're done. </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2493912&step_number=6&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 6 image" /></p> </div> </div> <h3 style="display: none; font-size: 18px; margin-top: 89px; margin-bottom: 15px;"> Here's an interactive tutorial </h3> <i style="display: none; font-size: 15px; margin-top: 0; margin-bottom: 43px;">** Best experienced in Full Screen (click the icon in the top right corner before you begin) **</i> <p style="display: none;"> <a href="https://www.iorad.com/player/2493912/Export-your-Figma-file-to-SVG">https://www.iorad.com/player/2493912/Export-your-Figma-file-to-SVG</a> </p> <p class="skiptranslate" style="border: 0; min-width: 100%; margin-bottom: 0; height: 501px;"><iframe src="https://www.iorad.com/player/2493912/Export-your-Figma-file-to-SVG?src=iframe&oembed=1" width="100%" height="500px" style="width: 100%; height: 500px; " referrerpolicy="strict-origin-when-cross-origin" frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen" allow="camera; microphone; clipboard-write;" sandbox="allow-scripts allow-forms allow-same-origin allow-presentation allow-downloads allow-modals allow-popups allow-popups-to-escape-sandbox allow-top-navigation allow-top-navigation-by-user-activation"></iframe></p> <div style="display: none;font-size: 18px; text-align: center;font-family: 'Libre Franklin', sans-serif;"> <br><br> <b style="font-weight: bold; color: #CCCCCC;"> Next step </b> <br><br> <div style="display: inline-block;"> <div style="display: table-row;"> <a style="display: table-cell;" href="http://ior.ad/live/asMo" target="_blank"> <img src="https://www.iorad.com/golive.svg" style="border: none;" alt="Go Live" /> </a> </div> </div> </div>
+          
+            </div>
+          
+          <hr>
+          <h3> Explore the SVG file in VS Code</h3>
+          
+          
+           <ol>   
+             <li>Open your exported SVG file by going to <b>VS Code &gt; File &gt; Open File</b></li>
+              <li>Read the code and see if you can spot <b>elements</b> and <b>attributes</b> from the previous lab</li>. What are these elements and attributes?
+          </ol>
+          
+          
+          
+        <button type="button" class="collapsible"><i class="fa fa-info-circle"></i> <b>Do you want to explore transformations in Figma</b></button>
+        <div class="additionalInfo">           
+            <p>
+            Question: How do you think you can achieve the following transformations in Figma?
+          </p>
+        <br>
+        <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/Screenshot%20from%202025-01-08%2015-32-39.png?v=1736368453162">
+        </div>
+        
           
           
           
           <!--  activity 2          -->
-
-          <h2 id="2activity">Explore Basic Shapes</h2>
+  <h2 id="2activity">Combine multiple shapes to create complex graphics</h2>
           <hr />
+
+          <div class="centered-image">
+          <img src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/potion.gif?v=1698699914928"
+               alt="a GIF image of a Figma illustration of a potion" style="width:50%">
+               </div>
+          
+         <p>
+           Learn how to combine multiple shapes to create a fun illustration. Follow the steps below:
+          </p>
 
           <ol>
-            <li>Open Figma and click <b>Create New &gt; Design File</b></li>
-            <li>Name your file to "lab2 - basic shapes" through the naming option on the navigation panel (left panel)</li>
-            <li>Save the changes after copying each shape</li> 
-            <li>See the changes by opening your file with a web browser or an image viewer</li>
-            <li>At the end of this activity you should see a row of shapes like the one below:</li>
+            <li>
+              <b>Create a new file</b> by clicking <b><img src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/figmaicon.svg?v=1698699444344"
+                                                           style="width:3%; padding:0%"> -&gt; File -&gt; New Design File</b>
+            </li>
+            <li>Name your file "lab2-potion"</li>
+            <li>Then, <b>follow</b> the instructions in the following tutorial:
+            <a href="https://help.figma.com/hc/en-us/articles/13543867954711-Create-an-illustration-in-Figma-design" 
+               target="_blank">https://help.figma.com/hc/en-us/articles/13543867954711-Create-an-illustration-in-Figma-design</a></li>
+            <li>Export your illustration in SVG format</li>
+            <li>Open it with VS Code to explore its code</li>
           </ol>
-          
-          <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/Screenshot%20from%202025-01-07%2017-49-22.png?v=1736290170497">
-            
-<!--  circle            -->
-            
-            <h4> Circle </h4>
-<!--               <div style="display:flex; margin: auto; width: 100%;">     
-              <br><br>
-              <button onclick="myFunction()">Copy code</button>
-              <textarea class="myInput" rows="5" cols="100">
-                
-<circle r="50" cx="250" cy="100"/>
-                </textarea>
-          </div> -->
-                
-           <!--  circle explanation          -->
-<!-- <button type="button" class="collapsible"><i class="fa fa-info-circle"></i> <b>Code Explanation</b></button> -->
-        <div class="definition" >                                 
-          <div style="display:flex">
-<pre style="width:50%"><code class="language-markup" >
-&lt;circle r="50" cx="250" cy="100" /&gt;
-</code></pre>
-          
-          <ol style="width:50%">
-            <li><code class="code-custom-style">circle</code>is the SVG element that creates a circle.</li>
-            <li><code class="code-custom-style">r="50"</code> sets the radius to 50 units - this determines how big the circle is.</li>
-            <li><code class="code-custom-style">cx="250"</code> positions the center of the circle 250 units from the left edge.</li>
-            <li><code class="code-custom-style">cy="100"</code> positions the center of the circle 100 units from the top edge.</li>
-            </ol>
-            
-            </div>
-                </div>          
-          
-<!-- Ellipse           -->
-          
-             <h4> Ellipse </h4>
-<!--               <div style="display:flex; margin: auto; width: 100%;">     
-              <br><br>
-              <button onclick="myFunction()">Copy code</button>
-              <textarea class="myInput" rows="5" cols="100">
-                
-<ellipse rx="100" ry="50" cx="450" cy="100" />
-                
-        </textarea>
-        </div> -->
-          
-         <div class="definition" >                                 
-          <div style="display:flex">
-<pre style="width:50%"><code class="language-markup" >
-&lt;ellipse rx="100" ry="50" cx="450" cy="100" /&gt;
-</code></pre>
-          
-          <ol style="width:50%">
-            <li><code class="code-custom-style">ellipse</code>is the SVG element that creates an oval shape.</li>
-            <li><code class="code-custom-style">rx="100"</code> sets the horizontal radius to 100 units - this determines how wide the ellipse is.</li>
-            <li><code class="code-custom-style">ry="50"</code>  sets the vertical radius to 50 units - this determines how tall the ellipse is.</li>
-            <li><code class="code-custom-style">cx="450"</code> positions the center of the ellipse 450 units from the left edge.</li>
-            <li><code class="code-custom-style">cy="100"</code> positions the center of the ellipse 100 units from the top edge.</li>
-            </ol>
-            
-            </div>
-                </div>      
-             
-        
-        <!-- Line           -->
-          
-             <h4> Line </h4>
-<!--               <div style="display:flex; margin: auto; width: 100%;">     
-              <br><br>
-              <button onclick="myFunction()">Copy code</button>
-              <textarea class="myInput" rows="5" cols="100">
-                
-<line x1="600" y1="100" x2="750" y2="100" stroke="black"/>
-                
-               </textarea>
-        </div> -->
-          
-        <div class="definition" >                                 
-          <div style="display:flex">
-<pre style="width:50%"><code class="language-markup" >
-&lt;line x1="600" y1="100" x2="750" y2="100" stroke="black" /&gt;
-</code></pre>
-          
-          <ol style="width:50%">
-            <li><code class="code-custom-style">line</code> creates a straight line between two points</li>
-            <li><code class="code-custom-style">x1="600"</code> sets the starting point 600 units from the left edge</li>
-            <li><code class="code-custom-style">y1="100"</code> sets the starting point 100 units from the top edge</li>
-            <li><code class="code-custom-style">x2="750"</code> sets the ending point 750 units from the left edge</li>
-            <li><code class="code-custom-style">y2="100"</code> sets the ending point 100 units from the top edge</li>
-            <li><code class="code-custom-style">stroke="black"</code> sets the line color to black</li>
-            </ol>
-            
-            </div>
-                </div>      
-      
- <!-- Polygon           -->
-          
-             <h4> Polygon </h4>
-<!--               <div style="display:flex; margin: auto; width: 100%;">     
-              <br><br>
-              <button onclick="myFunction()">Copy code</button>
-              <textarea class="myInput" rows="5" cols="100">
-                
-<polygon points="850,50 900,150 800,150" />
-                
-               </textarea>
-        </div> -->
-          
-<div class="definition" >                                 
-          <div style="display:flex">
-<pre style="width:50%"><code class="language-markup" >
-&lt;polygon points="850,50 900,150 800,150" /&gt;
-</code></pre>
-          
-          <ol style="width:50%">
-            <li><code class="code-custom-style">polygon</code> creates a closed shape made up of straight lines between points</li>
-            <li><code class="code-custom-style">points="850,50 900,150 800,150"</code> defines the coordinates for each corner:</li>
-            <ul>           
-              <li>First point: (850,50) - 850 units from left, 50 units from top</li>
-              <li>Second point: (900,150) - 900 units from left, 150 units from top</li>
-              <li>Third point: (800,150) - 800 units from left, 150 units from top</li>
-              </ul>
-              </ol>
-            
-            </div>
-                </div>      
-                   
-    
- <!-- Path           -->
-          
-             <h4> Path </h4>
-<!--               <div style="display:flex; margin: auto; width: 100%;">     
-              <br><br>
-              <button onclick="myFunction()">Copy code</button>
-              <textarea class="myInput" rows="5" cols="100">
-                
-<path d="M1000 50 L1050 150 L950 150 Z"  />
-                
-               </textarea>
-        </div> -->
-          
-<div class="definition" >                                 
-          <div style="display:flex">
-<pre style="width:50%"><code class="language-markup" >
-&lt;path d="M1000 50 L1050 100 L1025 150 L975 150 L950 100 Z" /&gt;
-</code></pre>
-          
-          <ol style="width:50%">
-            <li><code class="code-custom-style">path</code> is the most flexible SVG element - it can create any shape using commands</li>
-            <li>The <code class="code-custom-style">d</code> attribute contains the drawing commands</li>
-            <ul>           
-              <li><code class="code-custom-style">M1000 50</code> means "Move to" position (1000,50) without drawing</li>
-              <li><code class="code-custom-style">L1050 100</code> means "Line to" position (1050,100)</li>
-              <li><code class="code-custom-style">L1025 150</code> means "Line to" position (1025,150)</li>
-              <li><code class="code-custom-style">L975 100</code> means "Line to" position (975,100)</li>
-              <li><code class="code-custom-style">Z</code> means "Close path" - draws a line back to starting point</li>
-              </ul>
-              </ol>
-            
-            </div>
-                </div>                 
+
          
-<!-- Activity 3 -->
-        <h2 id="3activity">Explore Styling and Transformations</h2>
-          <hr>
-          In this step, you will experiment with the commands/attributes <code class="code-custom-style">fill</code>, <code class="code-custom-style">transform</code>, and <code class="code-custom-style">translate</code>.
-          
-         <ol>
-           <li>Continue working in the same VS Code file "lab1.svg" </li>
-           <li>Copy the shapes below by typing them inside the same SVG tag you created above and below the shapes from the previous step</li>
-           <li>Save the changes after copying each shape </li>
-           <li>See the changes by opening your file with a web browser or an image viewer </li>
-           <li>At the end of this activity you should see another row of shapes like the one below: </li>
-          </ol>
-          
-          <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/Screenshot%20from%202025-01-07%2017-50-13.png?v=1736290223749">
-                    <!--  rectangle w/style and tranformation           -->
-            
-            <h4> Rectangle </h4>
-<!--               <div style="display:flex; margin: auto; width: 100%;">     
-              <br><br>
-              <button onclick="myFunction()">Copy code</button>
-              <textarea class="myInput" rows="5" cols="100">
-                
-<rect width="100" height="100" x="50" y="50" transform="translate(0 200)" fill="blue" />
-
-                </textarea>
-        </div> -->
-          
-<div class="definition" >                                 
-          <div style="display:flex">
-<pre style="width:50%"><code class="language-markup" >
-&lt;rect 
-width="100" 
-height="100" 
-x="50" 
-y="50" 
-transform="translate(0 200)" 
-fill="blue"  /&gt;
-</code></pre>
-          
-          <ol style="width:50%">
-            <li><code class="code-custom-style">transform="translate(0 200)"</code> moves (translates) the rectangle from its original position</li>
-            <ul>
-              <li>The values (0, 200) mean:</li>
-              <ul>
-                <li>0 units horizontally (no left/right movement)</li>
-                <li>200 units down vertically</li>
-                <li>This translation happens AFTER the initial positioning (x="50" y="50")</li>
-                <li>So the final position would be:</li>
-                <ul>
-                <li>50 units from the left (from x="50")</li>
-                <li>250 units from the top (50 from y="50" plus 200 from translate)</li>
-                </ul>
-              </ul>
-              </ul>
-            <li><code class="code-custom-style">fill="blue"</code> changes the color from the default black to blue</li>
-              </ol>
-            </div>
-                </div>  
-          
-          <!--  circle w/style and tranformation           -->
-            
-            <h4> Circle </h4>
-<!--               <div style="display:flex; margin: auto; width: 100%;">     
-              <br><br>
-              <button onclick="myFunction()">Copy code</button>
-              <textarea class="myInput" rows="5" cols="100">
-                
-<circle r="50" cx="250" cy="100" transform="translate(0 200)" fill="red" />
-
-                </textarea>
-        </div> -->
-          
-           <div class="definition" >                                 
-          <div style="display:flex">
-<pre style="width:50%"><code class="language-markup" >
-&lt;circle 
-r="50" 
-cx="250" 
-cy="100" 
-transform="translate(0 200)" 
-fill="red" /&gt;
-</code></pre>
-          
-          <ol style="width:50%">
-            <li><code class="code-custom-style">transform="translate(0 200)"</code> moves (translates) the circle from its original position</li>
-            <ul>
-              <li>The values (0, 200) mean:</li>
-              <ul>
-                <li>0 units horizontally (no left/right movement)</li>
-                <li>200 units down vertically</li>
-                <li>This translation happens AFTER the initial positioning (cx="250" cy="100")</li>
-                <li>So the final position would be:</li>
-                <ul>
-                <li>250 units from the left (from cx="250")</li>
-                <li>300 units from the top (100 from cy="100" plus 200 from translate)</li>
-                </ul>
-              </ul>
-              </ul>
-            <li><code class="code-custom-style">fill="red"</code> changes the color from the default black to red</li>
-              </ol>
-            </div>
-                </div>  
-          
-          
-<!-- Ellipse  w/style and tranformation         -->
-          
-             <h4> Ellipse </h4>
-<!--               <div style="display:flex; margin: auto; width: 100%;">     
-              <br><br>
-              <button onclick="myFunction()">Copy code</button>
-              <textarea class="myInput" rows="5" cols="100">
-                
-<ellipse rx="100" ry="50" cx="450" cy="100" transform="translate(0 200)" fill="yellow"/>
-
-                
-        </textarea>
-        </div>
-           -->
- <div class="definition" >                                 
-          <div style="display:flex">
-<pre style="width:50%"><code class="language-markup" >
-&lt;ellipse 
-rx="100" 
-ry="50" 
-cx="450" 
-cy="100" 
-transform="translate(0 200)" 
-fill="yellow" /&gt;
-</code></pre>
-          
-          <ol style="width:50%">
-            <li><code class="code-custom-style">transform="translate(0 200)"</code> moves (translates) the ellipse from its original position</li>
-            <ul>
-              <li>The values (0, 200) mean:</li>
-              <ul>
-                <li>0 units horizontally (no left/right movement)</li>
-                <li>200 units down vertically</li>
-                <li>This translation happens AFTER the initial positioning (cx="450" cy="100")</li>
-                <li>So the final position would be:</li>
-                <ul>
-                <li>450 units from the left (from cx="450")</li>
-                <li>300 units from the top (100 from cy="100" plus 200 from translate)</li>
-                </ul>
-              </ul>
-              </ul>
-            <li><code class="code-custom-style">fill="yellow"</code> changes the color from the default black to yellow</li>
-              </ol>
-            </div>
-                </div>  
-                       
-        
-        <!-- Line  w/style and tranformation         -->
-          
-             <h4> Line </h4>
-<!--               <div style="display:flex; margin: auto; width: 100%;">     
-              <br><br>
-              <button onclick="myFunction()">Copy code</button>
-              <textarea class="myInput" rows="5" cols="100">
-                
-<line x1="600" y1="100" x2="750" y2="100" transform="translate(0 200)" style="stroke:orange;stroke-width:12" />
-
-                
-               </textarea>
-        </div>
-           -->
-          <div class="definition" >                                 
-          <div style="display:flex">
-<pre style="width:50%"><code class="language-markup" >
-&lt;line 
-x1="600" 
-y1="100" 
-x2="750" 
-y2="100" 
-transform="translate(0 200)" 
-stroke="orange" 
-stroke-width="12"/&gt;
-</code></pre>
-          
-          <ol style="width:50%">
-            <li><code class="code-custom-style">transform="translate(0 200)"</code> moves (translates) the line from its original position</li>
-            <ul>
-              <li>The values (0, 200) mean:</li>
-              <ul>
-                <li>0 units horizontally (no left/right movement)</li>
-                <li>200 units down vertically</li>
-                <li>This translation happens AFTER the initial positioning (x1="600" y1="100" x2="750" y2="100")</li>
-                <li>So the final position would be:</li>
-                <ul>
-                <li>600 and 700 units from the left (from x1="600" and x2="750")</li>
-                <li>300 units from the top (100 from y1="100" and y2="100" plus 200 from translate)</li>
-                </ul>
-              </ul>
-              </ul>
-            <li><code class="code-custom-style">stroke="orange"</code> sets the line color to orange.</li>
-            <li><code class="code-custom-style">stroke-width="12"</code> sets the line width to 12 pixels/units</li>
-              </ol>
-            </div>
-                </div>  
-      
- <!-- Polygon w/style and tranformation          -->
-          
-             <h4> Polygon </h4>
-<!--               <div style="display:flex; margin: auto; width: 100%;">     
-              <br><br>
-              <button onclick="myFunction()">Copy code</button>
-              <textarea class="myInput" rows="5" cols="100">
-                
-<polygon points="850,50 900,150 800,150" transform="translate(0 200)" style="fill:lime;stroke:purple;stroke-width:3" />
-
-                
-               </textarea>
-        </div> -->
-          
-            <div class="definition" >                                 
-          <div style="display:flex">
-<pre style="width:50%"><code class="language-markup" >
-&lt;polygon 
-points="850,50 900,150 800,150" 
-transform="translate(0 200)" 
-style="fill:lime;stroke:purple;stroke-width:3"/&gt;
-</code></pre>
-          
-          <ol style="width:50%">
-            <li><code class="code-custom-style">transform="translate(0 200)"</code> moves (translates) the polygon down 200 units from its original position</li>
-            <ul>
-            <li>So all points shift down 200 units from their original position</li>
-            <li>The top point is now at (850,250)</li>
-            </ul>
-            <li><code class="code-custom-style">fill:lime</code> sets the shape color to lime green.</li>
-            <li><code class="code-custom-style">stroke:purple</code> sets the line color to purple.</li>            
-            <li><code class="code-custom-style">stroke-width="3"</code> sets the line width to 3 pixels/units</li>
-              </ol>
-            </div>
-                </div>  
-             
-    
- <!-- Path w/style and transformation          -->
-          
-             <h4> Path </h4>
-<!--               <div style="display:flex; margin: auto; width: 100%;">     
-              <br><br>
-              <button onclick="myFunction()">Copy code</button>
-              <textarea class="myInput" rows="5" cols="100">
-                
-<path d="M1000 50 L1050 150 L950 150 Z"  />
-                
-               </textarea>
-        </div> -->
-          
-           <div class="definition" >                                 
-          <div style="display:flex">
-<pre style="width:50%"><code class="language-markup" >
-&lt;path d="M1000 50 L1050 100 L1025 150 L975 150 L950 100 Z" 
-transform="translate(0 200)" 
-style="fill:brown;stroke:black;stroke-width:3" /&gt;
-</code></pre>
-          
-          <ol style="width:50%">
-            <li><code class="code-custom-style">transform="translate(0 200)"</code> moves (translates) the shape 200 units down from its original position</li>
-           <li><code class="code-custom-style">fill:brown</code> sets the shape color to brown.</li>
-            <li><code class="code-custom-style">stroke:black </code> sets the line color to purple.</li>            
-            <li><code class="code-custom-style">stroke-width:3"</code> sets the line width to 3 pixels/units</li>
-              </ol>
-            </div>
-                </div>  
-             
-            
-        
-          <!-- activity 4   -->
-<!--           <h2 id="4activity">Animation</h2>
-          <hr />
-           -->
-<!--           <h2 id="5activity">Creative Project</h2> -->
-<!--           <hr> -->
-          
-         
-          
 <!--  conclusion          -->
           
           <h2 id="conclusion">Assignment submission and assessment</h2>
@@ -671,7 +278,7 @@ style="fill:brown;stroke:black;stroke-width:3" /&gt;
           </h3>
  -->
           <p>
-          <b>Submit your "lab1.svg" file to the folder Interface Design Lab 1: SVG</b> on Avenue to Learn under Assessments &gt; Assignments. 
+          <b>Submit your "lab2 - basic shapes.svg" and "lab2 - potion.svg" files to the folder Interface Design Lab 2: Figma</b> on Avenue to Learn under Assessments &gt; Assignments. 
           </p>
           
           <h3>
