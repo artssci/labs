@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+
+    <link rel="icon" href="https://glitch.com/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--
+      This is the page head - it contains info the browser uses
+      Like the title, which appears on the browser tab but not inside the page
+      Further down you'll see the content that displays in the page
+    -->
+    <title>Interactivity Lab 1: Vue.js Basics</title>
+
+    <!-- The website stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- The website JavaScript file -->
+        <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!--
+      The body includes the content you see in the page
+      Each element is defined using tags, like this <div></div>
+      The attributes like class="wrapper" let us style elements in the CSS
+    -->
+    <div class="wrapper">
+      <div class="content" role="main">
+        <h1 class="title">Interactivity Lab 1: Vue.js Basics</h1>
+        
+        <div class="instructions">
+          <p style="margin-left: 0">
+            <b>Due date:</b>February 11 by the end of the day (11:59 pm).  
+            <br><br>
+
+            <b>Grace period:</b> 1 week (7 days) without penalty.  
+            <br><br>
+
+            <b>After grace period:</b> Submissions after the grace period will be penalized 5% for each additional day that they are overdue – including Saturdays and Sundays. Submissions made 1 week (7 days) after the grace period will not be accepted and will receive a 0% grade.          
+          </p>
+        </div>
+      </div>
+      
+      
+
+        <!-- lab starts here  -->
+        <div class="instructions">
+          <hr>
+          <h2 class="nocount">General Description</h2>
+
+          <p style="margin-left: 0">In this lab, you will learn about the JavaScript framework Vue.js and practice interactively updating SVG text and attributes. </p>
+          
+          
+          <h2 class="nocount">Learning Objectives</h2>
+          <ol>
+          
+              <li>Understand the basics of Vue.js</li>
+              <li>Practice interactively updating SVG text and attributes with Vue.js </li>
+          </ol>
+
+          <!-- contents           -->
+          <h2 class="nocount">Table of Contents</h2>
+          <hr />
+
+          <ol>
+            
+            <li><a href="#introduction">What are JavaScript and Vue.js?</a></li>
+            <li><a href="#prerequisite">Pre-requisites: Set Up Your Project for SVG and Vue.js Development</a></li>            
+            <li><a href="#1activity">Interactive Label Modifications</a></li>
+            <ul>
+              <li><a href="#2activity">3.1 Challenge 1: Modify Labels for Circle, Ellipse, Line, Triangle, and Pentagon</a></li>
+            </ul>
+            <li><a href="#3activity">Interactive Attribute Modifications</a></li>
+            <ul>
+            <li><a href="#4activity">4.1 Challenge 2: Modify Attributes for Circle, Ellipse, Line, Triangle, and Pentagon</a></li>  
+            </ul>
+            <li><a href="#5activity">Hiding and Showing SVG Elements</a></li>
+            <ul>
+            <li><a href="#6activity">5.1 Challenge 3: Show/Hide Circle, Ellipse, Line, Triangle, and Pentagon</a></li>
+            </ul>
+            <li><a href="#conclusion">Assignment submission and assessment</a></li>
+<!--             <li><a href="#extras">Continue learning</a></li> -->
+<!--             <li><a href="#solution">Solution</a></li> -->
+
+          </ol>
+
+          <!-- intro         -->
+          <h2 id="introduction">What are JavaScript and Vue.js?</h2>
+          <hr />
+
+          <div class="definition">
+            <p>
+              <i class="fa fa-quote-left" style="font-size: 48px"></i> JavaScript is a <a href="https://www.geeksforgeeks.org/introduction-to-scripting-languages/" target="_blank">scripting language</a> that allows you to implement complex features on web pages — every time a web page does more than just sit there and display static information for you to look at — displaying timely content updates, interactive maps, animated 2D/3D graphics, scrolling video jukeboxes, etc. — you can bet that JavaScript is probably involved.
+              <a
+                href="https://en.wikipedia.org/wiki/JavaScript"
+                target="_blank"
+                >... click to read the full article</a
+              >
+            </p>
+          </div>
+           <br>
+          <div class="myIframe">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DHGhFJZLKMs?si=RTd7-1t2uetlcq7u&amp;start=262" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          
+           <div class="definition">
+            <p>
+              <i class="fa fa-quote-left" style="font-size: 48px"></i> Vue.js is a <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Frameworks_libraries/Introduction" target="_blank">JavaScript framework</a> for building user interfaces and single-page applications. Vue.js allows for extending markup attributes through elements called directives. The directives offer functionality to applications.
+              <a
+                href="https://en.wikipedia.org/wiki/Vue.js"
+                target="_blank"
+                >... click to read the full article</a
+              >
+            </p>
+          </div>
+          
+          <br>
+          <div class="myIframe">
+           <iframe width="560" height="315" src="https://www.youtube.com/embed/53kB0GKAd2k?si=MqElw35rCwAZ9FUO&amp;start=260" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          
+          
+              <!-- prerequisites         -->
+          <h2 id="prerequisite">Pre-requisites: Set Up Your Project for SVG and Vue.js Development</h2>
+            <hr />
+          
+          <h4>
+            Step 1: Download the project folder
+          </h4>
+<ol>
+  <li>Download the following folder that contains two files named index.html and app.js: <a href="https://tinyurl.com/auhhyc7j" target="_blank">https://tinyurl.com/auhhyc7j</a></li>
+  <li>Save the folder in an easily accessible location, such as your desktop or a dedicated class folder</li>
+  <li>Unzip the folder</li>
+  <ul>
+              <li>Learn how to unzip folders in Mac: <a href="https://support.apple.com/en-ca/guide/mac-help/mchlp2528/mac" target="_blank">https://support.apple.com/en-ca/guide/mac-help/mchlp2528/mac</a></li>
+              <li>Learn how to unzip folders in Windows: <a href="https://support.microsoft.com/en-us/windows/zip-and-unzip-files-8d28fa72-f2f9-712f-67df-f80cf89fd4e5" target="_blank">https://support.microsoft.com/en-us/windows/zip-and-unzip-files-8d28fa72-f2f9-712f-67df-f80cf89fd4e5</a></li>
+            </ul>
+          </ol>
+  
+  <h4>
+    Step2: Open the index.html file in VS Code 
+  </h4>
+          <ol>
+  <li>Open the folder in VS Code by navigating to File &gt; Open Folder and selecting the folder</li>
+  <li>Select the index.html file in VS Code</li>
+      </ol>
+    
+  <h4>
+    Step 3: Copy and paste the HTML code template
+  </h4>
+          <ol>
+  <li>Copy and paste the code template below inside the index.html file</li>
+  <li>Save the changes to the file by pressing Ctrl+S (Windows) or Cmd+S (Mac)</li>
+  </ol>        
+          <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+
+               <pre><code class="language-markup">
+              <textarea class="myInput" rows="5" cols="50">
+          
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <title>My Vue App</title>
+</head>
+<body>
+  <div id="app">
+    <!-- add SVG here -->
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
+
+                
+               </textarea>
+               </code></pre>
+
+        </div>
+          
+          <h4>
+           Step 4: Add your SVG shapes to the HTML file
+          </h4>
+          
+          <ol>
+            <li>Locate the comment in the template that says &lt;!-- add SVG here --&gt;</li>
+            <li>Replace this comment with the SVG shapes you created in the <a href="https://artssci-3c03-labs.glitch.me/lab1.html#solution" target="_blank">Interface Design Lab 1: SVG</a> </li>
+            <li>Delete the 2nd row of shapes</li>
+            <li>Save your changes to the file by pressing Ctrl+S (Windows) or Cmd+S (Mac)</li>
+            <li>See reference image below</li>
+            <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/initial-svg-setup-in-html.png?v=1738119824432">
+          </ol>
+
+          
+          
+<h4>
+            Step 5: Preview your HTML File in Live Preview
+          </h4>         
+          <p>
+           The Live Preview extension in VS Code allows you to preview web projects, such as SVG, HTML, and JavaScript files, directly in VS Code.           
+          </p>
+          <ol>
+            <li>Follow the interactive tutorial below to install Live Preview:</li>
+            <div style="width:60%">
+                    <div style="max-width: 100%; width: 800px; margin: 0 auto;"> <div style="display: none;"> <p style="display: none; text-align: center; margin-top: 10px;"> <i style="font-style: italic; font-weight: bold; color: #CCCCCC; font-size: 18px;">7 STEPS</i> </p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 1. Click Extensions </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2502875&step_number=1&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 1 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 2. In the search bar type "live preview" </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2502875&step_number=2&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 2 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 3. Select the Live Preview extension </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2502875&step_number=3&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 3 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 4. Click Install </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2502875&step_number=4&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 4 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 5. Once it has finished to install, close the extension window </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2502875&step_number=5&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 5 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 6. Click Explorer to go back to your index.html file </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2502875&step_number=6&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 6 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 7. That's it. You're done. </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2502875&step_number=7&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 7 image" /></p> </div> </div> <h3 style="display: none; font-size: 18px; margin-top: 89px; margin-bottom: 15px;"> Here's an interactive tutorial </h3> <i style="display: none; font-size: 15px; margin-top: 0; margin-bottom: 43px;">** Best experienced in Full Screen (click the icon in the top right corner before you begin) **</i> <p style="display: none;"> <a href="https://www.iorad.com/player/2502875/Installing-Live-Preview-in-VS-Code">https://www.iorad.com/player/2502875/Installing-Live-Preview-in-VS-Code</a> </p> <p class="skiptranslate" style="border: 0; min-width: 100%; margin-bottom: 0; height: 501px;"><iframe src="https://www.iorad.com/player/2502875/Installing-Live-Preview-in-VS-Code?src=iframe&oembed=1" width="100%" height="500px" style="width: 100%; height: 500px; " referrerpolicy="strict-origin-when-cross-origin" frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen" allow="camera; microphone; clipboard-write;" sandbox="allow-scripts allow-forms allow-same-origin allow-presentation allow-downloads allow-modals allow-popups allow-popups-to-escape-sandbox allow-top-navigation allow-top-navigation-by-user-activation"></iframe></p> <div style="display: none;font-size: 18px; text-align: center;font-family: 'Libre Franklin', sans-serif;"> <br><br> <b style="font-weight: bold; color: #CCCCCC;"> Next step </b> <br><br> <div style="display: inline-block;"> <div style="display: table-row;"> <a style="display: table-cell;" href="http://ior.ad/live/av6X" target="_blank"> <img src="https://www.iorad.com/golive.svg" style="border: none;" alt="Go Live" /> </a> </div> </div> </div>
+          </div>
+          
+            
+          
+          <li>Go to the Explorer panel where you should still see your index.html file open</li>
+          <li>Click the <b>Show Preview</b> icon at the top-right corner. See the reference video below:</li>
+          </ol>
+          <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/show-preview.gif?v=1738120031111">
+          
+            <h4>
+              Step 6: Set Up the app.js File
+          </h4>
+         
+          <ol>
+            <li>Select the app.js file in VS Code</li>
+            <li>Copy and paste the template Vue code shown below in the app.js file</li>
+            <li>Save the changes to the file by pressing Ctrl+S (Windows) or Cmd+S (Mac)</li>
+          
+
+           <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+
+               <pre><code class="language-markup">
+              <textarea class="myInput" rows="5" cols="50">
+          
+const app = Vue.createApp({
+  data() {
+    return {
+      // Add your data properties here
+    };
+  },
+  methods: {
+    // Add your methods here
+  }
+});
+
+app.mount('#app');
+
+               </textarea>
+               </code></pre>
+        </div>
+            
+      <li>Your file should look like the one below</li>
+                <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/initial-vue-instance.png?v=1738120320795">
+          </ol>
+          
+
+          <!--  activity1          -->
+
+          <h2 id="1activity">Interactive Label Modifications</h2>
+          <hr />
+
+          <p>
+            With Vue.js we can change text inside our SVG file. Follow the steps below to learn how.
+          </p>
+          
+          <h3>
+            Add labels to your shapes
+          </h3>
+          <ol>
+            <li>Select the index.html file</li>
+            <li>Add the following SVG text elements after the last shape and before the closing <code>&lt;svg&gt;</code> tag</li>
+            
+           <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+
+         <pre><code class="language-markup">
+        <textarea class="myInput" rows="5" cols="50">
+        
+        <text x="100" y="180" font-size="20" text-anchor="middle" fill="black">Rectangle</text>
+        <text x="250" y="180" font-size="20" text-anchor="middle" fill="black">Circle</text>
+        <text x="450" y="180" font-size="20" text-anchor="middle" fill="black">Ellipse</text>
+        <text x="675" y="180" font-size="20" text-anchor="middle" fill="black">Line</text>
+        <text x="850" y="180" font-size="20" text-anchor="middle" fill="black">Triangle</text>
+        <text x="1000" y="180" font-size="20" text-anchor="middle" fill="black">Pentagon</text>
+</textarea>
+</code></pre>
+        </div>
+            <li>Your file should look like the one below</li>
+            </ol>
+          <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/Screenshot%20from%202025-01-28%2018-10-20.png?v=1738105839225">
+          
+          <h3>
+            Modify the labels interactively through Vue
+          </h3>
+          
+          <ol>
+            <li>Replace the text <code>Rectangle</code> with the text <code>{{rectangleLabel}}</code></li>
+            <li>After doing this, you'll see the label below the rectangle will disappear</li>
+            <li>See reference image below</li>
+            <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/Screenshot%20from%202025-01-28%2018-27-59.png?v=1738106906639">
+            <li>Now, go to the app.js file</li>
+            <li>Type <code>rectangleLabel:Rectangle</code> below the comment <code> // Add your data properties here</code></li>
+            <li>The label <code>Rectangle</code> should appear back under the rectangle shape</li>
+            <li>See reference image below</li>
+            <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/app-add-rectangle-property.png?v=1738107297715">
+          </ol>
+     
+
+
+   <button type="button" id="2activity" class="collapsible-question"><i class="fa fa-lightbulb-o" style="font-size:24px"></i> <b>3.1 Challenge 1: Modify Labels for Circle, Ellipse, Line, Triangle, and Pentagon</b></button>
+        <div class="additionalInfo">           
+           Follow the same workflow you used to modify the rectangle label:
+<ol>
+  <li>Identify the SVG shape (e.g., circle, ellipse, line, triangle, or pentagon)</li>
+  <li>Bind the label text to the SVG <code>&lt;text&gt;</code> element using Vue’s {{ }} syntax</li>
+  <li>Add a corresponding data property in your Vue instance for the shape’s label</li>
+  <li>Test your changes interactively by updating the label in Vue's data property and verifying it updates on the preview</li>
+          </ol>
+        </div>
+
+         
+          
+                    <!--  activity 2          -->
+  <h2 id="3activity">Interactive Attribute Modifications</h2>
+          <hr />         
+In this section, you will learn how to modify the attributes of an SVG shape dynamically using Vue.js. You will start by modifying the fill color of a rectangle, then move on to modifying its width dynamically.          
+          
+          
+          
+          <h3>Modify the Fill Color of the Rectangle</h3>
+          <ol>
+          <li>In your app.js file, add the data property <code>rectFill</code> with the value <code>"blue"</code>. See refence image below</li>
+          
+            <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/rectfill-vue.png?v=1738115194872">
+          
+            <li>In index.html, add a <code>fill</code> attribute with the value <code>"rectFill"</code> to the rectangle</li>
+            <li>Add the Vue’s v-bind directive <code>v-bind:</code> before the <code>fill</code> attribute</li>
+            
+              <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+
+            <pre><code class="language-markup">
+              <textarea class="myInput" rows="5" cols="50">
+              <rect width="100" height="100" x="50" y="50" v-bind:fill="rectFill" />
+            </textarea>
+               </code></pre>
+            </div>
+            
+            <li>The rectangle’s fill color is now controlled by Vue. You should see the rectangle's fill color change to blue. Any updates to <code>rectFill</code> in the Vue app will instantly change the rectangle’s color</li>
+            <li>See refence image below</li>
+            <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/rectfill-html.png?v=1738115450479"> 
+            
+          </ol>
+          
+          <h3>
+            Modify the Width of the Rectangle
+
+          </h3>
+          Now, follow the same process to dynamically modify the width of the rectangle.
+          <ol>
+            <li><b>Define a Data Property for Width:</b> In app.js, add a new property for the rectangle’s width called <code>rectWidth</code> with a value of <code>100</code></li>
+            <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/rectWidth.png?v=1738116131997">
+              
+            <li><b>Bind the Width Attribute in the SVG:</b> In index.html, update the <code>width</code> attribute of the rectangle by adding the <code>v-bind</code> directive and the value <code>"rectWidth"</code></li>
+            
+            <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+            <pre><code class="language-markup">
+              <textarea class="myInput" rows="5" cols="50">
+              <rect v-bind:width="rectWidth" height="100" x="50" y="50" v-bind:fill="rectFill" />
+            </textarea>
+               </code></pre>
+            </div>
+            <li><b>Observe the Change:</b> The rectangle’s width is now controlled by Vue. Try changing the value of <code>rectWidth</code> in your Vue app to see rectangle update instantly. If the rectangle doesn't update, try refreshing the live preview by clicking the refresh button</li>
+            <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/refresh-live-preview.gif?v=1738117012875">
+          </ol>
+          
+          
+          <button type="button" id="4activity" class="collapsible-question"><i class="fa fa-lightbulb-o" style="font-size:24px"></i> <b>4.1 Challenge 2: Modify Attributes for Circle, Ellipse, Line, Triangle, and Pentagon </b></button>
+        <div class="additionalInfo">           
+Now, apply what you’ve learned to modify attributes of other shapes!
+
+<ol>
+  <li><b>Choose one attribute to modify for each shape:</b></li>
+  <ul>
+    <li>Circle: fill (color) or r (radius)</li>
+    <li>Ellipse: fill (color) or rx (horizontal radius)</li>
+    <li>Line: stroke (color) or stroke-width (thickness)</li>
+    <li>Triangle (Polygon): fill (color) or stroke (outline color)</li>
+    <li>Pentagon (Path): fill (color) or stroke-width</li>
+  </ul>
+  <li><b>Add Vue Data Properties:</b> In app.js, create a data property for the attribute you chose. See example below</li>
+  <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/circle-fill-vue.png?v=1738117526322">
+  <li><b>Bind the Attribute in the SVG:</b> Update the SVG element in index.html to bind the chosen attribute using <code>v-bind</code> </li>
+     <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+
+            <pre><code class="language-markup">
+              <textarea class="myInput" rows="5" cols="50">
+<circle r="50" cx="250" cy="100" v-bind:fill="circleFill" />
+            </textarea>
+               </code></pre>
+            </div>
+  
+  <li><b>Observe your changes:</b> Observe how the attribute updates dynamically on the live preview. See reference image below</li>
+  <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/circle-fill-html.png?v=1738117415099">
+      </ol>
+        </div>
+          
+          <!--  activity 3          -->
+  <h2 id="5activity">Hiding or showing SVG elements interactively</h2>
+          <hr />          
+        
+          
+In this section, you will learn how to dynamically show or hide SVG elements using Vue.js. Instead of removing elements from the DOM (v-if), we will use the v-show directive, which toggles the visibility of elements by modifying their CSS display property.
+          
+          <ol>
+                <li>In app.js, create a new data property that will determine whether the rectangle is visible</li>
+                
+            <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/show-vue.png?v=1738118321166">
+            <li>In index.html, use Vue’s v-show directive to control the visibility of the rectangle</li>
+            <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+
+            <pre><code class="language-markup">
+              <textarea class="myInput" rows="5" cols="50">
+              <rect v-show="isRectangleVisible" width="100" height="100" x="50" y="50" fill="blue" />
+              </textarea>
+               </code></pre>
+            </div>
+            
+            <li>The visibility of the rectangle is now controlled by your app.js file. Try changing it to false to make it disappear </li>
+            <ul>
+              <li>If <code>isRectangleVisible</code> is <code>true</code>, the rectangle remains visible</li>
+              <li>If <code>isRectangleVisible</code> is <code>false</code>, the rectangle becomes hidden</li>
+            </ul>
+            <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/show-html.png?v=1738118477257">
+          </ol>
+          
+         <button type="button" id="6activity" class="collapsible-question"><i class="fa fa-lightbulb-o" style="font-size:24px"></i> <b>5.1 Challenge 3: Show or Hide Other Shapes</b></button>
+        <div class="additionalInfo">           
+Now, apply the same concept to show or hide other SVG elements interactively!
+
+
+<ol>
+  <li>Choose a shape (circle, ellipse, line, triangle, or pentagon)</li>
+  <li>Create a Vue data property (e.g., <code>isCircleVisible: true</code>)</li>
+  <li>Use <code>v-show</code> in the SVG to control the shape’s visibility</li>
+  <li>Manually change <code>true</code> to <code>false</code> in app.js and observe the effect</li>
+</ol>
+    </div>
+          
+<!--  conclusion          -->
+          
+          <h2 id="conclusion">Assignment submission and assessment</h2>
+          <hr />
+<!--           <h3>
+            Submission 
+          </h3>
+ -->
+          <ol>
+            <li><b>Zip your folder</b></li>
+            <ul>
+              <li>Learn how to zip your folder in Mac: <a href="https://support.apple.com/en-ca/guide/mac-help/mchlp2528/mac" target="_blank">https://support.apple.com/en-ca/guide/mac-help/mchlp2528/mac</a></li>
+              <li>Learn how to zip your folder in Windows: <a href="https://support.microsoft.com/en-us/windows/zip-and-unzip-files-8d28fa72-f2f9-712f-67df-f80cf89fd4e5" target="_blank">https://support.microsoft.com/en-us/windows/zip-and-unzip-files-8d28fa72-f2f9-712f-67df-f80cf89fd4e5</a></li>
+            </ul>
+            <li><b>Submit your compressed folder to the folder Interactivity Lab 1: Vue.js Basics </b> on Avenue to Learn under Assessments &gt; Assignments. </li>
+          </ol>
+          
+          <h3>
+            Assessment 
+          </h3>
+          <ol>
+            
+                  
+             <li><b>Calendar Wireframe (2.5 points)</b> The file named "calendar-wireframe" includes all the specified shapes outlined in Section 3: "Practice Wireframing a Calendar Interface in Figma"</li>            
+            <li><b>Your Own Software Wireframe (5 points): </b> The custom software wireframe demonstrates effective use of shapes and text.
+It is well-designed with a clear purpose and goal for the user </li>
+            <li><b>Effective Team Collaboration (2.5 points) </b>The final outcome reflects highly effective teamwork through strong communication strategies and active listening among team members</li>
+           
+           
+<!--             <li><b>Structure:</b> The file contains a single main &lt;svg&gt; tag, and all shapes are coded within this tag (2.5 points</li> -->
+          </ol>
+  
+        
+          
+<!--           <h2 id="extras">Continue learning</h2>
+          <hr />
+          <p>
+           Check out these activities if you want to continue learning.
+          </p>
+          
+          <ol>
+            <li><b>Read</b> the full article from the section <a href="#introduction">What is Figma and how it relates to Scalable Vector Graphics</a></li>
+            <li><b>Learn</b> how to create Pixel Art and explore Figma tools like <b>layout grids and pixel grid</b>: 
+               <a href="https://help.figma.com/hc/en-us/articles/14794362149015-Create-pixel-art-in-Figma-Design" target="_blank"
+                >https://help.figma.com/hc/en-us/articles/14794362149015-Create-pixel-art-in-Figma-Design</a></li>
+          </ol> -->
+          
+        </div>
+      </div>
+<!-- footer -->
+    <footer class="footer">
+    </footer>
+  </body>
+</html>
