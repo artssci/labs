@@ -40,7 +40,9 @@
         
         <div class="instructions">
           <p style="margin-left: 0">
-            <b>Due date:</b>February 11 by the end of the day (11:59 pm).  
+            
+            
+            <b>Due date:</b>Submit <u>individually</u> by February 11 by the end of the day (11:59 pm).  
             <br><br>
 
             <b>Grace period:</b> 1 week (7 days) without penalty.  
@@ -58,14 +60,17 @@
           <hr>
           <h2 class="nocount">General Description</h2>
 
-          <p style="margin-left: 0">In this lab, you will be introduced to Vue.js, a JavaScript framework for building dynamic user interfaces. You will explore Vue’s reactivity system by using Vue data properties to update SVG text and attributes dynamically.  </p>
+          <p style="margin-left: 0">In this lab, you will be introduced to Vue.js, a <abbr title="JavaScript frameworks are a collection of libraries containing code written in JavaScript, making life a lot easier for software developers">JavaScript framework</abbr> for building <abbr title="In computing, dynamic means something is capable of change or action">dynamic</abbr>  user interfaces. You will explore Vue’s reactivity system by using Vue data properties to update SVG text and attributes dynamically.  </p>
           
           
           <h2 class="nocount">Learning Objectives</h2>
           
 
           <ol>
-            <li><b>Understand the fundamentals of Vue.js</b>, including its reactivity system and data binding</li>
+            <li><b>Understand the fundamentals of Vue.js</b>, including its <abbr title="The ability to automatically update data changes">reactivity</abbr> and   <abbr title="Data binding is the process that establishes a connection between the app's interface and the data it displays">data binding</abbr> system</li>
+            
+           
+            
             <li><b>Apply Vue.js to control SVG elements</b>, dynamically updating text content and shape attributes</li>
             <li><b>Gain hands-on experience with Vue’s interpolation and directives</b>, such as v-bind and v-show, to create responsive text and graphics</li>
           </ol>
@@ -119,7 +124,7 @@
           
            <div class="definition">
             <p>
-              <i class="fa fa-quote-left" style="font-size: 48px"></i> Vue.js is a <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Frameworks_libraries/Introduction" target="_blank">JavaScript framework</a> for building user interfaces and single-page applications. Vue.js allows for extending markup attributes through elements called directives. The directives offer functionality to applications.
+              <i class="fa fa-quote-left" style="font-size: 48px"></i> Vue.js is a <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Frameworks_libraries/Introduction" target="_blank">JavaScript framework</a> (i.e., a collection of libraries) for building user interfaces and applications. Vue.js allows for extending markup attributes through elements called directives. The directives offer functionality to applications.
               <a
                 href="https://en.wikipedia.org/wiki/Vue.js"
                 target="_blank"
@@ -138,7 +143,9 @@
           <h2 id="prerequisite">Pre-requisites: Set Up Your Project for SVG and Vue.js Development</h2>
             <hr />
           
-Before you start creating reactive SVG elements with Vue.js, you need to set up a structured project environment. This setup is essential because it allows you to:
+          <button type="button" class="collapsible-question"><i class="fa fa-question-circle-o"></i> <b>Why is this important?</b></button>
+        <div class="additionalInfo">           
+            Before you start creating reactive SVG elements with Vue.js, you need to set up a structured project environment. This setup is essential because it allows you to:
 
           <ul>
             <li><b>Separate concerns</b> – An HTML file (index.html) will store your SVG elements, while a JavaScript file (vue.js) will control their behavior</li>
@@ -146,12 +153,13 @@ Before you start creating reactive SVG elements with Vue.js, you need to set up 
             <li><b> Preview and test changes</b> – Using Live Preview in VS Code ensures that you see updates in real time as you modify the code</li>
           </ul>
 
-<hr>
+        </div>
+          
           <h4>
             Step 1: Download the project folder
           </h4>
 <ol>
-  <li>Download the following folder that contains two files named index.html and vue.js: <a href="https://tinyurl.com/auhhyc7j" target="_blank">https://tinyurl.com/auhhyc7j</a></li>
+  <li>Download the following folder that contains two files named <abbr title="HTML (HyperText Markup Language) is another markup language similar to SVG. It is usually used for websites. In this project, the index.html file will store your SVG drawings">index.html</abbr> and <abbr title="The vue.js is a file that store your JavaScript code">vue.js</abbr> : <a href="https://tinyurl.com/auhhyc7j" target="_blank">https://tinyurl.com/auhhyc7j</a></li>
   <li>Save the folder in an easily accessible location, such as your desktop or a dedicated class folder</li>
   <li>Unzip the folder</li>
   <ul>
@@ -161,7 +169,7 @@ Before you start creating reactive SVG elements with Vue.js, you need to set up 
           </ol>
   
   <h4>
-    Step2: Open the index.html file in VS Code 
+    Step2: Open the project folder and the index.html file in VS Code 
   </h4>
           <ol>
   <li>Open the folder in VS Code by navigating to File &gt; Open Folder and selecting the folder</li>
@@ -206,7 +214,7 @@ Before you start creating reactive SVG elements with Vue.js, you need to set up 
         <button type="button" class="collapsible"><i class="fa fa-info-circle"></i> <b>Code explanation</b></button>
         <div class="additionalInfo">           
             <p>
-           This HTML template sets up a basic Vue.js project using HTML (HyperText Markup Language), which structures web content. It links Vue, defines a &lt;div id="app"&gt; as the Vue mount point, and includes an external vue.js script to control the app. 🚀
+           This HTML template sets up a basic Vue.js project. This file will allow us to connect our SVG to the vue.js file to control the app dynamically. 🚀
           </p> 
         </div>
           
@@ -242,10 +250,10 @@ Before you start creating reactive SVG elements with Vue.js, you need to set up 
           
           
 <h4>
-            Step 5: Preview your HTML File in Live Preview
+            Step 5: Preview your HTML file in Live Preview
           </h4>         
           <p>
-           The Live Preview extension in VS Code allows you to preview projects, such as SVG, HTML, and JavaScript files, directly in VS Code.           
+           The Live Preview extension in VS Code allows you to preview HTML files directly in VS Code.           
           </p>
           <ol>
             <li>Follow the interactive tutorial below to install Live Preview:</li>
@@ -253,15 +261,15 @@ Before you start creating reactive SVG elements with Vue.js, you need to set up 
                     <div style="max-width: 100%; width: 800px; margin: 0 auto;"> <div style="display: none;"> <p style="display: none; text-align: center; margin-top: 10px;"> <i style="font-style: italic; font-weight: bold; color: #CCCCCC; font-size: 18px;">7 STEPS</i> </p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 1. Click Extensions </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2502875&step_number=1&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 1 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 2. In the search bar type "live preview" </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2502875&step_number=2&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 2 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 3. Select the Live Preview extension </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2502875&step_number=3&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 3 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 4. Click Install </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2502875&step_number=4&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 4 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 5. Once it has finished to install, close the extension window </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2502875&step_number=5&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 5 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 6. Click Explorer to go back to your index.html file </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2502875&step_number=6&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 6 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 7. That's it. You're done. </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2502875&step_number=7&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 7 image" /></p> </div> </div> <h3 style="display: none; font-size: 18px; margin-top: 89px; margin-bottom: 15px;"> Here's an interactive tutorial </h3> <i style="display: none; font-size: 15px; margin-top: 0; margin-bottom: 43px;">** Best experienced in Full Screen (click the icon in the top right corner before you begin) **</i> <p style="display: none;"> <a href="https://www.iorad.com/player/2502875/Installing-Live-Preview-in-VS-Code">https://www.iorad.com/player/2502875/Installing-Live-Preview-in-VS-Code</a> </p> <p class="skiptranslate" style="border: 0; min-width: 100%; margin-bottom: 0; height: 501px;"><iframe src="https://www.iorad.com/player/2502875/Installing-Live-Preview-in-VS-Code?src=iframe&oembed=1" width="100%" height="500px" style="width: 100%; height: 500px; " referrerpolicy="strict-origin-when-cross-origin" frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen" allow="camera; microphone; clipboard-write;" sandbox="allow-scripts allow-forms allow-same-origin allow-presentation allow-downloads allow-modals allow-popups allow-popups-to-escape-sandbox allow-top-navigation allow-top-navigation-by-user-activation"></iframe></p> <div style="display: none;font-size: 18px; text-align: center;font-family: 'Libre Franklin', sans-serif;"> <br><br> <b style="font-weight: bold; color: #CCCCCC;"> Next step </b> <br><br> <div style="display: inline-block;"> <div style="display: table-row;"> <a style="display: table-cell;" href="http://ior.ad/live/av6X" target="_blank"> <img src="https://www.iorad.com/golive.svg" style="border: none;" alt="Go Live" /> </a> </div> </div> </div>
           </div>
           
-            
+            <br>
           
-            <li>Go to the <b>Explorer</b> panel in VS Code where you should still see your index.html file open</li>
+          <li>Go to the <b>Explorer</b> panel in VS Code where you should still see your index.html file open</li>
           <li>Click the <b>Show Preview</b> icon at the top-right corner. See the reference video below:</li>
           </ol>
           <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/gif1-corped.gif?v=1738553003508">
           
             <h4>
-              Step 6: Set Up the vue.js File
+              Step 6: Set up the vue.js file
           </h4>
          
           <ol>
@@ -301,7 +309,7 @@ app.mount('#app');
  <button type="button" class="collapsible"><i class="fa fa-info-circle"></i> <b>Code explanation</b></button>
         <div class="additionalInfo">           
             <p>
-           This Vue.js code creates a Vue application instance, defining a data() function for reactive properties and a methods section for interactive behaviors. It then mounts the app to the &lt;div id="app"&gt; in the HTML, allowing Vue to control the content dynamically. 🚀
+           This Vue.js code creates a Vue application instance, defining a data() function for reactive properties and a methods section for interactive behaviors, allowing Vue to control the HTML content, like your SVG drawings, dynamically. 🚀
           </p> 
         </div>
           
@@ -315,7 +323,7 @@ app.mount('#app');
            <br><br> 
            In this exercise, you will:
           <ol>
-            <li>Replace static text with Vue’s text interpolation for Vue to control the displayed text</li>
+            <li>Replace static text with Vue’s <abbr title="Text interpolation is a way to dynamically insert text into the SVG code using double curly braces {{ }}">text interpolation</abbr> for Vue to control the displayed text</li>
             <li>Define the text in vue.js, making the labels reactive</li>
             <li>See how Vue automatically updates the displayed text</li>
           </ol>
@@ -337,11 +345,10 @@ When the data changes, the UI updates automatically without manually modifying t
           <ol>
             <li>Open the index.html file and locate the label you want to update reactively. For example, the label under the <code>&lt;rect&gt;</code> element</li>
             <li>Replace the text <code>Rectangle</code> with two pairs of curly brackets, like <code>{{ }}</code></li>
-            <li>Choose a data property name and type it inside the curly brackets. 
-                <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i>
-          
-              The name should: 1) Start with a lowercase letter  - e.g., rectangleLabel, not RectangleLabel. 2) Use only letters and numbers - no spaces or special characters. 3) use camelCase for multiple words - e.g., circleLabel, pentagonColor.
-          </p>
+            <li>Choose a  <abbr title="Variables stored in Vue’s data() section that control the user interface">data property</abbr> name, like <code>rectangleLabel</code> and type it inside the curly brackets. 
+                
+              
+              
        </li>
 
         <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
@@ -354,8 +361,12 @@ When the data changes, the UI updates automatically without manually modifying t
 </code></pre>
         </div>
             
+            <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+          
+              The data property name should: 1) Start with a lowercase letter  - e.g., rectangleLabel, not RectangleLabel. 2) Use only letters and numbers - no spaces or special characters. 3) use the CamelCase naming convention where the first word is lowercase, and each following word starts with an uppercase letter - e.g., circleLabel, pentagonColor.
+          </p>
             
-            <li>Save your changes and check the live preview. The Rectangle label will disappear — this is expected because Vue doesn’t know what rectangleLabel is yet</li>
+            <li>Save your changes and check the live preview. The Rectangle label will disappear — this is expected because Vue doesn’t know what rectangleLabel is yet. We will define it in the next step.</li>
             <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/fig3-tagged.png?v=1738552553722">
           </ol>
           
@@ -366,7 +377,9 @@ When the data changes, the UI updates automatically without manually modifying t
           Now, let's define <code>rectangleLabel</code> inside vue.js.
 
           <ol>  
-            <li>Open vue.js and update your <code>data()</code> section:
+            <li>Open vue.js and update your <abbr title="The data() section in Vue.js stores reactive values that can be used in the SVG code."><code>data()</code> section:</abbr>
+
+
               <ul>
                 <li>Type <code>rectangleLabel: "Rectangle"</code> below the comment <code> // Add your data properties here</code></li>
               </ul>
@@ -382,15 +395,13 @@ When the data changes, the UI updates automatically without manually modifying t
             
             <li>Save your file. The Rectangle label should reappear because Vue is now controlling it! Try other names such as "My Rectangle" or "Square"</li>
             
-           <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i>
-  If the live preview does not update immediately, try refreshing the window by clicking the ⟳ icon in the live preview.
-</p>
-
-            
+                
             <img src="  https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/fig4-tagged.png?v=1738552555484">
           </ol>
      
-
+  <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+  If the live preview does not update immediately, try refreshing the window by clicking the ⟳ icon in the live preview.
+</p>
 
    <button type="button" id="2activity" class="collapsible-question"><i class="fa fa-star-o" style="font-size:24px"></i> <b>3.1 Challenge 1: Make Other Labels Reactive
 </b></button>
@@ -400,11 +411,18 @@ When the data changes, the UI updates automatically without manually modifying t
   <ol>
     <li>In index.html, replace the static text inside each  <code>&lt;text&gt;</code> element with Vue’s {{ }} syntax</li>
     <ul>
-      <li>⚠ Add a comma after any previous properties under Vue's <code>data()</code></li>  
       <li>⚠ Choose a meaningful name for each shape’s data property (e.g., <code>circleLabel</code>)</li>
     </ul>
     <li>Define a corresponding data property for each shape in vue.js (e.g., <code>circleLabel: "Circle"</code>)</li>
-  <li>Test your changes! Try modifying a label’s text inside vue.js and see how it automatically updates in the live preview</li>
+    <ul>
+            <li>⚠ Add a comma after any previous properties under Vue's <code>data()</code></li>  
+    </ul>
+  <li>Test your changes! See if the labels display in the live preview
+    <ul>
+      <li>You can also try modifying the labels' text inside vue.js to see how the automatically update in the live preview</li>
+    </ul>
+    </li>
+    
   </ol>
         </div>
 
@@ -415,12 +433,12 @@ When the data changes, the UI updates automatically without manually modifying t
           <hr />         
       
       <p>
-In Vue.js, just like we can make text reactive, we can also make SVG attributes reactive. This means Vue can automatically update an SVG shape's properties like color, size, or position when the underlying data changes.
+        In Vue.js, just like we can make text reactive, we can also make <abbr title="SVG attributes are properties that define the appearance and behavior of SVG elements, such as fill, stroke, width, height, and viewBox">SVG attributes</abbr> reactive. This means Vue can automatically update an SVG shape's properties like color, size, or position when the underlying data changes.
         
         <br><br>
         In this exercise, you will:
 <ol>
-    <li>Use Vue's v-bind directive to sync an SVG attribute to a Vue data property</li>
+  <li>Use Vue's v-bind <abbr title="A directive in Vue.js is a special attribute starting with v- that adds reactive behavior to markup elements like SVG elements.">directive</abbr> to sync an SVG attribute to a Vue data property</li>
     <li>Make the height, radius, stroke, and fill of your shapes react to Vue's data</li>
 </ol>
 </p>
@@ -433,13 +451,8 @@ In Vue.js, just like we can make text reactive, we can also make SVG attributes 
           <ol>
             <li>Open index.html and locate the element you want to make reactive. For example, locate the <code>&lt;rect&gt;</code> element</li>
             <li>Locate the attribute you want to make reactive, for example the height</li>
-            <li>Replace the <code>height</code> value with a meaningful property name such as <code>"rectHeight"</code></li>
+            <li>Replace the <code>height</code> value with a meaningful <abbr title="Data properties are variables stored in Vue’s data() section that control the user interface">data property</abbr> name such as <code>"rectHeight"</code></li>
             
-            <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i>
-              Remember: The name should start with a lowercase letter, use only letters and numbers (no spaces or special characters), and use camelCase for multiple words (e.g., circleRadius, rectHeight)
-          </p>
-            
-         
             
             <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
 
@@ -450,7 +463,11 @@ In Vue.js, just like we can make text reactive, we can also make SVG attributes 
            </code></pre>
           </div>
             
-            <li>Now, attach a <code>v-bind</code> directive to the <code>height</code> attribute. This will sync (i.e., bind) the attribute to a data property called rectHeight that we will create in the next step</li>
+              <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+              Remember: The name should start with a lowercase letter, use only letters and numbers (no spaces or special characters), and use camelCase for multiple words (e.g., circleRadius, rectHeight)
+          </p>
+            
+            <li>Now, attach a <code>v-bind</code> directive to the <code>height</code> attribute. This will sync (i.e., bind) the attribute to a data property called <code>rectHeight</code> that we will create in the next step</li>
             
           <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
 
@@ -461,7 +478,7 @@ In Vue.js, just like we can make text reactive, we can also make SVG attributes 
           </code></pre>
           </div>
     
-            <li>Save your changes. At this point, you will notice the square disappears in the live preview</li>
+            <li>Save your changes. At this point, you will notice the square disappears in the live preview — this is expected because Vue doesn’t know what <code>rectHeight</code> is yet. We will define it in the next step.</li>
 
         
           <img src="  https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/fig5-tagged.png?v=1738552558188"> 
@@ -474,7 +491,7 @@ In Vue.js, just like we can make text reactive, we can also make SVG attributes 
             Now, let’s define the <code>rectHeight</code> property in your vue.js file. 
           
             <ol>
-              <li> Open vue.js and update your data() section:
+              <li> Open vue.js and update your <abbr title="The data() section in Vue.js stores reactive values that can be used in the SVG code."><code>data()</code> section:</abbr>
                 <ul>
                   <li>Add a comma after any previous properties</li>
                   <li>Below your existing properties, type <code>rectHeight: </code> with the value <code>"100"</code></li>
@@ -489,13 +506,14 @@ In Vue.js, just like we can make text reactive, we can also make SVG attributes 
         </div>
               <li>Save your file. The square should reappear change because Vue is now controlling it! You can change the value of rectHeight to something else like "200", and Vue will update the shape's height accordingly</li>
 
-              <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i>
-  If the live preview does not update immediately, try refreshing the window by clicking the ⟳ icon in the live preview.
-</p>
-
+             
               
             <img src="  https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/fig6-tagged.png?v=1738552559610">
             </ol>
+
+     <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+  If the live preview does not update immediately, try refreshing the window by clicking the ⟳ icon in the live preview.
+</p>
 
           
           <button type="button" id="4activity" class="collapsible-question"><i class="fa fa-star-o" style="font-size:24px"></i> <b>4.1 Challenge 2: Make Other Attributes Reactive </b></button>
@@ -505,27 +523,27 @@ Now, apply what you’ve learned to create reactive attributes for the following
           
           <ul>
   
-  <li>Circle: r (radius)</li>
-  <li>Ellipse: rx (horizontal radius)</li>
-  <li>Line: stroke-width</li>
-  <li>Triangle (Polygon): stroke (outline color)</li>
-  <li>Pentagon (Path): fill (any color you like)</li>
+            <li>For the <code>circle</code>, make the <code>r</code> (radius) reactive</li>
+            <li>For the <code>ellipse</code>, make the <code>rx</code> (horizontal radius) reactive</li>
+            <li>For the <code>line</code>, make the <code>stroke-width</code> reactive</li>
+            <li>For the <code>triangle</code> (Polygon), make the <code>stroke</code> reactive</li>
+            <li>For the <code>pentagon</code> (Path), make the <code>fill</code> reactive </li>
             </ul>
 
         Steps recap:
           
           <ol>
             <li>Open index.html and locate the element you want to make reactive</li>
-            <li>Locate the attribute you want to make reactive</li>
-            <li>Replace the attribute's value with a meaningful property name</li>
+            <li>Locate the attribute you need to make reactive</li>
+            <li>Replace the attribute's value with a meaningful property name  (e.g., circleRadius, lineStrokeWidth)</li>
             <li>Attach a v-bind directive to the attribute</li>
-            <li>Open vue.js and type the property name under data() and give it a value
+            <li>Open vue.js and type the property name under <code>data()</code> and give it a value
               <ul>
-              <li>⚠ Reminder: Use a meaningful name for each data property (e.g., circleRadius, lineStrokeWidth)</li>
               <li>⚠ Reminder: Don't forget to add a comma after any previous properties</li>
               </ul>
             </li>
-            <li>Test your changes! Modify the values in vue.js and see how the shapes update dynamically in the live preview</li>
+            <li>Test your changes! For example, you can try modifying the values in vue.js and see how the shapes update dynamically in the live preview
+</li>
             
           </ol>
           
@@ -537,6 +555,8 @@ Now, apply what you’ve learned to create reactive attributes for the following
         
           
 In Vue.js, you can dynamically control the visibility of SVG elements using the v-show directive. Instead of manually removing elements, Vue will show or hide them based on a data property.
+    
+    <br><br>
       
       In this exercise, you will:
       
@@ -564,7 +584,7 @@ In Vue.js, you can dynamically control the visibility of SVG elements using the 
                </code></pre>
             </div>
   </li>
-  <li>  Save your changes. You will notice the square disappears in the live preview</li>
+  <li>  Save your changes. You will notice the square disappears in the live preview — this is expected because Vue doesn’t know what <code>isRectangleVisible</code> is yet. We will define it in the next step.</li>
   
   <img src="  https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/fig7-tagged.png?v=1738552562344">
       </ol>
@@ -574,7 +594,7 @@ In Vue.js, you can dynamically control the visibility of SVG elements using the 
       </h3>
       
       <ol>
-        <li>In vue.js, define <code>isRectangleVisible</code> in the data() section:
+        <li>In vue.js, define <code>isRectangleVisible</code> in the <abbr title="The data() section in Vue.js stores reactive values that can be used in the SVG code."><code>data()</code> section:</abbr>
         <ul>
           <li>Add a comma after any previous properties</li>
           <li>Below your existing properties, type <code>isRectangleVisible:</code> with the value <code>true</code></li>
@@ -610,9 +630,13 @@ Now, apply the same concept to show or hide other SVG elements interactively!
 
 <ol>
   <li>Choose one shape and one text element</li>
-  <li>Create a Vue data property (e.g., <code>isCircleVisible: true</code> or <code>isTriangleLabelVisible</code>)</li>
-  <li>Use <code>v-show</code> in the SVG to control the shape’s and text's visibility</li>
-  <li>Manually change <code>true</code> to <code>false</code> in vue.js and observe the effect</li>
+  <li>Add <code>v-show</code> in the SVG element along with a meaningful property name (e.g., <code>isCircleVisible</code> or <code>isTriangleLabelVisible</code>) </li>
+  <li>Open vue.js and type the property name under <code>data()</code> and give it a value of <code>true</code> or <code>false</code>
+    <ul>
+    <li>⚠ Reminder: Don't forget to add a comma after any previous properties </li>
+    </ul>
+  </li>
+  <li>Test your changes! For example, manually change <code>true</code> to <code>false</code> in vue.js and observe the effect</li>
 </ol>
     </div>
           
@@ -630,7 +654,7 @@ Now, apply the same concept to show or hide other SVG elements interactively!
               <li>Learn how to zip your folder in Mac: <a href="https://support.apple.com/en-ca/guide/mac-help/mchlp2528/mac" target="_blank">https://support.apple.com/en-ca/guide/mac-help/mchlp2528/mac</a></li>
               <li>Learn how to zip your folder in Windows: <a href="https://support.microsoft.com/en-us/windows/zip-and-unzip-files-8d28fa72-f2f9-712f-67df-f80cf89fd4e5" target="_blank">https://support.microsoft.com/en-us/windows/zip-and-unzip-files-8d28fa72-f2f9-712f-67df-f80cf89fd4e5</a></li>
             </ul>
-            <li><b>Submit your zipped folder to Interactivity Lab 1: Vue.js Basics </b> on Avenue to Learn under Assessments &gt; Assignments. </li>
+            <li><b>Submit your zipped folder to Interactivity Lab 1: Vue.js Basics </b> on Avenue to Learn under Assessments &gt; Assignments </li>
           </ol>
           
         
@@ -639,7 +663,7 @@ Now, apply the same concept to show or hide other SVG elements interactively!
             <h3>Assessment Criteria</h3>
 
     <ol>
-      <li><b>File Validity (2.5 points):</b> The project folder is correctly zipped and submitted. Theindex.html and vue.js files are included and functional</li>
+      <li><b>File Validity (2.5 points):</b> The project folder is correctly zipped and submitted. The index.html and vue.js files are included and functional</li>
       <li><b>Creating Reactive Text Display (2.5 points):</b> All SVG text labels are dynamically controlled using Vue.js</li>
       <li><b>Creating Reactive Shape Properties (2.5 points):</b> The SVG attributes specified in this section are controlled dynamically using Vue.js</li>
       <li><b>Hiding or showing shapes and text reactively (2.5 points):</b> One shape and one text elements are shown or hidden dynamically using Vue.js</li>      
@@ -655,6 +679,9 @@ Now, apply the same concept to show or hide other SVG elements interactively!
     
     Refer to the definitions below to reinforce your knowledge.
     <ul>
+      
+            
+
 <!--     <abbr title="How Vue injects dynamic values into the SVG">Text Interpolation</abbr>  
     <abbr title="Variables stored in Vue’s data() function that control the user interface">Data Properties</abbr>  
     <abbr title="Variables stored in Vue’s data() function that control the user interface">v-bind Directive</abbr>  

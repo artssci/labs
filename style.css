@@ -420,3 +420,14 @@ figure{
 textarea {
 /*   width:100%; */
 }
+
+abbr {
+  cursor: pointer;
+  color: purple;
+  text-decoration: none
+}
+
+abbr:hover {
+  cursor: pointer;
+  color: orange;
+}
