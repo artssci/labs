@@ -437,3 +437,7 @@ abbr:hover {
 .codeExample{
   font-size: 0.65em
 }
+
+.listOfLabs {
+  font-size: 1em;
+}
