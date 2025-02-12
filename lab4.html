@@ -494,17 +494,17 @@ When the data changes, the UI updates automatically without manually modifying t
               <li> Open vue.js and update your <abbr title="The data() section in Vue.js stores reactive values that can be used in the SVG code."><code>data()</code> section:</abbr>
                 <ul>
                   <li>Add a comma after any previous properties</li>
-                  <li>Below your existing properties, type <code>rectHeight: </code> with the value <code>"100"</code></li>
+                  <li>Below your existing properties, type <code>rectHeight: </code> with the value <code>100</code>. Note that in Vue, numbers should not have quotation marks</li>
                 </ul>
               </li>
               <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
          <pre><code class="language-markup">
         <textarea class="myInput" rows="5" cols="50">
-        rectHeight: "100"
+        rectHeight: 100
 </textarea>
 </code></pre>
         </div>
-              <li>Save your file. The square should reappear change because Vue is now controlling it! You can change the value of rectHeight to something else like "200", and Vue will update the shape's height accordingly</li>
+              <li>Save your file. The square should reappear change because Vue is now controlling it! You can change the value of rectHeight to something else like <code>200</code>, and Vue will update the shape's height accordingly</li>
 
              
               
