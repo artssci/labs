@@ -120,6 +120,7 @@ body {
   min-height: var(--wrapper-height);
   display: grid;
   place-items: center;
+  padding: 1em;
 /*   margin: 0 1rem; */
 
 }
@@ -252,6 +253,7 @@ p, ol {
   color: white;
   border-radius: 1rem 0 0 1rem;
   padding: 1rem;
+  width: 80%;
 }
 
 
@@ -280,7 +282,7 @@ a:link {text-decoration:none;
   color: white;
   cursor: pointer;
   padding: 18px;
-  width: 100%;
+  width: 80%;
   border: none;
   text-align: left;
   outline: none;
@@ -430,4 +432,8 @@ abbr {
 abbr:hover {
   cursor: pointer;
   color: orange;
+}
+
+.codeExample{
+  font-size: 0.65em
 }

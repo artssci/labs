@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+
+    <link rel="icon" href="https://glitch.com/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--
+      This is the page head - it contains info the browser uses
+      Like the title, which appears on the browser tab but not inside the page
+      Further down you'll see the content that displays in the page
+    -->
+    <title>Interactivity Lab 2: Vue.js Basics</title>
+
+    <!-- The website stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- The website JavaScript file -->
+        <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!--
+      The body includes the content you see in the page
+      Each element is defined using tags, like this <div></div>
+      The attributes like class="wrapper" let us style elements in the CSS
+    -->
+    <div class="wrapper">
+      <div class="content" role="main">
+        <h1 class="title">Interactivity Lab 2: Vue.js Basics</h1>
+        
+        <div class="instructions">
+          <p style="margin-left: 0">
+            
+            
+            <b>Due date:</b>Submit <u>individually</u> by February 25 by the end of the day (11:59 pm).  
+            <br><br>
+
+            <b>Grace period:</b> 1 week (7 days) without penalty.  
+            <br><br>
+
+            <b>After grace period:</b> Submissions after the grace period will be penalized 5% for each additional day that they are overdue – including Saturdays and Sundays. Submissions made 1 week (7 days) after the grace period will not be accepted and will receive a 0% grade.          
+          </p>
+        </div>
+      </div>
+      
+      
+
+        <!-- lab starts here  -->
+        <div class="instructions">
+          <hr>
+          <h2 class="nocount">General Description</h2>
+
+          <p style="margin-left: 0">In this lab, you will build on your Vue skills to make your shapes interactive. Users will be able to click, hover, or type to trigger changes. In Vue, this is achieved using events (e.g., click, mouseover) and methods that dynamically modify the data.</p>
+          
+          
+          <h2 class="nocount">Learning Objectives</h2>
+          
+
+          <ol>
+                <li><b>Program Events to Trigger Changes</b> – Gain hands-on experience using events like click, double click, and mouseover to trigger changes in your SVG elements.</li>
+            <li><b>Define and Use Methods in Vue</b> – Learn how to create simple methods describing how your SVG elements will change.</li>
+          </ol>
+          
+
+          <!-- contents           -->
+          <h2 class="nocount">Table of Contents</h2>
+          <hr />
+
+          <ol>
+            
+            <li><a href="#introduction">How Reactivity and Interactivity Work Together</a></li>
+            <li><a href="#prerequisite">Pre-requisites: Locate Your Folder From Past Lab</a></li>            
+            <li><a href="#1activity">Creating Interactive Text</a></li>
+            <ul>
+              <li><a href="#2activity">3.1 Challenge 1: Create Interactive Labels</a></li>
+            </ul>
+            <li><a href="#3activity">Updating Shape Attributes Interactively</a></li>
+            <ul>
+            <li><a href="#4activity">4.1 Challenge 2: Create Interactive Shape Attributes</a></li>  
+            </ul>
+            <li><a href="#5activity">Controlling Visibility Interactively</a></li>
+            <ul>
+            <li><a href="#6activity">5.1 Challenge 3: Show or Hide Elements Interactively</a></li>
+            </ul>
+            <li><a href="#7activity">Adding Complexity To Methods</a></li>
+            <ul>
+            <li><a href="#8activity">6.1 Challenge 4: Decrease the rectangle's height using arithmetic operations</a></li>
+            <li><a href="#9activity">6.2 Challenge 5: Toggling Another Label with Comparison Operators </a></li>
+            </ul>
+            <li><a href="#conclusion">Assignment submission and assessment</a></li>
+            <li><a href="#glossary">Glossary</a></li>
+
+          </ol>
+
+          <!-- intro         -->
+          <h2 id="introduction">How Reactivity and Interactivity Work Together</h2>
+          <hr />
+ 
+
+          <p>
+            In the previous lab, we explored Vue’s <b>reactivity system, which allows Vue to manage the user interface's data and dynamically update the display</b>. For example, we saw that when values like text or numbers are stored in the data() section (e.g., rectangleLabel: "Rectangle"), Vue automatically displays them in the interface in real time. <b>Vue’s reactivity system ensures that the interface stays continuously synced with the data</b>.
+            <br><br>
+
+            In this lab, we will focus on <b>interactivity, where user actions — such as clicking or hovering — trigger changes in the interface's data</b>. When a user interacts with the interface, Vue updates the data in the data() section accordingly and immediately reflects those changes in the display. <b>Interactivity and reactivity work together to create dynamic and responsive user interfaces, allowing for seamless user-driven updates</b>.
+          </p>  
+          
+              <!-- prerequisites         -->
+          <h2 id="prerequisite">Pre-requisites: Locate Your Folder From Past Lab</h2>
+            <hr />
+          
+         <p>
+           This lab builds on your work from <b>"Interactivity Lab 1: Vue.js Basics"</b>. We will use the Vue directives and data properties you defined last week. </p>
+          <ol>
+            <li><b>Find Your Lab Folder:</b> Locate in your computer the folder that contains the files index.html and vue.js from the previous lab.</li>
+            <li><b>Open the Folder in VS Code:</b> Open VS Code, then go to <b>File &gt; Open Folder</b> and select your lab folder. This will allow you to access both files easily and switch between index.html and vue.js as needed.</li>
+          </ol>
+         
+          
+          <!--  activity1          -->
+
+          <h2 id="1activity">Creating Interactive Text</h2>
+          <hr />
+
+         
+            
+            In this exercise, you will:
+          <ol>
+            <li>Use <b>v-on:click</b> to create a click event to trigger changes in the displayed text.</li>
+            <li>Define a <b>method</b> in Vue to modify the text based on the click event.</li>
+            <li>Test the interactivity by clicking to see how the method updates the text dynamically.</li>
+          </ol>
+          
+          
+          
+                   
+          <h3>
+            Step 1: Add Vue's v-on:click Directive
+          </h3>
+               
+          <ol>
+            <li>Open the index.html file and locate the label you want to make interactive. For example, the rectangle label</li>
+            <li>Add a v-on:click directive inside the text element containing the label. For example:</li>
+            
+              <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/fig1_interactivitylab2.png?v=1739356086524
+">
+
+<!--           <div class="codeExample" style="display: flex; flex-direction: column; align-items: center; width: 50%; margin-left: 10em ">
+          <pre><code class="language-markup">
+          <textarea class="myInput" rows="5" cols="100">  &lt;text v-on:click x="100" y="180" font-size="20" text-anchor="middle" fill="black"&gt;{{ rectangleLabel }}&lt;/text&gt;
+
+          </textarea>
+          </code></pre>
+          </div> -->
+          
+            <li>Choose and assign a method's name to the v-on:click directive. For example, <code>updateRectangleLabel</code>:</li>  
+            
+            <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/fig2_interactivitylab2.png?v=1739356088120">
+            
+<!--             <div class="codeExample" style="display: flex; flex-direction: column; align-items: center; width: 50%; margin-left: 10em ">
+            <pre><code class="language-markup">
+            <textarea class="myInput" rows="5" cols="100"> &lt;text v-on:click="updateRectangleLabel" x="100" y="180" font-size="20" text-anchor="middle" fill="black"&gt;{{ rectangleLabel }}&lt;/text&gt;
+
+            </textarea>
+            </code></pre>
+            </div> -->
+
+            <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+              The method name should start with a lowercase letter, use only letters and numbers (no spaces or special characters), and use camelCase for multiple words (e.g., updateRectangleLabel, changeCircleLabel).
+          </p>
+            
+            <li>Save your changes and check the live preview. If you click the Rectangle label nothing will happen at this point — this is expected because Vue doesn’t know what updateRectangleLabel is yet. We will define it in the next step</li>
+          </ol>
+          
+          <h3>
+            Step 2: Define the Method in Vue
+          </h3>
+          
+            Now, let's define a method that updates rectangle's label when triggered by the v-on:click event. 
+      
+<!--       Last week, you created a property name for the rectangle's label such as <code>rectangleLabel</code> -->
+
+          <ol>  
+            
+            <li>Open vue.js and locate the <code>data()</code> section. Double-check the property name you assigned to the rectangle's label last week. In this example, the property name is <code>rectangleLabel</code></li>
+            <li>Now, locate the <code>methods</code> section. Below <code>// Add your methods here</code>, create an empty method with the same name you used in v-on:click (e.g., <code>updateRectangleLabel</code>) </li>
+            
+            <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+            <pre><code class="language-markup">
+            <textarea class="myInput" rows="5" cols="50">updateRectangleLabel(){ 
+            
+              }
+            </textarea>
+            </code></pre>
+            </div>
+
+            <li> Inside this method, we can define the tasks that should run when the user clicks the text. In this example, our method will update the <code>rectangleLabel</code> property by assigning it a new value. Type the following inside the method:</li>
+         
+                 <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+            <pre><code class="language-markup">
+            <textarea class="myInput" rows="5" cols="50">updateRectangleLabel(){             
+              this.rectangleLabel = "My Interactive Rectangle Label"            
+            }
+            </textarea>
+            </code></pre>
+            </div>
+            
+            <button type="button" class="collapsible"><i class="fa fa-info-circle"></i> <b>What is the <i>this</i> keyword?</b></button>
+        <div class="additionalInfo">           
+           <p>
+             The command <code>this</code> refers to the data properties in the <code>data()</code> section. When you write <code>this.rectangleLabel</code>, you are accessing the rectangleLabel property that was already defined in the <code>data()</code> section
+          </p>
+          
+        </div>
+            <br><br>
+           
+            <li>Save and test your code. In the live preview, click the Rectangle label. It should change from its original label to "My Interactive Rectangle Label". If it works, this confirms the method is working interactively with the <code>v-on:click event</code></li>
+                    </ol>
+     
+  <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+  If the live preview does not update immediately, try refreshing the window by clicking the ⟳ icon in the live preview.
+</p>
+
+   <button type="button" id="2activity" class="collapsible-question"><i class="fa fa-star-o" style="font-size:24px"></i> <b>3.1 Challenge 1:  Create Interactive Labels (click to see the instructions)
+</b></button>
+        <div class="additionalInfo">           
+Now, make all the shape labels interactive by following these steps:
+
+
+  <ol>
+    <li>In index.html, find each &lt;text&gt; element that contains a label and add the v-on:click directive to it. Use meaningful method names that you will define in your Vue file. For example</li>
+        
+                <div class="codeExample" style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+            <pre><code class="language-markup">
+            <textarea class="myInput" rows="5" cols="50">   &lt;text v-on:click="updateCircleLabel" x="250" y="180" font-size="20" text-anchor="middle" &gt;{{ circleLabel }}&lt;/text&gt;
+
+            </textarea>
+            </code></pre>
+            </div>
+  
+   
+    <li>In vue.js, define a corresponding method for each shape. Dont' forget to add a comma after any previous methods.
+      The method should update the shape’s label when triggered by the v-on:click event. See example below.</li>
+      
+               <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+            <pre><code class="language-markup">
+            <textarea class="myInput" rows="5" cols="50"> updateCircleLabel() {
+                      this.circleLabel = "New Circle Label";
+                      }
+    
+            </textarea>
+            </code></pre>
+            </div>
+    
+    
+    <li>Test your changes! Click the shape labels in the live preview to see if they update interactively.</li>
+  </ol>
+        </div>
+
+         
+          
+                    <!--  activity 2          -->
+<h2 id="3activity">Updating Shape Attributes Interactively</h2>
+          <hr />         
+      
+      <p>
+        Just like we can update text based clicking, we can also update SVG attributes through actions like <b>hovering</b>. In this exercise, we will build upon the v-bind directive you defined last week.
+        
+        <br><br>
+        In this exercise, you will:
+        
+<ol>
+  <li>Use <b>v-on:mouseover</b> to create a hover event that triggers changes in your shape’s <b>attributes</b></li>
+<!--   <li>Optionally, use <code>v-on:mouseleave</code> to reset the attributes when the mouse leaves</li> -->
+  <li>Define a <b>method</b> in Vue to modify the attributes based on the hover event</li>
+  <li>Test the interactivity by hovering over the shape and observing how the method updates its attributes in real time</li>
+</ol>
+</p>
+
+      
+      <h3>Step 1: Add v-on:mouseover Directive</h3>
+           
+          <ol>
+            <li>Open index.html and locate the shape element you want to make interactive. For example, locate the <code>&lt;rect&gt;</code> element</li>
+            <li>This element should already contain a v-bind attached to an attribute. In this example, the v-bind is attached to the height</li>
+            <li>Add a <code>v-on:mouseover</code> directive anywhere inside the element. For example:</li>      
+            
+            <img src="  https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/fig3_interactivitylab2.png?v=1739356091052">
+                    
+<!--           <div class="codeExample" style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+          <pre><code class="language-markup">
+          <textarea class="myInput" rows="5" cols="50">          
+          <rect v-show="isRectangleVisible" width="100" v-on:mouseover v-bind:height="rectHeight" x="50" y="50" />
+          </textarea>
+          </code></pre>
+          </div> -->
+    
+          <li>Choose and assign a method's name to the v-on:mouseover directive. For example, <code>increaseRectHeight</code>:</li>    
+            
+            <img src="  https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/fig4_interactivitylab2.png?v=1739356093273">
+          
+<!--            <div class="codeExample" style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+          <pre><code class="language-markup">
+          <textarea class="myInput" rows="5" cols="50">
+          <rect v-show="isRectangleVisible" width="100" v-on:mouseover="increaseRectHeight" v-bind:height="rectHeight" x="50" y="50" />
+
+          </textarea>
+          </code></pre>
+          </div> -->
+    
+              <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+              Remember: The name should start with a lowercase letter, use only letters and numbers (no spaces or special characters), and use camelCase for multiple words (e.g., changeHeight, updateFill)
+          </p>
+            
+            <li>Save your changes. At this point, if you hover over the square, nothing will happen yet because we need to define the <code>increaseRectHeight</code> method in the next step</li>          
+      </ol>
+            
+<h3> Step 2: Define the Method in Vue </h3>  
+            
+            
+    <ol>
+              <li>Open vue.js and locate the <code>data()</code> section. Double-check the property name you assigned to the rectangle height last week. In this example, the property name is <code>rectHeight</code></li>
+              <li>Now, go to the  methods section, add a comma after your previous method and create an empty method with the same name you used in v-on:mouseover (e.g., increaseRectHeight)</li>
+              
+                <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+                <pre><code class="language-markup">
+                <textarea class="myInput" rows="5" cols="50">increaseRectHeight() {
+
+                  }
+                </textarea>
+                </code></pre>
+                </div>
+                
+      <li>  Inside this method, we will define the actions that should take place when the user hovers over the shape. In this example, our method will update the <code>rectHeight</code> property by assigning it a new value. Type the following inside the method:</li>
+
+                
+                <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+                <pre><code class="language-markup">
+                <textarea class="myInput" rows="5" cols="50">increaseRectHeight() {
+                this.rectHeight = 150; 
+                }
+                </textarea>
+                </code></pre>
+                </div>
+      
+      <li>Save and test your code. In the live preview, click the rectangle/square. It should change from its original height to the new height of 150. If it works, this confirms the method is working interactively with the v-on:mouseover event</li>
+
+              
+<!--             <img src="  https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/fig6-tagged.png?v=1738552559610"> -->
+            </ol>
+
+     <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+  If the live preview does not update immediately, try refreshing the window by clicking the ⟳ icon in the live preview.
+</p>
+
+          
+          <button type="button" id="4activity" class="collapsible-question"><i class="fa fa-star-o" style="font-size:24px"></i> <b>4.1 Challenge 2: Create Interactive Shape Attributes (click to see the full instructions) </b></button>
+        <div class="additionalInfo">   
+          
+Now, apply what you’ve learned to create interactive attributes for the following shapes:
+          
+          <ul>
+  
+            <li>For the <code>circle</code>, make the <code>r</code> change when hovering over</li>
+            <li>For the <code>ellipse</code>, make the <code>rx</code> change when hovering over</li>
+            <li>For the <code>line</code>, make the <code>stroke-width</code> change when hovering over</li>
+            <li>For the <code>triangle</code> (Polygon), make the <code>stroke</code> change when hovering over</li>
+            <li>For the <code>pentagon</code> (Path), make the <code>fill</code> change when hovering over </li>
+            </ul>
+
+        Steps recap:
+          
+          <ol>
+            <li>Open index.html and locate the element you want to make interactive</li>
+            <li>Add a v-on:mouseover directive to the shape element along with a name for the method you will write in the Vue file (e.g., <code>changeCircleRadius</code>):</li>
+            
+            <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+                <pre><code class="language-markup"> 
+                <textarea class="myInput" rows="5" cols="50">
+               &lt;circle v-on:mouseover="changeCircleRadius" v-bind:r="circleRadius" cx="250" cy="100" &gt;
+                </textarea>
+                </code></pre>
+                </div>
+            
+
+            <li>Define a method in vue.js matching the name you defined in the <code>v-on:mouseover</code> directive. For example, define a method called <code>changeCircleRadius</code> to modify the <code>circleRadius</code> property - defined in the data() section last week:
+              <ul>
+              <li>⚠ Reminder: Don't forget to add a comma after any previous methods</li>
+              </ul>
+            </li>
+            
+                 <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+                <pre><code class="language-markup"> 
+                <textarea class="myInput" rows="5" cols="50"> changeCircleRadius() {
+                  this.circleRadius = 100; 
+                }
+                </textarea>
+                </code></pre>
+                </div>
+            
+           
+            <li>Test your changes! Hover over the shapes to see how the attributes update dynamically in the live preview</li>
+            
+          </ol>
+          
+        </div>
+          
+          <!--  activity 3          -->
+  <h2 id="5activity">Controlling Visibility Interactively</h2>
+          <hr />          
+        
+          In this exercise, we will add interactivity to control the visibility of a text when making double click. We will build upon the v-show directive you defined last week.
+        
+    <br><br>
+      
+      In this exercise, you will:
+      
+      <ol>
+        <li>Use <b>v-on:dblclick</b> to trigger a method that updates elements' visibility when making <b>double click</b></li>
+        <li>Define a method in Vue that hides or show text and shapes</li>
+        <li>Test the interactivity by making double click and observing how the method updates the text and shape's visibility</li>
+      </ol>
+      
+      <h3>
+        Step 1: Add v-on:dblclick Directive
+      </h3>
+
+      
+<ol>
+  <li>Open index.html and locate the shape element you want to make interactive, such as a <code>&lt;rect&gt;</code>. This element should already contain a v-show </li>
+  <li>Add a v-on:dblclick directive to the shape element to listen for double clicks. For example:</li>
+      
+  <img src="  https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/fig5_interactivitylab2.png?v=1739356095516">
+               
+<!--             <div class="codeExample" style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+            <pre><code class="language-markup">
+              <textarea class="myInput" rows="5" cols="50">
+              <rect v-on:dblclick v-show="isRectangleVisible" width="100" v-on:mouseover="increaseRectHeight" v-bind:height="rectHeight" x="50" y="50" />
+
+              </textarea>
+               </code></pre>
+            </div> -->
+
+  <li>Choose and assign a method name to the v-on:dblclick directive (e.g., updateRectangleVisibility)</li>
+  
+     <img src="  https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/fig6_interactivitylab2.png?v=1739356097498">
+  
+<!--             <div class="codeExample" style="display: flex; flex-direction: column; align-items: center; width: 65%; ">
+            <pre><code class="language-markup">
+              <textarea class="myInput" rows="5" cols="50">
+              <rect v-on:dblclick="updateRectangleVisibility" v-show="isRectangleVisible" width="100" v-on:mouseover="increaseRectHeight" v-bind:height="rectHeight" x="50" y="50" />
+              </textarea>
+               </code></pre>
+            </div>
+   -->
+  <li> Save your changes. If you double click the rectangle in the live preview, you will notice the shape does not respond yet — this is expected because the method <code>updateRectangleVisibility</code> is not defined yet. We will define this method in the next step</li>
+      </ol>
+      
+      <h3>
+        Step 2: Define the Method in Vue
+      </h3>
+      
+    Now, let’s define the method in Vue that will be triggered when a key is pressed to toggle the visibility of the shape.
+
+    
+      <ol>
+        <li>Open vue.js and double-check the property name you assigned to the rectangle visibility last week. In this example, the property name is <code>isRectangleVisible</code></li>
+        <li> Now, go to the methods section, add a comma after your previous method and create an empty method with the same name you used in v-on:dblclick (e.g., updateRectangleVisibility)
+</li>
+        
+             
+            <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+            <pre><code class="language-markup">
+              <textarea class="myInput" rows="5" cols="50">updateRectangleVisibility() {
+            
+                  }
+              </textarea>
+               </code></pre>
+            </div>
+
+        
+        <li>Inside this method, update the <code>isRectangleVisible</code> property, by assigning it a new value, like <code>false</code>:</li>
+        
+              <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+            <pre><code class="language-markup">
+              <textarea class="myInput" rows="5" cols="50">updateRectangleVisibility() {
+                      this.isRectangleVisible = false
+                  }
+              </textarea>
+               </code></pre>
+            </div>
+
+        <li>Save and test your code. If you double click the rectangle, it should disappear</li>
+<!--         <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/fig8-tagged.png?v=1738552564082"> -->
+        </ol>
+          
+     <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+  If the live preview does not update immediately, try refreshing the window by clicking the ⟳ icon in the live preview.
+</p>
+         <button type="button" id="6activity" class="collapsible-question"><i class="fa fa-star-o" style="font-size:24px"></i> <b>5.1 Challenge 3: Show or Hide Elements Interactively (click to see the full instructions)</b></button>
+        <div class="additionalInfo">           
+          
+          Now, apply what you’ve learned to show or hide other SVG elements interactively!
+
+<ol>
+  <li>Open index.html and locate the text and shape elements where you added v-show in the previous lab</li>
+  <li>Add v-on:dblclick to the elements along with a name for the method you will write in the Vue file (e.g., updateCircleVisibility):</li>
+
+  
+        <div class="codeExample" style="display: flex; flex-direction: column; align-items: center; width: 80%; ">
+        <pre><code class="language-markup">
+        <textarea class="myInput" rows="2" cols="200">  <circle  v-on:dblclick="updateCircleVisibility"  v-show="isCircleVisible" v-on:mouseover="changeCircleRadius" v-bind:r="circleRadius" cx="250" cy="100" />
+
+        </textarea>
+         </code></pre>
+        </div>
+  
+
+  
+  <li>Define a method in vue.js with the name you gave to the v-on:dblclick directive. For example, define a method called <code>updateCircleVisibility</code> to modify the visibility-related properties defined in the data() section last week (e.g., change <code>isCircleVisible</code> from <code>true</code> to <code>false</code>). </li>
+  <ul>
+    <li>⚠ Reminder: Don't forget to add a comma after any previous methods </li>
+    </ul>
+  
+  
+          <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+        <pre><code class="language-markup">
+        <textarea class="myInput" rows="2" cols="200">updateCircleVisibility(){
+              this.isCircleVisible = false
+              }
+        </textarea>
+         </code></pre>
+        </div>
+  
+  
+  <li>Test your changes! Double-click on the shapes or text to make them invisibile</li>
+</ol>
+    </div>
+      
+<!--  Adding complexity to methods      -->
+      
+      <h2 id="7activity">Adding Complexity To Methods</h2>
+      <hr>
+      
+    <p>
+The complexity of a method depends on how we modify the data — simple methods may perform a single action, while more complex ones can handle multiple operations at once. In this section, you will experiment with arithmetic and comparison operations, as well as modify multiple element parameters within a single method to create more dynamic interactions.
+      </p>
+          
+      <h3>
+        Example 1: Adjusting Shape Size with Arithmetic Operations
+      </h3>
+      <p>The table below shows common arithmetic operators in Vue (and JavaScript):</p>
+      
+      <img style="width:30%" src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/Screenshot%20from%202025-02-12%2005-37-07.png?v=1739356677886">
+      
+      <p>In this example, you will add complexity to previously defined method <code>increaseRectHeight</code> using addition and subtraction.</p>
+      
+      <ol>
+        <li>Open vue.js and locate the method <code>increaseRectHeight</code></li>
+        <li>Update this method by adding an arithmetic operation. For example we can use the addition <code>(+)</code> operator to increase the values whenever the mouse is placed over the rectangle:</li>
+       
+      
+      <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+        <pre><code class="language-markup">
+        <textarea class="myInput" rows="2" cols="200">increaseRectHeight() {
+            this.rectHeight = this.rectHeight + 40; 
+          }
+        </textarea>
+         </code></pre>
+        </div>
+      </ol>
+        <button type="button" id="8activity" class="collapsible-question"><i class="fa fa-star-o" style="font-size:24px"></i> <b>6.1 Challenge 4: Decrease the rectangle's height using arithmetic operations (click to see the full instructions)</b></button>
+        <div class="additionalInfo">           
+          
+Make the rectangle shrink each time the mouse moves outside of it.
+          
+ <ol>
+   <li>Add a <code>v-on:mouseleave</code> directive to the rectangle in index.html, using a meaningful method name such as <code>decreaseHeight</code></li>
+   <li>Define the <code>decreaseHeight</code> method in vue.js, using the subtraction (-) operator.</li>
+          </ol>
+        </div>
+  
+     <h3>
+       Example 2: Toggling Text with Comparison Operators
+      </h3>  
+
+      <p>The table below shows common comparison operators in Vue (and JavaScript):</p>
+      
+      <img style="width:30%" src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/comparison-ops.png?v=1739357219658">
+      
+      <p>        
+         In this example, you will add complexity to previously defined method <code>updateRectangleLabel</code> using comparison operators to toggle a label between two different values when clicked. 
+      </p>
+
+       <ol>
+        <li>Open vue.js and locate the method <code>updateRectangleLabel</code></li>
+         <li>Update this method by adding a comparison condition to toggle between two values. For example, we will use the ternary operator <code>(? :)</code> to switch the label between "Rectangle" and "My Rectangle" whenever the rectangle label is clicked. Modify the method as shown below:</li>
+       
+      
+      <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+        <pre><code class="language-markup">
+        <textarea class="myInput" rows="2" cols="200">updateRectangleLabel() {
+        this.rectangleLabel = this.rectangleLabel === "Rectangle" ? "My Rectangle" : "Rectangle";
+        },
+        </textarea>
+         </code></pre>
+        </div>
+      </ol>
+      
+       <button type="button" class="collapsible"><i class="fa fa-info-circle"></i> <b>Code explanation</b></button>
+        <div class="additionalInfo">           
+            <p>
+            The ternary operator (? :) is used to assign values conditionally. When using a ternary operator, the first value is a condition that evaluates to true or false; the second value is the value assigned if the condition is true; the third value, is the value assigned if the condition is false.
+          </p>
+       
+          <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+        <pre><code class="language-markup">
+        <textarea class="myInput" rows="2" cols="200">condition ? valueIfTrue : valueIfFalse;
+        </textarea>
+         </code></pre>
+        </div>
+        
+      
+          </div>
+      
+        <button type="button" id="9activity" class="collapsible-question"><i class="fa fa-star-o" style="font-size:24px"></i> <b>6.2 Challenge 5: Toggle Another Label with Comparison Operators (click to see the full instructions)</b></button>
+        <div class="additionalInfo">           
+          
+          Try modifying another label so it toggles between two different texts when clicked.
+
+ <ul>
+   <li>In vue.js, update an existing label method by adding a ternary operator <code>(? :)</code> to switch between two text values whenever the label is clicked</li>
+          </ul>
+        </div>
+      
+        
+      
+     <h3>
+       Example 3: Transforming a Shape with One Action
+      </h3>
+
+      <p>
+        In this exercise, you will create a method that updates multiple properties at once when the mouse hovers over the shape. Instead of modifying just one attribute, you will change several aspects, such as width, height, and color, using a single method.
+      </p>
+      
+      <ol>
+        <li>Open index.html and locate the &lt;rect&gt; element</li>
+        <li>Make the width and fill reactive, by attaching v-bind directives and property values like <code>rectWidth</code> and <code>rectFill</code></li>
+      
+      
+       <div  style="display: flex; flex-direction: column; align-items: center; width: 50%; margin-left: 15em  ">
+        <pre><code class="language-markup">
+        <textarea class="myInput" rows="2" cols="200"><rect v-on:mouseleave = "decreaseHeight" 
+        v-on:mouseover="increaseRectHeight"  
+        v-on:dblclick ="updateRectangleVisibility" 
+        v-show="isRectangleVisible" 
+        v-bind:width="rectWidth" 
+        v-bind:height="rectHeight" 
+        x="50" 
+        y="50" 
+        v-bind:fill="rectFill" />        
+        </textarea>
+         </code></pre>
+        </div>
+      
+        <li>Open vue.js and define these property values in the <code>data()</code> section </li>
+        <li>Update the <code>increaseRectHeight</code> method in the methods section as follows:</li>        
+                
+        <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+        <pre><code class="language-markup">
+        <textarea class="myInput" rows="2" cols="200">increaseRectHeight() {
+          this.rectHeight = this.rectHeight + 40;
+          this.rectWidth = this.rectWidth + 40; 
+          this.rectFill = this.rectFill === "black" ? "green" : "black"; 
+        }
+</textarea>
+         </code></pre>
+        </div>
+        
+    <li>If you want, you can change the <code>increaseRectHeight</code> name to something like <code>transformRect</code> to convey the new method actions. Change it in index.html and vue.js so the trigger event and the method stay linked</li>        
+      </ol>
+      
+      
+      
+      <!--  conclusion          -->
+          
+          <h2 id="conclusion">Assignment submission and assessment</h2>
+          <hr />
+<!--           <h3>
+            Submission 
+          </h3>
+ -->
+          <ol>
+            <li><b>Zip your folder</b></li>
+            <ul>
+              <li>Learn how to zip your folder in Mac: <a href="https://support.apple.com/en-ca/guide/mac-help/mchlp2528/mac" target="_blank">https://support.apple.com/en-ca/guide/mac-help/mchlp2528/mac</a></li>
+              <li>Learn how to zip your folder in Windows: <a href="https://support.microsoft.com/en-us/windows/zip-and-unzip-files-8d28fa72-f2f9-712f-67df-f80cf89fd4e5" target="_blank">https://support.microsoft.com/en-us/windows/zip-and-unzip-files-8d28fa72-f2f9-712f-67df-f80cf89fd4e5</a></li>
+            </ul>
+            <li><b>Submit your zipped folder to Interactivity Lab 2: Vue.js Basics </b> on Avenue to Learn under Assessments &gt; Assignments </li>
+          </ol>
+          
+        
+      
+                  
+            <h3>Assessment Criteria</h3>
+
+    <ol>
+      <li><b>Creating Interactive Text (2.5 points):</b> All SVG text labels change interactively when clicked. </li>
+      <li><b>Updating Shape Attributes Interactively (2.5 points):</b> The specified SVG attributes update when the mouse hovers over them.</li>
+      <li><b>Controlling Visibility Interactively (2.5 points):</b>  One shape and one text element are hidden when double-clicked.</li>      
+      <li><b>Adding Complexity To Methods (2.5 points):</b> A rectangle (or any other shape) adjusts its height using addition and subtraction. Two text labels toggle between different texts using the ternary operator (? :). And, the <code>decreaseHeight</code> method updates multiple properties at once when hovering over a shape.
+
+</li>
+    </ol>
+    
+    
+
+
+
+          
+          <h2 id="glossary">Glossary</h2>
+          <hr />
+    
+    Refer to the definitions below to reinforce your knowledge.
+    <ul>
+      
+            
+
+<!--     <abbr title="How Vue injects dynamic values into the SVG">Text Interpolation</abbr>  
+    <abbr title="Variables stored in Vue’s data() function that control the user interface">Data Properties</abbr>  
+    <abbr title="Variables stored in Vue’s data() function that control the user interface">v-bind Directive</abbr>  
+    <abbr title="Variables stored in Vue’s data() function that control the user interface">Attributes</abbr>   -->
+    
+     
+      <li><b>SVG <code>&lt;text&gt;</code> Element</b> → Used to add text inside an SVG graphic</li>
+      <li><b>Attributes (fill, width, height, stroke, etc.)</b> → Modifiable properties that define how an SVG shape looks</li>
+      <li><b>Reactivity</b> → Vue’s ability to automatically update the SVG when data changes</li>
+      <li><b>Text Interpolation ({{ }})</b> → Text interpolation is a way to dynamically insert text into the SVG code using double curly braces {{ }}</li>
+      <li><b>Data Properties</b> → Variables stored in Vue’s data() function that control the user interface</li>
+      <li><b>Directives</b> → Special Vue attributes like v-bind and v-show that control behavior</li>
+      <li><b>v-bind Directive</b> → Dynamically binds/connects an SVG attribute (e.g., fill, width, stroke) to Vue data</li>
+      <li><b>Binding vs. Hardcoding</b> → The difference between using Vue (v-bind:fill="rectFill") vs. static HTML (fill="blue")</li>
+      <li><b>Method</b> → In Vue.js, a method is a function defined in the methods section. It is used to perform actions or operations in response to events, such as user interactions or other triggers. Methods can access and modify component data, and they are typically invoked with event listeners like v-on to make the app interactive.</li>
+      <li><b>Function</b> → A function is a set of instructions that performs a specific task. You can think of it like a recipe: you give it ingredients (inputs), it follows the steps, and then it gives you a result (output).</li>
+    </ul>
+        </div>
+      </div>
+<!-- footer -->
+    <footer class="footer">
+    </footer>
+  </body>
+</html>
