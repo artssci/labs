@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+
+    <link rel="icon" href="https://glitch.com/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--
+      This is the page head - it contains info the browser uses
+      Like the title, which appears on the browser tab but not inside the page
+      Further down you'll see the content that displays in the page
+    -->
+    <title>Adding interactivity to your calendar with Vue</title>
+
+    <!-- The website stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- The website JavaScript file -->
+        <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!--
+      The body includes the content you see in the page
+      Each element is defined using tags, like this <div></div>
+      The attributes like class="wrapper" let us style elements in the CSS
+    -->
+    <div class="wrapper">
+      <div class="content" role="main">
+        <h1 class="title">Adding interactivity to your calendar with Vue</h1>
+        
+        <div class="instructions">
+          <p style="margin-left: 0">
+            
+            
+            <b>Due date:</b> <u>Group submission</u> by March 4 by the end of the day (11:59 pm).  
+            <br><br>
+
+            <b>Grace period:</b> 1 week (7 days) without penalty.  
+            <br><br>
+
+            <b>After grace period:</b> Submissions after the grace period will be penalized 5% for each additional day that they are overdue – including Saturdays and Sundays. Submissions made 1 week (7 days) after the grace period will not be accepted and will receive a 0% grade.          
+          </p>
+        </div>
+      </div>
+      
+      
+
+        <!-- lab starts here  -->
+        <div class="instructions">
+          <hr>
+          <h2 class="nocount">General Description</h2>
+
+          <p style="margin-left: 0">In this lab, you will continue working with your team to bring interactivity to your calendar using Vue. 
+
+</p>
+          
+          
+          <h2 class="nocount">Learning Objectives</h2>
+          
+
+          <ul>
+                <li>Build upon the skills you’ve developed in previous labs to enhance your calendar design in Figma</li>
+            <li>Expand your understanding of data, methods, and events in Vue.js to create interactive calendar components</li>
+            <li>Apply logical operators and lists to navigate between months and dynamically update background colors, days and concert locations</li>
+          </ul>
+          
+
+          <!-- contents           -->
+          <h2 class="nocount">Table of Contents</h2>
+          <hr />
+
+          <ol>
+            
+<!--             <li><a href="#introduction">How Reactivity and Interactivity Work Together</a></li> -->
+            <li><a href="#prerequisite1">Pre-requisite 1: Finalizing Your Calendar Design in Figma </a></li>   
+                <ul>
+                <li><a href="#1activity">1.1 Revise Your Figma Design</a></li>            
+                <li><a href="#2activity">1.2 Organize Layers in Your Figma File for Easy Navigation and Exporting</a></li>   
+                <li><a href="#3activity"> 1.3 Optionally, Add Color To Your Calendar</a></li>     
+                </ul>
+            <li><a href="#prerequisite2">Pre-requisite 2: Setting Up Your Calendar For Vue Development </a></li>            
+                  <ul>
+              <li><a href="#4activity">2.1 Select One Team Member to Create the Project Folder and Set Up Vue</a></li>
+              <li><a href="#5activity">2.2 All Team Members Set Up VS Code Live Share for Collaboration</a></li>
+               <li><a href="#6activity">2.3 Select One Member To Export The Calendar And Add It To index.html</a></li>
+               <li><a href="#7activity">2.4 Select One Member To Add Fonts From Google Fonts To index.html</a></li>
+                  </ul>
+            
+            <li><a href="#8activity">Make Your Calendar Interactive with Vue</a></li>
+                <ul>
+                <li><a href="#9activity">3.1 Add Click Events to Navigation Buttons and Define Empty Methods</a></li>
+                <li><a href="#10activity">3.2 Update the Month Dynamically When Clicking the Navigation Buttons</a></li>
+                <li><a href="#11activity">3.3 Change the Background Color Based on the Month</a></li>
+                <li><a href="#12activity">3.4 Update the Days Displayed on the Calendar</a></li>
+                <li><a href="#13activity">3.5 Update the Concert Locations Displayed on the Calendar</a></li>
+
+                </ul>
+
+            <li><a href="#conclusion">Assignment submission and assessment</a></li>
+            <li><a href="#glossary">Glossary</a></li>
+
+          </ol>
+
+          <!-- intro         -->
+<!--          <h2 id="introduction">How Reactivity and Interactivity Work Together</h2>
+          <hr />
+  -->
+
+          
+              <!-- prerequisites         -->
+          <h2 id="prerequisite1">Pre-requisite 1: Finalizing Your Calendar Design in Figma</h2>
+            <hr />
+          
+            <h3 id="1activity">
+            1.1 Revise Your Figma Design
+          </h3>          <hr>
+
+          
+          <ol>          
+          <li>Revise your Figma design to include 42 squares total (6 rows × 7 columns). This ensures there's enough space to display any month, regardless of what day of the week it starts on and how many days are in the month (28-31) </li> 
+            <li>Ensure all squares contain placeholders for both the day number and concert locations. See example below: </li>
+          <img style="width:60%" src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/calendar.svg?v=1739551946933">
+        </ol>
+                  
+          <hr><h3 id="2activity">
+            1.2 Organize Layers in Your Figma File for Easy Navigation and Exporting
+          </h3>          <hr>
+
+          
+          <p>
+            Before exporting your calendar as an SVG, follow these steps to ensure that your layers are well-organized. This will make the code easier to read and edit when integrating Vue.
+          </p>
+          
+          <ol>
+            <li>Name your layers to reflect their purpose in the calendar. This will make it easier to identify elements in the SVG code after exporting</li>
+            <li>Group elements that logically belong together to make them easier to find in the exported SVG. Follow the suggested grouping structure:</li>
+            <br><br>
+            <ul>
+              <li><b>calendar container</b>: includes main container</li>
+              <li><b>events</b>: includes the events</li>
+              <li><b>days</b>: contains all day numbers</li>
+              <li><b>squares</b>: contains the days background quares </li>
+              <li><b>weekdays</b>: contains weekday names</li>
+              <li><b>buttons</b>: includes navigation buttons</li>
+              <li><b>month</b>: includes the month label</li>
+              <li><b>title</b>: includes the title of the calendar</li>              
+            </ul>
+            <br><br>
+            <li>Check Your Layers against the following example in Figma:<a href="https://www.figma.com/design/yJvUS8lGI2RFnH0UXUboXT/Taylor-Swift-Concert-Calendar?node-id=1-2&t=dQYg1Xs2hFIadWoF-1">https://www.figma.com/design/yJvUS8lGI2RFnH0UXUboXT/Taylor-Swift-Concert-Calendar?node-id=1-2&t=dQYg1Xs2hFIadWoF-1</a></li>
+          </ol>
+          
+             <hr><h3 id="3activity">
+            1.3 Optionally, Add Color To Your Calendar
+          </h3>          <hr>
+          
+          <ul>
+          <li>The calendar in this lab was exported in grayscale, with color introduced through code in Section 3. You can keep your design in grayscale or add color to your calendar. If you choose to add color, keep it simple to ensure you can easily follow the next steps</li>    
+          </ul>
+          
+            <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Do not export the SVG yet. You will export it in the next section.
+          </p>
+        
+        
+          
+          <hr />
+          <h2 id="prerequisite2">Pre-requisite 2: Setting Up Your Calendar For Collaborative Development</h2>
+          <hr />
+          
+         <p>
+           In this section, you will set up a collaborative development environment using VS Code <i>Live Share</i>. This will allow your team to divide tasks as you begin coding your calendar, including creating an index.html and vue.js file, pasting the SVG code into index.html, and adding custom fonts.
+          </p>
+          
+          
+          <h3 id="4activity">
+          2.1 Select One Team Member to Create the Project Folder and Set Up Vue
+          </h3>
+          <hr>
+
+          <p>
+            Select one team member to do the following:
+          </p>
+          <ol>
+            <li>Create a folder called <i>myCalendarApp</i> on your computer</li>
+            <li>Inside the folder, create an index.html and a vue.js files</li>
+            <li>Add the following template code to index.html</li>
+            
+            
+            <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+            <pre><code class="language-markup">
+            <textarea class="myInput" rows="5" cols="50"><!DOCTYPE html>
+            <html lang="en">
+            <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>My Calendar</title>
+            <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+            </head>
+            <body>
+            <div id="app">
+            <!-- Your SVG code will go here -->
+            </div>
+
+            <script src="vue.js"></script>
+            </body>
+            </html>
+            </textarea>
+            </code></pre>
+            </div>
+
+            
+            
+<li>Add the following basic template code to vue.js</li>
+            
+            
+            <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+            <pre><code class="language-markup">
+            <textarea class="myInput" rows="5" cols="50">const app = Vue.createApp({
+                  data() {
+                  return {
+                  // Define reactive properties here
+                
+                };
+                },
+                
+                  methods: {
+                  // Define methods for interactivity here
+                
+                }
+                });
+
+              app.mount('#app');
+
+            
+            </textarea>
+            </code></pre>
+            </div>
+
+          </ol>
+                    
+          
+           <h3 id="5activity">
+            2.2 All Team Members Set Up VS Code Live Share for Collaboration
+          </h3>
+            <hr>
+
+          <p>
+            <i>Live Share</i> is a VS Code extension that works similarly to Google Docs — one team member will host the project on their computer and will share a link so others can join and edit. Follow the steps below to set it up:
+          </p>
+          <ol>
+            <li>All team members <i>install Live Share</i>: Open Extensions, search for "Live Share" and click Install</li>
+<video style="width:70%" controls loop autoplay muted>
+  <source  src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/install-live-share.webm?v=1739901219984" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+            
+            <li>All team members must sign in to Live Share using their McMaster emails: Open View &gt; Command Palette in VS Code. Type "live share sign in" and select it from the list. Choose "Sign in using Microsoft account". When prompted, click "Allow" in the pop-up window to confirm your sign-in</li>
+            
+<video style="width:70%" controls loop autoplay muted>
+  <source  src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/sign-in-to-live-share.webm?v=1739902196739" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+            
+          
+            <li>The team member who created the <i>myCalendarApp</i> folder in Step 2.1 will be the "host" of the live share session. The host should click the Live Share button in the status bar at the bottom of VS Code. This will start the session and automatically copy a unique link to the clipboard. Once the link is generated, the host should send it by email to their team members so they can join</li>
+            
+          <video style="width:70%" controls loop autoplay muted>
+  <source  src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/live-share-link.webm?v=1739902978319" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+            
+            <li>Other team members join: Once received, click the Live Share link which will open up in a browser. When prompted, allow your browser to launch VS Code. After you join, you'll be immediately presented with the file that the "host" has open. You should start seeing everyone's cursors as they join!</li>
+          
+          
+             <video style="width:70%" controls loop autoplay muted>
+  <source  src="            https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/live-share-open-link.webm?v=1739903728011" type="video/webm">
+                 Your browser does not support the video tag.
+</video>
+            
+            
+          </ol>
+                <hr> <h3 id="6activity">
+          2.3 Select One Member To Export The Calendar And Add It To index.html
+          </h3>          <hr>
+
+          
+          <p>Now, that everyone has joined the Live Share session, anyone can make edits and save changes to the code. Select a team member to export the calendar from Figma as an SVG and add it to index.html. Configure the export as follows:</p>
+            <ol>
+              <li><b>Select the option "Include "id" attribute".</b> This will include the group names defined previously in the SVG code</li>
+              <li><b>Untick “Outline Text”</b> to avoid converting text into paths and ensuring that your text remains editable in the SVG code</li>  
+              <li><b>If your calendar includes images, do not export them with the SVG</b>. You can avoid exporting them through the hiding option in Figma before exporting. This will keep your code shorter and easier to read. If you really want to add a specific image, ask your professor for guidance</li>
+            
+            <img style="width:45%" src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/exportOptionsCalendar-tagged.png?v=1740019496314">
+          
+            <li>Open the exported SVG file in VS Code</li>
+            <li>Copy the SVG code and paste it below <code>&lt;!-- Your SVG code will go here --&gt;</code> in your index.html file</li>
+            <li>Save your changes and ask the host to review it by previewing it in the <i>live preview</i></li>
+              
+              <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Note: In a <i>Live Share session</i>, only the host can preview the code using <i>Live Preview</i> on their computer. If you want to see your changes reflected in the calendar, ask the host to refresh the preview and share their screen, as you won’t be able to view it in your own VS Code.
+          </p>
+
+
+          </ol>
+          
+                   <hr> <h3 id="7activity">
+        2.4 Select One Member To Add Fonts From Google Fonts To index.html
+          </h3>          <hr>
+
+          
+          <p>Since the file was exported without selecting "Outline Text," your calendar won’t include the fonts by default. Figma uses Google Fonts, so to restore them, you’ll need to add them manually from Google Fonts. Select a team member to restore the fonts.</p>
+          
+          <ol>
+            <li>Go to <a href="https://fonts.google.com/">https://fonts.google.com/</a></li>
+            <li>Get the embed links. Follow the interactive tutorial below to learn how:</li>           
+                   
+            <div style="width:80%">
+<div style="max-width: 100%; width: 800px; margin: 0 auto;"> <div style="display: none;"> <p style="display: none; text-align: center; margin-top: 10px;"> <i style="font-style: italic; font-weight: bold; color: #CCCCCC; font-size: 18px;">7 STEPS</i> </p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 1. Search your font in the search bar </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2511753&step_number=1&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 1 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 2. Select the font to see more information </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2511753&step_number=2&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 2 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 3. Click "Get font" </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2511753&step_number=3&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 3 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 4. Click "Get embed code" </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2511753&step_number=4&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 4 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 5. Click "Copy code" </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2511753&step_number=5&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 5 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 6. Quiz Time<br />Let's test your memory!You'll be performing the same task in the quiz——give it your best shot.Click anywhere to begin. </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2511753&step_number=6&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 6 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 7. That's it. You're done. </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2511753&step_number=7&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 7 image" /></p> </div> </div> <h3 style="display: none; font-size: 18px; margin-top: 89px; margin-bottom: 15px;"> Here's an interactive tutorial </h3> <i style="display: none; font-size: 15px; margin-top: 0; margin-bottom: 43px;">** Best experienced in Full Screen (click the icon in the top right corner before you begin) **</i> <p style="display: none;"> <a href="https://www.iorad.com/player/2511753/Google-Fonts---How-to-Get-Fonts">https://www.iorad.com/player/2511753/Google-Fonts---How-to-Get-Fonts</a> </p> <p class="skiptranslate" style="border: 0; min-width: 100%; margin-bottom: 0; height: 501px;"><iframe src="https://www.iorad.com/player/2511753/Google-Fonts---How-to-Get-Fonts?src=iframe&oembed=1" width="100%" height="500px" style="width: 100%; height: 500px; " referrerpolicy="strict-origin-when-cross-origin" frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen" allow="camera; microphone; clipboard-write;" sandbox="allow-scripts allow-forms allow-same-origin allow-presentation allow-downloads allow-modals allow-popups allow-popups-to-escape-sandbox allow-top-navigation allow-top-navigation-by-user-activation"></iframe></p> <div style="display: none;font-size: 18px; text-align: center;font-family: 'Libre Franklin', sans-serif;"> <br><br> <b style="font-weight: bold; color: #CCCCCC;"> Next step </b> <br><br> <div style="display: inline-block;"> <div style="display: table-row;"> <a style="display: table-cell;" href="http://ior.ad/live/axq9" target="_blank"> <img src="https://www.iorad.com/golive.svg" style="border: none;" alt="Go Live" /> </a> </div> </div> </div>
+              </div>
+            <br><br>
+            <li>Paste the links anywhere inside the &lt;head&gt; section of your index.html file, like this:</li>
+            
+            <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left: 5em">
+            <pre><code class="language-markup">
+            <textarea class="myInput" rows="5" cols="50" style=""><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Gochi+Hand&family=
+              Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Raleway+Dots&display=swap" rel="stylesheet">
+  <title>My Calendar</title>
+</head>
+           
+            </textarea>
+            </code></pre>
+            </div>
+            
+    <li>Save your changes and ask the host to see if the fonts are restored by previewing it in the <i>live preview</i></li>
+            
+                <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Remember: In a <i>Live Share session</i>, only the host can preview the code using <i>Live Preview</i> on their computer. If you want to see your changes reflected in the calendar, ask the host to refresh the preview and share their screen, as you won’t be able to view it in your own VS Code.
+          </p>
+            
+          </ol>
+          
+          <!--  activity1          -->
+
+          <h2 id="8activity">Make Your Calendar Interactive with Vue</h2>
+          <hr />
+          
+          <h3 id="9activity">
+          3.1 Add Click Events to Navigation Buttons and Define Empty Methods
+          </h3>        
+          <hr />
+
+
+          <ol>
+            <li>Open your index.html file and locate the elements that represent the left and right buttons. For example, my buttons are represented by two &lt;path&gt; elements inside the &lt;g id="buttons"&gt; group</li>
+            <li>Modify them by adding v-on:click to trigger two methods called <code>navigatePrevious</code> and <code>navigateNext</code> that we will define in the next step. See example code below:</li>
+            
+  <img style="width:50%" src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/Add%20Click%20Events%20to%20Navigation%20Buttons%20Tagged.png?v=1740019701013" >
+            
+<!--             <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
+            <pre><code class="language-markup">
+            <textarea class="myInput" rows="5" cols="50"> <g id="buttons">
+              <path id="rightButton" v-on:click="navigateNext" d="M929.646 156.919L892.597 177.715L892.597 136.122L929.646 156.919Z" fill="#D9D9D9"/>
+              <path id="leftButton" v-on:click="navigatePrevious" d="M508.544 152.982L545.593 132.186L545.593 173.778L508.544 152.982Z" fill="#D9D9D9"/>
+            </g>
+            </textarea>
+            </code></pre>
+            </div> -->
+          
+<li>Next, open your vue.js file and define two methods, <code>navigatePrevious</code> and <code>navigateNext</code>, that match the ones you added in the previous step. These methods will be empty for now but will later include the logic for updating the month, background color, days, and concert locations</li>
+          
+          
+           <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
+            <pre><code class="language-markup">
+            <textarea class="myInput" rows="5" cols="50">navigatePrevious() {
+                    // This method will be expanded in the next steps
+                  },
+
+            navigateNext() {
+              // This method will be expanded in the next steps
+            }
+          
+
+            </textarea>
+            </code></pre>
+            </div>
+          
+          </ol>
+          
+
+                   <hr />
+
+    <h3 id="10activity">3.2 Update the Month Dynamically When Clicking the Navigation Buttons</h3>
+          <hr />
+          
+          <div class="definition">
+            <p>
+             Before we start updating the month dynamically, let’s quickly review an important JavaScript concept that we’ll use in this step, that is <b> the Ternary Operator:</b>
+              
+              <br><br>The conditional (ternary) operator takes three operands:
+              
+              <ol>
+                <li>A condition, followed by a question mark (?) </li>
+                <li>An expression to execute if the condition is truthy, followed by a colon (:) </li>
+<li>An expression to execute if the condition is falsy</li>
+            </ol>
+              
+          In the last lab, you saw how the ternary operator can be used to toggle between two values:
+            
+            
+           
+            
+            <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
+  <pre><code class="language-markup">
+  <textarea class="myInput" rows="5" cols="50">
+        this.rectangleLabel = this.rectangleLabel === "Rectangle" ? "My Rectangle" : "Rectangle";
+  </textarea>
+  </code></pre>
+</div>
+
+            In the code above, the value of <code>this.rectangleLabel</code> toggles back and forth based on the following condition: is the current value of <code>this.rectangleLabel</code> the text <code>"Rectangle"</code>? If the condition is true, then the value of <code>this.rectangleLabel</code> changes to <code>"My Rectangle"</code>. If it is false, the value changes back to <code>"Rectangle"</code>. <br> <br>
+            
+            <b> In the next steps, we will build on this logic to handle multiple conditions, such as all 12 months in the calendar. Follow the steps below to learn how.</b>
+            </p>
+          
+          
+          </div>   
+
+          <ol>
+            <li>Open index.html and locate the &lt;text&gt; element that displays the month name</li>
+            <li>Replace the text with Vue’s interpolation syntax <code> {{}} </code> and a meaningful property name like <code>month</code></li>
+          
+          <img style="width:50%" src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/add%20month%20tagged.png?v=1740019965726">
+<!--           <div style="display: flex; flex-direction: column; align-items: center; width: 90%; font-size: 0.75em; margin-left:5%">
+          <pre><code class="language-markup">
+          <textarea class="myInput" rows="5" cols="50"><text id="month" fill="black" x="633.16" y="166.082">{{ month }}</text>
+          </textarea>
+          </code></pre>
+        </div> -->
+          
+          <li>Open vue.js and add the property <code>month</code> to the data() section with an initial value of <code>"January"</code></li>
+          
+           <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
+  <pre><code class="language-markup">
+  <textarea class="myInput" rows="5" cols="50"> month: "January"
+  </textarea>
+  </code></pre>
+</div>
+            
+
+
+            <li>Next, go to the methods section and copy the following method called <code>setPreviousMonth()</code>. This method will update the month property when the left button is clicked:</li>
+
+<div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
+  <pre><code class="language-markup">
+  <textarea class="myInput" rows="5" cols="50">
+  setPreviousMonth() {
+          this.month = this.month === "January" ? "December" :
+                      this.month === "December" ? "November" :
+                      this.month === "November" ? "October" :
+                      this.month === "October" ? "September" :
+                      this.month === "September" ? "August" :
+                      this.month === "August" ? "July" :
+                      this.month === "July" ? "June" :
+                      this.month === "June" ? "May" :
+                      this.month === "May" ? "April" :
+                      this.month === "April" ? "March" :
+                      this.month === "March" ? "February" : 
+                      this.month === "February" ? "January" : 
+                      this.month; // Default: Keep the same value if it's not in the list      
+        }, 
+  </textarea>
+  </code></pre>
+</div>
+
+                
+       <button type="button" class="collapsible"><i class="fa fa-info-circle"></i> <b>Code Explanation: How The Ternary Operator Works In The Example Above</b></button>
+        <div class="additionalInfo">           
+            <p>
+            The code above expands on the ternary operator we saw in the previous lab. Normally, it works like this:
+          </p>
+          
+          <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
+  <pre><code class="language-markup">
+  <textarea class="myInput" rows="5" cols="50"> condition ? value_if_true : value_if_false;
+  </textarea>
+  </code></pre>
+</div>
+
+          
+          <p>
+            
+To handle multiple conditions, like all 12 months in the calendar, we chained multiple ternary expressions together. Let's breakdown the logic:
+          </p>
+         
+            <ul>
+              <li>If the value of <code>this.month</code> is <code>"January"</code>, the value becomes <code>"December"</code></li>
+              <li>If the value of <code>this.month</code> is <code>"December"</code>, it becomes <code>"November"</code></li>
+              <li>If the value of <code>this.month</code> is <code>"November"</code>, it becomes <code>"October"</code></li>
+              <li>This pattern continues, moving backward through the months</li>
+              <li>This process repeats until it finds a match</li>
+              <li>At the end, if <code>this.month</code> is somehow not in the list, it keeps its current value of <code>this.month</code></li>
+          </ul>
+          </div>        
+
+
+<br><br>
+            <li>Now, update <code>navigatePrevious()</code> so that it calls <code>setPreviousMonth()</code> when the left button is clicked. Add <code>this.setPreviousMonth()</code> to <code>navigatePrevious()</code></li>
+
+<div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
+  <pre><code class="language-markup">
+  <textarea class="myInput" rows="5" cols="50">
+  navigatePrevious() {
+    this.setPreviousMonth();
+  },
+  </textarea>
+  </code></pre>
+</div>
+
+
+            <li>Save your changes and ask the host to open <code>index.html</code> in the live preview. Click the <b>left button</b> to check if the months update correctly. If the month changes correctly, you're ready for the challenge below!</li>
+            
+            <br><br>
+
+<button type="button" class="collapsible-question">
+  <i class="fa fa-star-o" style="font-size:24px"></i> 
+  <b>Challenge 1: Define <code>setNextMonth()</code> and call it from <code>navigateNext()</code> (click to see instructions)</b>
+</button>
+<div class="additionalInfo">           
+  <ol>
+    <li><b>Define</b> <code>setNextMonth()</code>: This method should move forward through the months (e.g., "January" → "February", "February" → "March", etc.). Use ternarny expressions to achive this</li>
+    <li><b>Add</b> the <code>setNextMonth()</code> method inside the <code>navigateNext()</code> method</li>
+    <li><b>Save</b> your changes and click the <b>right button</b> in the live preview to see the months go forward</li>
+  </ol>
+</div>
+       </ol>
+
+                    <hr />
+
+          <h3 id="11activity">
+          3.3 Change the Background Color Based on the Month
+          </h3>           <hr />
+
+      
+      <ol>
+        <li>Open index.html and locate the <code>fill</code> attribute inside the &lt;svg&gt; tag</li>
+        <li>Replace it with v-bind:fill="backgroundColor" to make it reactive</li>
+        
+        <img style="width:50%" src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/changefillcolortagged.png?v=1740020142876">
+        
+<!--           <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
+  <pre><code class="language-markup">
+  <textarea class="myInput" rows="5" cols="50"><svg viewBox="0 0 1440 1024" v-bind:fill="backgroundColor" xmlns="http://www.w3.org/2000/svg">
+  </textarea>
+  </code></pre>
+</div> -->
+    
+          
+        <li>Open vue.js and add <code>backgroundColor</code> to the data() section with an initial color value. The example code below uses <code>"yellow"</code>, but you can use another color</li>
+        
+            <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
+  <pre><code class="language-markup">
+  <textarea class="myInput" rows="5" cols="50"> backgroundColor: "yellow"
+  </textarea>
+  </code></pre>
+</div>
+        
+            <li>Next, create a method called <code>setBackgroundColor()</code> inside the methods section. This method will use ternary operators again. This time it will update the background color based on the selected month. Follow the pattern in the example below to assign colors for January to July:</li>    
+            
+       
+   
+      <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
+  <pre><code class="language-markup">
+  <textarea class="myInput" rows="5" cols="50">setBackgroundColor() {
+        this.backgroundColor = this.month === "January" ? "yellow" :
+                               this.month === "February" ? "lightblue" :
+                               this.month === "March" ? "lightgreen" :
+                               this.month === "April" ? "teal" :
+                               this.month === "May" ? "gray" :
+                               this.month === "June" ? "orange" :
+                               this.backgroundColor; 
+                        }
+  </textarea>
+  </code></pre>
+</div>
+          
+
+          
+        <button type="button" class="collapsible-question">
+        <i class="fa fa-star-o" style="font-size:24px"></i> 
+        <b>Challenge 2: Complete setBackgroundColor() by adding colors for July to December (Click to see instructions)</b>
+        </button>
+        <div class="additionalInfo">           
+        <p>The code above is a partially completed setBackgroundColor() method. Currently, only the first six months (January to June) have assigned colors </p>
+
+        💡<b>Your challenge:</b> Fill in the missing colors for July to December following the same coding pattern
+        </div>
+<br><br>
+
+
+          
+            <li>Now, modify <code>navigatePrevious()</code> and <code>navigateNext()</code> to call <code>setBackgroundColor()</code>. Add <code> this.setBackgroundColor()</code> to <code>navigatePrevious()</code> and <code>navigateNext()</code>:</li>
+      
+      
+<div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
+  <pre><code class="language-markup">
+  <textarea class="myInput" rows="5" cols="50">navigatePrevious() {
+                this.setPreviousMonth();
+                this.setBackgroundColor(); 
+                },
+
+  navigateNext() {
+                this.setNextMonth();
+                this.setBackgroundColor(); 
+              },
+
+  </textarea>
+  </code></pre>
+</div>
+          
+        <li>Save your changes and ask the host to open index.html in the live preview. Click the<b>left and right buttons</b> to check if the calendar's background change based on the month. If the color updates correctly, you’re ready for the next step!</li>
+          </ol>
+        <hr />
+          <h3 id="12activity">
+          3.4 Update the Days Displayed on the Calendar
+          </h3>
+         <hr />
+          
+<div class="definition">
+  <h4>
+    Working with Different Types of Data in Vue.js
+  </h4>
+            <p>
+              In previous Vue.js labs, we’ve worked with different types of data, such as <b>text</b> and <b>numbers</b>. In this lab, we will introduce two new types of data: <b>lists (also known as arrays)</b> and <b>objects</b>.  
+  </p>
+  
+  <h4>
+    Lists (Arrays)
+  </h4>
+      <p>        
+             A list (array) allows us to store multiple pieces of information inside square brackets. For example, a list of numbers:
+      </p>
+              <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
+  <pre><code class="language-markup">
+  <textarea class="myInput" rows="5" cols="50"> myListOfNumbers = [1, 2, 3, 4, 5]
+  </textarea>
+  </code></pre>
+</div>
+    
+        <p>      Or, a list of names, like this:  </p>
+  
+   <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
+  <pre><code class="language-markup">
+  <textarea class="myInput" rows="5" cols="50"> myListOfNames = ["Luis", "Jessica", "John", "Eric"]
+  </textarea>
+  </code></pre>
+</div>
+       <p>
+         Each item in a list can be a simple value (like a number or a string), but lists can also hold more complex data structures, like <b>objects</b>.
+         
+         
+      </p>         
+  
+  
+  
+  <h4>
+    Objects
+  </h4>
+
+  <p>
+    An object is another way to store data, but instead of just holding a single value (like a number or a string), an object groups multiple related pieces of information together using <b>key-value pairs inside curly brackets {}</b>.
+    <br><br>
+    For this lab, each item in our list will represent a specific part of our calendar, such as:
+  </p>
+  
+      <ul>
+        <li>The date (e.g., January 1st)</li>
+        <li>The weekday (e.g., Wednesday)</li>
+        <li>The concert location (e.g. Hamilton, ON)</li>
+        <li>The corresponding square in the SVG where these elements will be displayed</li>
+      </ul>
+  
+  <p>
+          Here’s an example of how we will structure our data using a list of objects:
+  </p>
+  
+  <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
+  <pre><code class="language-markup">
+  <textarea class="myInput" rows="5" cols="50"> { squareName: "squareFour", weekDay: "Wednesday", dayNumber: 1, concertLocation: "Hamilton, ON" }
+  </textarea>
+  </code></pre>
+</div>
+  
+  
+ <p>In the code above each each object contains four properties: </p>
+<ul>
+  <li>squareName: Identifies the square in the SVG (e.g., "squareFour")</li>
+  <li>weekDay: Stores the day of the week (e.g., "Wednesday")</li>
+  <li>dayNumber: Represents the numerical date (e.g., 1, 2, 3, ...)</li>
+  <li>concertLocation: Stores the concert venue (e.g. "Hamilton, ON")</li>  
+  </ul>
+  
+  <h4>
+    Combining Lists and Objects for Our Calendar Structure
+  </h4>
+  
+  <p>
+    To organize each full month, we will combine lists and objects. Each object, representing square names, weekdays, day numbers, and concert locations, will be stored inside a list. This structure will allow us to easily access and manage each day's information.
+<br><br>
+    For example, we will define <code>januaryDaysAndEvents</code> like this:
+  </p>
+  
+  <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
+  <pre><code class="language-markup">
+  <textarea class="myInput" rows="5" cols="50">januaryDaysAndEvents: [
+  ...
+  { squareName: "squareFour", weekDay: "Wednesday", dayNumber: 1, concertLocation: "Hamilton, ON" },
+  { squareName: "squareFive", weekDay: "Thursday", dayNumber: 2, concertLocation: null }, 
+  { squareName: "squareSix", weekDay: "Friday", dayNumber: 3, concertLocation: "Burlington, ON" },
+  ...
+]
+
+  </textarea>
+  </code></pre>
+</div>
+<p>
+In the next steps, we will create similar structures for the remaining months and connect them to our interactive calendar.
+</p>
+      </div>
+          
+          <ol>
+            <li>Open index.html and locate the &lt;text&gt; elements representing the days in your calendar</li>
+            <li>Modify each &lt;text&gt; element to use Vue's interpolation syntax ({{ }}). This time we will include a property name that makes reference to the list of objects representing a month's calendar structure</li>
+            <br><br>
+              <ul>               
+                <li>Each entry should include: 1) The property name <code>daysAndConcerts</code>. 2) An index inside square brackets [ ], starting from 0 up to 41. And,  3) a dot (.) followed by the word <code>dayNumber</code> to access the day's value from the list of objects:</li>
+          </ul>
+          
+              <img style="width:50%" src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/add%20days%20tagged.png?v=1740020385263">
+<!--               <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
+  <pre><code class="language-markup">
+  <textarea class="myInput" rows="5" cols="50">
+<text x="50" y="250" font-size="24"> {{ daysAndConcerts[0].dayNumber }}</text>
+  <text x="150" y="250" font-size="24">{{ daysAndConcerts[1].dayNumber }}</text>
+  <text x="250" y="250" font-size="24">{{ daysAndConcerts[2].dayNumber }}</text>
+  ...
+
+  <text x="250" y="250" font-size="24">{{ daysAndConcerts[40].dayNumber }}</text>
+  <text x="250" y="250" font-size="24">{{ daysAndConcerts[41].dayNumber }}</text>
+
+  </textarea>
+  </code></pre>
+</div> -->
+              
+
+ <button type="button" class="collapsible"><i class="fa fa-info-circle"></i> <b>Code Explanation: How The Code Above Works</b></button>
+<div class="additionalInfo">    
+<ul>
+  <li>This code will link each day in the calendar to a specific index in the list we will define in the next step</li>
+  <li>When the day numbers are updated in this list, the numbers will change and display accordingly in the calendar</li>
+</ul>
+</div>
+            <br><br>
+            <li>Now, open vue.js, copy and paste the following property called <code>daysAndConcerts</code> in the data() section. This property is a list representing January as the initial month’s calendar structure. </li>
+            
+                <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
+  <pre><code class="language-markup">
+  <textarea class="myInput" rows="5" cols="50"> daysAndConcerts: [
+          { squareName: "squareOne", weekday: "Sun", dayNumber: null, concertLocation: null}, 
+          { squareName: "squareTwo", weekday: "Mon", dayNumber: null, concertLocation: null  },
+          { squareName: "squareThree",weekday: "Tue", dayNumber: null, concertLocation: null },
+          { squareName: "squareFour", weekday: "Wed", dayNumber: 1, concertLocation: null },
+          { squareName: "squareFive", weekday: "Thu", dayNumber: 2, concertLocation: null },
+          { squareName: "squareSix", weekday: "Fri", dayNumber: 3, concertLocation: null },
+          { squareName: "squareSeven", weekday: "Sat", dayNumber: 4, concertLocation: null },
+          { squareName: "squareEight", weekday: "Sun", dayNumber: 5, concertLocation: null },
+          { squareName: "squareNine", weekday: "Mon", dayNumber: 6 , concertLocation: null },
+          { squareName: "squareTen", weekday: "Tue", dayNumber: 7 , concertLocation: null },
+          { squareName: "squareEleven", weekday: "Wed", dayNumber: 8 , concertLocation: null },
+          { squareName: "squareTwelve", weekday: "Thu", dayNumber: 9 , concertLocation: null },
+          { squareName: "squareThirteen", weekday: "Fri",dayNumber: 10 , concertLocation: null },
+          { squareName: "squareFourteen", weekday: "Sat",dayNumber: 11 , concertLocation: null },
+          { squareName: "squareFifteen", weekday: "Sun", dayNumber: 12 , concertLocation: null },
+          { squareName: "squareSixteen", weekday: "Mon", dayNumber: 13 , concertLocation: null },
+          { squareName: "squareSeventeen",weekday: "Tue", dayNumber: 14 , concertLocation: null },
+          { squareName: "squareEighteen",weekday: "Wed",  dayNumber: 15 , concertLocation: null },
+          { squareName: "squareNineteen",weekday: "Thu", dayNumber: 16 , concertLocation: null },
+          { squareName: "squareTwenty",weekday: "Fri", dayNumber: 17 , concertLocation: null },
+          { squareName: "squareTwentyOne",weekday: "Sat", dayNumber: 18 , concertLocation: null },
+          { squareName: "squareTwentyTwo",weekday: "Sun", dayNumber: 19 , concertLocation: null },
+          { squareName: "squareTwentyThree",weekday: "Mon", dayNumber: 20 , concertLocation: null },
+          { squareName: "squareTwentyFour",weekday: "Tue", dayNumber: 21 , concertLocation: null },
+          { squareName: "squareTwentyFive",weekday: "Wed", dayNumber: 22 , concertLocation: null },
+          { squareName: "squareTwentySix",weekday: "Thu", dayNumber: 23 , concertLocation: null },
+          { squareName: "squareTwentySeven",weekday: "Fri", dayNumber: 24 , concertLocation: null },
+          { squareName: "squareTwentyEight",weekday: "Sat", dayNumber: 25 , concertLocation: null },
+          { squareName: "squareTwentyNine",weekday: "Sun", dayNumber: 26 , concertLocation: null },
+          { squareName: "squareThirty",weekday: "Mon", dayNumber: 27 , concertLocation: null },
+          { squareName: "squareThirtyOne",weekday: "Tue", dayNumber: 28 , concertLocation: null },
+          { squareName: "squareThirtyTwo",weekday: "Wed", dayNumber: 29 , concertLocation: null },
+          { squareName: "squareThirtyThree",weekday: "Thu", dayNumber: 30 , concertLocation: null },
+          { squareName: "squareThirtyFour",weekday: "Fri", dayNumber: 31 , concertLocation: null },
+          { squareName: "squareThirtyFive",weekday: "Sat", dayNumber: null , concertLocation: null },
+          { squareName: "squareThirtySix",weekday: "Sun", dayNumber: null , concertLocation: null },
+          { squareName: "squareThirtySeven",weekday: "Mon", dayNumber: null , concertLocation: null },
+          { squareName: "squareThirtyEight",weekday: "Tue", dayNumber: null , concertLocation: null },
+          { squareName: "squareThirtyNine",weekday: "Wed", dayNumber: null , concertLocation: null },
+          { squareName: "squareForty",weekday: "Thu", dayNumber: null , concertLocation: null },
+          { squareName: "squareFortyOne",weekday: "Fri", dayNumber: null , concertLocation: null },
+          { squareName: "squareFortyTwo",weekday: "Sat", dayNumber: null, concertLocation: null}
+        ]
+  </textarea>
+  </code></pre>
+</div>
+            
+            <button type="button" class="collapsible"><i class="fa fa-info-circle"></i> <b>Code Explanation: How The Code Above Works</b></button>
+<div class="additionalInfo">      
+  
+  <p>The code above is a <b>list</b> that stores <b>objects</b>, with each object representing a square in the calendar. Each object contains:</p>
+    <ul>
+
+      <li>squareName: The unique name of the square in the SVG.</li>
+      <li>weekDay: The weekday that aligns with the square, day number, and concert location</li>
+      <li>dayNumber: The numerical date (or null if the square is empty).</li>
+      <li>concertLocation: The concert location (initially set to null, meaning no value).</li>
+  </ul>
+  
+  <p>This setup ensures we can dynamically update and display the calendar, aligning the correct dates with their corresponding weekday positions. <b>The structure starts with January as the initial month, where the 1st falls on the fourth square to match its weekday alignment</b>.</p>
+
+</div>
+                       
+           <br><br>
+            
+            <li>Next, open vue.js and copy the following <code>setDaysAndConcerts()</code> method. This method has two parts:</li>
+              <ol>
+                <li>A set of lists defining the days for January to June. Each month's data is a list of objects, where each object represents a calendar square.</li>
+                <li>A selection mechanism using ternary operations, that updates <code>daysAndConcerts</code> in data() to match the currently selected month </li>  
+              </ol>
+              
+               <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Scroll down and take a quick look at the method to understand how it's structured before copying and pasting it into your project.
+          </p>
+            
+              
+
+
+           
+               <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
+  <pre><code class="language-markup">
+  <textarea class="myInput" rows="5" cols="50"> setDaysAndConcerts(){
+       const januaryDaysAndConcerts =  [          
+          { squareName: "squareOne", weekday: "Sun", dayNumber: null, concertLocation: null}, 
+          { squareName: "squareTwo", weekday: "Mon", dayNumber: null, concertLocation: null  },
+          { squareName: "squareThree",weekday: "Tue", dayNumber: null, concertLocation: null },
+          { squareName: "squareFour", weekday: "Wed", dayNumber: 1, concertLocation: null },
+          { squareName: "squareFive", weekday: "Thu", dayNumber: 2, concertLocation: null },
+          { squareName: "squareSix", weekday: "Fri", dayNumber: 3, concertLocation: null },
+          { squareName: "squareSeven", weekday: "Sat", dayNumber: 4, concertLocation: null },
+          { squareName: "squareEight", weekday: "Sun", dayNumber: 5, concertLocation: null },
+          { squareName: "squareNine", weekday: "Mon", dayNumber: 6 , concertLocation: null },
+          { squareName: "squareTen", weekday: "Tue", dayNumber: 7 , concertLocation: null },
+          { squareName: "squareEleven", weekday: "Wed", dayNumber: 8 , concertLocation: null },
+          { squareName: "squareTwelve", weekday: "Thu", dayNumber: 9 , concertLocation: null },
+          { squareName: "squareThirteen", weekday: "Fri",dayNumber: 10 , concertLocation: null },
+          { squareName: "squareFourteen", weekday: "Sat",dayNumber: 11 , concertLocation: null },
+          { squareName: "squareFifteen", weekday: "Sun", dayNumber: 12 , concertLocation: null },
+          { squareName: "squareSixteen", weekday: "Mon", dayNumber: 13 , concertLocation: null },
+          { squareName: "squareSeventeen",weekday: "Tue", dayNumber: 14 , concertLocation: null },
+          { squareName: "squareEighteen",weekday: "Wed",  dayNumber: 15 , concertLocation: null },
+          { squareName: "squareNineteen",weekday: "Thu", dayNumber: 16 , concertLocation: null },
+          { squareName: "squareTwenty",weekday: "Fri", dayNumber: 17 , concertLocation: null },
+          { squareName: "squareTwentyOne",weekday: "Sat", dayNumber: 18 , concertLocation: null },
+          { squareName: "squareTwentyTwo",weekday: "Sun", dayNumber: 19 , concertLocation: null },
+          { squareName: "squareTwentyThree",weekday: "Mon", dayNumber: 20 , concertLocation: null },
+          { squareName: "squareTwentyFour",weekday: "Tue", dayNumber: 21 , concertLocation: null },
+          { squareName: "squareTwentyFive",weekday: "Wed", dayNumber: 22 , concertLocation: null },
+          { squareName: "squareTwentySix",weekday: "Thu", dayNumber: 23 , concertLocation: null },
+          { squareName: "squareTwentySeven",weekday: "Fri", dayNumber: 24 , concertLocation: null },
+          { squareName: "squareTwentyEight",weekday: "Sat", dayNumber: 25 , concertLocation: null },
+          { squareName: "squareTwentyNine",weekday: "Sun", dayNumber: 26 , concertLocation: null },
+          { squareName: "squareThirty",weekday: "Mon", dayNumber: 27 , concertLocation: null },
+          { squareName: "squareThirtyOne",weekday: "Tue", dayNumber: 28 , concertLocation: null },
+          { squareName: "squareThirtyTwo",weekday: "Wed", dayNumber: 29 , concertLocation: null },
+          { squareName: "squareThirtyThree",weekday: "Thu", dayNumber: 30 , concertLocation: null },
+          { squareName: "squareThirtyFour",weekday: "Fri", dayNumber: 31 , concertLocation: null },
+          { squareName: "squareThirtyFive",weekday: "Sat", dayNumber: null , concertLocation: null },
+          { squareName: "squareThirtySix",weekday: "Sun", dayNumber: null , concertLocation: null },
+          { squareName: "squareThirtySeven",weekday: "Mon", dayNumber: null , concertLocation: null },
+          { squareName: "squareThirtyEight",weekday: "Tue", dayNumber: null , concertLocation: null },
+          { squareName: "squareThirtyNine",weekday: "Wed", dayNumber: null , concertLocation: null },
+          { squareName: "squareForty",weekday: "Thu", dayNumber: null , concertLocation: null },
+          { squareName: "squareFortyOne",weekday: "Fri", dayNumber: null , concertLocation: null },
+          { squareName: "squareFortyTwo",weekday: "Sat", dayNumber: null, concertLocation: null}
+
+        ]
+           
+           const februaryDaysAndConcerts = [
+            { squareName: "squareOne", weekday: "Sun", dayNumber: null, concertLocation: null}, 
+            { squareName: "squareTwo", weekday: "Mon", dayNumber: null, concertLocation: null  },
+            { squareName: "squareThree",weekday: "Tue", dayNumber: null, concertLocation: null },
+            { squareName: "squareFour", weekday: "Wed", dayNumber: null, concertLocation: null },
+            { squareName: "squareFive", weekday: "Thu", dayNumber: null, concertLocation: null },
+            { squareName: "squareSix", weekday: "Fri", dayNumber: null, concertLocation: null },
+            { squareName: "squareSeven", weekday: "Sat", dayNumber: 1, concertLocation: null },
+            { squareName: "squareEight", weekday: "Sun", dayNumber: 2, concertLocation: null },
+            { squareName: "squareNine", weekday: "Mon", dayNumber: 3 , concertLocation: null },
+            { squareName: "squareTen", weekday: "Tue", dayNumber: 4 , concertLocation: null },
+            { squareName: "squareEleven", weekday: "Wed", dayNumber: 5 , concertLocation: null },
+            { squareName: "squareTwelve", weekday: "Thu", dayNumber: 6 , concertLocation: null },
+            { squareName: "squareThirteen", weekday: "Fri",dayNumber: 7 , concertLocation: null },
+            { squareName: "squareFourteen", weekday: "Sat",dayNumber: 8 , concertLocation: null },
+            { squareName: "squareFifteen", weekday: "Sun", dayNumber: 9 , concertLocation: null },
+            { squareName: "squareSixteen", weekday: "Mon", dayNumber: 10 , concertLocation: null },
+            { squareName: "squareSeventeen",weekday: "Tue", dayNumber: 11 , concertLocation: null },
+            { squareName: "squareEighteen",weekday: "Wed",  dayNumber: 12 , concertLocation: null },
+            { squareName: "squareNineteen",weekday: "Thu", dayNumber: 13 , concertLocation: null },
+            { squareName: "squareTwenty",weekday: "Fri", dayNumber: 14 , concertLocation: null },
+            { squareName: "squareTwentyOne",weekday: "Sat", dayNumber: 15 , concertLocation: null },
+            { squareName: "squareTwentyTwo",weekday: "Sun", dayNumber: 16 , concertLocation: null },
+            { squareName: "squareTwentyThree",weekday: "Mon", dayNumber: 17 , concertLocation: null },
+            { squareName: "squareTwentyFour",weekday: "Tue", dayNumber: 18 , concertLocation: null },
+            { squareName: "squareTwentyFive",weekday: "Wed", dayNumber: 19 , concertLocation: null },
+            { squareName: "squareTwentySix",weekday: "Thu", dayNumber: 20 , concertLocation: null },
+            { squareName: "squareTwentySeven",weekday: "Fri", dayNumber: 21 , concertLocation: null },
+            { squareName: "squareTwentyEight",weekday: "Sat", dayNumber: 22 , concertLocation: null },
+            { squareName: "squareTwentyNine",weekday: "Sun", dayNumber: 23 , concertLocation: null },
+            { squareName: "squareThirty",weekday: "Mon", dayNumber: 24 , concertLocation: null },
+            { squareName: "squareThirtyOne",weekday: "Tue", dayNumber: 25 , concertLocation: null },
+            { squareName: "squareThirtyTwo",weekday: "Wed", dayNumber: 26 , concertLocation: null },
+            { squareName: "squareThirtyThree",weekday: "Thu", dayNumber: 27 , concertLocation: null },
+            { squareName: "squareThirtyFour",weekday: "Fri", dayNumber: 28 , concertLocation: null },
+            { squareName: "squareThirtyFive",weekday: "Sat", dayNumber: null , concertLocation: null },
+            { squareName: "squareThirtySix",weekday: "Sun", dayNumber: null , concertLocation: null },
+            { squareName: "squareThirtySeven",weekday: "Mon", dayNumber: null , concertLocation: null },
+            { squareName: "squareThirtyEight",weekday: "Tue", dayNumber: null , concertLocation: null },
+            { squareName: "squareThirtyNine",weekday: "Wed", dayNumber: null , concertLocation: null },
+            { squareName: "squareForty",weekday: "Thu", dayNumber: null , concertLocation: null },
+            { squareName: "squareFortyOne",weekday: "Fri", dayNumber: null , concertLocation: null },
+            { squareName: "squareFortyTwo",weekday: "Sat", dayNumber: null, concertLocation: null}
+  
+           ]
+     
+           const marchDaysAndConcerts = [
+            { squareName: "squareOne", weekday: "Sun", dayNumber: null, concertLocation: null}, 
+            { squareName: "squareTwo", weekday: "Mon", dayNumber: null, concertLocation: null  },
+            { squareName: "squareThree",weekday: "Tue", dayNumber: null, concertLocation: null },
+            { squareName: "squareFour", weekday: "Wed", dayNumber: null, concertLocation: null },
+            { squareName: "squareFive", weekday: "Thu", dayNumber: null, concertLocation: null },
+            { squareName: "squareSix", weekday: "Fri", dayNumber: null, concertLocation: null },
+            { squareName: "squareSeven", weekday: "Sat", dayNumber: 1, concertLocation: null },
+            { squareName: "squareEight", weekday: "Sun", dayNumber: 2, concertLocation: null },
+            { squareName: "squareNine", weekday: "Mon", dayNumber: 3 , concertLocation: null },
+            { squareName: "squareTen", weekday: "Tue", dayNumber: 4 , concertLocation: null },
+            { squareName: "squareEleven", weekday: "Wed", dayNumber: 5 , concertLocation: null },
+            { squareName: "squareTwelve", weekday: "Thu", dayNumber: 6 , concertLocation: null },
+            { squareName: "squareThirteen", weekday: "Fri",dayNumber: 7 , concertLocation: null },
+            { squareName: "squareFourteen", weekday: "Sat",dayNumber: 8 , concertLocation: null },
+            { squareName: "squareFifteen", weekday: "Sun", dayNumber: 9 , concertLocation: null },
+            { squareName: "squareSixteen", weekday: "Mon", dayNumber: 10 , concertLocation: null },
+            { squareName: "squareSeventeen",weekday: "Tue", dayNumber: 11 , concertLocation: null },
+            { squareName: "squareEighteen",weekday: "Wed",  dayNumber: 12 , concertLocation: null },
+            { squareName: "squareNineteen",weekday: "Thu", dayNumber: 13 , concertLocation: null },
+            { squareName: "squareTwenty",weekday: "Fri", dayNumber: 14 , concertLocation: null },
+            { squareName: "squareTwentyOne",weekday: "Sat", dayNumber: 15 , concertLocation: null },
+            { squareName: "squareTwentyTwo",weekday: "Sun", dayNumber: 16 , concertLocation: null },
+            { squareName: "squareTwentyThree",weekday: "Mon", dayNumber: 17 , concertLocation: null },
+            { squareName: "squareTwentyFour",weekday: "Tue", dayNumber: 18 , concertLocation: null },
+            { squareName: "squareTwentyFive",weekday: "Wed", dayNumber: 19 , concertLocation: null },
+            { squareName: "squareTwentySix",weekday: "Thu", dayNumber: 20 , concertLocation: null },
+            { squareName: "squareTwentySeven",weekday: "Fri", dayNumber: 21 , concertLocation: null },
+            { squareName: "squareTwentyEight",weekday: "Sat", dayNumber: 22 , concertLocation: null },
+            { squareName: "squareTwentyNine",weekday: "Sun", dayNumber: 23 , concertLocation: null },
+            { squareName: "squareThirty",weekday: "Mon", dayNumber: 24 , concertLocation: null },
+            { squareName: "squareThirtyOne",weekday: "Tue", dayNumber: 25 , concertLocation: null },
+            { squareName: "squareThirtyTwo",weekday: "Wed", dayNumber: 26 , concertLocation: null },
+            { squareName: "squareThirtyThree",weekday: "Thu", dayNumber: 27 , concertLocation: null },
+            { squareName: "squareThirtyFour",weekday: "Fri", dayNumber: 28 , concertLocation: null },
+            { squareName: "squareThirtyFive",weekday: "Sat", dayNumber: 29 , concertLocation: null },
+            { squareName: "squareThirtySix",weekday: "Sun", dayNumber: 30 , concertLocation: null },
+            { squareName: "squareThirtySeven",weekday: "Mon", dayNumber: 31 , concertLocation: null },
+            { squareName: "squareThirtyEight",weekday: "Tue", dayNumber: null , concertLocation: null },
+            { squareName: "squareThirtyNine",weekday: "Wed", dayNumber: null , concertLocation: null },
+            { squareName: "squareForty",weekday: "Thu", dayNumber: null , concertLocation: null },
+            { squareName: "squareFortyOne",weekday: "Fri", dayNumber: null , concertLocation: null },
+            { squareName: "squareFortyTwo",weekday: "Sat", dayNumber: null, concertLocation: null}
+
+          ]
+     
+           const aprilDaysAndConcerts = [
+            { squareName: "squareOne", weekday: "Sun", dayNumber: null, concertLocation: null}, 
+            { squareName: "squareTwo", weekday: "Mon", dayNumber: null, concertLocation: null  },
+            { squareName: "squareThree",weekday: "Tue", dayNumber: 1, concertLocation: null },
+            { squareName: "squareFour", weekday: "Wed", dayNumber: 2, concertLocation: null },
+            { squareName: "squareFive", weekday: "Thu", dayNumber: 3, concertLocation: null },
+            { squareName: "squareSix", weekday: "Fri", dayNumber: 4, concertLocation: null },
+            { squareName: "squareSeven", weekday: "Sat", dayNumber: 5, concertLocation: null },
+            { squareName: "squareEight", weekday: "Sun", dayNumber: 6, concertLocation: null },
+            { squareName: "squareNine", weekday: "Mon", dayNumber: 7 , concertLocation: null },
+            { squareName: "squareTen", weekday: "Tue", dayNumber: 8 , concertLocation: null },
+            { squareName: "squareEleven", weekday: "Wed", dayNumber: 9 , concertLocation: null },
+            { squareName: "squareTwelve", weekday: "Thu", dayNumber: 10 , concertLocation: null },
+            { squareName: "squareThirteen", weekday: "Fri",dayNumber: 11 , concertLocation: null },
+            { squareName: "squareFourteen", weekday: "Sat",dayNumber: 12 , concertLocation: null },
+            { squareName: "squareFifteen", weekday: "Sun", dayNumber: 13 , concertLocation: null },
+            { squareName: "squareSixteen", weekday: "Mon", dayNumber: 14 , concertLocation: null },
+            { squareName: "squareSeventeen",weekday: "Tue", dayNumber: 15 , concertLocation: null },
+            { squareName: "squareEighteen",weekday: "Wed",  dayNumber: 16 , concertLocation: null },
+            { squareName: "squareNineteen",weekday: "Thu", dayNumber: 17 , concertLocation: null },
+            { squareName: "squareTwenty",weekday: "Fri", dayNumber: 18 , concertLocation: null },
+            { squareName: "squareTwentyOne",weekday: "Sat", dayNumber: 19 , concertLocation: null },
+            { squareName: "squareTwentyTwo",weekday: "Sun", dayNumber: 20 , concertLocation: null },
+            { squareName: "squareTwentyThree",weekday: "Mon", dayNumber: 21 , concertLocation: null },
+            { squareName: "squareTwentyFour",weekday: "Tue", dayNumber: 22 , concertLocation: null },
+            { squareName: "squareTwentyFive",weekday: "Wed", dayNumber: 23 , concertLocation: null },
+            { squareName: "squareTwentySix",weekday: "Thu", dayNumber: 24 , concertLocation: null },
+            { squareName: "squareTwentySeven",weekday: "Fri", dayNumber: 25 , concertLocation: null },
+            { squareName: "squareTwentyEight",weekday: "Sat", dayNumber: 26 , concertLocation: null },
+            { squareName: "squareTwentyNine",weekday: "Sun", dayNumber: 27 , concertLocation: null },
+            { squareName: "squareThirty",weekday: "Mon", dayNumber: 28 , concertLocation: null },
+            { squareName: "squareThirtyOne",weekday: "Tue", dayNumber: 29 , concertLocation: null },
+            { squareName: "squareThirtyTwo",weekday: "Wed", dayNumber: 30 , concertLocation: null },
+            { squareName: "squareThirtyThree",weekday: "Thu", dayNumber: null , concertLocation: null },
+            { squareName: "squareThirtyFour",weekday: "Fri", dayNumber: null , concertLocation: null },
+            { squareName: "squareThirtyFive",weekday: "Sat", dayNumber: null , concertLocation: null },
+            { squareName: "squareThirtySix",weekday: "Sun", dayNumber: null , concertLocation: null },
+            { squareName: "squareThirtySeven",weekday: "Mon", dayNumber: null , concertLocation: null },
+            { squareName: "squareThirtyEight",weekday: "Tue", dayNumber: null , concertLocation: null },
+            { squareName: "squareThirtyNine",weekday: "Wed", dayNumber: null , concertLocation: null },
+            { squareName: "squareForty",weekday: "Thu", dayNumber: null , concertLocation: null },
+            { squareName: "squareFortyOne",weekday: "Fri", dayNumber: null , concertLocation: null },
+            { squareName: "squareFortyTwo",weekday: "Sat", dayNumber: null, concertLocation: null}
+
+           ]
+     
+           const mayDaysAndConcerts = [
+            { squareName: "squareOne", weekday: "Sun", dayNumber: null, concertLocation: null}, 
+            { squareName: "squareTwo", weekday: "Mon", dayNumber: null, concertLocation: null  },
+            { squareName: "squareThree",weekday: "Tue", dayNumber: null, concertLocation: null },
+            { squareName: "squareFour", weekday: "Wed", dayNumber: null, concertLocation: null },
+            { squareName: "squareFive", weekday: "Thu", dayNumber: 1, concertLocation: null },
+            { squareName: "squareSix", weekday: "Fri", dayNumber: 2, concertLocation: null },
+            { squareName: "squareSeven", weekday: "Sat", dayNumber: 3, concertLocation: null },
+            { squareName: "squareEight", weekday: "Sun", dayNumber: 4, concertLocation: null },
+            { squareName: "squareNine", weekday: "Mon", dayNumber: 5 , concertLocation: null },
+            { squareName: "squareTen", weekday: "Tue", dayNumber: 6 , concertLocation: null },
+            { squareName: "squareEleven", weekday: "Wed", dayNumber: 7 , concertLocation: null },
+            { squareName: "squareTwelve", weekday: "Thu", dayNumber: 8 , concertLocation: null },
+            { squareName: "squareThirteen", weekday: "Fri",dayNumber: 9 , concertLocation: null },
+            { squareName: "squareFourteen", weekday: "Sat",dayNumber: 10 , concertLocation: null },
+            { squareName: "squareFifteen", weekday: "Sun", dayNumber: 11 , concertLocation: null },
+            { squareName: "squareSixteen", weekday: "Mon", dayNumber: 12 , concertLocation: null },
+            { squareName: "squareSeventeen",weekday: "Tue", dayNumber: 13 , concertLocation: null },
+            { squareName: "squareEighteen",weekday: "Wed",  dayNumber: 14 , concertLocation: null },
+            { squareName: "squareNineteen",weekday: "Thu", dayNumber: 15 , concertLocation: null },
+            { squareName: "squareTwenty",weekday: "Fri", dayNumber: 16 , concertLocation: null },
+            { squareName: "squareTwentyOne",weekday: "Sat", dayNumber: 17 , concertLocation: null },
+            { squareName: "squareTwentyTwo",weekday: "Sun", dayNumber: 18 , concertLocation: null },
+            { squareName: "squareTwentyThree",weekday: "Mon", dayNumber: 19 , concertLocation: null },
+            { squareName: "squareTwentyFour",weekday: "Tue", dayNumber: 20 , concertLocation: null },
+            { squareName: "squareTwentyFive",weekday: "Wed", dayNumber: 21 , concertLocation: null },
+            { squareName: "squareTwentySix",weekday: "Thu", dayNumber: 22 , concertLocation: null },
+            { squareName: "squareTwentySeven",weekday: "Fri", dayNumber: 23 , concertLocation: null },
+            { squareName: "squareTwentyEight",weekday: "Sat", dayNumber: 24 , concertLocation: null },
+            { squareName: "squareTwentyNine",weekday: "Sun", dayNumber: 25 , concertLocation: null },
+            { squareName: "squareThirty",weekday: "Mon", dayNumber: 26 , concertLocation: null },
+            { squareName: "squareThirtyOne",weekday: "Tue", dayNumber: 27 , concertLocation: null },
+            { squareName: "squareThirtyTwo",weekday: "Wed", dayNumber: 28 , concertLocation: null },
+            { squareName: "squareThirtyThree",weekday: "Thu", dayNumber: 29 , concertLocation: null },
+            { squareName: "squareThirtyFour",weekday: "Fri", dayNumber: 30 , concertLocation: null },
+            { squareName: "squareThirtyFive",weekday: "Sat", dayNumber: 31, concertLocation: null },
+            { squareName: "squareThirtySix",weekday: "Sun", dayNumber: null , concertLocation: null },
+            { squareName: "squareThirtySeven",weekday: "Mon", dayNumber: null , concertLocation: null },
+            { squareName: "squareThirtyEight",weekday: "Tue", dayNumber: null , concertLocation: null },
+            { squareName: "squareThirtyNine",weekday: "Wed", dayNumber: null , concertLocation: null },
+            { squareName: "squareForty",weekday: "Thu", dayNumber: null , concertLocation: null },
+            { squareName: "squareFortyOne",weekday: "Fri", dayNumber: null , concertLocation: null },
+            { squareName: "squareFortyTwo",weekday: "Sat", dayNumber: null, concertLocation: null}
+           ]
+     
+           const juneDaysAndConcerts = [
+            { squareName: "squareOne", weekday: "Sun", dayNumber: 1, concertLocation: null}, 
+            { squareName: "squareTwo", weekday: "Mon", dayNumber: 2, concertLocation: null  },
+            { squareName: "squareThree",weekday: "Tue", dayNumber: 3, concertLocation: null },
+            { squareName: "squareFour", weekday: "Wed", dayNumber: 4, concertLocation: null },
+            { squareName: "squareFive", weekday: "Thu", dayNumber: 5, concertLocation: null },
+            { squareName: "squareSix", weekday: "Fri", dayNumber: 6, concertLocation: null },
+            { squareName: "squareSeven", weekday: "Sat", dayNumber: 7, concertLocation: null },
+            { squareName: "squareEight", weekday: "Sun", dayNumber: 8, concertLocation: null },
+            { squareName: "squareNine", weekday: "Mon", dayNumber: 9 , concertLocation: null },
+            { squareName: "squareTen", weekday: "Tue", dayNumber: 10 , concertLocation: null },
+            { squareName: "squareEleven", weekday: "Wed", dayNumber: 11 , concertLocation: null },
+            { squareName: "squareTwelve", weekday: "Thu", dayNumber: 12 , concertLocation: null },
+            { squareName: "squareThirteen", weekday: "Fri",dayNumber: 13 , concertLocation: null },
+            { squareName: "squareFourteen", weekday: "Sat",dayNumber: 14 , concertLocation: null },
+            { squareName: "squareFifteen", weekday: "Sun", dayNumber: 15 , concertLocation: null },
+            { squareName: "squareSixteen", weekday: "Mon", dayNumber: 16 , concertLocation: null },
+            { squareName: "squareSeventeen",weekday: "Tue", dayNumber: 17 , concertLocation: null },
+            { squareName: "squareEighteen",weekday: "Wed",  dayNumber: 18 , concertLocation: null },
+            { squareName: "squareNineteen",weekday: "Thu", dayNumber: 19 , concertLocation: null },
+            { squareName: "squareTwenty",weekday: "Fri", dayNumber: 20 , concertLocation: null },
+            { squareName: "squareTwentyOne",weekday: "Sat", dayNumber: 21 , concertLocation: null },
+            { squareName: "squareTwentyTwo",weekday: "Sun", dayNumber: 22 , concertLocation: null },
+            { squareName: "squareTwentyThree",weekday: "Mon", dayNumber: 23 , concertLocation: null },
+            { squareName: "squareTwentyFour",weekday: "Tue", dayNumber: 24 , concertLocation: null },
+            { squareName: "squareTwentyFive",weekday: "Wed", dayNumber: 25 , concertLocation: null },
+            { squareName: "squareTwentySix",weekday: "Thu", dayNumber: 26 , concertLocation: null },
+            { squareName: "squareTwentySeven",weekday: "Fri", dayNumber: 27 , concertLocation: null },
+            { squareName: "squareTwentyEight",weekday: "Sat", dayNumber: 28 , concertLocation: null },
+            { squareName: "squareTwentyNine",weekday: "Sun", dayNumber: 29 , concertLocation: null },
+            { squareName: "squareThirty",weekday: "Mon", dayNumber: 30 , concertLocation: null },
+            { squareName: "squareThirtyOne",weekday: "Tue", dayNumber: null , concertLocation: null },
+            { squareName: "squareThirtyTwo",weekday: "Wed", dayNumber: null , concertLocation: null },
+            { squareName: "squareThirtyThree",weekday: "Thu", dayNumber: null , concertLocation: null },
+            { squareName: "squareThirtyFour",weekday: "Fri", dayNumber: null , concertLocation: null },
+            { squareName: "squareThirtyFive",weekday: "Sat", dayNumber: null, concertLocation: null },
+            { squareName: "squareThirtySix",weekday: "Sun", dayNumber: null , concertLocation: null },
+            { squareName: "squareThirtySeven",weekday: "Mon", dayNumber: null , concertLocation: null },
+            { squareName: "squareThirtyEight",weekday: "Tue", dayNumber: null , concertLocation: null },
+            { squareName: "squareThirtyNine",weekday: "Wed", dayNumber: null , concertLocation: null },
+            { squareName: "squareForty",weekday: "Thu", dayNumber: null , concertLocation: null },
+            { squareName: "squareFortyOne",weekday: "Fri", dayNumber: null , concertLocation: null },
+            { squareName: "squareFortyTwo",weekday: "Sat", dayNumber: null, concertLocation: null}
+
+           ]
+           
+     
+// Add days and events list for July to December here
+
+           this.daysAndConcerts = this.month === "January" ?  januaryDaysAndConcerts :
+                                  this.month === "February" ?  februaryDaysAndConcerts :
+                                  this.month === "March" ?  marchDaysAndConcerts :
+                                  this.month === "April" ?  aprilDaysAndConcerts :
+                                  this.month === "May" ?  mayDaysAndConcerts :
+                                  this.month === "June" ?  juneDaysAndConcerts :
+                                  this.daysAndConcerts
+            
+          },
+  </textarea>
+  </code></pre>
+</div>
+              
+               <button type="button" class="collapsible"><i class="fa fa-info-circle"></i> <b>Code Explanation: How The Code Above Works</b></button>
+<div class="additionalInfo">      
+  
+  <p>The above code defines six lists, each storing objects that represent calendar squares for January to June. Each list aligns the 1st of the month with the correct weekday and includes the appropriate number of days:</p>
+
+  <ul>
+    <li>January: Starts on the 4th square, and has 31 days.</li>
+    <li>February: Starts on the 7th square, and has 28 days.</li>
+    <li>March: Starts on the 7th square, and has 31 days.</li>
+    <li>April: Starts on the 3rd square, and has 30 days.</li>
+    <li>May: Starts on the 5th square, and has 31 days.</li>
+    <li>June: Starts on the 1st square, and has 30 days.</li>
+    
+  </ul>
+<p>
+  This structure ensures the calendar squares match real-world month layouts.
+  </p>
+
+</div>
+            
+          
+        
+            <br><br>
+            <li>Now, update <code>navigatePrevious()</code> and <code>navigateNext()</code> to call <code>setDaysAndConcerts</code> so that the days update dynamically. Add <code>this.setDaysAndConcerts()</code> to <code>navigatePrevious()</code> and <code>navigateNext()</code> </li>
+
+            
+           
+              <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+                <pre><code class="language-markup">
+                <textarea class="myInput" rows="5" cols="50"> navigatePrevious() {
+                    this.setPreviousMonth();
+                    this.setBackgroundColor(); 
+                    this.setDaysAndConcerts();
+                    },
+
+                navigateNext() {
+                    this.setNextMonth();
+                    this.setBackgroundColor(); 
+                    this.setDaysAndConcerts();
+                  },
+                </textarea>
+                </code></pre>
+                </div>
+            
+            
+            
+            
+            <li>Save your changes and click the left and right buttons. The days in the calendar should change based on the month. If the dates update correctly, you’re ready for the challenge below!</li>
+          
+          
+      <button type="button"  class="collapsible-question">
+        <i class="fa fa-star-o" style="font-size:24px"></i> 
+        <b>Challenge 3: Complete setDaysAndConcerts() by adding a list for July to December (Click to see instructions)</b>
+        </button>
+            <div class="additionalInfo">  The code from <code>setDaysAndConcerts()</code> above is partially completed. Right now, only January to June have their days assigned.
+              
+              <br><br>
+
+              💡<b>Your challenge:</b>  
+              <ul>
+              <li>1) Create a list for each month with their respective number of days</li>
+              <li>2) Complete the code located after the lists to select the days to display based on the selected month from January to Decemeber</li>  
+              </ul>
+              
+          
+        
+        </div>
+            
+      </ol>
+      
+          <hr />
+          <h3 id="13activity">
+          3.5 Update the Concert Locations Displayed on the Calendar
+          </h3>
+          <hr />
+
+   <ol>
+            <li>Open index.html and locate the &lt;text&gt; elements representing the concert locations in your calendar</li>
+            <li>Modify each &lt;text&gt; element to use Vue's interpolation syntax ({{ }}). We will use the property name that makes reference to the list of items with days and events made previously </li>
+              <ul>
+                
+              <br><br>
+                <li>Each entry should include: 1) The property name <code>daysAndConcerts</code>. 2) An index inside square brackets [ ], starting from 0 up to 41. And,  3) a dot (.) followed by the name <code>concertLocation</code> to access the concert location values:</li>
+          </ul>
+          
+     <img style="width:50%" src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/concertLocationTagged.png?v=1740020849347">
+              
+<!--               <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
+  <pre><code class="language-markup">
+  <textarea class="myInput" rows="5" cols="50">
+      <text x="50" y="250" font-size="24"> {{ daysAndConcerts[0].concertLocation }}</text>
+        <text x="150" y="250" font-size="24">{{ daysAndConcerts[1].concertLocation }}</text>
+        <text x="250" y="250" font-size="24">{{ daysAndConcerts[2].concertLocation }}</text>
+        ...
+
+        <text x="250" y="250" font-size="24">{{ daysAndConcerts[40].concertLocation }}</text>
+        <text x="250" y="250" font-size="24">{{ daysAndConcerts[41].concertLocation }}</text>
+
+  </textarea>
+  </code></pre>
+</div> -->
+ 
+              
+ <button type="button" class="collapsible"><i class="fa fa-info-circle"></i> <b>Code Explanation: How The Code Above Works</b></button>
+<div class="additionalInfo">    
+<ul>
+  <li>This code will link each concert location in the calendar grid to a specific index in the calendarLocation item from the <code>daysAndConcerts</code> list we defined previously</li>
+  <li>When <code>daysAndConcerts</code> is updated, the calendar events will change dynamically</li>
+</ul>
+</div>
+                      <br><br>
+
+     <li>Open vue.js and locate <code>daysAndConcerts</code> in data()</li>
+     <li>Replace some <code>null</code> values with some concert locations. These can be real or fictional for this exercise</li>
+                 
+                <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
+  <pre><code class="language-markup">
+  <textarea class="myInput" rows="5" cols="50"> daysAndConcerts: [
+          { squareName: "squareOne", weekday: "Sun", dayNumber: null, concertLocation: null}, 
+          { squareName: "squareTwo", weekday: "Mon", dayNumber: null, concertLocation: null  },
+          { squareName: "squareThree",weekday: "Tue", dayNumber: null, concertLocation: null },
+          { squareName: "squareFour", weekday: "Wed", dayNumber: 1, concertLocation: "Hamilton, ON" },
+          { squareName: "squareFive", weekday: "Thu", dayNumber: 2, concertLocation: null },
+          { squareName: "squareSix", weekday: "Fri", dayNumber: 3, concertLocation: null },
+          { squareName: "squareSeven", weekday: "Sat", dayNumber: 4, concertLocation: null },
+          { squareName: "squareEight", weekday: "Sun", dayNumber: 5, concertLocation: null },
+          { squareName: "squareNine", weekday: "Mon", dayNumber: 6 , concertLocation: null },
+          { squareName: "squareTen", weekday: "Tue", dayNumber: 7 , concertLocation: null },
+          { squareName: "squareEleven", weekday: "Wed", dayNumber: 8 , concertLocation: null },
+          { squareName: "squareTwelve", weekday: "Thu", dayNumber: 9 , concertLocation: null },
+          { squareName: "squareThirteen", weekday: "Fri",dayNumber: 10 , concertLocation: null },
+          { squareName: "squareFourteen", weekday: "Sat",dayNumber: 11 , concertLocation: null },
+          { squareName: "squareFifteen", weekday: "Sun", dayNumber: 12 , concertLocation: null },
+          { squareName: "squareSixteen", weekday: "Mon", dayNumber: 13 , concertLocation: null },
+          { squareName: "squareSeventeen",weekday: "Tue", dayNumber: 14 , concertLocation: null },
+          { squareName: "squareEighteen",weekday: "Wed",  dayNumber: 15 , concertLocation: "Burlington, ON" },
+          { squareName: "squareNineteen",weekday: "Thu", dayNumber: 16 , concertLocation: null },
+          { squareName: "squareTwenty",weekday: "Fri", dayNumber: 17 , concertLocation: null },
+          { squareName: "squareTwentyOne",weekday: "Sat", dayNumber: 18 , concertLocation: null },
+          { squareName: "squareTwentyTwo",weekday: "Sun", dayNumber: 19 , concertLocation: null },
+          { squareName: "squareTwentyThree",weekday: "Mon", dayNumber: 20 , concertLocation: null },
+          { squareName: "squareTwentyFour",weekday: "Tue", dayNumber: 21 , concertLocation: null },
+          { squareName: "squareTwentyFive",weekday: "Wed", dayNumber: 22 , concertLocation: null },
+          { squareName: "squareTwentySix",weekday: "Thu", dayNumber: 23 , concertLocation: null },
+          { squareName: "squareTwentySeven",weekday: "Fri", dayNumber: 24 , concertLocation: null },
+          { squareName: "squareTwentyEight",weekday: "Sat", dayNumber: 25 , concertLocation: null },
+          { squareName: "squareTwentyNine",weekday: "Sun", dayNumber: 26 , concertLocation: null },
+          { squareName: "squareThirty",weekday: "Mon", dayNumber: 27 , concertLocation: null },
+          { squareName: "squareThirtyOne",weekday: "Tue", dayNumber: 28 , concertLocation: null },
+          { squareName: "squareThirtyTwo",weekday: "Wed", dayNumber: 29 , concertLocation: null },
+          { squareName: "squareThirtyThree",weekday: "Thu", dayNumber: 30 , concertLocation: "Toronto, ON" },
+          { squareName: "squareThirtyFour",weekday: "Fri", dayNumber: 31 , concertLocation: null },
+          { squareName: "squareThirtyFive",weekday: "Sat", dayNumber: null , concertLocation: null },
+          { squareName: "squareThirtySix",weekday: "Sun", dayNumber: null , concertLocation: null },
+          { squareName: "squareThirtySeven",weekday: "Mon", dayNumber: null , concertLocation: null },
+          { squareName: "squareThirtyEight",weekday: "Tue", dayNumber: null , concertLocation: null },
+          { squareName: "squareThirtyNine",weekday: "Wed", dayNumber: null , concertLocation: null },
+          { squareName: "squareForty",weekday: "Thu", dayNumber: null , concertLocation: null },
+          { squareName: "squareFortyOne",weekday: "Fri", dayNumber: null , concertLocation: null },
+          { squareName: "squareFortyTwo",weekday: "Sat", dayNumber: null, concertLocation: null}
+        ]
+  </textarea>
+  </code></pre>
+</div>
+                       
+<!--           
+          <h4>
+            2. Define a Helper Method to Update the Days Based on the Month
+          </h4> -->
+          
+       <li>Next, locate the method <code>setDaysAndConcerts()</code></li>
+       <li>Replace <code>null</code> values with concert locations in the lists for January to December defined in the method <code>setDaysAndConcerts()</code>, previously</li>
+
+     <li>Save your changes and click the <b>left and right buttons</b>. The concert locations in the calendar should change based on the month. If these update correctly, you have completed this lab!
+</li>
+          
+          </ol>
+      
+      <video style="width:70%" controls loop autoplay muted>
+  <source  src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/calendar-working2.webm?v=1740021644771" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+          
+          
+      
+      <!--  conclusion          -->
+          
+          <h2 id="conclusion">Assignment submission and assessment</h2>
+          <hr />
+<!--           <h3>
+            Submission 
+          </h3>
+ -->
+          <ol>
+<!--             <li><b>Zip your folder</b></li>
+            <ul>
+              <li>Learn how to zip your folder in Mac: <a href="https://support.apple.com/en-ca/guide/mac-help/mchlp2528/mac" target="_blank">https://support.apple.com/en-ca/guide/mac-help/mchlp2528/mac</a></li>
+              <li>Learn how to zip your folder in Windows: <a href="https://support.microsoft.com/en-us/windows/zip-and-unzip-files-8d28fa72-f2f9-712f-67df-f80cf89fd4e5" target="_blank">https://support.microsoft.com/en-us/windows/zip-and-unzip-files-8d28fa72-f2f9-712f-67df-f80cf89fd4e5</a></li>
+            </ul> -->
+            <li><b>Zip your folder and submit it to Adding interactivity to your Calendar interface with Vue </b> on Avenue to Learn under Assessments &gt; Assignments </li>
+          </ol>
+          
+        
+      
+                  
+            <h3>Assessment Criteria</h3>
+
+    <ol>
+      <li><b>Updating the Month Dynamically When Clicking the Navigation Buttons (2.5 points):</b> The months update dynamically when using the forward and backward navigation buttons.</li>
+      <li><b>Changing the Background Color Based on the Month (2.5 points):</b> The background color changes according to the current month.</li>
+      <li><b>Updating the Days Displayed on the Calendar (2.5 points):</b> The displayed days update based on the month, aligning with the squares and weekdays on the calendar. </li>
+      <li><b>Updating the Concert Locations Displayed on the Calendar (2.5 points):</b> The concert locations update according to the selected month when navigating through the calendar.</li>
+    </ol>
+    
+    
+
+
+
+          
+          <h2 id="glossary">Glossary</h2>
+          <hr />
+    
+    Refer to the definitions below to reinforce your knowledge.
+    <ul>
+      
+            
+
+<!--     <abbr title="How Vue injects dynamic values into the SVG">Text Interpolation</abbr>  
+    <abbr title="Variables stored in Vue’s data() function that control the user interface">Data Properties</abbr>  
+    <abbr title="Variables stored in Vue’s data() function that control the user interface">v-bind Directive</abbr>  
+    <abbr title="Variables stored in Vue’s data() function that control the user interface">Attributes</abbr>   -->
+    
+     
+      <li><b>SVG <code>&lt;text&gt;</code> Element</b> → Used to add text inside an SVG graphic</li>
+      <li><b>Attributes (fill, width, height, stroke, etc.)</b> → Modifiable properties that define how an SVG shape looks</li>
+      <li><b>Reactivity</b> → Vue’s ability to automatically update the SVG when data changes</li>
+      <li><b>Text Interpolation ({{ }})</b> → Text interpolation is a way to dynamically insert text into the SVG code using double curly braces {{ }}</li>
+      <li><b>Data Properties</b> → Variables stored in Vue’s data() function that control the user interface</li>
+      <li><b>Directives</b> → Special Vue attributes like v-bind and v-show that control behavior</li>
+      <li><b>v-bind Directive</b> → Dynamically binds/connects an SVG attribute (e.g., fill, width, stroke) to Vue data</li>
+      <li><b>Binding vs. Hardcoding</b> → The difference between using Vue (v-bind:fill="rectFill") vs. static HTML (fill="blue")</li>
+      <li><b>Method</b> → In Vue.js, a method is a function defined in the methods section. It is used to perform actions or operations in response to events, such as user interactions or other triggers. Methods can access and modify component data, and they are typically invoked with event listeners like v-on to make the app interactive.</li>
+      <li><b>Function</b> → A function is a set of instructions that performs a specific task. You can think of it like a recipe: you give it ingredients (inputs), it follows the steps, and then it gives you a result (output).</li>
+      <li><b>Lists (Arrays)</b> → In JavaScript, a 'List' is a synonym for an 'Array'. For beginners, think of an array as a list, like a shopping list. This list has slots where you put the items you want to buy. In JavaScript, these slots are called 'indices' and the items in the list are called 'elements'.</li>
+      <li><b>Objects</b> → An object in JavaScript is a data structure used to store related data collections. It stores data as key-value pairs, where each key is a unique identifier for the associated value. Objects are dynamic, which means the properties can be added, modified, or deleted at runtime.</li>
+      <li><b>Ternary Operator</b> → A ternary operator is an operator that takes three inputs and returns one output. It's also known as the conditional operator. One can read it aloud as "if <code>a</code> then <code>b</code> otherwise <code>c</code>"</li>
+    </ul>
+        </div>
+      </div>
+<!-- footer -->
+    <footer class="footer">
+    </footer>
+  </body>
+</html>

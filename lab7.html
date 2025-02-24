@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+
+    <link rel="icon" href="https://glitch.com/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--
+      This is the page head - it contains info the browser uses
+      Like the title, which appears on the browser tab but not inside the page
+      Further down you'll see the content that displays in the page
+    -->
+    <title>Adding interactivity to your SVG-based interface</title>
+
+    <!-- The website stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- The website JavaScript file -->
+        <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!--
+      The body includes the content you see in the page
+      Each element is defined using tags, like this <div></div>
+      The attributes like class="wrapper" let us style elements in the CSS
+    -->
+    <div class="wrapper">
+      <div class="content" role="main">
+        <h1 class="title">Adding interactivity to your SVG-based interface</h1>
+        
+        <div class="instructions">
+          <p style="margin-left: 0">
+            
+            
+            <b>Due date:</b> <u>Group submission</u> by March 18 by the end of the day (11:59 pm).  
+            <br><br>
+
+            <b>Grace period:</b> 1 week (7 days) without penalty.  
+            <br><br>
+
+            <b>After grace period:</b> Submissions after the grace period will be penalized 5% for each additional day that they are overdue – including Saturdays and Sundays. Submissions made 1 week (7 days) after the grace period will not be accepted and will receive a 0% grade.          
+          </p>
+        </div>
+      </div>
+      
+      
+
+        <!-- lab starts here  -->
+        <div class="instructions">
+          <hr>
+          <h2 class="nocount">General Description</h2>
+
+          <p style="margin-left: 0">In this lab, you will continue working with your team to bring interactivity to your custom interface using Vue. 
+
+</p>
+          
+          
+          <h2 class="nocount">Learning Objectives</h2>
+          
+
+          <ul>
+                <li>Build upon the skills you’ve developed in previous labs to enhance your calendar design in Figma</li>
+            <li>Expand your understanding of data, methods, and events in Vue.js to create interactive calendar components</li>
+            <li>Apply logical operators and lists to navigate between months and dynamically update background colors, days and concert locations</li>
+          </ul>
+          
+
+          <!-- contents           -->
+          <h2 class="nocount">Table of Contents</h2>
+          <hr />
+
+          <ol>
+            
+<!--             <li><a href="#introduction">How Reactivity and Interactivity Work Together</a></li> -->
+            <li><a href="#prerequisite1">Pre-requisite 1: Finalizing Your Calendar Design in Figma </a></li>   
+            <li><a href="#1activity">The Mellow App</a></li>
+            <li><a href="#conclusion">Assignment submission and assessment</a></li>
+            <li><a href="#glossary">Glossary</a></li>
+
+          </ol>
+
+         
+              <!-- prerequisites         -->
+          <h2 id="prerequisite1">Pre-requisite 1: Finalizing Your Calendar Design in Figma</h2>
+            <hr />
+          
+           <h3>Revise Your Figma Design</h3>
+          <ol>
+            <li>Organize Layers in Your Figma File for Easy Navigation and Exporting</li>
+          </ol>
+          <h3>Export Your Figma Design</h3>
+          <ol>
+            <li>Organize Layers in Your Figma File for Easy Navigation and Exporting</li>
+          </ol>
+          
+      <div id="app">
+  <button type="button" class="collapsible-question">
+    <i class="fa fa-star-o" style="font-size:24px"></i> 
+    <b>The Mellow App (enter code to see suggested workflow)</b>
+  </button>
+
+  <!-- Input field for the access code -->
+<!--   <input type="text" v-model="enteredCode" placeholder="Enter access code" /> -->
+<!--   <button @click="checkCode">Submit</button> -->
+
+  <!-- Collapsible content, shown only if the correct code is entered -->
+<!--   <div v-if="accessGranted" class="additionalInfo"> -->
+        <div class="additionalInfo">
+    <p>These are the suggested steps to make your Figma design interactive</p>
+    <ul>
+      <li>Add text interpolation to the area from the quote of the day</li>
+      <li>Add click events to the Daily Check-in buttons and define one method for each button. Each method should modify the data from the quote of the day</li>
+      <li>Add a v-bind to the fill attributes your mellow cats will modify</li>
+      <li>Add v-on:click to each mellow cat. Each v-on:click should have a method name for modifying the fill</li>
+      <li>Define one method for each mellow cat that will update the fill attributes defined before</li>
+      <li>Add text interpolation to the area that will display the activity of the day</li>
+      <li>Add v-on:click to each button in "Choose your mellow activity". Each v-on:click should have a name for a method that will trigger activities</li>
+      <li>Define one method for each button to update the area that displays the activity of the day</li>
+    </ul>
+  </div>
+</div>
+<!--           
+1. The Daily Check-In feature will have multiple options that users can select, which then triggers the Quote of the Day.
+
+2. The Which Mellow Are You Feeling Like Today? feature will act as a button that users can select. Their
+selection will then trigger an animation or change in colour. 
+
+3. For the Choose Your Mellow Activity of the Day feature, the options will also act as buttons that the user can select to receive a corresponding activity.  -->
+           
+      
+      <!--  conclusion          -->
+          
+          <h2 id="conclusion">Assignment submission and assessment</h2>
+          <hr />
+<!--           <h3>
+            Submission 
+          </h3>
+ -->
+          <ol>
+<!--             <li><b>Zip your folder</b></li>
+            <ul>
+              <li>Learn how to zip your folder in Mac: <a href="https://support.apple.com/en-ca/guide/mac-help/mchlp2528/mac" target="_blank">https://support.apple.com/en-ca/guide/mac-help/mchlp2528/mac</a></li>
+              <li>Learn how to zip your folder in Windows: <a href="https://support.microsoft.com/en-us/windows/zip-and-unzip-files-8d28fa72-f2f9-712f-67df-f80cf89fd4e5" target="_blank">https://support.microsoft.com/en-us/windows/zip-and-unzip-files-8d28fa72-f2f9-712f-67df-f80cf89fd4e5</a></li>
+            </ul> -->
+            <li><b>Zip your folder and submit it to Adding interactivity to your Calendar interface with Vue </b> on Avenue to Learn under Assessments &gt; Assignments </li>
+          </ol>
+          
+        
+      
+                  
+            <h3>Assessment Criteria</h3>
+
+    <ol>
+      <li><b>Updating the Month Dynamically When Clicking the Navigation Buttons (2.5 points):</b> The months update dynamically when using the forward and backward navigation buttons.</li>
+      <li><b>Changing the Background Color Based on the Month (2.5 points):</b> The background color changes according to the current month.</li>
+      <li><b>Updating the Days Displayed on the Calendar (2.5 points):</b> The displayed days update based on the month, aligning with the squares and weekdays on the calendar. </li>
+      <li><b>Updating the Concert Locations Displayed on the Calendar (2.5 points):</b> The concert locations update according to the selected month when navigating through the calendar.</li>
+    </ol>
+    
+    
+
+
+
+          
+          <h2 id="glossary">Glossary</h2>
+          <hr />
+    
+    Refer to the definitions below to reinforce your knowledge.
+    <ul>
+      
+            
+
+<!--     <abbr title="How Vue injects dynamic values into the SVG">Text Interpolation</abbr>  
+    <abbr title="Variables stored in Vue’s data() function that control the user interface">Data Properties</abbr>  
+    <abbr title="Variables stored in Vue’s data() function that control the user interface">v-bind Directive</abbr>  
+    <abbr title="Variables stored in Vue’s data() function that control the user interface">Attributes</abbr>   -->
+    
+     
+      <li><b>SVG <code>&lt;text&gt;</code> Element</b> → Used to add text inside an SVG graphic</li>
+      <li><b>Attributes (fill, width, height, stroke, etc.)</b> → Modifiable properties that define how an SVG shape looks</li>
+      <li><b>Reactivity</b> → Vue’s ability to automatically update the SVG when data changes</li>
+      <li><b>Text Interpolation ({{ }})</b> → Text interpolation is a way to dynamically insert text into the SVG code using double curly braces {{ }}</li>
+      <li><b>Data Properties</b> → Variables stored in Vue’s data() function that control the user interface</li>
+      <li><b>Directives</b> → Special Vue attributes like v-bind and v-show that control behavior</li>
+      <li><b>v-bind Directive</b> → Dynamically binds/connects an SVG attribute (e.g., fill, width, stroke) to Vue data</li>
+      <li><b>Binding vs. Hardcoding</b> → The difference between using Vue (v-bind:fill="rectFill") vs. static HTML (fill="blue")</li>
+      <li><b>Method</b> → In Vue.js, a method is a function defined in the methods section. It is used to perform actions or operations in response to events, such as user interactions or other triggers. Methods can access and modify component data, and they are typically invoked with event listeners like v-on to make the app interactive.</li>
+      <li><b>Function</b> → A function is a set of instructions that performs a specific task. You can think of it like a recipe: you give it ingredients (inputs), it follows the steps, and then it gives you a result (output).</li>
+      <li><b>Lists (Arrays)</b> → In JavaScript, a 'List' is a synonym for an 'Array'. For beginners, think of an array as a list, like a shopping list. This list has slots where you put the items you want to buy. In JavaScript, these slots are called 'indices' and the items in the list are called 'elements'.</li>
+      <li><b>Objects</b> → An object in JavaScript is a data structure used to store related data collections. It stores data as key-value pairs, where each key is a unique identifier for the associated value. Objects are dynamic, which means the properties can be added, modified, or deleted at runtime.</li>
+      <li><b>Ternary Operator</b> → A ternary operator is an operator that takes three inputs and returns one output. It's also known as the conditional operator. One can read it aloud as "if <code>a</code> then <code>b</code> otherwise <code>c</code>"</li>
+    </ul>
+        </div>
+      </div>
+<!-- footer -->
+    <footer class="footer">
+    </footer>
+    
+  </body>
+</html>

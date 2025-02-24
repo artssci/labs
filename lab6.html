@@ -523,7 +523,7 @@ To handle multiple conditions, like all 12 months in the calendar, we chained mu
   <pre><code class="language-markup">
   <textarea class="myInput" rows="5" cols="50">
   navigatePrevious() {
-    this.setPreviousMonth();
+    this.setPreviousMonth()
   },
   </textarea>
   </code></pre>
@@ -617,13 +617,13 @@ To handle multiple conditions, like all 12 months in the calendar, we chained mu
 <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
   <pre><code class="language-markup">
   <textarea class="myInput" rows="5" cols="50">navigatePrevious() {
-                this.setPreviousMonth();
-                this.setBackgroundColor(); 
+                this.setPreviousMonth()
+                this.setBackgroundColor()
                 },
 
   navigateNext() {
-                this.setNextMonth();
-                this.setBackgroundColor(); 
+                this.setNextMonth()
+                this.setBackgroundColor()
               },
 
   </textarea>
@@ -638,557 +638,241 @@ To handle multiple conditions, like all 12 months in the calendar, we chained mu
           </h3>
          <hr />
           
-<div class="definition">
-  <h4>
-    Working with Different Types of Data in Vue.js
-  </h4>
-            <p>
-              In previous Vue.js labs, we’ve worked with different types of data, such as <b>text</b> and <b>numbers</b>. In this lab, we will introduce two new types of data: <b>lists (also known as arrays)</b> and <b>objects</b>.  
-  </p>
-  
-  <h4>
-    Lists (Arrays)
-  </h4>
-      <p>        
-             A list (array) allows us to store multiple pieces of information inside square brackets. For example, a list of numbers:
-      </p>
-              <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
-  <pre><code class="language-markup">
-  <textarea class="myInput" rows="5" cols="50"> myListOfNumbers = [1, 2, 3, 4, 5]
-  </textarea>
-  </code></pre>
-</div>
-    
-        <p>      Or, a list of names, like this:  </p>
-  
-   <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
-  <pre><code class="language-markup">
-  <textarea class="myInput" rows="5" cols="50"> myListOfNames = ["Luis", "Jessica", "John", "Eric"]
-  </textarea>
-  </code></pre>
-</div>
-       <p>
-         Each item in a list can be a simple value (like a number or a string), but lists can also hold more complex data structures, like <b>objects</b>.
-         
-         
-      </p>         
-  
-  
-  
-  <h4>
-    Objects
-  </h4>
 
-  <p>
-    An object is another way to store data, but instead of just holding a single value (like a number or a string), an object groups multiple related pieces of information together using <b>key-value pairs inside curly brackets {}</b>.
-    <br><br>
-    For this lab, each item in our list will represent a specific part of our calendar, such as:
-  </p>
-  
-      <ul>
-        <li>The date (e.g., January 1st)</li>
-        <li>The weekday (e.g., Wednesday)</li>
-        <li>The concert location (e.g. Hamilton, ON)</li>
-        <li>The corresponding square in the SVG where these elements will be displayed</li>
-      </ul>
-  
-  <p>
-          Here’s an example of how we will structure our data using a list of objects:
-  </p>
-  
-  <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
-  <pre><code class="language-markup">
-  <textarea class="myInput" rows="5" cols="50"> { squareName: "squareFour", weekDay: "Wednesday", dayNumber: 1, concertLocation: "Hamilton, ON" }
-  </textarea>
-  </code></pre>
-</div>
-  
-  
- <p>In the code above each each object contains four properties: </p>
-<ul>
-  <li>squareName: Identifies the square in the SVG (e.g., "squareFour")</li>
-  <li>weekDay: Stores the day of the week (e.g., "Wednesday")</li>
-  <li>dayNumber: Represents the numerical date (e.g., 1, 2, 3, ...)</li>
-  <li>concertLocation: Stores the concert venue (e.g. "Hamilton, ON")</li>  
-  </ul>
-  
-  <h4>
-    Combining Lists and Objects for Our Calendar Structure
-  </h4>
-  
-  <p>
-    To organize each full month, we will combine lists and objects. Each object, representing square names, weekdays, day numbers, and concert locations, will be stored inside a list. This structure will allow us to easily access and manage each day's information.
-<br><br>
-    For example, we will define <code>januaryDaysAndEvents</code> like this:
-  </p>
-  
-  <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
-  <pre><code class="language-markup">
-  <textarea class="myInput" rows="5" cols="50">januaryDaysAndEvents: [
-  ...
-  { squareName: "squareFour", weekDay: "Wednesday", dayNumber: 1, concertLocation: "Hamilton, ON" },
-  { squareName: "squareFive", weekDay: "Thursday", dayNumber: 2, concertLocation: null }, 
-  { squareName: "squareSix", weekDay: "Friday", dayNumber: 3, concertLocation: "Burlington, ON" },
-  ...
-]
-
-  </textarea>
-  </code></pre>
-</div>
-<p>
-In the next steps, we will create similar structures for the remaining months and connect them to our interactive calendar.
-</p>
-      </div>
           
           <ol>
             <li>Open index.html and locate the &lt;text&gt; elements representing the days in your calendar</li>
-            <li>Modify each &lt;text&gt; element to use Vue's interpolation syntax ({{ }}). This time we will include a property name that makes reference to the list of objects representing a month's calendar structure</li>
-            <br><br>
-              <ul>               
-                <li>Each entry should include: 1) The property name <code>daysAndConcerts</code>. 2) An index inside square brackets [ ], starting from 0 up to 41. And,  3) a dot (.) followed by the word <code>dayNumber</code> to access the day's value from the list of objects:</li>
-          </ul>
+            <li>Modify each &lt;text&gt; element to use Vue's interpolation syntax ({{ }}). The property names will reference the corresponding square’s number (1-42)</li>         
+            <li>For consistency, use the following property names as we will be referencing them in the next steps:
+              <code> dayNumberSquareOne, dayNumberSquareTwo, dayNumberSquareThree, dayNumberSquareFour, dayNumberSquareFive,          dayNumberSquareSix, dayNumberSquareSeven, dayNumberSquareEight, dayNumberSquareNine, dayNumberSquareTen,          dayNumberSquareEleven, dayNumberSquareTwelve, dayNumberSquareThirteen, dayNumberSquareFourteen, dayNumberSquareFifteen,      dayNumberSquareSixteen, dayNumberSquareSeventeen, dayNumberSquareEighteen, dayNumberSquareNineteen, dayNumberSquareTwenty,    dayNumberSquareTwentyOne, dayNumberSquareTwentyTwo, dayNumberSquareTwentyThree, dayNumberSquareTwentyFour, dayNumberSquareTwentyFive, dayNumberSquareTwentySix, dayNumberSquareTwentySeven, dayNumberSquareTwentyEight,         dayNumberSquareTwentyNine, dayNumberSquareThirty, dayNumberSquareThirtyOne, dayNumberSquareThirtyTwo,   dayNumberSquareThirtyThree, dayNumberSquareThirtyFour, dayNumberSquareThirtyFive, dayNumberSquareThirtySix,         dayNumberSquareThirtySeven, dayNumberSquareThirtyEight, dayNumberSquareThirtyNine, dayNumberSquareForty, dayNumberSquareFortyOne, dayNumberSquareFortyTwo </code>
+            </li>
+                      
           
               <img style="width:50%" src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/add%20days%20tagged.png?v=1740020385263">
-<!--               <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
-  <pre><code class="language-markup">
-  <textarea class="myInput" rows="5" cols="50">
-<text x="50" y="250" font-size="24"> {{ daysAndConcerts[0].dayNumber }}</text>
-  <text x="150" y="250" font-size="24">{{ daysAndConcerts[1].dayNumber }}</text>
-  <text x="250" y="250" font-size="24">{{ daysAndConcerts[2].dayNumber }}</text>
-  ...
 
-  <text x="250" y="250" font-size="24">{{ daysAndConcerts[40].dayNumber }}</text>
-  <text x="250" y="250" font-size="24">{{ daysAndConcerts[41].dayNumber }}</text>
 
-  </textarea>
-  </code></pre>
-</div> -->
-              
 
- <button type="button" class="collapsible"><i class="fa fa-info-circle"></i> <b>Code Explanation: How The Code Above Works</b></button>
-<div class="additionalInfo">    
-<ul>
-  <li>This code will link each day in the calendar to a specific index in the list we will define in the next step</li>
-  <li>When the day numbers are updated in this list, the numbers will change and display accordingly in the calendar</li>
-</ul>
-</div>
             <br><br>
-            <li>Now, open vue.js, copy and paste the following property called <code>daysAndConcerts</code> in the data() section. This property is a list representing January as the initial month’s calendar structure. </li>
+            <li>Now, open vue.js, copy and paste the following properties in the data() section. These properties represent the days in January 2025, which will be the initial/default month displayed in your calendar:</li> 
+            <br><br>
+            <ul>
+            <li>The 1st of January starts on the fourth square to align with its weekday (Wednesday) in the display </li>
+            <li>There are 31 numbers, each corresponding to a day in January 2025</li>
+            <li>The <code>null</code> values mean there are no values for those squares. They ensure that no numbers appear in squares that are not part of the month</li>
+            </ul>
+            
             
                 <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
   <pre><code class="language-markup">
-  <textarea class="myInput" rows="5" cols="50"> daysAndConcerts: [
-          { squareName: "squareOne", weekday: "Sun", dayNumber: null, concertLocation: null}, 
-          { squareName: "squareTwo", weekday: "Mon", dayNumber: null, concertLocation: null  },
-          { squareName: "squareThree",weekday: "Tue", dayNumber: null, concertLocation: null },
-          { squareName: "squareFour", weekday: "Wed", dayNumber: 1, concertLocation: null },
-          { squareName: "squareFive", weekday: "Thu", dayNumber: 2, concertLocation: null },
-          { squareName: "squareSix", weekday: "Fri", dayNumber: 3, concertLocation: null },
-          { squareName: "squareSeven", weekday: "Sat", dayNumber: 4, concertLocation: null },
-          { squareName: "squareEight", weekday: "Sun", dayNumber: 5, concertLocation: null },
-          { squareName: "squareNine", weekday: "Mon", dayNumber: 6 , concertLocation: null },
-          { squareName: "squareTen", weekday: "Tue", dayNumber: 7 , concertLocation: null },
-          { squareName: "squareEleven", weekday: "Wed", dayNumber: 8 , concertLocation: null },
-          { squareName: "squareTwelve", weekday: "Thu", dayNumber: 9 , concertLocation: null },
-          { squareName: "squareThirteen", weekday: "Fri",dayNumber: 10 , concertLocation: null },
-          { squareName: "squareFourteen", weekday: "Sat",dayNumber: 11 , concertLocation: null },
-          { squareName: "squareFifteen", weekday: "Sun", dayNumber: 12 , concertLocation: null },
-          { squareName: "squareSixteen", weekday: "Mon", dayNumber: 13 , concertLocation: null },
-          { squareName: "squareSeventeen",weekday: "Tue", dayNumber: 14 , concertLocation: null },
-          { squareName: "squareEighteen",weekday: "Wed",  dayNumber: 15 , concertLocation: null },
-          { squareName: "squareNineteen",weekday: "Thu", dayNumber: 16 , concertLocation: null },
-          { squareName: "squareTwenty",weekday: "Fri", dayNumber: 17 , concertLocation: null },
-          { squareName: "squareTwentyOne",weekday: "Sat", dayNumber: 18 , concertLocation: null },
-          { squareName: "squareTwentyTwo",weekday: "Sun", dayNumber: 19 , concertLocation: null },
-          { squareName: "squareTwentyThree",weekday: "Mon", dayNumber: 20 , concertLocation: null },
-          { squareName: "squareTwentyFour",weekday: "Tue", dayNumber: 21 , concertLocation: null },
-          { squareName: "squareTwentyFive",weekday: "Wed", dayNumber: 22 , concertLocation: null },
-          { squareName: "squareTwentySix",weekday: "Thu", dayNumber: 23 , concertLocation: null },
-          { squareName: "squareTwentySeven",weekday: "Fri", dayNumber: 24 , concertLocation: null },
-          { squareName: "squareTwentyEight",weekday: "Sat", dayNumber: 25 , concertLocation: null },
-          { squareName: "squareTwentyNine",weekday: "Sun", dayNumber: 26 , concertLocation: null },
-          { squareName: "squareThirty",weekday: "Mon", dayNumber: 27 , concertLocation: null },
-          { squareName: "squareThirtyOne",weekday: "Tue", dayNumber: 28 , concertLocation: null },
-          { squareName: "squareThirtyTwo",weekday: "Wed", dayNumber: 29 , concertLocation: null },
-          { squareName: "squareThirtyThree",weekday: "Thu", dayNumber: 30 , concertLocation: null },
-          { squareName: "squareThirtyFour",weekday: "Fri", dayNumber: 31 , concertLocation: null },
-          { squareName: "squareThirtyFive",weekday: "Sat", dayNumber: null , concertLocation: null },
-          { squareName: "squareThirtySix",weekday: "Sun", dayNumber: null , concertLocation: null },
-          { squareName: "squareThirtySeven",weekday: "Mon", dayNumber: null , concertLocation: null },
-          { squareName: "squareThirtyEight",weekday: "Tue", dayNumber: null , concertLocation: null },
-          { squareName: "squareThirtyNine",weekday: "Wed", dayNumber: null , concertLocation: null },
-          { squareName: "squareForty",weekday: "Thu", dayNumber: null , concertLocation: null },
-          { squareName: "squareFortyOne",weekday: "Fri", dayNumber: null , concertLocation: null },
-          { squareName: "squareFortyTwo",weekday: "Sat", dayNumber: null, concertLocation: null}
-        ]
+  <textarea class="myInput" rows="5" cols="50">   
+         dayNumberSquareOne: null,
+         dayNumberSquareTwo: null,
+         dayNumberSquareThree: null,
+         dayNumberSquareFour: 1,
+         dayNumberSquareFive: 2,
+         dayNumberSquareSix: 3,
+         dayNumberSquareSeven: 4,
+         dayNumberSquareEight: 5, 
+         dayNumberSquareNine: 6,
+         dayNumberSquareTen: 7,
+         dayNumberSquareEleven: 8,
+         dayNumberSquareTwelve: 9,
+         dayNumberSquareThirteen: 10,
+         dayNumberSquareFourteen: 11,
+         dayNumberSquareFifteen: 12,
+         dayNumberSquareSixteen: 13,
+         dayNumberSquareSeventeen: 14,
+         dayNumberSquareEighteen: 15,
+         dayNumberSquareNineteen: 16,
+         dayNumberSquareTwenty: 17,
+         dayNumberSquareTwentyOne: 18,
+         dayNumberSquareTwentyTwo: 19, 
+         dayNumberSquareTwentyThree: 20,
+         dayNumberSquareTwentyFour: 21,
+         dayNumberSquareTwentyFive: 22,
+         dayNumberSquareTwentySix: 23,
+         dayNumberSquareTwentySeven: 24,
+         dayNumberSquareTwentyEight: 25,  
+         dayNumberSquareTwentyNine: 26,
+         dayNumberSquareThirty: 27,  
+         dayNumberSquareThirtyOne: 28,
+         dayNumberSquareThirtyTwo: 29,
+         dayNumberSquareThirtyThree: 30,
+         dayNumberSquareThirtyFour: 31,
+         dayNumberSquareThirtyFive: null,
+         dayNumberSquareThirtySix: null,
+         dayNumberSquareThirtySeven: null,
+         dayNumberSquareThirtyEight: null,
+         dayNumberSquareThirtyNine: null,  
+         dayNumberSquareForty: null,
+         dayNumberSquareFortyOne: null,
+         dayNumberSquareFortyTwo: null, 
   </textarea>
   </code></pre>
-</div>
-            
-            <button type="button" class="collapsible"><i class="fa fa-info-circle"></i> <b>Code Explanation: How The Code Above Works</b></button>
-<div class="additionalInfo">      
-  
-  <p>The code above is a <b>list</b> that stores <b>objects</b>, with each object representing a square in the calendar. Each object contains:</p>
-    <ul>
-
-      <li>squareName: The unique name of the square in the SVG.</li>
-      <li>weekDay: The weekday that aligns with the square, day number, and concert location</li>
-      <li>dayNumber: The numerical date (or null if the square is empty).</li>
-      <li>concertLocation: The concert location (initially set to null, meaning no value).</li>
-  </ul>
-  
-  <p>This setup ensures we can dynamically update and display the calendar, aligning the correct dates with their corresponding weekday positions. <b>The structure starts with January as the initial month, where the 1st falls on the fourth square to match its weekday alignment</b>.</p>
-
-</div>
-                       
-           <br><br>
-            
-            <li>Next, open vue.js and copy the following <code>setDaysAndConcerts()</code> method. This method has two parts:</li>
-              <ol>
-                <li>A set of lists defining the days for January to June. Each month's data is a list of objects, where each object represents a calendar square.</li>
-                <li>A selection mechanism using ternary operations, that updates <code>daysAndConcerts</code> in data() to match the currently selected month </li>  
-              </ol>
-              
-               <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Scroll down and take a quick look at the method to understand how it's structured before copying and pasting it into your project.
-          </p>
-            
-              
-
-
-           
-               <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
-  <pre><code class="language-markup">
-  <textarea class="myInput" rows="5" cols="50"> setDaysAndConcerts(){
-       const januaryDaysAndConcerts =  [          
-          { squareName: "squareOne", weekday: "Sun", dayNumber: null, concertLocation: null}, 
-          { squareName: "squareTwo", weekday: "Mon", dayNumber: null, concertLocation: null  },
-          { squareName: "squareThree",weekday: "Tue", dayNumber: null, concertLocation: null },
-          { squareName: "squareFour", weekday: "Wed", dayNumber: 1, concertLocation: null },
-          { squareName: "squareFive", weekday: "Thu", dayNumber: 2, concertLocation: null },
-          { squareName: "squareSix", weekday: "Fri", dayNumber: 3, concertLocation: null },
-          { squareName: "squareSeven", weekday: "Sat", dayNumber: 4, concertLocation: null },
-          { squareName: "squareEight", weekday: "Sun", dayNumber: 5, concertLocation: null },
-          { squareName: "squareNine", weekday: "Mon", dayNumber: 6 , concertLocation: null },
-          { squareName: "squareTen", weekday: "Tue", dayNumber: 7 , concertLocation: null },
-          { squareName: "squareEleven", weekday: "Wed", dayNumber: 8 , concertLocation: null },
-          { squareName: "squareTwelve", weekday: "Thu", dayNumber: 9 , concertLocation: null },
-          { squareName: "squareThirteen", weekday: "Fri",dayNumber: 10 , concertLocation: null },
-          { squareName: "squareFourteen", weekday: "Sat",dayNumber: 11 , concertLocation: null },
-          { squareName: "squareFifteen", weekday: "Sun", dayNumber: 12 , concertLocation: null },
-          { squareName: "squareSixteen", weekday: "Mon", dayNumber: 13 , concertLocation: null },
-          { squareName: "squareSeventeen",weekday: "Tue", dayNumber: 14 , concertLocation: null },
-          { squareName: "squareEighteen",weekday: "Wed",  dayNumber: 15 , concertLocation: null },
-          { squareName: "squareNineteen",weekday: "Thu", dayNumber: 16 , concertLocation: null },
-          { squareName: "squareTwenty",weekday: "Fri", dayNumber: 17 , concertLocation: null },
-          { squareName: "squareTwentyOne",weekday: "Sat", dayNumber: 18 , concertLocation: null },
-          { squareName: "squareTwentyTwo",weekday: "Sun", dayNumber: 19 , concertLocation: null },
-          { squareName: "squareTwentyThree",weekday: "Mon", dayNumber: 20 , concertLocation: null },
-          { squareName: "squareTwentyFour",weekday: "Tue", dayNumber: 21 , concertLocation: null },
-          { squareName: "squareTwentyFive",weekday: "Wed", dayNumber: 22 , concertLocation: null },
-          { squareName: "squareTwentySix",weekday: "Thu", dayNumber: 23 , concertLocation: null },
-          { squareName: "squareTwentySeven",weekday: "Fri", dayNumber: 24 , concertLocation: null },
-          { squareName: "squareTwentyEight",weekday: "Sat", dayNumber: 25 , concertLocation: null },
-          { squareName: "squareTwentyNine",weekday: "Sun", dayNumber: 26 , concertLocation: null },
-          { squareName: "squareThirty",weekday: "Mon", dayNumber: 27 , concertLocation: null },
-          { squareName: "squareThirtyOne",weekday: "Tue", dayNumber: 28 , concertLocation: null },
-          { squareName: "squareThirtyTwo",weekday: "Wed", dayNumber: 29 , concertLocation: null },
-          { squareName: "squareThirtyThree",weekday: "Thu", dayNumber: 30 , concertLocation: null },
-          { squareName: "squareThirtyFour",weekday: "Fri", dayNumber: 31 , concertLocation: null },
-          { squareName: "squareThirtyFive",weekday: "Sat", dayNumber: null , concertLocation: null },
-          { squareName: "squareThirtySix",weekday: "Sun", dayNumber: null , concertLocation: null },
-          { squareName: "squareThirtySeven",weekday: "Mon", dayNumber: null , concertLocation: null },
-          { squareName: "squareThirtyEight",weekday: "Tue", dayNumber: null , concertLocation: null },
-          { squareName: "squareThirtyNine",weekday: "Wed", dayNumber: null , concertLocation: null },
-          { squareName: "squareForty",weekday: "Thu", dayNumber: null , concertLocation: null },
-          { squareName: "squareFortyOne",weekday: "Fri", dayNumber: null , concertLocation: null },
-          { squareName: "squareFortyTwo",weekday: "Sat", dayNumber: null, concertLocation: null}
-
-        ]
-           
-           const februaryDaysAndConcerts = [
-            { squareName: "squareOne", weekday: "Sun", dayNumber: null, concertLocation: null}, 
-            { squareName: "squareTwo", weekday: "Mon", dayNumber: null, concertLocation: null  },
-            { squareName: "squareThree",weekday: "Tue", dayNumber: null, concertLocation: null },
-            { squareName: "squareFour", weekday: "Wed", dayNumber: null, concertLocation: null },
-            { squareName: "squareFive", weekday: "Thu", dayNumber: null, concertLocation: null },
-            { squareName: "squareSix", weekday: "Fri", dayNumber: null, concertLocation: null },
-            { squareName: "squareSeven", weekday: "Sat", dayNumber: 1, concertLocation: null },
-            { squareName: "squareEight", weekday: "Sun", dayNumber: 2, concertLocation: null },
-            { squareName: "squareNine", weekday: "Mon", dayNumber: 3 , concertLocation: null },
-            { squareName: "squareTen", weekday: "Tue", dayNumber: 4 , concertLocation: null },
-            { squareName: "squareEleven", weekday: "Wed", dayNumber: 5 , concertLocation: null },
-            { squareName: "squareTwelve", weekday: "Thu", dayNumber: 6 , concertLocation: null },
-            { squareName: "squareThirteen", weekday: "Fri",dayNumber: 7 , concertLocation: null },
-            { squareName: "squareFourteen", weekday: "Sat",dayNumber: 8 , concertLocation: null },
-            { squareName: "squareFifteen", weekday: "Sun", dayNumber: 9 , concertLocation: null },
-            { squareName: "squareSixteen", weekday: "Mon", dayNumber: 10 , concertLocation: null },
-            { squareName: "squareSeventeen",weekday: "Tue", dayNumber: 11 , concertLocation: null },
-            { squareName: "squareEighteen",weekday: "Wed",  dayNumber: 12 , concertLocation: null },
-            { squareName: "squareNineteen",weekday: "Thu", dayNumber: 13 , concertLocation: null },
-            { squareName: "squareTwenty",weekday: "Fri", dayNumber: 14 , concertLocation: null },
-            { squareName: "squareTwentyOne",weekday: "Sat", dayNumber: 15 , concertLocation: null },
-            { squareName: "squareTwentyTwo",weekday: "Sun", dayNumber: 16 , concertLocation: null },
-            { squareName: "squareTwentyThree",weekday: "Mon", dayNumber: 17 , concertLocation: null },
-            { squareName: "squareTwentyFour",weekday: "Tue", dayNumber: 18 , concertLocation: null },
-            { squareName: "squareTwentyFive",weekday: "Wed", dayNumber: 19 , concertLocation: null },
-            { squareName: "squareTwentySix",weekday: "Thu", dayNumber: 20 , concertLocation: null },
-            { squareName: "squareTwentySeven",weekday: "Fri", dayNumber: 21 , concertLocation: null },
-            { squareName: "squareTwentyEight",weekday: "Sat", dayNumber: 22 , concertLocation: null },
-            { squareName: "squareTwentyNine",weekday: "Sun", dayNumber: 23 , concertLocation: null },
-            { squareName: "squareThirty",weekday: "Mon", dayNumber: 24 , concertLocation: null },
-            { squareName: "squareThirtyOne",weekday: "Tue", dayNumber: 25 , concertLocation: null },
-            { squareName: "squareThirtyTwo",weekday: "Wed", dayNumber: 26 , concertLocation: null },
-            { squareName: "squareThirtyThree",weekday: "Thu", dayNumber: 27 , concertLocation: null },
-            { squareName: "squareThirtyFour",weekday: "Fri", dayNumber: 28 , concertLocation: null },
-            { squareName: "squareThirtyFive",weekday: "Sat", dayNumber: null , concertLocation: null },
-            { squareName: "squareThirtySix",weekday: "Sun", dayNumber: null , concertLocation: null },
-            { squareName: "squareThirtySeven",weekday: "Mon", dayNumber: null , concertLocation: null },
-            { squareName: "squareThirtyEight",weekday: "Tue", dayNumber: null , concertLocation: null },
-            { squareName: "squareThirtyNine",weekday: "Wed", dayNumber: null , concertLocation: null },
-            { squareName: "squareForty",weekday: "Thu", dayNumber: null , concertLocation: null },
-            { squareName: "squareFortyOne",weekday: "Fri", dayNumber: null , concertLocation: null },
-            { squareName: "squareFortyTwo",weekday: "Sat", dayNumber: null, concertLocation: null}
-  
-           ]
-     
-           const marchDaysAndConcerts = [
-            { squareName: "squareOne", weekday: "Sun", dayNumber: null, concertLocation: null}, 
-            { squareName: "squareTwo", weekday: "Mon", dayNumber: null, concertLocation: null  },
-            { squareName: "squareThree",weekday: "Tue", dayNumber: null, concertLocation: null },
-            { squareName: "squareFour", weekday: "Wed", dayNumber: null, concertLocation: null },
-            { squareName: "squareFive", weekday: "Thu", dayNumber: null, concertLocation: null },
-            { squareName: "squareSix", weekday: "Fri", dayNumber: null, concertLocation: null },
-            { squareName: "squareSeven", weekday: "Sat", dayNumber: 1, concertLocation: null },
-            { squareName: "squareEight", weekday: "Sun", dayNumber: 2, concertLocation: null },
-            { squareName: "squareNine", weekday: "Mon", dayNumber: 3 , concertLocation: null },
-            { squareName: "squareTen", weekday: "Tue", dayNumber: 4 , concertLocation: null },
-            { squareName: "squareEleven", weekday: "Wed", dayNumber: 5 , concertLocation: null },
-            { squareName: "squareTwelve", weekday: "Thu", dayNumber: 6 , concertLocation: null },
-            { squareName: "squareThirteen", weekday: "Fri",dayNumber: 7 , concertLocation: null },
-            { squareName: "squareFourteen", weekday: "Sat",dayNumber: 8 , concertLocation: null },
-            { squareName: "squareFifteen", weekday: "Sun", dayNumber: 9 , concertLocation: null },
-            { squareName: "squareSixteen", weekday: "Mon", dayNumber: 10 , concertLocation: null },
-            { squareName: "squareSeventeen",weekday: "Tue", dayNumber: 11 , concertLocation: null },
-            { squareName: "squareEighteen",weekday: "Wed",  dayNumber: 12 , concertLocation: null },
-            { squareName: "squareNineteen",weekday: "Thu", dayNumber: 13 , concertLocation: null },
-            { squareName: "squareTwenty",weekday: "Fri", dayNumber: 14 , concertLocation: null },
-            { squareName: "squareTwentyOne",weekday: "Sat", dayNumber: 15 , concertLocation: null },
-            { squareName: "squareTwentyTwo",weekday: "Sun", dayNumber: 16 , concertLocation: null },
-            { squareName: "squareTwentyThree",weekday: "Mon", dayNumber: 17 , concertLocation: null },
-            { squareName: "squareTwentyFour",weekday: "Tue", dayNumber: 18 , concertLocation: null },
-            { squareName: "squareTwentyFive",weekday: "Wed", dayNumber: 19 , concertLocation: null },
-            { squareName: "squareTwentySix",weekday: "Thu", dayNumber: 20 , concertLocation: null },
-            { squareName: "squareTwentySeven",weekday: "Fri", dayNumber: 21 , concertLocation: null },
-            { squareName: "squareTwentyEight",weekday: "Sat", dayNumber: 22 , concertLocation: null },
-            { squareName: "squareTwentyNine",weekday: "Sun", dayNumber: 23 , concertLocation: null },
-            { squareName: "squareThirty",weekday: "Mon", dayNumber: 24 , concertLocation: null },
-            { squareName: "squareThirtyOne",weekday: "Tue", dayNumber: 25 , concertLocation: null },
-            { squareName: "squareThirtyTwo",weekday: "Wed", dayNumber: 26 , concertLocation: null },
-            { squareName: "squareThirtyThree",weekday: "Thu", dayNumber: 27 , concertLocation: null },
-            { squareName: "squareThirtyFour",weekday: "Fri", dayNumber: 28 , concertLocation: null },
-            { squareName: "squareThirtyFive",weekday: "Sat", dayNumber: 29 , concertLocation: null },
-            { squareName: "squareThirtySix",weekday: "Sun", dayNumber: 30 , concertLocation: null },
-            { squareName: "squareThirtySeven",weekday: "Mon", dayNumber: 31 , concertLocation: null },
-            { squareName: "squareThirtyEight",weekday: "Tue", dayNumber: null , concertLocation: null },
-            { squareName: "squareThirtyNine",weekday: "Wed", dayNumber: null , concertLocation: null },
-            { squareName: "squareForty",weekday: "Thu", dayNumber: null , concertLocation: null },
-            { squareName: "squareFortyOne",weekday: "Fri", dayNumber: null , concertLocation: null },
-            { squareName: "squareFortyTwo",weekday: "Sat", dayNumber: null, concertLocation: null}
-
-          ]
-     
-           const aprilDaysAndConcerts = [
-            { squareName: "squareOne", weekday: "Sun", dayNumber: null, concertLocation: null}, 
-            { squareName: "squareTwo", weekday: "Mon", dayNumber: null, concertLocation: null  },
-            { squareName: "squareThree",weekday: "Tue", dayNumber: 1, concertLocation: null },
-            { squareName: "squareFour", weekday: "Wed", dayNumber: 2, concertLocation: null },
-            { squareName: "squareFive", weekday: "Thu", dayNumber: 3, concertLocation: null },
-            { squareName: "squareSix", weekday: "Fri", dayNumber: 4, concertLocation: null },
-            { squareName: "squareSeven", weekday: "Sat", dayNumber: 5, concertLocation: null },
-            { squareName: "squareEight", weekday: "Sun", dayNumber: 6, concertLocation: null },
-            { squareName: "squareNine", weekday: "Mon", dayNumber: 7 , concertLocation: null },
-            { squareName: "squareTen", weekday: "Tue", dayNumber: 8 , concertLocation: null },
-            { squareName: "squareEleven", weekday: "Wed", dayNumber: 9 , concertLocation: null },
-            { squareName: "squareTwelve", weekday: "Thu", dayNumber: 10 , concertLocation: null },
-            { squareName: "squareThirteen", weekday: "Fri",dayNumber: 11 , concertLocation: null },
-            { squareName: "squareFourteen", weekday: "Sat",dayNumber: 12 , concertLocation: null },
-            { squareName: "squareFifteen", weekday: "Sun", dayNumber: 13 , concertLocation: null },
-            { squareName: "squareSixteen", weekday: "Mon", dayNumber: 14 , concertLocation: null },
-            { squareName: "squareSeventeen",weekday: "Tue", dayNumber: 15 , concertLocation: null },
-            { squareName: "squareEighteen",weekday: "Wed",  dayNumber: 16 , concertLocation: null },
-            { squareName: "squareNineteen",weekday: "Thu", dayNumber: 17 , concertLocation: null },
-            { squareName: "squareTwenty",weekday: "Fri", dayNumber: 18 , concertLocation: null },
-            { squareName: "squareTwentyOne",weekday: "Sat", dayNumber: 19 , concertLocation: null },
-            { squareName: "squareTwentyTwo",weekday: "Sun", dayNumber: 20 , concertLocation: null },
-            { squareName: "squareTwentyThree",weekday: "Mon", dayNumber: 21 , concertLocation: null },
-            { squareName: "squareTwentyFour",weekday: "Tue", dayNumber: 22 , concertLocation: null },
-            { squareName: "squareTwentyFive",weekday: "Wed", dayNumber: 23 , concertLocation: null },
-            { squareName: "squareTwentySix",weekday: "Thu", dayNumber: 24 , concertLocation: null },
-            { squareName: "squareTwentySeven",weekday: "Fri", dayNumber: 25 , concertLocation: null },
-            { squareName: "squareTwentyEight",weekday: "Sat", dayNumber: 26 , concertLocation: null },
-            { squareName: "squareTwentyNine",weekday: "Sun", dayNumber: 27 , concertLocation: null },
-            { squareName: "squareThirty",weekday: "Mon", dayNumber: 28 , concertLocation: null },
-            { squareName: "squareThirtyOne",weekday: "Tue", dayNumber: 29 , concertLocation: null },
-            { squareName: "squareThirtyTwo",weekday: "Wed", dayNumber: 30 , concertLocation: null },
-            { squareName: "squareThirtyThree",weekday: "Thu", dayNumber: null , concertLocation: null },
-            { squareName: "squareThirtyFour",weekday: "Fri", dayNumber: null , concertLocation: null },
-            { squareName: "squareThirtyFive",weekday: "Sat", dayNumber: null , concertLocation: null },
-            { squareName: "squareThirtySix",weekday: "Sun", dayNumber: null , concertLocation: null },
-            { squareName: "squareThirtySeven",weekday: "Mon", dayNumber: null , concertLocation: null },
-            { squareName: "squareThirtyEight",weekday: "Tue", dayNumber: null , concertLocation: null },
-            { squareName: "squareThirtyNine",weekday: "Wed", dayNumber: null , concertLocation: null },
-            { squareName: "squareForty",weekday: "Thu", dayNumber: null , concertLocation: null },
-            { squareName: "squareFortyOne",weekday: "Fri", dayNumber: null , concertLocation: null },
-            { squareName: "squareFortyTwo",weekday: "Sat", dayNumber: null, concertLocation: null}
-
-           ]
-     
-           const mayDaysAndConcerts = [
-            { squareName: "squareOne", weekday: "Sun", dayNumber: null, concertLocation: null}, 
-            { squareName: "squareTwo", weekday: "Mon", dayNumber: null, concertLocation: null  },
-            { squareName: "squareThree",weekday: "Tue", dayNumber: null, concertLocation: null },
-            { squareName: "squareFour", weekday: "Wed", dayNumber: null, concertLocation: null },
-            { squareName: "squareFive", weekday: "Thu", dayNumber: 1, concertLocation: null },
-            { squareName: "squareSix", weekday: "Fri", dayNumber: 2, concertLocation: null },
-            { squareName: "squareSeven", weekday: "Sat", dayNumber: 3, concertLocation: null },
-            { squareName: "squareEight", weekday: "Sun", dayNumber: 4, concertLocation: null },
-            { squareName: "squareNine", weekday: "Mon", dayNumber: 5 , concertLocation: null },
-            { squareName: "squareTen", weekday: "Tue", dayNumber: 6 , concertLocation: null },
-            { squareName: "squareEleven", weekday: "Wed", dayNumber: 7 , concertLocation: null },
-            { squareName: "squareTwelve", weekday: "Thu", dayNumber: 8 , concertLocation: null },
-            { squareName: "squareThirteen", weekday: "Fri",dayNumber: 9 , concertLocation: null },
-            { squareName: "squareFourteen", weekday: "Sat",dayNumber: 10 , concertLocation: null },
-            { squareName: "squareFifteen", weekday: "Sun", dayNumber: 11 , concertLocation: null },
-            { squareName: "squareSixteen", weekday: "Mon", dayNumber: 12 , concertLocation: null },
-            { squareName: "squareSeventeen",weekday: "Tue", dayNumber: 13 , concertLocation: null },
-            { squareName: "squareEighteen",weekday: "Wed",  dayNumber: 14 , concertLocation: null },
-            { squareName: "squareNineteen",weekday: "Thu", dayNumber: 15 , concertLocation: null },
-            { squareName: "squareTwenty",weekday: "Fri", dayNumber: 16 , concertLocation: null },
-            { squareName: "squareTwentyOne",weekday: "Sat", dayNumber: 17 , concertLocation: null },
-            { squareName: "squareTwentyTwo",weekday: "Sun", dayNumber: 18 , concertLocation: null },
-            { squareName: "squareTwentyThree",weekday: "Mon", dayNumber: 19 , concertLocation: null },
-            { squareName: "squareTwentyFour",weekday: "Tue", dayNumber: 20 , concertLocation: null },
-            { squareName: "squareTwentyFive",weekday: "Wed", dayNumber: 21 , concertLocation: null },
-            { squareName: "squareTwentySix",weekday: "Thu", dayNumber: 22 , concertLocation: null },
-            { squareName: "squareTwentySeven",weekday: "Fri", dayNumber: 23 , concertLocation: null },
-            { squareName: "squareTwentyEight",weekday: "Sat", dayNumber: 24 , concertLocation: null },
-            { squareName: "squareTwentyNine",weekday: "Sun", dayNumber: 25 , concertLocation: null },
-            { squareName: "squareThirty",weekday: "Mon", dayNumber: 26 , concertLocation: null },
-            { squareName: "squareThirtyOne",weekday: "Tue", dayNumber: 27 , concertLocation: null },
-            { squareName: "squareThirtyTwo",weekday: "Wed", dayNumber: 28 , concertLocation: null },
-            { squareName: "squareThirtyThree",weekday: "Thu", dayNumber: 29 , concertLocation: null },
-            { squareName: "squareThirtyFour",weekday: "Fri", dayNumber: 30 , concertLocation: null },
-            { squareName: "squareThirtyFive",weekday: "Sat", dayNumber: 31, concertLocation: null },
-            { squareName: "squareThirtySix",weekday: "Sun", dayNumber: null , concertLocation: null },
-            { squareName: "squareThirtySeven",weekday: "Mon", dayNumber: null , concertLocation: null },
-            { squareName: "squareThirtyEight",weekday: "Tue", dayNumber: null , concertLocation: null },
-            { squareName: "squareThirtyNine",weekday: "Wed", dayNumber: null , concertLocation: null },
-            { squareName: "squareForty",weekday: "Thu", dayNumber: null , concertLocation: null },
-            { squareName: "squareFortyOne",weekday: "Fri", dayNumber: null , concertLocation: null },
-            { squareName: "squareFortyTwo",weekday: "Sat", dayNumber: null, concertLocation: null}
-           ]
-     
-           const juneDaysAndConcerts = [
-            { squareName: "squareOne", weekday: "Sun", dayNumber: 1, concertLocation: null}, 
-            { squareName: "squareTwo", weekday: "Mon", dayNumber: 2, concertLocation: null  },
-            { squareName: "squareThree",weekday: "Tue", dayNumber: 3, concertLocation: null },
-            { squareName: "squareFour", weekday: "Wed", dayNumber: 4, concertLocation: null },
-            { squareName: "squareFive", weekday: "Thu", dayNumber: 5, concertLocation: null },
-            { squareName: "squareSix", weekday: "Fri", dayNumber: 6, concertLocation: null },
-            { squareName: "squareSeven", weekday: "Sat", dayNumber: 7, concertLocation: null },
-            { squareName: "squareEight", weekday: "Sun", dayNumber: 8, concertLocation: null },
-            { squareName: "squareNine", weekday: "Mon", dayNumber: 9 , concertLocation: null },
-            { squareName: "squareTen", weekday: "Tue", dayNumber: 10 , concertLocation: null },
-            { squareName: "squareEleven", weekday: "Wed", dayNumber: 11 , concertLocation: null },
-            { squareName: "squareTwelve", weekday: "Thu", dayNumber: 12 , concertLocation: null },
-            { squareName: "squareThirteen", weekday: "Fri",dayNumber: 13 , concertLocation: null },
-            { squareName: "squareFourteen", weekday: "Sat",dayNumber: 14 , concertLocation: null },
-            { squareName: "squareFifteen", weekday: "Sun", dayNumber: 15 , concertLocation: null },
-            { squareName: "squareSixteen", weekday: "Mon", dayNumber: 16 , concertLocation: null },
-            { squareName: "squareSeventeen",weekday: "Tue", dayNumber: 17 , concertLocation: null },
-            { squareName: "squareEighteen",weekday: "Wed",  dayNumber: 18 , concertLocation: null },
-            { squareName: "squareNineteen",weekday: "Thu", dayNumber: 19 , concertLocation: null },
-            { squareName: "squareTwenty",weekday: "Fri", dayNumber: 20 , concertLocation: null },
-            { squareName: "squareTwentyOne",weekday: "Sat", dayNumber: 21 , concertLocation: null },
-            { squareName: "squareTwentyTwo",weekday: "Sun", dayNumber: 22 , concertLocation: null },
-            { squareName: "squareTwentyThree",weekday: "Mon", dayNumber: 23 , concertLocation: null },
-            { squareName: "squareTwentyFour",weekday: "Tue", dayNumber: 24 , concertLocation: null },
-            { squareName: "squareTwentyFive",weekday: "Wed", dayNumber: 25 , concertLocation: null },
-            { squareName: "squareTwentySix",weekday: "Thu", dayNumber: 26 , concertLocation: null },
-            { squareName: "squareTwentySeven",weekday: "Fri", dayNumber: 27 , concertLocation: null },
-            { squareName: "squareTwentyEight",weekday: "Sat", dayNumber: 28 , concertLocation: null },
-            { squareName: "squareTwentyNine",weekday: "Sun", dayNumber: 29 , concertLocation: null },
-            { squareName: "squareThirty",weekday: "Mon", dayNumber: 30 , concertLocation: null },
-            { squareName: "squareThirtyOne",weekday: "Tue", dayNumber: null , concertLocation: null },
-            { squareName: "squareThirtyTwo",weekday: "Wed", dayNumber: null , concertLocation: null },
-            { squareName: "squareThirtyThree",weekday: "Thu", dayNumber: null , concertLocation: null },
-            { squareName: "squareThirtyFour",weekday: "Fri", dayNumber: null , concertLocation: null },
-            { squareName: "squareThirtyFive",weekday: "Sat", dayNumber: null, concertLocation: null },
-            { squareName: "squareThirtySix",weekday: "Sun", dayNumber: null , concertLocation: null },
-            { squareName: "squareThirtySeven",weekday: "Mon", dayNumber: null , concertLocation: null },
-            { squareName: "squareThirtyEight",weekday: "Tue", dayNumber: null , concertLocation: null },
-            { squareName: "squareThirtyNine",weekday: "Wed", dayNumber: null , concertLocation: null },
-            { squareName: "squareForty",weekday: "Thu", dayNumber: null , concertLocation: null },
-            { squareName: "squareFortyOne",weekday: "Fri", dayNumber: null , concertLocation: null },
-            { squareName: "squareFortyTwo",weekday: "Sat", dayNumber: null, concertLocation: null}
-
-           ]
-           
-     
-// Add days and events list for July to December here
-
-           this.daysAndConcerts = this.month === "January" ?  januaryDaysAndConcerts :
-                                  this.month === "February" ?  februaryDaysAndConcerts :
-                                  this.month === "March" ?  marchDaysAndConcerts :
-                                  this.month === "April" ?  aprilDaysAndConcerts :
-                                  this.month === "May" ?  mayDaysAndConcerts :
-                                  this.month === "June" ?  juneDaysAndConcerts :
-                                  this.daysAndConcerts
-            
-          },
-  </textarea>
-  </code></pre>
-</div>
-              
-               <button type="button" class="collapsible"><i class="fa fa-info-circle"></i> <b>Code Explanation: How The Code Above Works</b></button>
-<div class="additionalInfo">      
-  
-  <p>The above code defines six lists, each storing objects that represent calendar squares for January to June. Each list aligns the 1st of the month with the correct weekday and includes the appropriate number of days:</p>
-
-  <ul>
-    <li>January: Starts on the 4th square, and has 31 days.</li>
-    <li>February: Starts on the 7th square, and has 28 days.</li>
-    <li>March: Starts on the 7th square, and has 31 days.</li>
-    <li>April: Starts on the 3rd square, and has 30 days.</li>
-    <li>May: Starts on the 5th square, and has 31 days.</li>
-    <li>June: Starts on the 1st square, and has 30 days.</li>
-    
-  </ul>
-<p>
-  This structure ensures the calendar squares match real-world month layouts.
-  </p>
-
 </div>
             
           
-        
-            <br><br>
-            <li>Now, update <code>navigatePrevious()</code> and <code>navigateNext()</code> to call <code>setDaysAndConcerts</code> so that the days update dynamically. Add <code>this.setDaysAndConcerts()</code> to <code>navigatePrevious()</code> and <code>navigateNext()</code> </li>
+                       
+           <br><br>
+            <li>Now that we have set up the default data for January, we will define a set of methods to overwrite this data for each month of 2025. These methods will allow us to dynamically update the calendar when switching between months.</li>
+            
+            <li>Open vue.js and copy the following <code>januaryDayNumbers()</code> method. This method follows the same structure as the data properties defined earlier:</li>
+            
+             <br><br>
+            <ul>
+            <li>The 1st of January starts on the fourth square to align with its weekday (Wednesday) </li>
+            <li>There are 31 numbers, each corresponding to a day in January 2025</li>
+              <li>The <code>null</code> values indicate empty squares to prevent numbers from appearing outside the month’s range</li>
+            </ul>
+            
+           
+               <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
+  <pre><code class="language-markup">
+  <textarea class="myInput" rows="5" cols="50">januaryDayNumbers(){
+          this.dayNumberSquareOne= null
+          this.dayNumberSquareTwo= null
+          this.dayNumberSquareThree= null
+          this.dayNumberSquareFour= 1
+          this.dayNumberSquareFive= 2
+          this.dayNumberSquareSix= 3
+          this.dayNumberSquareSeven= 4
+          this.dayNumberSquareEight= 5 
+          this.dayNumberSquareNine= 6
+          this.dayNumberSquareTen= 7
+          this.dayNumberSquareEleven= 8
+          this.dayNumberSquareTwelve= 9
+          this.dayNumberSquareThirteen= 10
+          this.dayNumberSquareFourteen= 11
+          this.dayNumberSquareFifteen= 12
+          this.dayNumberSquareSixteen= 13
+          this.dayNumberSquareSeventeen= 14
+          this.dayNumberSquareEighteen= 15
+          this.dayNumberSquareNineteen= 16
+          this.dayNumberSquareTwenty= 17
+          this.dayNumberSquareTwentyOne= 18
+          this.dayNumberSquareTwentyTwo= 19 
+          this.dayNumberSquareTwentyThree= 20
+          this.dayNumberSquareTwentyFour= 21
+          this.dayNumberSquareTwentyFive= 22
+          this.dayNumberSquareTwentySix= 23
+          this.dayNumberSquareTwentySeven= 24
+          this.dayNumberSquareTwentyEight= 25  
+          this.dayNumberSquareTwentyNine= 26
+          this.dayNumberSquareThirty= 27  
+          this.dayNumberSquareThirtyOne= 28
+          this.dayNumberSquareThirtyTwo= 29
+          this.dayNumberSquareThirtyThree= 30
+          this.dayNumberSquareThirtyFour= 31
+          this.dayNumberSquareThirtyFive= null
+          this.dayNumberSquareThirtySix= null
+          this.dayNumberSquareThirtySeven= null
+          this.dayNumberSquareThirtyEight= null
+          this.dayNumberSquareThirtyNine= null  
+          this.dayNumberSquareForty= null
+          this.dayNumberSquareFortyOne= null
+          this.dayNumberSquareFortyTwo= null 
+     }
+  </textarea>
+  </code></pre>
+</div>
+            <li>Now that we have defined a method for January, we will do the same for February 2025</li>
+            <li>Copy the following <code>februaryDayNumbers()</code> method. In this method:</li>
+            
+              <br><br>
+            <ul>
+            <li>The 1s of February starts on the seventh square to align with its weekday (Saturday) in the display </li>
+            <li>There are 28 numbers, each corresponding to a day in February</li>
+            <li>The <code>null</code> values ensure that no numbers appear in squares that are not part of the month</li>
+            </ul>
+            
+            
+             <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
+  <pre><code class="language-markup">
+  <textarea class="myInput" rows="5" cols="50">  februaryDayNumbers(){
+      this.dayNumberSquareOne= null
+      this.dayNumberSquareTwo= null
+      this.dayNumberSquareThree= null
+      this.dayNumberSquareFour= null
+      this.dayNumberSquareFive= null
+      this.dayNumberSquareSix= null
+      this.dayNumberSquareSeven= 1
+      this.dayNumberSquareEight= 2 
+      this.dayNumberSquareNine= 3
+      this.dayNumberSquareTen= 4
+      this.dayNumberSquareEleven= 5
+      this.dayNumberSquareTwelve= 6
+      this.dayNumberSquareThirteen= 7
+      this.dayNumberSquareFourteen= 8
+      this.dayNumberSquareFifteen= 9
+      this.dayNumberSquareSixteen= 10
+      this.dayNumberSquareSeventeen= 11
+      this.dayNumberSquareEighteen= 12
+      this.dayNumberSquareNineteen= 13
+      this.dayNumberSquareTwenty= 14
+      this.dayNumberSquareTwentyOne= 15
+      this.dayNumberSquareTwentyTwo= 16 
+      this.dayNumberSquareTwentyThree= 17
+      this.dayNumberSquareTwentyFour= 18
+      this.dayNumberSquareTwentyFive= 19
+      this.dayNumberSquareTwentySix= 20
+      this.dayNumberSquareTwentySeven= 21
+      this.dayNumberSquareTwentyEight= 22  
+      this.dayNumberSquareTwentyNine= 23
+      this.dayNumberSquareThirty= 24
+      this.dayNumberSquareThirtyOne= 25
+      this.dayNumberSquareThirtyTwo= 26
+      this.dayNumberSquareThirtyThree= 27
+      this.dayNumberSquareThirtyFour= 28
+      this.dayNumberSquareThirtyFive= null
+      this.dayNumberSquareThirtySix= null
+      this.dayNumberSquareThirtySeven= null
+      this.dayNumberSquareThirtyEight= null
+      this.dayNumberSquareThirtyNine= null  
+      this.dayNumberSquareForty= null
+      this.dayNumberSquareFortyOne= null
+      this.dayNumberSquareFortyTwo= null 
+ }
+  
+  </textarea>
+  </code>
+  </pre>
+            </div>
+          
+            <li>Now, let's define a method called <code>setDayNumbers()</code> which will choose between januaryDayNumbers() and februaryDayNumbers and display their respective day numbers based on the selected month. You can copy the following code:</li>
+            
+                         <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
+  <pre><code class="language-markup">
+  <textarea class="myInput" rows="5" cols="50">setDayNumbers(){
+            this.month === "January" ?  this.januaryDayNumbers() :
+            this.month === "February" ?  this.februaryDayNumbers() :
+            this.januaryDayNumbers()
 
+      }
+  
+  </textarea>
+  </code>
+  </pre>
+            </div>
+            <br><br>
+            <li>Finally, update <code>navigatePrevious()</code> and <code>navigateNext()</code> to call <code>setDayNumbers()</code> so that the days update when clicking the left and right buttons. Add <code>this.setDayNumbers()</code> to <code>navigatePrevious()</code> and <code>navigateNext()</code> </li>
+
+            
+
+            
             
            
               <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
                 <pre><code class="language-markup">
                 <textarea class="myInput" rows="5" cols="50"> navigatePrevious() {
-                    this.setPreviousMonth();
-                    this.setBackgroundColor(); 
-                    this.setDaysAndConcerts();
+                    this.setPreviousMonth()
+                    this.setBackgroundColor()
+                    this.setDayNumbers()
                     },
 
                 navigateNext() {
                     this.setNextMonth();
-                    this.setBackgroundColor(); 
-                    this.setDaysAndConcerts();
+                    this.setBackgroundColor()
+                    this.setDayNumbers()
                   },
                 </textarea>
                 </code></pre>
@@ -1196,26 +880,41 @@ In the next steps, we will create similar structures for the remaining months an
             
             
             
-            
-            <li>Save your changes and click the left and right buttons. The days in the calendar should change based on the month. If the dates update correctly, you’re ready for the challenge below!</li>
+            <li>Save your changes and click the left and right buttons. The January days in the calendar should update to the ones from February. If the dates update correctly, you’re ready for the challenge below!</li>
           
-          
+                      <br><br>
+
       <button type="button"  class="collapsible-question">
         <i class="fa fa-star-o" style="font-size:24px"></i> 
-        <b>Challenge 3: Complete setDaysAndConcerts() by adding a list for July to December (Click to see instructions)</b>
+        <b>Challenge 3: Define Methods for March to December and Update the Calendar (Click to see instructions)</b>
         </button>
-            <div class="additionalInfo">  The code from <code>setDaysAndConcerts()</code> above is partially completed. Right now, only January to June have their days assigned.
+            <div class="additionalInfo">  The code above is partially completed. Right now, only January to February have their days assigned.
               
               <br><br>
 
               💡<b>Your challenge:</b>  
-              <ul>
-              <li>1) Create a list for each month with their respective number of days</li>
-              <li>2) Complete the code located after the lists to select the days to display based on the selected month from January to Decemeber</li>  
-              </ul>
-              
-          
-        
+              <ol>
+              <li>Create methods for March to Decemeber with their respective number of days. Each method should align the 1st of the month with the correct weekday and include the appropriate number of days for 2025:</li>
+                <br><br>
+               <ul>
+<!--                   <li>January: Starts on the 4th square (Wednesday), and has 31 days.</li> -->
+<!--                   <li>February: Starts on the 7th square (Saturday), and has 28 days.</li> -->
+                  <li>March: Starts on the 7th square (Saturday), and has 31 days.</li>
+                  <li>April: Starts on the 3rd square (Tuesday), and has 30 days.</li>
+                  <li>May: Starts on the 5th square (Thursday), and has 31 days.</li>
+                  <li>June: Starts on the 1st square (Sunday), and has 30 days.</li>
+                  <li>July: Starts on the 3rd square (Tuesday), and has 31 days.</li>
+                  <li>August: Starts on the 6th square (Friday), and has 31 days.</li>
+                 <li>September: Starts on the 2nd square (Monday), and has 30 days.</li>
+                 <li>October: Starts on the 4th square (Wednesday), and has 31 days.</li>
+                 <li>November: Starts on the 7th square (Saturday), and has 30 days.</li>
+                 <li>December: Starts on the 2nd square (Monday), and has 31 days.</li>                
+                </ul>
+                
+                                <br><br>
+
+              <li>Complete the <code>setDayNumbers()</code> method to select the days to display based on the selected month from January to Decemeber</li>  
+              </ol>        
         </div>
             
       </ol>
@@ -1226,105 +925,252 @@ In the next steps, we will create similar structures for the remaining months an
           </h3>
           <hr />
 
-   <ol>
+     
+     
+       <ol>
             <li>Open index.html and locate the &lt;text&gt; elements representing the concert locations in your calendar</li>
-            <li>Modify each &lt;text&gt; element to use Vue's interpolation syntax ({{ }}). We will use the property name that makes reference to the list of items with days and events made previously </li>
-              <ul>
-                
-              <br><br>
-                <li>Each entry should include: 1) The property name <code>daysAndConcerts</code>. 2) An index inside square brackets [ ], starting from 0 up to 41. And,  3) a dot (.) followed by the name <code>concertLocation</code> to access the concert location values:</li>
-          </ul>
-          
-     <img style="width:50%" src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/concertLocationTagged.png?v=1740020849347">
-              
-<!--               <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
-  <pre><code class="language-markup">
-  <textarea class="myInput" rows="5" cols="50">
-      <text x="50" y="250" font-size="24"> {{ daysAndConcerts[0].concertLocation }}</text>
-        <text x="150" y="250" font-size="24">{{ daysAndConcerts[1].concertLocation }}</text>
-        <text x="250" y="250" font-size="24">{{ daysAndConcerts[2].concertLocation }}</text>
-        ...
+            <li>Modify each &lt;text&gt; element to use Vue's interpolation syntax ({{ }}). The property names will reference the corresponding square’s number (1-42)</li>         
+         <li>For consistency, use the following property names as we will be referencing them in the next steps:</li>
+              <code>  concertLocationSquareOne, concertLocationSquareTwo, concertLocationSquareThree, concertLocationSquareFour, concertLocationSquareFive concertLocationSquareSix, concertLocationSquareSeven, concertLocationSquareEight, concertLocationSquareNine, concertLocationSquareTen, concertLocationSquareEleven, concertLocationSquareTwelve, concertLocationSquareThirteen, concertLocationSquareFourteen, concertLocationSquareFifteen, concertLocationSquareSixteen, concertLocationSquareSeventeen, concertLocationSquareEighteen, concertLocationSquareNineteen,  concertLocationSquareTwenty, concertLocationSquareTwentyOne, concertLocationSquareTwentyTwo, concertLocationSquareTwentyThree, concertLocationSquareTwentyFour, concertLocationSquareTwentyFive, concertLocationSquareTwentySix, concertLocationSquareTwentySeven, concertLocationSquareTwentyEight,         concertLocationSquareTwentyNine, concertLocationSquareThirty, concertLocationSquareThirtyOne, concertLocationSquareThirtyTwo, concertLocationSquareThirtyThree, concertLocationSquareThirtyFour, concertLocationSquareThirtyFive, concertLocationSquareThirtySix, concertLocationSquareThirtySeven,         concertLocationSquareThirtyEight, concertLocationSquareThirtyNine, concertLocationSquareForty, concertLocationSquareFortyOne, concertLocationSquareFortyTwo </code>
+            
+              <img style="width:50%" src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/concertLocationTagged.png?v=1740020849347">
 
-        <text x="250" y="250" font-size="24">{{ daysAndConcerts[40].concertLocation }}</text>
-        <text x="250" y="250" font-size="24">{{ daysAndConcerts[41].concertLocation }}</text>
-
-  </textarea>
-  </code></pre>
-</div> -->
- 
-              
- <button type="button" class="collapsible"><i class="fa fa-info-circle"></i> <b>Code Explanation: How The Code Above Works</b></button>
-<div class="additionalInfo">    
-<ul>
-  <li>This code will link each concert location in the calendar grid to a specific index in the calendarLocation item from the <code>daysAndConcerts</code> list we defined previously</li>
-  <li>When <code>daysAndConcerts</code> is updated, the calendar events will change dynamically</li>
-</ul>
-</div>
-                      <br><br>
-
-     <li>Open vue.js and locate <code>daysAndConcerts</code> in data()</li>
-     <li>Replace some <code>null</code> values with some concert locations. These can be real or fictional for this exercise</li>
-                 
+           <br><br>
+            <li>Now, open vue.js, copy and paste the following properties into the data() section. These properties represent the concert locations for January, the initial/default month displayed in your calendar:</li> 
+            <br><br>
+            <ul>
+            <li>The properties assign 3 concert locations to specific squares in January: Hamilton, Burlington, and Toronto. You can change these values or add more concert locations if you'd like</li>
+              <li>The <code>null</code> values ensure that no concert locations are displayed in squares where we don't want to show any</li>
+            </ul>
+            
+            
                 <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
   <pre><code class="language-markup">
-  <textarea class="myInput" rows="5" cols="50"> daysAndConcerts: [
-          { squareName: "squareOne", weekday: "Sun", dayNumber: null, concertLocation: null}, 
-          { squareName: "squareTwo", weekday: "Mon", dayNumber: null, concertLocation: null  },
-          { squareName: "squareThree",weekday: "Tue", dayNumber: null, concertLocation: null },
-          { squareName: "squareFour", weekday: "Wed", dayNumber: 1, concertLocation: "Hamilton, ON" },
-          { squareName: "squareFive", weekday: "Thu", dayNumber: 2, concertLocation: null },
-          { squareName: "squareSix", weekday: "Fri", dayNumber: 3, concertLocation: null },
-          { squareName: "squareSeven", weekday: "Sat", dayNumber: 4, concertLocation: null },
-          { squareName: "squareEight", weekday: "Sun", dayNumber: 5, concertLocation: null },
-          { squareName: "squareNine", weekday: "Mon", dayNumber: 6 , concertLocation: null },
-          { squareName: "squareTen", weekday: "Tue", dayNumber: 7 , concertLocation: null },
-          { squareName: "squareEleven", weekday: "Wed", dayNumber: 8 , concertLocation: null },
-          { squareName: "squareTwelve", weekday: "Thu", dayNumber: 9 , concertLocation: null },
-          { squareName: "squareThirteen", weekday: "Fri",dayNumber: 10 , concertLocation: null },
-          { squareName: "squareFourteen", weekday: "Sat",dayNumber: 11 , concertLocation: null },
-          { squareName: "squareFifteen", weekday: "Sun", dayNumber: 12 , concertLocation: null },
-          { squareName: "squareSixteen", weekday: "Mon", dayNumber: 13 , concertLocation: null },
-          { squareName: "squareSeventeen",weekday: "Tue", dayNumber: 14 , concertLocation: null },
-          { squareName: "squareEighteen",weekday: "Wed",  dayNumber: 15 , concertLocation: "Burlington, ON" },
-          { squareName: "squareNineteen",weekday: "Thu", dayNumber: 16 , concertLocation: null },
-          { squareName: "squareTwenty",weekday: "Fri", dayNumber: 17 , concertLocation: null },
-          { squareName: "squareTwentyOne",weekday: "Sat", dayNumber: 18 , concertLocation: null },
-          { squareName: "squareTwentyTwo",weekday: "Sun", dayNumber: 19 , concertLocation: null },
-          { squareName: "squareTwentyThree",weekday: "Mon", dayNumber: 20 , concertLocation: null },
-          { squareName: "squareTwentyFour",weekday: "Tue", dayNumber: 21 , concertLocation: null },
-          { squareName: "squareTwentyFive",weekday: "Wed", dayNumber: 22 , concertLocation: null },
-          { squareName: "squareTwentySix",weekday: "Thu", dayNumber: 23 , concertLocation: null },
-          { squareName: "squareTwentySeven",weekday: "Fri", dayNumber: 24 , concertLocation: null },
-          { squareName: "squareTwentyEight",weekday: "Sat", dayNumber: 25 , concertLocation: null },
-          { squareName: "squareTwentyNine",weekday: "Sun", dayNumber: 26 , concertLocation: null },
-          { squareName: "squareThirty",weekday: "Mon", dayNumber: 27 , concertLocation: null },
-          { squareName: "squareThirtyOne",weekday: "Tue", dayNumber: 28 , concertLocation: null },
-          { squareName: "squareThirtyTwo",weekday: "Wed", dayNumber: 29 , concertLocation: null },
-          { squareName: "squareThirtyThree",weekday: "Thu", dayNumber: 30 , concertLocation: "Toronto, ON" },
-          { squareName: "squareThirtyFour",weekday: "Fri", dayNumber: 31 , concertLocation: null },
-          { squareName: "squareThirtyFive",weekday: "Sat", dayNumber: null , concertLocation: null },
-          { squareName: "squareThirtySix",weekday: "Sun", dayNumber: null , concertLocation: null },
-          { squareName: "squareThirtySeven",weekday: "Mon", dayNumber: null , concertLocation: null },
-          { squareName: "squareThirtyEight",weekday: "Tue", dayNumber: null , concertLocation: null },
-          { squareName: "squareThirtyNine",weekday: "Wed", dayNumber: null , concertLocation: null },
-          { squareName: "squareForty",weekday: "Thu", dayNumber: null , concertLocation: null },
-          { squareName: "squareFortyOne",weekday: "Fri", dayNumber: null , concertLocation: null },
-          { squareName: "squareFortyTwo",weekday: "Sat", dayNumber: null, concertLocation: null}
-        ]
+  <textarea class="myInput" rows="5" cols="50"> 
+        concertLocationSquareOne: null,
+        concertLocationSquareTwo: null,
+        concertLocationSquareThree: null,
+        concertLocationSquareFour:  "Hamilton, ON" ,
+        concertLocationSquareFive: null,
+        concertLocationSquareSix: null,
+        concertLocationSquareSeven: null,
+        concertLocationSquareEight: null, 
+        concertLocationSquareNine: null,
+        concertLocationSquareTen: null,
+        concertLocationSquareEleven: null,
+        concertLocationSquareTwelve: null,
+        concertLocationSquareThirteen: null,
+        concertLocationSquareFourteen: null,
+        concertLocationSquareFifteen: null,
+        concertLocationSquareSixteen: null,
+        concertLocationSquareSeventeen: null,
+        concertLocationSquareEighteen:  "Burlington, ON" ,
+        concertLocationSquareNineteen: null,
+        concertLocationSquareTwenty: null,
+        concertLocationSquareTwentyOne: null,
+        concertLocationSquareTwentyTwo: null, 
+        concertLocationSquareTwentyThree: null,
+        concertLocationSquareTwentyFour: null,
+        concertLocationSquareTwentyFive: null,
+        concertLocationSquareTwentySix: null,
+        concertLocationSquareTwentySeven: null,
+        concertLocationSquareTwentyEight: null,  
+        concertLocationSquareTwentyNine: null,
+        concertLocationSquareThirty: null,  
+        concertLocationSquareThirtyOne: null,
+        concertLocationSquareThirtyTwo: null,
+        concertLocationSquareThirtyThree: null,
+        concertLocationSquareThirtyFour:  "Toronto, ON" ,
+        concertLocationSquareThirtyFive: null,
+        concertLocationSquareThirtySix: null,
+        concertLocationSquareThirtySeven: null,
+        concertLocationSquareThirtyEight: null,
+        concertLocationSquareThirtyNine: null,  
+        concertLocationSquareForty: null,
+        concertLocationSquareFortyOne: null,
+        concertLocationSquareFortyTwo: null      
+              </textarea>
+              </code>
+              </pre>
+         </div>
+         
+         
+          <br><br>
+            <li>Now that we have set up the default concerts for January, we will define a set of methods to overwrite this data for each month</li>
+            
+            <li>Open vue.js and copy the following <code>januaryConcertLocations()</code> method. This method follows the same structure as the data properties defined earlier:</li>
+            
+             <br><br>
+            <ul>
+            <li>There are 3 concert locations assigned to specific squares in January: Hamilton, Burlington, and Toronto. You can change these values or add more concert locations if you'd like</li>
+              <li>The <code>null</code> values ensure that no concert locations are displayed in squares where we don't want to show any</li>
+            </ul>
+            
+           
+               <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
+  <pre><code class="language-markup">
+  <textarea class="myInput" rows="5" cols="50">januaryConcertLocations(){
+        this.concertLocationSquareOne= null
+        this.concertLocationSquareTwo= null
+        this.concertLocationSquareThree= null
+        this.concertLocationSquareFour=  "Hamilton, ON" 
+        this.concertLocationSquareFive= null
+        this.concertLocationSquareSix= null
+        this.concertLocationSquareSeven= null
+        this.concertLocationSquareEight= null 
+        this.concertLocationSquareNine= null
+        this.concertLocationSquareTen= null
+        this.concertLocationSquareEleven= null
+        this.concertLocationSquareTwelve= null
+        this.concertLocationSquareThirteen= null
+        this.concertLocationSquareFourteen= null
+        this.concertLocationSquareFifteen= null
+        this.concertLocationSquareSixteen= null
+        this.concertLocationSquareSeventeen= null
+        this.concertLocationSquareEighteen=  "Burlington, ON" 
+        this.concertLocationSquareNineteen= null
+        this.concertLocationSquareTwenty= null
+        this.concertLocationSquareTwentyOne= null
+        this.concertLocationSquareTwentyTwo= null 
+        this.concertLocationSquareTwentyThree= null
+        this.concertLocationSquareTwentyFour= null
+        this.concertLocationSquareTwentyFive= null
+        this.concertLocationSquareTwentySix= null
+        this.concertLocationSquareTwentySeven= null
+        this.concertLocationSquareTwentyEight= null  
+        this.concertLocationSquareTwentyNine= null
+        this.concertLocationSquareThirty= null  
+        this.concertLocationSquareThirtyOne= null
+        this.concertLocationSquareThirtyTwo= null
+        this.concertLocationSquareThirtyThree= null
+        this.concertLocationSquareThirtyFour=  "Toronto, ON" 
+        this.concertLocationSquareThirtyFive= null
+        this.concertLocationSquareThirtySix= null
+        this.concertLocationSquareThirtySeven= null
+        this.concertLocationSquareThirtyEight= null
+        this.concertLocationSquareThirtyNine= null  
+        this.concertLocationSquareForty= null
+        this.concertLocationSquareFortyOne= null
+        this.concertLocationSquareFortyTwo= null     
+    }
   </textarea>
-  </code></pre>
-</div>
-                       
-<!--           
-          <h4>
-            2. Define a Helper Method to Update the Days Based on the Month
-          </h4> -->
-          
-       <li>Next, locate the method <code>setDaysAndConcerts()</code></li>
-       <li>Replace <code>null</code> values with concert locations in the lists for January to December defined in the method <code>setDaysAndConcerts()</code>, previously</li>
+  </code>
+  </pre>
+         </div>
+ 
+         <li>Now that we have defined a method for January's concerts, we will do the same for February</li>
+      <li>Copy the following <code>februaryConcertLocations()</code> method. In this method:</li>
 
-     <li>Save your changes and click the <b>left and right buttons</b>. The concert locations in the calendar should change based on the month. If these update correctly, you have completed this lab!
-</li>
+        <br><br>
+     <ul>
+            <li>There are 3 concert locations assigned to specific squares: Montreal, Gatineau, and Quebec City. You can change these values or add more concert locations if you'd like</li>
+              <li>The <code>null</code> values ensure that no concert locations are displayed in squares where we don't want to show any</li>
+            </ul>
+         
+          <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
+  <pre><code class="language-markup">
+  <textarea class="myInput" rows="5" cols="50">
+                februaryConcertLocations(){
+      this.concertLocationSquareOne= null
+      this.concertLocationSquareTwo= null
+      this.concertLocationSquareThree= null
+      this.concertLocationSquareFour=  null 
+      this.concertLocationSquareFive= null
+      this.concertLocationSquareSix= null
+      this.concertLocationSquareSeven= null
+      this.concertLocationSquareEight= null 
+      this.concertLocationSquareNine= null
+      this.concertLocationSquareTen= "Montreal, QC"
+      this.concertLocationSquareEleven= null
+      this.concertLocationSquareTwelve= null
+      this.concertLocationSquareThirteen= null
+      this.concertLocationSquareFourteen= null
+      this.concertLocationSquareFifteen= null
+      this.concertLocationSquareSixteen= null
+      this.concertLocationSquareSeventeen= null
+      this.concertLocationSquareEighteen=  "Gatineau, ON" 
+      this.concertLocationSquareNineteen= null
+      this.concertLocationSquareTwenty= null
+      this.concertLocationSquareTwentyOne= null
+      this.concertLocationSquareTwentyTwo= null 
+      this.concertLocationSquareTwentyThree= null
+      this.concertLocationSquareTwentyFour= null
+      this.concertLocationSquareTwentyFive= null
+      this.concertLocationSquareTwentySix= null
+      this.concertLocationSquareTwentySeven= null
+      this.concertLocationSquareTwentyEight= null  
+      this.concertLocationSquareTwentyNine= "Quebec City, QC"
+      this.concertLocationSquareThirty= null  
+      this.concertLocationSquareThirtyOne= null
+      this.concertLocationSquareThirtyTwo= null
+      this.concertLocationSquareThirtyThree= null
+      this.concertLocationSquareThirtyFour=  null
+      this.concertLocationSquareThirtyFive= null
+      this.concertLocationSquareThirtySix= null
+      this.concertLocationSquareThirtySeven= null
+      this.concertLocationSquareThirtyEight= null
+      this.concertLocationSquareThirtyNine= null  
+      this.concertLocationSquareForty= null
+      this.concertLocationSquareFortyOne= null
+      this.concertLocationSquareFortyTwo= null     
+  }
+  </textarea>
+  </code>
+  </pre>
+         </div>
+         
+         
+              <br><br>
+            <li>Finally, update <code>navigatePrevious()</code> and <code>navigateNext()</code> to call <code>setConcertLocations()</code> so that the concert locations update when clicking the left and right buttons. Add <code>this.setConcertLocations()</code> to <code>navigatePrevious()</code> and <code>navigateNext()</code> </li>
+
+            
+
+            
+            
+           
+              <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+                <pre><code class="language-markup">
+                <textarea class="myInput" rows="5" cols="50"> navigatePrevious() {
+                    this.setPreviousMonth()
+                    this.setBackgroundColor()
+                    this.setDayNumbers()
+                    this.setConcertLocations()
+                    }
+
+                navigateNext() {
+                    this.setNextMonth()
+                    this.setBackgroundColor()
+                    this.setDayNumbers()
+                    this.setConcertLocations()
+                  }
+                </textarea>
+                </code></pre>
+                </div>
+            
+            
+            
+            <li>Save your changes and click the left and right buttons. January's concert locations in the calendar should update to the ones of February. If the locations update correctly, you’re ready for the challenge below!</li>
+          
+                      <br><br>
+          
+           <button type="button"  class="collapsible-question">
+        <i class="fa fa-star-o" style="font-size:24px"></i> 
+        <b>Challenge 4: Define Concert Locations for March to December (Click to see instructions)</b>
+        </button>
+            <div class="additionalInfo">  The code above is partially completed. Right now, only January to February have their concert locations assigned.
+              
+              <br><br>
+
+              💡<b>Your challenge:</b>  
+              <ol>
+              <li>Create methods for March to Decemeber with their respective concert locations. These could be real or fictional</li>
+             
+
+              <li>Complete the <code>setConcertLocations()</code> method to display the concert location based on the selected month from January to Decemeber</li>  
+              </ol>        
+        </div>
+         
+         
           
           </ol>
       
