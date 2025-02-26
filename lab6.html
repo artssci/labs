@@ -71,7 +71,7 @@
           <ul>
                 <li>Build upon the skills you’ve developed in previous labs to enhance your calendar design in Figma</li>
             <li>Expand your understanding of data, methods, and events in Vue.js to create interactive calendar components</li>
-            <li>Apply logical operators and lists to navigate between months and dynamically update background colors, days and concert locations</li>
+            <li>Apply logical operators to navigate between months and dynamically update background colors, days and concert locations</li>
           </ul>
           
 
@@ -138,7 +138,7 @@
 
           
           <p>
-            Before exporting your calendar as an SVG, follow these steps to ensure that your layers are well-organized. This will make the code easier to read and edit when integrating Vue.
+            Before exporting your calendar as an SVG, follow these steps to ensure that your layers are well-organized. This will make the code easier to read and edit when integrating Vue
           </p>
           
           <ol>
@@ -258,28 +258,28 @@
           </p>
           <ol>
             <li>All team members <i>install Live Share</i>: Open Extensions, search for "Live Share" and click Install</li>
+            <br><br>
 <video style="width:70%" controls loop autoplay muted>
   <source  src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/install-live-share.webm?v=1739901219984" type="video/webm">
   Your browser does not support the video tag.
 </video>
-            
+            <br><br>
             <li>All team members must sign in to Live Share using their McMaster emails: Open View &gt; Command Palette in VS Code. Type "live share sign in" and select it from the list. Choose "Sign in using Microsoft account". When prompted, click "Allow" in the pop-up window to confirm your sign-in</li>
-            
-<video style="width:70%" controls loop autoplay muted>
+<br><br>
+            <video style="width:70%" controls loop autoplay muted>
   <source  src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/sign-in-to-live-share.webm?v=1739902196739" type="video/webm">
   Your browser does not support the video tag.
 </video>
-            
-          
+          <br><br>
             <li>The team member who created the <i>myCalendarApp</i> folder in Step 2.1 will be the "host" of the live share session. The host should click the Live Share button in the status bar at the bottom of VS Code. This will start the session and automatically copy a unique link to the clipboard. Once the link is generated, the host should send it by email to their team members so they can join</li>
-            
-          <video style="width:70%" controls loop autoplay muted>
+<br><br>
+            <video style="width:70%" controls loop autoplay muted>
   <source  src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/live-share-link.webm?v=1739902978319" type="video/webm">
   Your browser does not support the video tag.
 </video>
-            
+            <br><br>
             <li>Other team members join: Once received, click the Live Share link which will open up in a browser. When prompted, allow your browser to launch VS Code. After you join, you'll be immediately presented with the file that the "host" has open. You should start seeing everyone's cursors as they join!</li>
-          
+            <br><br>
           
              <video style="width:70%" controls loop autoplay muted>
   <source  src="            https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/live-share-open-link.webm?v=1739903728011" type="video/webm">
@@ -303,6 +303,7 @@
           
             <li>Open the exported SVG file in VS Code</li>
             <li>Copy the SVG code and paste it below <code>&lt;!-- Your SVG code will go here --&gt;</code> in your index.html file</li>
+              <li>Delete the <code>width</code> and <code>height</code> inside the &lt;svg&gt; tag. This will allow the svg to adjust to your screen dynamically</li>
             <li>Save your changes and ask the host to review it by previewing it in the <i>live preview</i></li>
               
               <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Note: In a <i>Live Share session</i>, only the host can preview the code using <i>Live Preview</i> on their computer. If you want to see your changes reflected in the calendar, ask the host to refresh the preview and share their screen, as you won’t be able to view it in your own VS Code.
@@ -328,24 +329,10 @@
             <br><br>
             <li>Paste the links anywhere inside the &lt;head&gt; section of your index.html file, like this:</li>
             
-            <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left: 5em">
-            <pre><code class="language-markup">
-            <textarea class="myInput" rows="5" cols="50" style=""><head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Gochi+Hand&family=
-              Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Raleway+Dots&display=swap" rel="stylesheet">
-  <title>My Calendar</title>
-</head>
-           
-            </textarea>
-            </code></pre>
-            </div>
+           <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/add%20links.png?v=1740565513393">
             
-    <li>Save your changes and ask the host to see if the fonts are restored by previewing it in the <i>live preview</i></li>
+            <li>Repeat the process if your have multiple fonts</li>
+            <li>Save your changes and ask the host to see if the fonts are restored by previewing it in the <i>live preview</i></li>
             
                 <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Remember: In a <i>Live Share session</i>, only the host can preview the code using <i>Live Preview</i> on their computer. If you want to see your changes reflected in the calendar, ask the host to refresh the preview and share their screen, as you won’t be able to view it in your own VS Code.
           </p>
@@ -369,15 +356,7 @@
             
   <img style="width:50%" src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/Add%20Click%20Events%20to%20Navigation%20Buttons%20Tagged.png?v=1740019701013" >
             
-<!--             <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
-            <pre><code class="language-markup">
-            <textarea class="myInput" rows="5" cols="50"> <g id="buttons">
-              <path id="rightButton" v-on:click="navigateNext" d="M929.646 156.919L892.597 177.715L892.597 136.122L929.646 156.919Z" fill="#D9D9D9"/>
-              <path id="leftButton" v-on:click="navigatePrevious" d="M508.544 152.982L545.593 132.186L545.593 173.778L508.544 152.982Z" fill="#D9D9D9"/>
-            </g>
-            </textarea>
-            </code></pre>
-            </div> -->
+
           
 <li>Next, open your vue.js file and define two methods, <code>navigatePrevious</code> and <code>navigateNext</code>, that match the ones you added in the previous step. These methods will be empty for now but will later include the logic for updating the month, background color, days, and concert locations</li>
           
@@ -413,8 +392,8 @@
               
               <ol>
                 <li>A condition, followed by a question mark (?) </li>
-                <li>An expression to execute if the condition is truthy, followed by a colon (:) </li>
-<li>An expression to execute if the condition is falsy</li>
+                <li>An expression to execute if the condition is true, followed by a colon (:) </li>
+<li>An expression to execute if the condition is false</li>
             </ol>
               
           In the last lab, you saw how the ternary operator can be used to toggle between two values:
@@ -443,12 +422,7 @@
             <li>Replace the text with Vue’s interpolation syntax <code> {{}} </code> and a meaningful property name like <code>month</code></li>
           
           <img style="width:50%" src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/add%20month%20tagged.png?v=1740019965726">
-<!--           <div style="display: flex; flex-direction: column; align-items: center; width: 90%; font-size: 0.75em; margin-left:5%">
-          <pre><code class="language-markup">
-          <textarea class="myInput" rows="5" cols="50"><text id="month" fill="black" x="633.16" y="166.082">{{ month }}</text>
-          </textarea>
-          </code></pre>
-        </div> -->
+
           
           <li>Open vue.js and add the property <code>month</code> to the data() section with an initial value of <code>"January"</code></li>
           
@@ -560,12 +534,7 @@ To handle multiple conditions, like all 12 months in the calendar, we chained mu
         
         <img style="width:50%" src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/changefillcolortagged.png?v=1740020142876">
         
-<!--           <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
-  <pre><code class="language-markup">
-  <textarea class="myInput" rows="5" cols="50"><svg viewBox="0 0 1440 1024" v-bind:fill="backgroundColor" xmlns="http://www.w3.org/2000/svg">
-  </textarea>
-  </code></pre>
-</div> -->
+
     
           
         <li>Open vue.js and add <code>backgroundColor</code> to the data() section with an initial color value. The example code below uses <code>"yellow"</code>, but you can use another color</li>
@@ -614,23 +583,11 @@ To handle multiple conditions, like all 12 months in the calendar, we chained mu
             <li>Now, modify <code>navigatePrevious()</code> and <code>navigateNext()</code> to call <code>setBackgroundColor()</code>. Add <code> this.setBackgroundColor()</code> to <code>navigatePrevious()</code> and <code>navigateNext()</code>:</li>
       
       
-<div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
-  <pre><code class="language-markup">
-  <textarea class="myInput" rows="5" cols="50">navigatePrevious() {
-                this.setPreviousMonth()
-                this.setBackgroundColor()
-                },
+        <img style="width:30%" src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/addbackgroundcolor.png?v=1740565850553">
+        
 
-  navigateNext() {
-                this.setNextMonth()
-                this.setBackgroundColor()
-              },
-
-  </textarea>
-  </code></pre>
-</div>
           
-        <li>Save your changes and ask the host to open index.html in the live preview. Click the<b>left and right buttons</b> to check if the calendar's background change based on the month. If the color updates correctly, you’re ready for the next step!</li>
+        <li>Save your changes and ask the host to open index.html in the live preview. Click the<b> left and right buttons</b> to check if the calendar's background change based on the month. If the color updates correctly, you’re ready for the next step!</li>
           </ol>
         <hr />
           <h3 id="12activity">
@@ -644,20 +601,35 @@ To handle multiple conditions, like all 12 months in the calendar, we chained mu
             <li>Open index.html and locate the &lt;text&gt; elements representing the days in your calendar</li>
             <li>Modify each &lt;text&gt; element to use Vue's interpolation syntax ({{ }}). The property names will reference the corresponding square’s number (1-42)</li>         
             <li>For consistency, use the following property names as we will be referencing them in the next steps:
+              <br><br>
               <code> dayNumberSquareOne, dayNumberSquareTwo, dayNumberSquareThree, dayNumberSquareFour, dayNumberSquareFive,          dayNumberSquareSix, dayNumberSquareSeven, dayNumberSquareEight, dayNumberSquareNine, dayNumberSquareTen,          dayNumberSquareEleven, dayNumberSquareTwelve, dayNumberSquareThirteen, dayNumberSquareFourteen, dayNumberSquareFifteen,      dayNumberSquareSixteen, dayNumberSquareSeventeen, dayNumberSquareEighteen, dayNumberSquareNineteen, dayNumberSquareTwenty,    dayNumberSquareTwentyOne, dayNumberSquareTwentyTwo, dayNumberSquareTwentyThree, dayNumberSquareTwentyFour, dayNumberSquareTwentyFive, dayNumberSquareTwentySix, dayNumberSquareTwentySeven, dayNumberSquareTwentyEight,         dayNumberSquareTwentyNine, dayNumberSquareThirty, dayNumberSquareThirtyOne, dayNumberSquareThirtyTwo,   dayNumberSquareThirtyThree, dayNumberSquareThirtyFour, dayNumberSquareThirtyFive, dayNumberSquareThirtySix,         dayNumberSquareThirtySeven, dayNumberSquareThirtyEight, dayNumberSquareThirtyNine, dayNumberSquareForty, dayNumberSquareFortyOne, dayNumberSquareFortyTwo </code>
             </li>
                       
           
-              <img style="width:50%" src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/add%20days%20tagged.png?v=1740020385263">
+              <img  src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/daynumbers.png?v=1740566417468">
+            
+<!--     <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
+  <pre><code class="language-markup">
+  <textarea class="myInput" rows="5" cols="50">
+  <text id="1" fill="black" font-family="Gochi Hand" font-size="50" x="247.214" y="292.29">{{dayNumberSquareOne}}</text>
+    <text id="2" fill="black" font-family="Gochi Hand" font-size="50" x="416.782" y="291.412">{{dayNumberSquareTwo}}</text>
+     ...
+     
+    <text id="41" fill="black" font-family="Gochi Hand" font-size="50" x="1064.88" y="920.169">{{dayNumberSquareFortyOne}}</text>
+    <text id="42" fill="black" font-family="Gochi Hand" font-size="50" x="1232.69" y="918.412">{{dayNumberSquareFortyTwo}}</text>
+  
+  </textarea>
+  </code></pre>
+</div> -->
 
-
-
+   
+            
             <br><br>
             <li>Now, open vue.js, copy and paste the following properties in the data() section. These properties represent the days in January 2025, which will be the initial/default month displayed in your calendar:</li> 
             <br><br>
             <ul>
-            <li>The 1st of January starts on the fourth square to align with its weekday (Wednesday) in the display </li>
-            <li>There are 31 numbers, each corresponding to a day in January 2025</li>
+              <li>The <b>1st of January</b> starts on the <b>fourth square</b> to align with its <b>weekday (Wednesday)</b> in the display </li>
+              <li>There are <b>31 numbers</b>, each corresponding to a day in January 2025</li>
             <li>The <code>null</code> values mean there are no values for those squares. They ensure that no numbers appear in squares that are not part of the month</li>
             </ul>
             
@@ -714,14 +686,14 @@ To handle multiple conditions, like all 12 months in the calendar, we chained mu
           
                        
            <br><br>
-            <li>Now that we have set up the default data for January, we will define a set of methods to overwrite this data for each month of 2025. These methods will allow us to dynamically update the calendar when switching between months.</li>
+            <li>Now that we have set up the default data for January, we will define a set of methods to update this data for each month of 2025</li>
             
-            <li>Open vue.js and copy the following <code>januaryDayNumbers()</code> method. This method follows the same structure as the data properties defined earlier:</li>
+            <li>Open vue.js and copy the following <code>januaryDayNumbers()</code> method. This method follows the same structure as the data properties defined in the previous step:</li>
             
              <br><br>
             <ul>
-            <li>The 1st of January starts on the fourth square to align with its weekday (Wednesday) </li>
-            <li>There are 31 numbers, each corresponding to a day in January 2025</li>
+              <li>The <b>1st of January</b> starts on the <b>fourth square</b> to align with its <b>weekday (Wednesday)</b> </li>
+              <li>There are <b>31 numbers</b>, each corresponding to a day in January 2025</li>
               <li>The <code>null</code> values indicate empty squares to prevent numbers from appearing outside the month’s range</li>
             </ul>
             
@@ -780,8 +752,8 @@ To handle multiple conditions, like all 12 months in the calendar, we chained mu
             
               <br><br>
             <ul>
-            <li>The 1s of February starts on the seventh square to align with its weekday (Saturday) in the display </li>
-            <li>There are 28 numbers, each corresponding to a day in February</li>
+              <li>The <b>1st of February</b> starts on the <b>seventh square</b> to align with its <b>weekday (Saturday)</b> in the display </li>
+              <li>There are <b>28 numbers</b>, each corresponding to a day in February</li>
             <li>The <code>null</code> values ensure that no numbers appear in squares that are not part of the month</li>
             </ul>
             
@@ -838,7 +810,7 @@ To handle multiple conditions, like all 12 months in the calendar, we chained mu
   </pre>
             </div>
           
-            <li>Now, let's define a method called <code>setDayNumbers()</code> which will choose between januaryDayNumbers() and februaryDayNumbers and display their respective day numbers based on the selected month. You can copy the following code:</li>
+            <li>Now, let's define a method called <code>setDayNumbers()</code> which will allow us to choose between <code>januaryDayNumbers()</code> and <code>februaryDayNumbers</code> and display their respective day numbers based on the selected month. You can copy the following code:</li>
             
                          <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
   <pre><code class="language-markup">
@@ -857,11 +829,11 @@ To handle multiple conditions, like all 12 months in the calendar, we chained mu
             <li>Finally, update <code>navigatePrevious()</code> and <code>navigateNext()</code> to call <code>setDayNumbers()</code> so that the days update when clicking the left and right buttons. Add <code>this.setDayNumbers()</code> to <code>navigatePrevious()</code> and <code>navigateNext()</code> </li>
 
             
-
+  <img style="width:25%" src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/setdaynumber.png?v=1740566921285">
             
             
            
-              <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+<!--               <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
                 <pre><code class="language-markup">
                 <textarea class="myInput" rows="5" cols="50"> navigatePrevious() {
                     this.setPreviousMonth()
@@ -876,11 +848,11 @@ To handle multiple conditions, like all 12 months in the calendar, we chained mu
                   },
                 </textarea>
                 </code></pre>
-                </div>
+                </div> -->
             
             
             
-            <li>Save your changes and click the left and right buttons. The January days in the calendar should update to the ones from February. If the dates update correctly, you’re ready for the challenge below!</li>
+            <li>Save your changes and click the <b>left and right buttons</b>. The January days in the calendar should update to the ones from February. If the dates update correctly, you’re ready for the challenge below!</li>
           
                       <br><br>
 
@@ -894,7 +866,7 @@ To handle multiple conditions, like all 12 months in the calendar, we chained mu
 
               💡<b>Your challenge:</b>  
               <ol>
-              <li>Create methods for March to Decemeber with their respective number of days. Each method should align the 1st of the month with the correct weekday and include the appropriate number of days for 2025:</li>
+              <li>Create methods for March to December with their respective number of days. Each method should align the 1st of the month with the correct weekday and include the appropriate number of days for 2025:</li>
                 <br><br>
                <ul>
 <!--                   <li>January: Starts on the 4th square (Wednesday), and has 31 days.</li> -->
@@ -913,7 +885,7 @@ To handle multiple conditions, like all 12 months in the calendar, we chained mu
                 
                                 <br><br>
 
-              <li>Complete the <code>setDayNumbers()</code> method to select the days to display based on the selected month from January to Decemeber</li>  
+              <li>Complete the <code>setDayNumbers()</code> method to select the days to display based on the selected month from January to December</li>  
               </ol>        
         </div>
             
@@ -933,14 +905,32 @@ To handle multiple conditions, like all 12 months in the calendar, we chained mu
          <li>For consistency, use the following property names as we will be referencing them in the next steps:</li>
               <code>  concertLocationSquareOne, concertLocationSquareTwo, concertLocationSquareThree, concertLocationSquareFour, concertLocationSquareFive concertLocationSquareSix, concertLocationSquareSeven, concertLocationSquareEight, concertLocationSquareNine, concertLocationSquareTen, concertLocationSquareEleven, concertLocationSquareTwelve, concertLocationSquareThirteen, concertLocationSquareFourteen, concertLocationSquareFifteen, concertLocationSquareSixteen, concertLocationSquareSeventeen, concertLocationSquareEighteen, concertLocationSquareNineteen,  concertLocationSquareTwenty, concertLocationSquareTwentyOne, concertLocationSquareTwentyTwo, concertLocationSquareTwentyThree, concertLocationSquareTwentyFour, concertLocationSquareTwentyFive, concertLocationSquareTwentySix, concertLocationSquareTwentySeven, concertLocationSquareTwentyEight,         concertLocationSquareTwentyNine, concertLocationSquareThirty, concertLocationSquareThirtyOne, concertLocationSquareThirtyTwo, concertLocationSquareThirtyThree, concertLocationSquareThirtyFour, concertLocationSquareThirtyFive, concertLocationSquareThirtySix, concertLocationSquareThirtySeven,         concertLocationSquareThirtyEight, concertLocationSquareThirtyNine, concertLocationSquareForty, concertLocationSquareFortyOne, concertLocationSquareFortyTwo </code>
             
-              <img style="width:50%" src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/concertLocationTagged.png?v=1740020849347">
+              <img  src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/concertlocations.png?v=1740567436380">
+         
+<!--          
+          <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+                <pre><code class="language-markup">
+                <textarea class="myInput" rows="5" cols="50"> 
+                
+                         <text id="some place 1" fill="black" font-family="Gochi Hand" x="166.622" y="331.363">{{concertLocationSquareOne}}</text>
+                         <text id="some place 2" fill="black" font-family="Gochi Hand" x="337.651" y="332.242">{{concertLocationSquareTwo}}</text>
+                           ...
 
+                         <text id="some place 41" fill="black" font-family="Gochi Hand" x="1023.92" y="961.34">{{concertLocationSquareFortyOne}}</text>
+                         <text id="some place 42" fill="black" font-family="Gochi Hand" x="1190.55" y="963.976">{{concertLocationSquareFortyTwo}}</text>
+                </textarea>
+                </code></pre>
+                </div>  -->
+
+        
+         
+         
            <br><br>
             <li>Now, open vue.js, copy and paste the following properties into the data() section. These properties represent the concert locations for January, the initial/default month displayed in your calendar:</li> 
             <br><br>
             <ul>
-            <li>The properties assign 3 concert locations to specific squares in January: Hamilton, Burlington, and Toronto. You can change these values or add more concert locations if you'd like</li>
-              <li>The <code>null</code> values ensure that no concert locations are displayed in squares where we don't want to show any</li>
+              <li>The properties assign <b>3 concert locations</b> to specific squares in January: <b>Hamilton, Burlington, and Toronto</b>. You can change these values or add more concert locations if you'd like</li>
+              <li>The <code>null</code> values ensure that <b>no concert locations are displayed</b> in squares where we don't want to show any</li>
             </ul>
             
             
@@ -996,14 +986,14 @@ To handle multiple conditions, like all 12 months in the calendar, we chained mu
          
          
           <br><br>
-            <li>Now that we have set up the default concerts for January, we will define a set of methods to overwrite this data for each month</li>
+            <li>Now that we have set up the default concerts for January, we will define a set of methods to update this data for each month</li>
             
             <li>Open vue.js and copy the following <code>januaryConcertLocations()</code> method. This method follows the same structure as the data properties defined earlier:</li>
             
              <br><br>
             <ul>
-            <li>There are 3 concert locations assigned to specific squares in January: Hamilton, Burlington, and Toronto. You can change these values or add more concert locations if you'd like</li>
-              <li>The <code>null</code> values ensure that no concert locations are displayed in squares where we don't want to show any</li>
+              <li>There are <b>3 concert locations assigned to specific squares</b> in January: <b>Hamilton, Burlington, and Toronto</b>. You can change these values or add more concert locations if you'd like</li>
+              <li>The <code>null</code> values ensure that <b>no concert locations are displayed</b> in squares where we don't want to show any</li>
             </ul>
             
            
@@ -1063,8 +1053,8 @@ To handle multiple conditions, like all 12 months in the calendar, we chained mu
 
         <br><br>
      <ul>
-            <li>There are 3 concert locations assigned to specific squares: Montreal, Gatineau, and Quebec City. You can change these values or add more concert locations if you'd like</li>
-              <li>The <code>null</code> values ensure that no concert locations are displayed in squares where we don't want to show any</li>
+       <li>There are <b>3 concert locations</b> assigned to specific squares: <b>Montreal, Gatineau, and Quebec City</b>. You can change these values or add more concert locations if you'd like</li>
+       <li>The <code>null</code> values ensure that <b>no concert locations are displayed</b> in squares where we don't want to show any</li>
             </ul>
          
           <div style="display: flex; flex-direction: column; align-items: center; width: 50%; font-size: 0.75em; margin-left:5%">
@@ -1121,14 +1111,14 @@ To handle multiple conditions, like all 12 months in the calendar, we chained mu
          
          
               <br><br>
-            <li>Finally, update <code>navigatePrevious()</code> and <code>navigateNext()</code> to call <code>setConcertLocations()</code> so that the concert locations update when clicking the left and right buttons. Add <code>this.setConcertLocations()</code> to <code>navigatePrevious()</code> and <code>navigateNext()</code> </li>
+         <li>Finally, update <code>navigatePrevious()</code> and <code>navigateNext()</code> to call <code>setConcertLocations()</code> so that the concert locations update when clicking the left and right buttons. Add <code>this.setConcertLocations()</code> to <code>navigatePrevious()</code> and <code>navigateNext()</code> </li>
 
             
-
+<img style="width:25%" src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/add-concert-locations.png?v=1740567736579">
             
             
            
-              <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
+<!--               <div style="display: flex; flex-direction: column; align-items: center; width: 50%; ">
                 <pre><code class="language-markup">
                 <textarea class="myInput" rows="5" cols="50"> navigatePrevious() {
                     this.setPreviousMonth()
@@ -1145,11 +1135,11 @@ To handle multiple conditions, like all 12 months in the calendar, we chained mu
                   }
                 </textarea>
                 </code></pre>
-                </div>
+                </div> -->
             
             
             
-            <li>Save your changes and click the left and right buttons. January's concert locations in the calendar should update to the ones of February. If the locations update correctly, you’re ready for the challenge below!</li>
+         <li>Save your changes and click the <b>left and right buttons</b>. January's concert locations in the calendar should update to the ones of February. If the locations update correctly, you’re ready for the challenge below!</li>
           
                       <br><br>
           
@@ -1163,10 +1153,10 @@ To handle multiple conditions, like all 12 months in the calendar, we chained mu
 
               💡<b>Your challenge:</b>  
               <ol>
-              <li>Create methods for March to Decemeber with their respective concert locations. These could be real or fictional</li>
+              <li>Create methods for March to December with their respective concert locations. These could be real or fictional</li>
              
 
-              <li>Complete the <code>setConcertLocations()</code> method to display the concert location based on the selected month from January to Decemeber</li>  
+              <li>Complete the <code>setConcertLocations()</code> method to display the concert location based on the selected month from January to December</li>  
               </ol>        
         </div>
          
@@ -1242,7 +1232,8 @@ To handle multiple conditions, like all 12 months in the calendar, we chained mu
       <li><b>Lists (Arrays)</b> → In JavaScript, a 'List' is a synonym for an 'Array'. For beginners, think of an array as a list, like a shopping list. This list has slots where you put the items you want to buy. In JavaScript, these slots are called 'indices' and the items in the list are called 'elements'.</li>
       <li><b>Objects</b> → An object in JavaScript is a data structure used to store related data collections. It stores data as key-value pairs, where each key is a unique identifier for the associated value. Objects are dynamic, which means the properties can be added, modified, or deleted at runtime.</li>
       <li><b>Ternary Operator</b> → A ternary operator is an operator that takes three inputs and returns one output. It's also known as the conditional operator. One can read it aloud as "if <code>a</code> then <code>b</code> otherwise <code>c</code>"</li>
-    </ul>
+      <li><b>null value</b> → The null value represents the intentional absence of any value</li>
+      </ul>
         </div>
       </div>
 <!-- footer -->
