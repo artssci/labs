@@ -106,36 +106,37 @@
       <div id="app">
   <button type="button" class="collapsible-question">
     <i class="fa fa-star-o" style="font-size:24px"></i> 
-    <b>The Mellow App (enter code to see suggested workflow)</b>
+    <b>The Mellow App - Suggested workflow</b>
   </button>
 
-  <!-- Input field for the access code -->
-<!--   <input type="text" v-model="enteredCode" placeholder="Enter access code" /> -->
-<!--   <button @click="checkCode">Submit</button> -->
-
-  <!-- Collapsible content, shown only if the correct code is entered -->
-<!--   <div v-if="accessGranted" class="additionalInfo"> -->
         <div class="additionalInfo">
     <p>These are the suggested steps to make your Figma design interactive</p>
-    <ul>
-      <li>Add text interpolation to the area from the quote of the day</li>
+    
+    <h4> 1. The Daily Check-In feature will have multiple options that users can select, which then triggers the Quote of the Day. </h4>
+                    <ul>
+
+      <li>Add text interpolation to the text element from the quote of the day</li>
       <li>Add click events to the Daily Check-in buttons and define one method for each button. Each method should modify the data from the quote of the day</li>
-      <li>Add a v-bind to the fill attributes your mellow cats will modify</li>
+          </ul>
+          <h4>
+            2. The Which Mellow Are You Feeling Like Today? feature will act as a button that users can select. Their selection will then trigger an animation or change in colour. 
+          </h4>
+          <ul>
+      <li>Add a v-bind to the fill attributes of the mellow cats' backrgounds</li>
       <li>Add v-on:click to each mellow cat. Each v-on:click should have a method name for modifying the fill</li>
       <li>Define one method for each mellow cat that will update the fill attributes defined before</li>
+          </ul>
+          <h4>
+            3. For the Choose Your Mellow Activity of the Day feature, the options will also act as buttons that the user can select to receive a corresponding activity. 
+          </h4>
+          <ul>
       <li>Add text interpolation to the area that will display the activity of the day</li>
       <li>Add v-on:click to each button in "Choose your mellow activity". Each v-on:click should have a name for a method that will trigger activities</li>
       <li>Define one method for each button to update the area that displays the activity of the day</li>
     </ul>
   </div>
 </div>
-<!--           
-1. The Daily Check-In feature will have multiple options that users can select, which then triggers the Quote of the Day.
-
-2. The Which Mellow Are You Feeling Like Today? feature will act as a button that users can select. Their
-selection will then trigger an animation or change in colour. 
-
-3. For the Choose Your Mellow Activity of the Day feature, the options will also act as buttons that the user can select to receive a corresponding activity.  -->
+          
            
       
       <!--  conclusion          -->
