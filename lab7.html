@@ -20,7 +20,7 @@
       Like the title, which appears on the browser tab but not inside the page
       Further down you'll see the content that displays in the page
     -->
-    <title>Adding interactivity to your SVG-based interface</title>
+    <title>Adding interactivity to your Custom interface</title>
 
     <!-- The website stylesheet -->
     <link rel="stylesheet" href="style.css" />
@@ -36,7 +36,7 @@
     -->
     <div class="wrapper">
       <div class="content" role="main">
-        <h1 class="title">Adding interactivity to your SVG-based interface</h1>
+        <h1 class="title">Adding interactivity to your Custom interface</h1>
         
         <div class="instructions">
           <p style="margin-left: 0">
@@ -60,8 +60,9 @@
           <hr>
           <h2 class="nocount">General Description</h2>
 
-          <p style="margin-left: 0">In this lab, you will continue working with your team to bring interactivity to your custom interface using Vue. 
-
+          <p style="margin-left: 0">In this assignment, <b>you will practice dynamically updating various elements within your custom interface</b>, making it more engaging and functional.
+            <br><br>
+            This assignments introduces new topics, including: <b>Using &lt;image&gt; elements</b> to display pictures dynamically; <b>&lt;input&gt; and &lt;textarea&gt; elements</b> to allow user input; <b>&lt;p&gt; (paragraph) elements</b> to display larger dynamic content; and utilizing <b>v-model to bind user input </b> from text fields and text areas.
 </p>
           
           
@@ -69,9 +70,9 @@
           
 
           <ul>
-                <li>Build upon the skills you’ve developed in previous labs to enhance your calendar design in Figma</li>
-            <li>Expand your understanding of data, methods, and events in Vue.js to create interactive calendar components</li>
-            <li>Apply logical operators and lists to navigate between months and dynamically update background colors, days and concert locations</li>
+            <li>Build upon the skills you’ve developed in previous labs to add interactivity to your custom intrface</li>
+            <li>Apply your understanding of data, methods, and events in Vue.js to create interactive interface components </li>
+            <li>Practice with new elements, including &lt;image&gt;, &lt;input&gt; &lt;textarea&gt; and &lt;p&gt;, to dynamically update content</li>
           </ul>
           
 
@@ -81,64 +82,673 @@
 
           <ol>
             
-<!--             <li><a href="#introduction">How Reactivity and Interactivity Work Together</a></li> -->
-            <li><a href="#prerequisite1">Pre-requisite 1: Finalizing Your Calendar Design in Figma </a></li>   
-            <li><a href="#1activity">The Mellow App</a></li>
+            <li><a href="#1activity">Add interactivity to your custom app</a></li>
             <li><a href="#conclusion">Assignment submission and assessment</a></li>
             <li><a href="#glossary">Glossary</a></li>
 
           </ol>
 
          
-              <!-- prerequisites         -->
-          <h2 id="prerequisite1">Pre-requisite 1: Finalizing Your Calendar Design in Figma</h2>
+<h2 id="1activity">Add interactivity to your custom app</h2>
             <hr />
           
-           <h3>Revise Your Figma Design</h3>
-          <ol>
-            <li>Organize Layers in Your Figma File for Easy Navigation and Exporting</li>
-          </ol>
-          <h3>Export Your Figma Design</h3>
-          <ol>
-            <li>Organize Layers in Your Figma File for Easy Navigation and Exporting</li>
-          </ol>
-          
       <div id="app">
-  <button type="button" class="collapsible-question">
-    <i class="fa fa-star-o" style="font-size:24px"></i> 
-    <b>The Mellow App - Suggested workflow</b>
+
+        
+        <p>
+          Locate your specific project and access the suggested workflow in the tabs below, which will guide you through adding interactivity to your app.
+        </p>
+  <button type="button" class="collapsible-question" style="background: #FFB200; color:white" >
+    <b>😺 The Mellow App - Suggested workflow</b>
   </button>
 
-        <div class="additionalInfo">
-    <p>These are the suggested steps to make your Figma design interactive</p>
-    
-    <h4> 1. The Daily Check-In feature will have multiple options that users can select, which then triggers the Quote of the Day. </h4>
-                    <ul>
-
-      <li>Add text interpolation to the text element from the quote of the day</li>
-      <li>Add click events to the Daily Check-in buttons and define one method for each button. Each method should modify the data from the quote of the day</li>
-          </ul>
-          <h4>
-            2. The Which Mellow Are You Feeling Like Today? feature will act as a button that users can select. Their selection will then trigger an animation or change in colour. 
-          </h4>
-          <ul>
-      <li>Add a v-bind to the fill attributes of the mellow cats' backrgounds</li>
-      <li>Add v-on:click to each mellow cat. Each v-on:click should have a method name for modifying the fill</li>
-      <li>Define one method for each mellow cat that will update the fill attributes defined before</li>
-          </ul>
-          <h4>
-            3. For the Choose Your Mellow Activity of the Day feature, the options will also act as buttons that the user can select to receive a corresponding activity. 
-          </h4>
-          <ul>
-      <li>Add text interpolation to the area that will display the activity of the day</li>
-      <li>Add v-on:click to each button in "Choose your mellow activity". Each v-on:click should have a name for a method that will trigger activities</li>
-      <li>Define one method for each button to update the area that displays the activity of the day</li>
-    </ul>
-  </div>
-</div>
+    <div class="additionalInfo">
+    <p>These are the suggested steps to make your design interactive</p>
+      <h4>
+        1. Set Up Your Coding Environment
+      </h4>
+      <ol>
+        <li>Select a team member to act as the host</li>
+        <li>The host downloads and unzips the "mellowTheApp" project folder: <a href="https://tinyurl.com/ewxsujyz" target="_blank">https://tinyurl.com/ewxsujyz</a></li>      
+        
+        <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Your project folder includes an HTML file with your SVG wireframe embedded, preloaded Google Fonts in the &lt;head&gt; section, organized code structure, separately loaded decorative images using &lt;image&gt; elements, and pre-included input areas, textareas, and paragraphs to facilitate a quick start in your development process.
+          </p>
           
+        <li>The host opens the project folder in VS Code and start a Live Share session by clicking the Live Share button at the bottom of VS Code</li>
+        <li>The host shares the session link with team members to collaborate in real-time</li>
+      </ol>
+    
+    <h4> 2. The "Daily Check-In" feature </h4>
+          <p>
+           Users can select an option, which will trigger an update to the Quote of the Day.
+          </p>
+                    <ol>
+      <li>Add text interpolation to display the quote: {{ quote }}</li>
+      <li>Define a data property for the quote of the day</li>
+      <li>Add v-on:click to the Daily Check-in buttons</li>
+      <li>Define one method for each button that updates the quote</li>
+          </ol>
+          
+          <h4>
+            3. The "Which Mellow Are You Feeling Like Today?" feature
+          </h4>
+          <p>
+            Users can select a mellow cat, triggering a color change.
+          </p>
+          <ol>
+      <li>Use v-bind to bind the fill attribute of each mellow cat</li>
+      <li>Define data properties for each mellow cat’s fill color</li>
+      <li>Add v-on:click to each mellow cat</li>
+      <li>Define one method for each mellow cat that updates the fill color</li>
+          </ol>
+          <h4>
+            4. The "Choose Your Mellow Activity of the Day" feature
+          </h4>
+          <p>
+            Users can select an option to receive a corresponding activity.
+          </p>
+          <ol>
+      <li>Add text interpolation to display the activity: {{ activity }}</li>
+      <li>Define a data property for the activity of the day</li>
+      <li>Add v-on:click to each button</li>
+      <li>Define one method for each button that updates the displayed activity</li>
+    </ol>
+  </div>
+
+<!--   Explore Toronto App     -->
+          
+  <button type="button" class="collapsible-question" style="background: #640D5F !important; color:white">
+    <b>📍 Explore Toronto App - Suggested workflow</b>
+  </button>
+
+    <div class="additionalInfo">
+    <p>These are the suggested steps to make your design interactive</p>
+      
+      <h4>
+        1. Set Up Your Coding Environment
+      </h4>
+      <ol>
+        <li>Select a team member to act as the host</li>
+        <li>The host downloads and unzips the "torontoApp" project folder: <a href="https://tinyurl.com/ewxsujyz" target="_blank">https://tinyurl.com/ewxsujyz</a></li>      
+        
+        <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Your project folder includes an HTML file with your SVG wireframe embedded, preloaded Google Fonts in the &lt;head&gt; section, organized code structure, separately loaded decorative images using &lt;image&gt; elements, and pre-included input areas, textareas, and paragraphs to facilitate a quick start in your development process.
+          </p>
+        
+        <li>The host opens the project folder in VS Code and start a Live Share session by clicking the Live Share button at the bottom of VS Code</li>
+        <li>The host shares the session link with team members to collaborate in real-time</li>
+      </ol>
+      
+      <h4>
+        2. The Map Page
+      </h4>
+      Users can go to other pages by clicking each Toronto's region.
+
+      
+      <ol>
+        <li>Add v-show to all pages, including the Map page</li>
+        <li>Define data properties for each page, setting them to false to hide them, except for the Map page which should be visible by default</li>
+        <li>Add v-on:click to each region’s &lt;path&gt; to trigger a method that makes the selected page visible by setting its property to true</li>
+      </ol>
+      
+        <h4>
+        3. Other Pages
+      </h4>
+      
+Users can interact with buttons on each region’s page to display more information and navigate back to the map.
+
+      <ol>
+        
+        <li>Add text interpolation ({{ }}) to the &lt;p&gt; element in the the response area</li>
+        <li>Define a data property to display an initial text in the response area</li>
+        <li>Add v-on:click to the three buttons on each page</li>
+        <li>Define methods for each button to display the corresponding text in the response area</li>       
+        <li>Add v-on:click to each back button and define a method to reset the visibility of all pages to false, making only the Map page true</li>
+        </ol>
+        </div>
+      
+<!-- Healthy Meal Ratio Calculator  -->
+        
+         <button type="button" class="collapsible-question" style="background: #D91656 !important; color: white">
+    <b>🥗 Healthy Meal Ratio Calculator App - Suggested workflow</b>
+  </button>
+
+    <div class="additionalInfo">
+    <p>These are the suggested steps to make your design interactive</p>
+      
+       <h4>
+        1. Set Up Your Coding Environment
+      </h4>
+      <ol>
+        <li>Select a team member to act as the host</li>
+        <li>The host downloads and unzips the "healthyMealApp" project folder: <a href="https://tinyurl.com/ewxsujyz" target="_blank">https://tinyurl.com/ewxsujyz</a></li>      
+       
+        <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Your project folder includes an HTML file with your SVG wireframe embedded, preloaded Google Fonts in the &lt;head&gt; section, organized code structure, separately loaded decorative images using &lt;image&gt; elements, and pre-included input areas, textareas, and paragraphs to facilitate a quick start in your development process.
+          </p>
+        
+        
+        <li>The host opens the project folder in VS Code and start a Live Share session by clicking the Live Share button at the bottom of VS Code</li>
+        <li>The host shares the session link with team members to collaborate in real-time</li>
+      </ol>
+      
+      <h4>
+        2. "What did I eat?" Feature
+      </h4>
+     <p>
+       Users will select food categories and input quantities to log their meal.</p>
+      
+      <h5>
+        Dropdown Menus
+      </h5>
+      <ol>
+        <li>In your code, locate the &lt;select&gt; element and its &lt;option&gt; elements</li>
+        <li>Replace each &lt;option&gt; value and text with real food categories from the Canadian Food Guide</li>
+        <li>Add v-model to bind each dropdown menu’s value to Vue data properties (e.g., selectedOptionOne, selectedOptionTwo)</li>
+        <li>Define these data properties in data(), initially setting them to null. When the user selects an option, it updates the respective data property</li>
+      </ol>
+      <h5>
+        Text Input Fields
+      </h5>
+      <ol>
+        <li>Locate the &lt;input&gt; elements in your code</li>
+         <li>Add v-model to bind the values of each text input to Vue data properties (e.g., quantityOptionOne, quantityOptionTwo)</li>
+        <li>Define these data properties in data(), initially setting them to null. When the user enters a value, it updates the respective data property</li>
+      </ol>
+      
+      <h5>
+        Submit Button
+      </h5>
+      <ol>
+         <li>Add v-on:click to the "Submit" button to trigger the calculation of the meal balance </li>
+         <li>Define a method (or multiple methods) to calculate the meal balance based on selected food categories and input quantities</li>
+      </ol>
+      
            
       
+      <h4>
+        3. "How balanced was my meal?" Feature
+      </h4>
+      
+     <h5>
+       Food Group Balances
+      </h5>
+      
+      <ol>
+        <li>Add text interpolation ({{ }}) to each "Ideal # of Servings" &lt;text&gt; element to display the calculated balance based on the logged items</li>
+        <li>Define a method (or series of methods) that compares input quantities to recommended food group ratios and updates the "Ideal # of Servings" accordingly</li>
+        <li>Follow the same process for the &lt;text&gt; elements of "# of Servings in your Meal"</li>
+      </ol>
+      
+      <h5>
+        More Information 
+      </h5>
+      
+      <ol>
+        <li> Replace the URL placeholders from in the &lt;a&gt; elements with links with actual links related to each food group</li>
+      </ol>
+      <h5>
+        Recommendations
+      </h5>
+      <ol>
+        <li>Add text interpolation to the recommendations &lt;p&gt; element to display the display personalized feedback</li>
+        <li>Define a method that compares input quantities to recommended food group ratios and provides feedback on meal balance</li>
+        </ol>
+        
+        <h5>
+          Send Us A Recommendation 
+        </h5>
+        <ol>
+        <li>Replace the placeholder email under "Send us your Recommendations" with a real team member’s email.</li>
+      </ol>
+        </div>
+        
+<!--  Word Processor App        -->
+         
+         <button type="button" class="collapsible-question" style="background: #EB5B00  !important;">
+    
+    <b>📝 Word Processor App - Suggested workflow</b>
+  </button>
+
+    <div class="additionalInfo">
+    <p>These are the suggested steps to make your design interactive</p>
+      
+       <h4>
+        1. Set Up Your Coding Environment
+      </h4>
+      <ol>
+        <li>Select a team member to act as the host</li>
+        <li>The host downloads and unzips the "wordProcessorApp" project folder: <a href="https://tinyurl.com/ewxsujyz" target="_blank">https://tinyurl.com/ewxsujyz</a></li>      
+        
+        <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Your project folder includes an HTML file with your SVG wireframe embedded, preloaded Google Fonts in the &lt;head&gt; section, organized code structure, separately loaded decorative images using &lt;image&gt; elements, and pre-included input areas, textareas, and paragraphs to facilitate a quick start in your development process.
+          </p>
+        
+        
+        <li>The host opens the project folder in VS Code and start a Live Share session by clicking the Live Share button at the bottom of VS Code</li>
+        <li>The host shares the session link with team members to collaborate in real-time</li>
+      </ol>
+      
+      <h4>
+      2. Tab Switching Functionality
+      </h4>
+      
+<p>Users can switch between different document tabs.</p>
+
+      
+      <h5>
+        Duplicate the Text Area Elements
+      </h5>
+      <ol>
+        <li>In your index.html, find the &lt;textarea&gt; element within the "Writing Section" group</li>
+        <li>Duplicate the existing &lt;textarea&gt; three times, placing each copy below the previous one, resulting in a total of four text areas</li>
+      </ol>
+      
+      <h5>
+        Control Visibility of Each Text Area
+      </h5>
+        <ol>
+<li>Add the v-show directive to each &lt;textarea&gt;, binding it to a unique data property that will manage its visibility (e.g., v-show="isTexAreaOneVisible" for the first textarea)</li>
+<li>In your Vue's data section, define four properties corresponding to each text area (e.g., isTexAreaOneVisible, isTexAreaTwoVisible, etc.)</li>
+          <li>Set the first property's value to true to display the first textarea by default, and the others to false</li>
+      </ol>
+      
+      <h5>
+        Implement Tab Click Handlers
+      </h5>
+          <ol>
+            
+            <li>For each tab element (i.e, buttons labeled "documentOne", "documentTwo", etc.), add the v-on:click directive to trigger a method that updates the visibility of the corresponding textarea</li>
+            
+<li>In the methods section of your Vue instance, create a method for each tab that sets the associated text area's visibility property to true and all others to false</li>
+      </ol>    
+            <h5>
+              Test Tab Functionality
+            </h5>
+      <ol>
+         <li>Interact with each tab to ensure that clicking it displays the corresponding text area while hiding the others</li>
+      
+      </ol>
+      
+      <h4>
+  3. Save Document Function
+      </h4>
+      <p>Users can save the text they have written.</p>
+      
+      <h5>
+        Bind Text Areas to Vue Data Properties
+      </h5>
+      
+      
+<ol>
+  <li>Assign a unique data property to each &lt;textarea&gt; using the v-model directive (e.g., v-model="documentOneContent", v-model="documentTwoContent", etc.).
+ </li>
+  <li>In your Vue instance's data object, initialize these properties with empty strings/text (e.g., documentOneContent: '')</li>
+      </ol>
+      
+      <h5>
+         Implement the Save Functionality
+      </h5>
+      <ol>
+<li>Add a v-on:click to the save button (i.e., the button with a folder icon) to trigger a method that will download the text</li>
+<li>In the Vue's methods section, create a method named downloadText with the following code inside:</li>
+      </ol>
+      
+        <div style="display: flex; flex-direction: column; align-items: center; width: 100%; font-size:0.75em; ">
+            <pre><code class="language-markup">
+            <textarea class="myInput" rows="5" cols="50">downloadText() {
+            
+                // Choose content based on active tab using ternary operators
+               const contentToDownload = this.documentOne === true ? this.documentOneContent :
+                                         this.documentTwo === true ? this.documentTwoContent :
+                                         this.documentThree === true ? this.documentThreeContent : this.documentFourContent;
+                                                               
+              // Create a Blob containing the text
+              const blob = new Blob([this.contentToDownload], { type: 'text/plain' });
+
+              // Create a URL for the Blob
+              const url = URL.createObjectURL(blob);
+
+              // Create a temporary link element
+              const link = document.createElement('a');
+              link.href = url;
+              link.download = 'download.txt';
+
+              // Trigger download
+              link.click();
+
+              // Clean up
+              URL.revokeObjectURL(url);
+            }
+            </textarea>
+            </code></pre>
+            </div>
+      
+      
+       <h5>
+             Test Save Document Functionality
+            </h5>
+      <ol>
+         <li>Interact with the save button to ensure that clicking it downloads a file containing the current tab's text content</li>
+      </ol>
+     <h4>
+       4. Dictionary Function
+      </h4>
+      
+<!--       <p>
+        Users can save keywords and their definitions and toggle between input mode and viewing saved definitions.
+      </p> -->
+      
+      <p>
+        Instructions coming soon!
+      </p>
+<!--       <h5>
+        Bind Input Fields to Vue Data
+      </h5>
+      
+      <ol>
+        <li>Use v-model to bind the &lt;input&gt;field to a newKeyword data property</li>
+        <li>Use v-model to bind the &lt;textarea&gt; to a newDefinition data property.</li>
+      </ol>
+      
+      <h5>
+        Store and Display Definitions
+      </h5>
+      
+      <li>Define a data property called dictionary as an empty object {}</li>
+      <li>Ensure the &lt;p&gt; element displays the saved definitions using Vue’s text interpolation ({{ dictionary[keyword] }})</li>
+      
+      <h5>
+        Toggle Between Input and Definition View
+      </h5>
+      
+      <li>Define a data property showInput and set it to true by default</li>
+      <li>Add v-show="showInput" to the &lt;input&gt; and &lt;textarea&gt; elements</li>
+      <li>Add v-show="!showInput" to the &lt;p&gt; element displaying the definitions</li>
+      <li>Add a Toggle Button with v-on:click="showInput = !showInput" to switch views</li> -->
+      
+      <h4>
+        5. Font Selection
+      </h4>
+        <p>Users can change the font of their written text.</p>
+
+      <h5>
+        Add Google Fonts to Your Application
+      </h5>
+      <ol>
+        <li>Identify which Google Fonts you want to offer users</li>
+        <li>Include them in your application by adding the Google Fonts &lt;link&gt; in the &lt;head&gt; section of your HTML file</li>
+      </ol>
+      
+      <h5>
+        Update the Font Selection Dropdown
+      </h5>
+      <ol>
+        <li>In your code, locate the &lt;select&gt; element and its &lt;option&gt; elements under the section "Select Font"</li>
+  <li>Replace each &lt;option&gt; value and text with the names of your chosen fonts (e.g., Arial)</li>
+  <li>Add v-model to the &lt;select&gt; element to bind it to a data property (e.g., selectedFont) that will track the selected value of your dropdown - you will define this data property in the step below</li>
+      </ol>
+      
+      <h5>
+        Define the Vue Data Property
+      </h5>
+      <ol>
+      <li>In Vue, define the selectedFont data property</li>
+      <li>Set the first font option as the default (e.g., selectedFont: 'Arial')</li>
+        </ol>
+      
+        <h5>
+          Apply the Selected Font to the Text Area
+        </h5>
+      <ol>
+        <li>Locate the &lt;textarea&gt; element in your code</li>
+        <li>Add v-bind:style to dynamically change the font based on the selected option</li>
+        <li>Keep the existing style="..." for static styles and only bind font-family (e.g., <code>v-bind:style="{ fontFamily: selectedFont }")</code></li>
+          <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> In Vue.js, v-bind:style uses curly braces {}. 
+          </p>
+        <li>Follow this pattern:</li>
+        
+      </ol>
+       <div style="display: flex; flex-direction: column; align-items: center; width: 100%; font-size:0.75em">
+            <pre><code class="language-markup">
+            <textarea class="myInput" rows="5" cols="50"> &lt;textarea xmlns="http://www.w3.org/1999/xhtml" 
+                          v-bind:style="{ fontFamily: selectedFont }"
+                          style="
+                              width: 100%; 
+                              height: 100%; 
+                              border: none; 
+                              background: transparent;
+                              padding: 10px; 
+                              font-size: 50px; 
+                              color: black;
+                              resize: none;
+                              overflow: auto;
+                          " 
+                          placeholder="Write your text here"&gt;
+                &lt;/textarea&gt;
+            </textarea>
+            </code></pre>
+            </div>
+      
+      <h5>
+        Toggle Between Font Selection Visible/Hidden
+      </h5>
+      
+      <ol>
+        <li>Add v-show to the select font mechanism to bind a data property that tracks the dropdown visibility (e.g., is dropDownVisible)</li>
+        <li>Define this property in Vue by assigning <code>false</code> so it's hidden by default (e.g., dropDownVisible: false</li>
+        <li>Add v-on:click to the select font button (T icon button) to trigger a method that toggles true or false the dropdown visibility (e.g., showHideFontSelection)</li>
+        <li>Define this method using a ternary operator where if the value of <code>dropDownVisible</code> is false, then it becomes true and the other way around</li>
+        <li>Test if the select font button shows and hides the font dropdown menu</li>
+      </ol>
+      
+        </div>
+        
+      <button type="button" class="collapsible-question" style="background: gray !important;">
+    <b>🌱 Plant Care App - Suggested Workflow</b>
+  </button>
+
+    <div class="additionalInfo">
+    <p>These are the suggested steps to make your design interactive</p>
+      
+        <h4>
+        1. Set Up Your Coding Environment
+      </h4>
+      <ol>
+       <li>Select a team member to act as the host</li>
+        <li>The host downloads and unzips the "plantCareApp" project folder: <a href="https://tinyurl.com/ewxsujyz" target="_blank">https://tinyurl.com/ewxsujyz</a></li>      
+        
+        <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Your project folder includes an HTML file with your SVG wireframe embedded, preloaded Google Fonts in the &lt;head&gt; section, organized code structure, separately loaded decorative images using &lt;image&gt; elements, and pre-included input areas, textareas, and paragraphs to facilitate a quick start in your development process.
+          </p>
+        
+        
+        <li>The host opens the project folder in VS Code and start a Live Share session by clicking the Live Share button at the bottom of VS Code</li>
+        <li>The host shares the session link with team members to collaborate in real-time</li>
+      </ol>
+      
+      <h4>
+        2. The Map Page
+      </h4>
+<p>
+  Users can navigate to different pages by clicking the Kitchen, Bedroom, Garden, and Bulletin Board buttons.
+      </p>
+      <h5>
+        Steps to Implement Navigation:
+      </h5>
+
+      <ol>
+        <li>Add v-show to all pages, including the Map page</li>
+        <li>Define data properties for each page, setting them to false to hide them, except for the Map page, which should be visible by default</li>
+        <li>Add v-on:click to each page button (Kitchen, Bedroom, Garden, Bulletin Board) to trigger a method that make the selected page visible by setting its property to true</li>
+        <li>Add v-on:click to each Back button to trigger a method that hide all pages and makes only the Map page visible again</li>
+      </ol>
+      
+      <h5>
+        Switch from English to French
+      </h5>
+      
+      <ol>
+        <li>Use Vue text interpolation ({{ }}) to display each text dynamically based on the selected language</li>
+        <li>Define data properties, storing their default text (e.g., text in English)</li>
+        <li>Add v-on:click to the "Eng/French" button to switch between English and French</li>
+        <li>Define a method (e.g., toggleLanguage) that updates the text data properties when the "Eng/French" button is clicked</li>
+
+      </ol>
+        <h4>
+        3. Kitchen, bedroom, and Garden Pages
+      </h4>
+      
+Users can interact with objects (e.g., picture frames, teddy bear, sun, clock) and plants on each page to change their appearance and display additional information.
+
+<h5>
+  Animate Picture Frames on Hover:
+      </h5>
+<ol>
+  <li>Add v-bind to the width and height attributes of each picture frame</li>
+  <li>Define data properties to store their default sizes</li>
+  <li>Use v-on:mouseover on each frame to trigger a method that increases the frame size when hovered</li>
+  <li>Use v-on:mouseleave on each frame to return the frame to its original size</li>
+  
+      </ol>
+
+      <h5>
+        Show/Hide Messages for the Clock, Teddy Bear, and Sun:
+      </h5>
+<ol>
+  <li>Use v-show to toggle the visibility of messages</li>
+<li>Define data properties to store the initial visibility state of each message (set to false by default)</li>
+<li>Add v-on:mouseover to each object to trigger a method that updates the visibility state to true, making the message appear when hovered</li>
+<li>Add v-on:mouseleave to set the visibility state back to false, hiding the message when the mouse moves away</li>
+      </ol>
+      
+      <h5>
+    Display Plant Information on Click:        
+      </h5>
+
+      <p>
+        Coming soon!
+      </p>
+<!--       <ol>
+      <li>Use v-show to toggle the visibility of the plant info window</li>
+      <li>Add v-on:click to each plant to trigger a method that makes the plant info window visible</li>
+      </ol> -->
+      
+    
+     <h4>
+       Plant Info Window 
+      </h4>
+      
+      <p>
+        coming soon!
+      </p>
+      
+      <h4>
+        Bulletin Board 
+      </h4>
+      
+      <p>
+        Coming soon!
+      </p>
+      </div>
+      
+       <button type="button" class="collapsible-question" style="background: #9694FF !important; color: white !important">
+    <b>🥕 Rapid Recipes App - Suggested Workflow</b>
+  </button>
+
+    <div class="additionalInfo">
+    <p>These are the suggested steps to make your design interactive</p>
+      
+        <h4>
+        1. Set Up Your Coding Environment
+      </h4>
+      <ol>
+      <li>Select a team member to act as the host</li>
+        <li>The host downloads and unzips the "rapidRecipesApp" project folder: <a href="https://tinyurl.com/ewxsujyz" target="_blank">https://tinyurl.com/ewxsujyz</a></li>      
+        
+        <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Your project folder includes an HTML file with your SVG wireframe embedded, preloaded Google Fonts in the &lt;head&gt; section, organized code structure, separately loaded decorative images using &lt;image&gt; elements, and pre-included input areas, textareas, and paragraphs to facilitate a quick start in your development process.
+          </p>
+        
+        
+        <li>The host opens the project folder in VS Code and start a Live Share session by clicking the Live Share button at the bottom of VS Code</li>
+        <li>The host shares the session link with team members to collaborate in real-time</li>
+      </ol>
+ 
+       <h4>
+         2. Choose Your Recipe Feature
+      </h4> 
+      
+      <p>
+        Users should be able to input a maximum price, and based on this price, recipes will appear. They can then click a recipe button to activate the Notebook Feature.
+      </p>
+      
+      <h5>
+        Price Input Field
+      </h5>
+<ol>
+  <li>Locate the input field inside the "placeRangeInputBackground" group</li>
+  <li>Add v-model to bind the input value to a Vue data property (e.g., maxPrice)</li>
+        </ol>
+        
+      <h5>Filter Recipes Based on Price</h5>
+        <ol>
+          <li>Define a method (or series of methods) that select available recipes based on maxPrice</li>
+          <ul>
+            <li>Ensure to define methods for updating the title, image, ingredients and details</li>
+          </ul>
+          <li>Use text interpolation on each recipe button to display the recipes ({{recipeOption1}}, {{recipeOption2}}, etc.)</li>     
+        </ol>
+        
+      
+      
+        <h4>
+          3. Notebook Feature
+
+        </h4>
+        
+       <p>
+          After selecting a recipe, the notebook cover hides, revealing the recipe’s image, ingredients, and directions.
+        </p>
+
+       <h5>
+         Enable Recipe Selection</h5>
+<ol>
+  <li>Add v-show to the "notebookCover" image, making it disappear when a recipe is selected</li>
+  <li>Define a Vue data property (e.g., showNotebook), defaulting to false</li>
+      </ol>  
+  
+        <h5>Display Recipe Title and Image</h5>
+        
+        <ol>
+          <li>Use Vue text interpolation ({{ }}) inside the "recipeTitle" element to update the title dynamically</li>
+          <li>Add v-bind:href to update the "picture"  &lt;image&gt; element based on the selected recipe</li>
+        </ol>
+          
+          <h5>Update Recipe Details</h5>
+          
+          <ol>
+          <li>Use Vue text interpolation to update the ingredients (i.e., ingredentOne, etc.) and ingredients quantity (i.e., ingredientQuantityOne, etc.) </li>
+          </ol>
+
+          <h5>Show Cooking Directions</h5>
+          <ol>
+            <li>Use Vue text interpolation to update the "directions" paragraph (&lt;p&gt; element) inside the "directionsGroup"</li>
+          
+        </ol>
+      
+      <h4>
+        4. Dietary Restrictions
+      </h4>
+      
+      <p>
+        Coming soon!
+      </p>
+      
+      <h4>
+        5. Grocery List
+      </h4>
+      
+      <p>
+        Coming soon!
+      </p>
+
+  </div>
       <!--  conclusion          -->
           
           <h2 id="conclusion">Assignment submission and assessment</h2>
@@ -153,7 +763,7 @@
               <li>Learn how to zip your folder in Mac: <a href="https://support.apple.com/en-ca/guide/mac-help/mchlp2528/mac" target="_blank">https://support.apple.com/en-ca/guide/mac-help/mchlp2528/mac</a></li>
               <li>Learn how to zip your folder in Windows: <a href="https://support.microsoft.com/en-us/windows/zip-and-unzip-files-8d28fa72-f2f9-712f-67df-f80cf89fd4e5" target="_blank">https://support.microsoft.com/en-us/windows/zip-and-unzip-files-8d28fa72-f2f9-712f-67df-f80cf89fd4e5</a></li>
             </ul> -->
-            <li><b>Zip your folder and submit it to Adding interactivity to your Calendar interface with Vue </b> on Avenue to Learn under Assessments &gt; Assignments </li>
+            <li><b>Zip your folder and submit it to Adding interactivity to your custom interface with Vue </b> on Avenue to Learn under Assessments &gt; Assignments </li>
           </ol>
           
         
@@ -162,10 +772,21 @@
             <h3>Assessment Criteria</h3>
 
     <ol>
-      <li><b>Updating the Month Dynamically When Clicking the Navigation Buttons (2.5 points):</b> The months update dynamically when using the forward and backward navigation buttons.</li>
-      <li><b>Changing the Background Color Based on the Month (2.5 points):</b> The background color changes according to the current month.</li>
-      <li><b>Updating the Days Displayed on the Calendar (2.5 points):</b> The displayed days update based on the month, aligning with the squares and weekdays on the calendar. </li>
-      <li><b>Updating the Concert Locations Displayed on the Calendar (2.5 points):</b> The concert locations update according to the selected month when navigating through the calendar.</li>
+
+      <li><b>Achieving Interactivity in Your Proposed Interface Features (5 points):</b></li>
+          <ul>
+            <li>Your team has effectively implemented the majority of the interactive elements as originally designed.</li>
+          </ul>
+      <li><b>Problem-Solving Through Various Resources (2.5 points):</b> </li>
+          <ul>
+          <li>The interactive components of your application have been developed by consulting previous labs, seeking timely assistance from the professor and peers, and utilizing online resources and AI tools such as Copilot or ChatGPT.</li>  
+          </ul>
+
+      <li><b>Code Clarity and Organization (2.5 points)</b>:</li>
+      <ul>
+      <li>Your code is well-structured, employing meaningful naming conventions (e.g., camelCase) and includes appropriate comments in both the index.html and vue.js files, facilitating readability and maintainability.</li>  
+      </ul>
+      
     </ol>
     
     
@@ -197,12 +818,25 @@
       <li><b>Binding vs. Hardcoding</b> → The difference between using Vue (v-bind:fill="rectFill") vs. static HTML (fill="blue")</li>
       <li><b>Method</b> → In Vue.js, a method is a function defined in the methods section. It is used to perform actions or operations in response to events, such as user interactions or other triggers. Methods can access and modify component data, and they are typically invoked with event listeners like v-on to make the app interactive.</li>
       <li><b>Function</b> → A function is a set of instructions that performs a specific task. You can think of it like a recipe: you give it ingredients (inputs), it follows the steps, and then it gives you a result (output).</li>
-      <li><b>Lists (Arrays)</b> → In JavaScript, a 'List' is a synonym for an 'Array'. For beginners, think of an array as a list, like a shopping list. This list has slots where you put the items you want to buy. In JavaScript, these slots are called 'indices' and the items in the list are called 'elements'.</li>
-      <li><b>Objects</b> → An object in JavaScript is a data structure used to store related data collections. It stores data as key-value pairs, where each key is a unique identifier for the associated value. Objects are dynamic, which means the properties can be added, modified, or deleted at runtime.</li>
+      <li><b>Lists (Arrays)</b> → In JavaScript, a 'List' is a synonym for an 'Array'. For beginners, think of an array as a list, like a shopping list. This list has slots where you put the items you want to buy. In JavaScript, these slots are called 'indices' and the items in the list are called 'elements'</li>
+      <li><b>Objects</b> → An object in JavaScript is a data structure used to store related data collections. It stores data as key-value pairs, where each key is a unique identifier for the associated value. Objects are dynamic, which means the properties can be added, modified, or deleted at runtime</li>
       <li><b>Ternary Operator</b> → A ternary operator is an operator that takes three inputs and returns one output. It's also known as the conditional operator. One can read it aloud as "if <code>a</code> then <code>b</code> otherwise <code>c</code>"</li>
+        </ul>
+        
+        <h3>
+          New Entries: <b>&lt;image&gt; </b>, <b>&lt;input&gt;</b>, <b>&lt;textarea&gt;</b>, <b>&lt;p&gt;, </b> and  <b>v-model</b>
+        </h3>
+      <ul>
+      <li><b>&lt;input&gt;</b> → An HTML element that  users to input data. It supports various types, such as text, numbers, and more</li>
+      <li><b>&lt;textarea&gt;</b> → An HTML element enabling users to enter sizable amounts of free-form text</li>
+      <li><b>&lt;p&gt;</b> → An HTML element that defines a paragraph of text</li>
+      <li><b>&lt;image&gt;</b> →  An SVG element that allows images (such as SVG, JPEG, PNG, or GIF) to be embedded within SVG content. It requires attributes like href (specifying the image source), width, and height to define the image's dimensions </li>
+      <li><b>v-model</b> → A Vue.js directive that creates a two-way data binding on form input elements, syncing the input value with a component's data property</li>
+      
     </ul>
         </div>
       </div>
+    </div>
 <!-- footer -->
     <footer class="footer">
     </footer>

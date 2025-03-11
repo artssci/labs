@@ -291,13 +291,39 @@ a:link {text-decoration:none;
   font-size: 15px;
 }
 
+.collapsible-question-blue {
+  background-color: blue;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 80%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.collapsible-question-yellow {
+  background-color: yellow;
+  color: black;
+  cursor: pointer;
+  padding: 18px;
+  width: 80%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active-collapsible-question, .collapsible-question:hover {
-  background-color: green;
-  color: white;
+/*   background-color: green; */
+/*   color: white; */
   padding: 2rem;
 
 }
+
+
 
 /* COLLAPSIBLE CONTENT  */
 /* Style the button that is used to open and close the collapsible content */
