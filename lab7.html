@@ -153,6 +153,14 @@
       <li>Add v-on:click to each button</li>
       <li>Define one method for each button that updates the displayed activity</li>
     </ol>
+      
+      <h4>
+        5. Reset Data After Specific Day Time
+      </h4>
+      
+      <p>
+        Coming soon!
+      </p>
   </div>
 
 <!--   Explore Toronto App     -->
@@ -428,8 +436,17 @@ Users can interact with buttons on each region’s page to display more informat
       <ol>
          <li>Interact with the save button to ensure that clicking it downloads a file containing the current tab's text content</li>
       </ol>
+      
+      <h4>
+        4. Open File
+      </h4>
+      
+      <p>
+        Instructions coming soon!
+      </p>
+      
      <h4>
-       4. Dictionary Function
+       5. Dictionary Function
       </h4>
       
 <!--       <p>
@@ -465,7 +482,7 @@ Users can interact with buttons on each region’s page to display more informat
       <li>Add a Toggle Button with v-on:click="showInput = !showInput" to switch views</li> -->
       
       <h4>
-        5. Font Selection
+        6. Font Selection
       </h4>
         <p>Users can change the font of their written text.</p>
 
@@ -619,7 +636,7 @@ Users can interact with objects (e.g., picture frames, teddy bear, sun, clock) a
       </ol>
       
       <h5>
-    Display Plant Information on Click:        
+   Display Plant Information on Click:        
       </h5>
 
       <p>
@@ -632,7 +649,7 @@ Users can interact with objects (e.g., picture frames, teddy bear, sun, clock) a
       
     
      <h4>
-       Plant Info Window 
+     4.   Plant Info Window 
       </h4>
       
       <p>
@@ -640,7 +657,7 @@ Users can interact with objects (e.g., picture frames, teddy bear, sun, clock) a
       </p>
       
       <h4>
-        Bulletin Board 
+      5.  Bulletin Board 
       </h4>
       
       <p>
@@ -749,25 +766,657 @@ Users can interact with objects (e.g., picture frames, teddy bear, sun, clock) a
       </p>
 
   </div>
+        
+        
+        
+  <button type="button" class="collapsible-question" style="background: #77DD77 !important;">
+    <b>🌦️ The Weather App - Suggested Workflow</b>
+  </button>
+
+    <div class="additionalInfo">
+    <p>These are the suggested steps to make your design interactive</p>
+      
+        <h4>
+        1. Set Up Your Coding Environment
+      </h4>
+      <ol>
+       <li>Select a team member to act as the host</li>
+        <li>The host downloads and unzips the "weatherApp" project folder: <a href="https://tinyurl.com/ewxsujyz" target="_blank">https://tinyurl.com/ewxsujyz</a></li>      
+        
+        <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Your project folder includes an HTML file with your SVG wireframe embedded, preloaded Google Fonts in the &lt;head&gt; section, organized code structure, separately loaded decorative images using &lt;image&gt; elements, and pre-included input areas, textareas, and paragraphs to facilitate a quick start in your development process.
+          </p>
+        
+        
+        <li>The host opens the project folder in VS Code and start a Live Share session by clicking the Live Share button at the bottom of VS Code</li>
+        <li>The host shares the session link with team members to collaborate in real-time</li>
+      </ol>
+      
+      <h4>
+3. Today's Weather Feature
+      </h4>
+      
+      <p>
+        Users can input a location and retrieve the current temperature, high/low temperature estimates, weather description, and matching weather icon.
+      </p>
+      
+      <h5>
+        Display Weather Data Dynamically
+      </h5>
+      <ol>
+        <li>Find the Temperature Section (temperature group)</li>
+        <ul>
+          <li>Locate the main temperature text and replace it with {{ temperature }}</li>
+          <li>Locate the high and low temperature text and replace them with {{ highTemp }} and {{ lowTemp }}</li>
+        </ul>
+        
+        <li>Update the Weather Description and Icon</li>
+  <ul>
+  <li>Locate the weather description text (weatherDescription group) and replace it with {{ weatherDescription }}</li>
+  <li>Locate the weather icon and replace the href attribute with v-bind:href="weatherIcon"</li>
+        </ul>
+  <li>Define the Data Properties in Vue</li>
+<ul>
+  <li>Open the vue.js file</li>
+  <li>Inside the data() function, define the default values for the properties from step 1 and 2 below (i.e., temperature, highTemp, etc) </li>
+        </ul>
+      </ol>
+      
+      <h5>
+         Display Additional Weather Details Dinamically
+      </h5>
+      
+      <ol>
+        
+      <li>Locate the Sunrise and Sunset Sections</li>
+<ul>
+  <li>Find the sunrise placeholder text and replace it with {{ sunrise }}</li>
+  <li>Find the sunset placeholder text and replace it with {{ sunset }}</li>
+        </ul>
+        
+          <li>Locate the Visibility and Humidity Sections</li>
+          <ul>
+            <li>Find the visibility placeholder text and replace it with {{ visibility }}</li>
+            <li>Find the humidity placeholder text and replace it with {{ humidity }}</li>
+          </ul>
+
+         <li>Define the Data Properties in Vue</li>
+             <ul>
+              <li>Open the vue.js file</li>
+              <li>Inside the data() function, define the default values for the properties from step 1 and 2 below (i.e., sunrise, sunset, etc) </li>
+              </ul>
+        
+        </ol>
+      
+        <h5>Add Search Bar Functionality</h5>
+    
+      <ol>
+<li>Find the Search Bar Input Field</li>        
+        
+        <ul>
+          <li>Locate the input field insde "searchLocation" group</li>
+          <li>Add v-model="city" to bind user input to a Vue data property</li>
+        </ul>
+
+        <li>Define the Default City Value</li>
+
+        <ul>
+          <li>In the data() function of vue.js, define a data property for the city</li>
+          <li>Set the default value to a real location, such as Hamilton, CA, so the app loads weather data when first opened</li>
+          
+           <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> In the search bar users would need to type a city name and its corresponding country abbreviation (e.g., "Hamilton, CA" for Hamilton, Canada). This ensures accurate location matching, especially for cities that exist in multiple countries.
+          </p>
+        </ul>
+      </ol>
+        <h5>
+          Trigger Weather Fetching
+        </h5>
+        
+      <ol>
+        <li>Add Click Event to the Search Icon</li>
+        <ul>
+          <li>Locate the search icon inside the &lt;image&gt; elemet </li>
+          <li>Add v-on:click="fetchWeather" inside the &lt;image&gt; element to trigger the weather update when clicked</li>
+        </ul>
+        
+        <li>Define the fetchWeather() Method</li>
+<ul>
+  <li>In vue.js, locate the methods section</li>
+  <li>Define a new method called fetchWeather()</li>
+  <li>Inside this method, call fetchWeatherData() to retrieve weather information</li>
+  <li>Define the fetchWeatherData() method by copying the code below</li>
+  <li>Add the keyword <b>this.</b> to all <b>temperature, weatherDescription, sunset, sunrise, visibility, humidity, weatherIcon, highTemp, and lowTemp</b> to update the properties defined previously</li>
+        </ul>
+      
+       <div style="display: flex; flex-direction: column; align-items: center; width: 100%; font-size:0.8em">
+            <pre><code class="language-markup">
+            <textarea class="myInput" rows="5" cols="50"> fetchWeatherData() {
+              // First, fetch current weather from the /weather API
+              fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.city}&units=metric&appid=${this.apiKey}`)
+                .then(response => response.json())
+                .then(data => {
+                  // Update temperature data from the /weather API
+                  temperature = `${Math.round(data.main.temp)}°C`;  // Current temperature
+                  weatherDescription = data.weather[0].main;       // Weather description
+                  sunset = formatTime(data.sys.sunset);         // Sunset time
+                  sunrise = formatTime(data.sys.sunrise);       // Sunrise time
+                  visibility = `${Math.round(data.visibility / 1000)} km`;  // Visibility
+                  humidity = `${data.main.humidity}%`;                // Humidity
+                  weatherIcon = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;  // Weather icon
+                })
+                .catch(error => {
+                  console.error('Error fetching weather data:', error);
+                });
+
+              // Then, fetch forecast data from the /forecast API for high/low temps
+              fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${this.city}&units=metric&appid=${this.apiKey}`)
+                .then(response => response.json())
+                .then(data => {
+                  // Get today's date
+                  const currentDate = new Date();
+                  const currentDateString = currentDate.toDateString();
+
+                  // Find all forecast entries for today
+                  const todayForecasts = data.list.filter(entry => {
+                    const forecastDate = new Date(entry.dt * 1000);  // Convert timestamp to Date object
+                    return forecastDate.toDateString() === currentDateString;  // Match today's date
+                  });
+
+                  if (todayForecasts.length > 0) {
+                    // Find the highest and lowest temperatures for today
+                    let highestTemp = -Infinity;
+                    let lowestTemp = Infinity;
+
+                    todayForecasts.forEach(entry => {
+                      if (entry.main.temp_max > highestTemp) {
+                        highestTemp = entry.main.temp_max;
+                      }
+                      if (entry.main.temp_min < lowestTemp) {
+                        lowestTemp = entry.main.temp_min;
+                      }
+                    });
+
+                    // Set the high and low temperature data
+                    highTemp = `H: ${Math.round(highestTemp)}°C`;
+                    lowTemp = `L: ${Math.round(lowestTemp)}°C`;
+                  }
+                })
+                .catch(error => {
+                  console.error('Error fetching forecast data:', error);
+                });
+
+
+                // Helper function to format time (sunrise and sunset)
+            function formatTime(timestamp) {
+              const time = new Date(timestamp * 1000);
+              const hours = time.getHours();
+              const minutes = time.getMinutes();
+              const period = hours >= 12 ? 'PM' : 'AM';
+              const formattedHours = hours % 12 || 12;
+              return `${formattedHours}:${minutes.toString().padStart(2, '0')} ${period}`;     
+          }
+            }
+            </textarea>
+            </code></pre>
+            </div>
+        
+         
+         <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> The fetchWeatherData() Method gets weather details (temperature, humidity, visibility, etc.) from the OpenWeather API (see <a href="https://openweathermap.org/" target="_blank" style="color:white"> https://openweathermap.org/ </a>).
+          </p>
+      
+<li>Test the feature by entering a city and country in the search bar, then clicking the search icon/button to display the data</li>         
+                 </ol>
+
+         
+       <h4>
+4. 4-Day Forecast Feature
+      </h4>
+      
+      <p>
+Users can retrieve a 4-day forecast, displaying Weekday name (e.g., Monday, Tuesday, etc.), high and low temperature for each day, and weather icon for each day.
+      </p>
+      
+         <ol>
+           
+         
+           <li>Find the Forecast Section (forecast group)</li>
+           <ul>
+             <li>Replace the weekday placeholder from forecastDayOne group with {{ forecastDayOne }}</li>
+             <li>Replace the weekday placeholder from forecastDayTwo group with {{ forecastDayTwo }}</li>
+             <li>Replace the weekday placeholder from forecastDayThree group with {{ forecastDayThree }}</li>
+             <li>Replace the weekday placeholder from forecastDayFour group with {{ forecastDayFour }}</li>             
+           </ul>
+
+
+           <li>Find the Forecast Temperatures</li>
+           <ul>
+             <li>eplace each high temp with {{ forecastHighTempDayOne }}, etc.</li>
+             <li>Replace each low temp with {{ forecastLowTempDayOne }}, etc.</li>
+           </ul>
+           <li> Bind the Weather Icons</li>
+             <ul>
+               
+               <li>Use v-bind:href="forecastIconDayOne" for each day's &lt;image&gt; element</li>
+             
+           </ul>
+           
+         
+           <h5>Define Methods to Fetch the 4-Day Forecast</h5>
+           <ol>
+             <li>Define fetchForecastDayOne() in Vue</li>
+
+           <ul>
+             <li>In vue.js, locate the methods section</li>
+             <li>Copy the method below into the file</li>
+             <li>Modify the method by adding <b>this.</b> before all property names to correctly update Vue data (i.e, forecastDayOne, forecastHighTempDayOne, forecastLowTempDayOne, forecastIconDayOne)</li>
+           </ul>
+         
+         
+          <div style="display: flex; flex-direction: column; align-items: center; width: 100%; font-size:0.75em">
+            <pre><code class="language-markup">
+            <textarea class="myInput" rows="5" cols="50"> fetchForecastDayOne() {
+                fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${this.city}&units=metric&appid=${this.apiKey}`)
+                .then(response => response.json())
+                .then(data => {
+                  const currentDate = new Date();
+                  currentDate.setDate(currentDate.getDate() + 1); // Set to 1 day ahead
+                  const forecastDayString = currentDate.toDateString(); // Now using forecastDayString instead of nextDayString
+
+                  // Function to format the date
+                  function formatDate(timestamp) {
+                    const date = new Date(timestamp * 1000); // Convert from seconds to milliseconds
+                    return date.toLocaleDateString('en-US', { weekday: 'long' }); // Format to show only the weekday
+                  }
+
+                  // Find all forecast entries for the forecast day
+                  const forecastDayForecasts = data.list.filter(entry => {
+                    const forecastDate = new Date(entry.dt * 1000); // Convert timestamp to Date object
+                    return forecastDate.toDateString() === forecastDayString; // Match the forecast day
+                  });
+
+                  if (forecastDayForecasts.length > 0) {
+                    // Find the highest and lowest temperatures for the forecast day
+                    let highestTemp = -Infinity;
+                    let lowestTemp = Infinity;
+
+                    forecastDayForecasts.forEach(entry => {
+                      if (entry.main.temp_max > highestTemp) highestTemp = entry.main.temp_max;
+                      if (entry.main.temp_min < lowestTemp) lowestTemp = entry.main.temp_min;
+                    });
+
+                    // Find the forecast with the highest temperature
+                    const highestTempForecast = forecastDayForecasts.find(entry => entry.main.temp_max === highestTemp);
+
+                    // Set the forecast data
+                    forecastDayOne = formatDate(highestTempForecast.dt);
+                    forecastHighTempDayOne = `${Math.round(highestTemp)}°C`;
+                    forecastLowTempDayOne = `${Math.round(lowestTemp)}°C`;
+                    forecastIconDayOne = `https://openweathermap.org/img/wn/${highestTempForecast.weather[0].icon}.png`;
+                  }
+                })
+                .catch(error => {
+                  console.error('Error fetching forecast data:', error);
+                });
+            }
+             </textarea>
+            </code></pre>
+            </div>
+            
+            <li>Add the fetchForecastDayOne() method to fetchWeather() so it runs when the search button is clicked</li>
+             <li>Test the feature by entering a city and country in the search bar, then clicking the search icon/button to display tomorrow's forecast</li>     
+         </ol>
+            
+            <li>Define Methods for Days 2, 3, and 4</li>
+<ul>
+  <li>Copy and modify fetchForecastDayOne() three more times, updating the method names (fetchForecastDayTwo(), fetchForecastDayThree(), fetchForecastDayFour())</li>
+            </ul>
+            
+            <li>Change the number of days ahead inside currentDate.setDate(currentDate.getDate() + 1);</li>
+            <ul>
+              <li>For Day 2, change <b>+ 1</b> to <b>+ 2</b>, for Day 3 change it to <b>+ 3</b>, and for Day 4 change it to <b>+ 4</b></li>
+              <li>Use <b>this.</b> before all property names to correctly update Vue data (e.g., forecastDayTwo, forecastHighTempDayTwo, forecastLowTempDayTwo, forecastIconDayTwo, etc)</li>
+            </ul>
+        <li>Add each method (i.e., fetchForecastDayTwo(), fetchForecastDayThree(), fetchForecastDayFour()) to fetchWeather() so it runs when the search button is clicked</li>
+
+
+               <li>Test the feature by entering a city and country in the search bar, then clicking the search icon/button to display the forecast data of the next 4 days</li>     
+        
+                      </ol>
+
+                </div>
+        
+        <button type="button" class="collapsible-question" style="background: #FDFD97 !important; color: black">
+    <b>🧠 The Anatomy Lab App - Suggested Workflow</b>
+  </button>
+
+    <div class="additionalInfo">
+    <p>These are the suggested steps to make your design interactive</p>
+      
+        <h4>
+        1. Set Up Your Coding Environment
+      </h4>
+      <ol>
+       <li>Select a team member to act as the host</li>
+        <li>The host downloads and unzips the "theAnatomyLabApp" project folder: <a href="https://tinyurl.com/ewxsujyz" target="_blank">https://tinyurl.com/ewxsujyz</a></li>      
+        
+        <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Your project folder includes an HTML file with your SVG wireframe embedded, preloaded Google Fonts in the &lt;head&gt; section, organized code structure, separately loaded decorative images using &lt;image&gt; elements, and pre-included input areas, textareas, and paragraphs to facilitate a quick start in your development process.
+          </p>
+                
+        <li>The host opens the project folder in VS Code and start a Live Share session by clicking the Live Share button at the bottom of VS Code</li>
+        <li>The host shares the session link with team members to collaborate in real-time</li>
+      </ol>
+      
+      <h4>
+    2. Implement the Instructions and Learn More Features
+      </h4>
+      
+      <p>
+       Users can click the "Instructions" or "Learn More" buttons to open a pop-up window with app instructions. The content inside the pop-up window, including text and images, will update accordingly.
+      </p>
+      
+       <h5>
+      Make Pop-Up Content Reactive
+      </h5>     
+      
+      <ol>
+        <li>Find the pop-up heading (popUpWindowHeading) and replace its text with {{ popUpHeading }}</li>
+        <li>Find the pop-up content title (infoSectionTitle) and replace its text with {{ popUpContentTitle }}</li>
+        <li>Locate the pop-up text content (infoSectionInfo) and replace its text with {{ popUpContent }}</li>
+        <li>Find the pop-up image (popUpWindowImage) and replace its href with v-bind:href="popUpImage"</li>
+        <li>In Vue, define default data properties for popUpHeading, popUpContentTitle, popUpContent, and popUpImage</li>
+      </ol>
+      
+      
+      <h5>
+    Update Pop-Up Content Dynamically When Clicking the Instructions and Learn More Buttons
+      </h5>
+      
+      <ol>
+        <li>Add v-on:click="showInstructions" to the Instructions button</li>
+        <li>In Vue, define the showInstructions method to update popUpHeading, popUpContentTitle, popUpContent, and popUpImage with the instructions content</li>
+        <li>Add v-on:click="showLearnMore" to the Learn More button </li>
+        <li>In Vue, define the showLearnMore method to update popUpHeading, popUpContentTitle, popUpContent, and popUpImage with the Learn More content</li>
+        <li>Test if the pop-up content updates when clicking the Instructions and Learn More buttons</li>
+      </ol>
+        
+        <h5>
+        Hide/Show the Pop-Up Window
+        </h5>
+        <ol>
+        <li>Locate the pop-up window &lt;svg&gt; element at the top </li>
+        <li>Add v-show="isPopUpVisible" to control its visibility</li>
+        <li>In Vue, set isPopUpVisible to false by default to keep the pop-up hidden initially </li>
+        <li>In the showInstructions method, set isPopUpVisible to true to make the pop-up appear when clicking the Instructions button</li>
+        <li>In the showLearnMore method, set isPopUpVisible to true when clicking the Learn More button</li>
+        <li>Test if the pop-up appears and updates correctly when clicking the Instructions and Learn More buttons</li>
+        <li>Add v-on:click="hidePopUp" to the exit button (exitPopUpButton)</li>
+        <li>In Vue, define the hidePopUp method to set isPopUpVisible to false when the exit button is pressed</li>
+        <li>Test if the pop-up hides after clicking the exit button</li>
+
+        </ol>
+
+ 
+      
+      <h4>
+        3. Implement the Display Organs' Information Feature
+      </h4>
+      
+      <p>
+        Users can click different star buttons to make the selected organ group visible, including the organ background, the organ label, the organ image, and the line connecting them to the body. The selected organ can also be clicked to open a pop-up window with additional details.
+      </p>
+      
+       <h5>
+      Update Pop-Up Content Dynamically When Clicking an Organ
+      </h5>
+      
+       <ol>
+        <li>Add v-on:click to each organ group (&lt;g&gt; element), using a meaningful name like "showHeartInfo"</li>
+        <li>In Vue, define methods (e.g., showHeartInfo()) to update: isPopUpVisible, popUpHeading, popUpContentTitle, popUpContent, and popUpImage with the different organs' content</li>
+        <li>Test if clicking each organ updates the pop-up content correctly</li>
+      </ol>
+      
+      
+      <h5>
+        Hide Organ Groups By Default
+      </h5>
+      <ol>
+        <li>Add v-show to each organ group (&lt;g&gt; element) containg background, label, image, and connecting line</li>
+        <li>In Vue, define data properties for each organ group and set them to false so they remain hidden by default</li>
+      </ol>
+      
+      <h5>
+        Show Organ Groups When Clicking The Star Buttons
+      </h5>
+      <ol>
+        <li>Add v-on:click to each star button, using a meaningful name like "showHeartButton"</li>
+        <li>In Vue, define methods (e.g., showHeartButton()) that toggle visibility (false ↔ true)</li>  
+        <li>Test if clicking a star button correctly shows and hides the organ</li>
+
+      </ol>
+        </div>
+        
+         <button type="button" class="collapsible-question" style="background: #3D3D3D !important;">
+    <b> 🧐 Fake or Fact App - Suggested Workflow</b>
+  </button>
+
+    <div class="additionalInfo">
+    <p>These are the suggested steps to make your design interactive</p>
+      
+        <h4>
+        1. Set Up Your Coding Environment
+      </h4>
+      <ol>
+       <li>Select a team member to act as the host</li>
+        <li>The host downloads and unzips the "fakeOrFactApp" project folder: <a href="https://tinyurl.com/ewxsujyz" target="_blank">https://tinyurl.com/ewxsujyz</a></li>      
+        
+        <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Your project folder includes an HTML file with your SVG wireframe embedded, preloaded Google Fonts in the &lt;head&gt; section, organized code structure, separately loaded decorative images using &lt;image&gt; elements, and pre-included input areas, textareas, and paragraphs to facilitate a quick start in your development process.
+          </p>
+                
+        <li>The host opens the project folder in VS Code and start a Live Share session by clicking the Live Share button at the bottom of VS Code</li>
+        <li>The host shares the session link with team members to collaborate in real-time</li>
+      </ol>
+      
+      <h4>
+    2. Homepage Overview and Start Button
+      </h4>
+      
+      <p>
+       Users begin by reading the instructions and clicking the Start button to begin the game.
+      </p>
+      
+        <h5>Hide Game and Explanation Pages by Default</h5>
+<ol>
+  
+  <li>Add v-show="showHomePage" to the &lt;svg&gt; element at the top of the game pageand set it to true in Vue</li>
+  <li>Add v-show="showGamePage" to the &lt;svg&gt; element at the top of the game pageand set it to false in Vue</li>
+  <li>Add v-show="showExplanationPage" to the &lt;svg&gt; element at the top of the explanation page section and set it to false in Vue</li>
+      </ol>
+      
+  <h5>
+    Make the Start Button Interactive
+      </h5>
+      <ol>
+        <li>Add v-on:click="startGame" to the Start button</li>
+        <li>In Vue, define the method startGame() to: </li>
+        <ul>
+          <li>Hide the homepage (showHomepage = false)</li>
+          <li>Show the game page (showGamePage = true)</li>
+        </ul>
+      </ol>
+      <h4>
+        3. Game Page - Choosing Fake or Fact
+      </h4>
+      
+      <p>
+     Users will see a news article and must decide if it’s Fake or Fact by clicking the corresponding button.
+      </p>
+      
+      <h5>
+         Define the List of News Articles
+      </h5>
+      
+      <ol>
+        <li>In vue.js, define a list of news articles inside data()</li>
+        <li>Each article object should contain:</li>
+<ol>
+  <li>article: The news text</li>
+  <li>results: A true or false value indicating if the news is real or fake</li>
+  <li>explanation: A brief reason why the article is true or false</li>
+        </ol>        
+        <li>Copy the following list into Vue’s data() section to get you started:</li>
+      </ol>
+      
+       <div style="display: flex; flex-direction: column; align-items: center; width: 100%; font-size:0.75em">
+            <pre><code class="language-markup">
+            <textarea class="myInput" rows="5" cols="50">currentNews: [
+              {
+                  article: "After a week-long trip to the International Space Station ballooned into a nine-month stay, two NASA astronauts have finally touched down on Earth.",
+                  results: true,
+                  explanation: "This article is true and is not fake news. It is a real news article."
+              },
+              {
+                  article: "Scientists have discovered a new species of deep-sea fish that can survive the extreme pressures of the Mariana Trench.",
+                  results: true,
+                  explanation: "This article is based on actual scientific discoveries of deep-sea fish in the Mariana Trench."
+              },
+
+              // add more articles here
+          ]
+            </textarea>
+            </code></pre>
+            </div>
+      
+      <h5>
+        Display the News Article Dynamically
+      </h5>
+      
+      <ol>
+        <li>Locate the news content section (informationMisinformationText)</li>
+        <li>Replace the news text with {{ currentNews[currentIndex].article }} using Vue text interpolation</li>
+          <p class="tip"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> This ensures the displayed article updates dynamically based on currentIndex of the list.
+          </p>
+        <li>In the data() section, add currentIndex and set its default value to 0 so the first article appears when the game starts</li>
+        <li>Test if the first article from the list shows when clicking the Start button</li>
+      </ol>
+      
+    
+      
+      
+      <h5>
+        Enable the Next Button
+      </h5>
+      
+      <ol>
+        <li>Add v-on:click="nextNews" to the Next button</li>
+        <li>Define the method nextNews() to move to the next article stored in an list of news inside data()</li>
+        <li>Ensure nextNews() keeps the game page visible (showGamePage = true)</li>
+        <li>Copy the following method to get started:</li>
+        
+        
+         <div style="display: flex; flex-direction: column; align-items: center; width: 100%; font-size:0.75em">
+            <pre><code class="language-markup">
+            <textarea class="myInput" rows="5" cols="50"> nextNews(){       
+              this.currentIndex = (this.currentIndex &lt; this.currentNews.length - 1) ? this.currentIndex + 1 : 0;
+            }
+            
+            </textarea>
+            </code></pre>
+            </div>
+     
+      
+      
+       <button type="button" class="collapsible"><i class="fa fa-info-circle"></i> <b>Code explanation</b></button>
+        <div class="additionalInfo">           
+            <p>
+                 This line of code is using the ternary operator to update the currentIndex value. Here's a breakdown:</p>
+              
+         
+          <ul>
+            <li>(this.currentIndex &lt; this.currentNews.length - 1) is the condition being checked</li>
+            <li>If the condition is true (meaning there are more news items available), it sets this.currentIndex to this.currentIndex + 1 (incrementing by 1)</li>
+            <li>If the condition is false (meaning we've reached the end of the news list), it sets this.currentIndex to 0 (looping back to the beginning)</li>
+          </ul>
+          <p>This creates a circular navigation through your news items - when you reach the end, it wraps around to the first item.</p>
+
+            
+          
+        </div>
+      
+  </ol>
+      <h4>
+        4. Explanation Page - Showing Results
+      </h4>
+      
+      <p>
+      Users will see an explanation of why the news article was Fake or Fact.
+      </p>
+      
+      <h5>
+        Display the Results, Explanation, and Background Color Dynamically
+      </h5>
+      
+      <ol>
+        <li>Replace the results text with  {{ currentNews[currentIndex].results }} using Vue text interpolation</li>
+        <li>Replace the explanation text with {{ currentNews[currentIndex].explanation }} using Vue text interpolation</li>
+        <li>Add v-bind:fill="explanationPageBackgroundColor" to the the explanation page background color </li>
+        <li>Define explanationPageBackgroundColor in data() with the default color "black"</li>
+      </ol>
+      
+        <h5>
+        Enable the Fake and Fact Buttons
+      </h5>
+      
+      <ol>
+        <li>Add v-on:click="fakeAnswer" to the Fake button</li>
+        <li>Add v-on:click="factAnswer" to the Fact button</li>
+      </ol>
+      
+      <h5>
+        Define the fakeAnswer() Method in Vue
+      </h5>
+      
+      <ol>
+        <li>Create a method that:</li>
+        <ul>
+          <li>Hides the game page (showGamePage = false)</li>
+          <li>Shows the explanation page (showExplanationPage = true)</li>
+          <li>Updates the color to red or green by comparing the user response (i.e., fake) with the results defined for this article in the currentNews list, like: <code>this.explanationPageBackgroundColor = this.currentNews[this.currentIndex].results === false ? 'green' : 'red';</code></li>
+        </ul>
+      </ol>    
+      
+      
+       <h5>
+        Define the factAnswer() Method in Vue
+      </h5>
+      
+      <ol>
+        <li>Create a method that:</li>
+        <ul>
+          <li>Hides the game page (showGamePage = false)</li>
+          <li>Shows the explanation page (showExplanationPage = true)</li>
+          <li>Updates the color to red or green by comparing the user response (i.e., fake) with the results defined for this article in the currentNews list, like: <code>this.explanationPageBackgroundColor = this.currentNews[this.currentIndex].results === true ? 'green' : 'red';</code></li>
+        </ul>
+      </ol>    
+    
+      
+      <h5>
+        Enable the Next Button to Load a New News Article
+      </h5>
+      <ol>
+      <li>Add v-on:click="nextNews" to the Next button</li>
+        <li>The nextNews() method has already been defined in Step <i>3. Game Page - Choosing Fake or Fact</i>. No further action is needed for this method</li>    
+      </ol>
+        </div>
+
       <!--  conclusion          -->
           
           <h2 id="conclusion">Assignment submission and assessment</h2>
           <hr />
-<!--           <h3>
-            Submission 
-          </h3>
- -->
+
           <ol>
-<!--             <li><b>Zip your folder</b></li>
-            <ul>
-              <li>Learn how to zip your folder in Mac: <a href="https://support.apple.com/en-ca/guide/mac-help/mchlp2528/mac" target="_blank">https://support.apple.com/en-ca/guide/mac-help/mchlp2528/mac</a></li>
-              <li>Learn how to zip your folder in Windows: <a href="https://support.microsoft.com/en-us/windows/zip-and-unzip-files-8d28fa72-f2f9-712f-67df-f80cf89fd4e5" target="_blank">https://support.microsoft.com/en-us/windows/zip-and-unzip-files-8d28fa72-f2f9-712f-67df-f80cf89fd4e5</a></li>
-            </ul> -->
+
             <li><b>Zip your folder and submit it to Adding interactivity to your custom interface with Vue </b> on Avenue to Learn under Assessments &gt; Assignments </li>
           </ol>
           
-        
-      
                   
             <h3>Assessment Criteria</h3>
 
@@ -790,7 +1439,6 @@ Users can interact with objects (e.g., picture frames, teddy bear, sun, clock) a
     </ol>
     
     
-
 
 
           
