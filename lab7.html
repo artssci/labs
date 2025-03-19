@@ -699,30 +699,12 @@ Users can interact with objects (e.g., picture frames, teddy bear, sun, clock) a
 Users can click on a plant to display its care instructions inside the Plant Info Window, including: Plant name, watering needs, wunlight requirements, soil type, Humidity levels, a fun fact about the plant, a slider for tracking plant health.
       </p>
       
-      <h5>
-         Locate and Make Plants Clickable
-      </h5>
-      
-      <ol>
-        <li>Find each plant inside the SVG code</li>
-        <li>Add v-on:click="showPlantInfo('plantName')" to each plant, replacing 'plantName' with a unique identifier (e.g., "aloeVera", "snakePlant")</li>        
-      </ol>
-      
+          
+    
+     
       
       <h5>
-         Show/Hide the Plant Info Window
-      </h5>
-      
-      <ol>
-        <li>Locate the SVG element at the top of the Plant Info Window </li>
-        <li>Add v-show="isPlantInfoVisible" to control its visibility</li>
-        <li>In Vue, define a data() property named isPlantInfoVisible and set it to false by default</li>
-        <li>Add v-on:click="closePlantInfo" to the exit button</li>
-        <li>In Vue, define the closePlantInfo() method to update isPlantInfoVisible to false</li>
-      </ol>
-      
-      <h5>
-        Update the Plant Info Dynamically
+        Make Plant Info Data Reactive 
       </h5>
       
       <ol>
@@ -756,69 +738,46 @@ Users can click on a plant to display its care instructions inside the Plant Inf
         <li>Define plantImage in Vue’s data() and set it to a default placeholder ("images/plantPlaceholder.jpg")</li>
       </ol>
       
-      
-      
-     
+          
+      <h5>
+         Hide the Plant Info Window by Default
+      </h5>
+      <ol>
+        <li>Locate the SVG element at the top of the Plant Info Window </li>
+        <li>Add v-show="isPlantInfoVisible" to control its visibility</li>
+        <li>In Vue, define a data() property named isPlantInfoVisible and set it to false by default</li>
+        <li>Add v-on:click="closePlantInfo" to the exit button</li>
+        <li>In Vue, define the closePlantInfo() method to update isPlantInfoVisible to false</li>
+      </ol>
       
       <h5>
-        Define the showPlantInfo() Method
+         Update Plant Info Dynamically
       </h5>
       
       <ol>
-      <li>Inside Vue’s methods, define showPlantInfo(plantName)</li>
-      <li>Use a list of predefined plant data to populate the Plant Info Window dynamically</li>
-      <li>Copy the code below to get started:</li>
+        <li>Find each plant inside the SVG code</li>
+        <li>Update the v-on:click directives so each plant calls its respective method to updating the plant properties (e.g., v-on:click="showAloeVeraInfo", v-on:click="showSnakePlantInfo")</li>
+<!--         <li>Add v-on:click="showPlantInfo('plantName')" to each plant, replacing 'plantName' with a unique identifier (e.g., "aloeVera", "snakePlant")</li>         -->
+        <li>In Vue, Define a separate method for each plant, updating the pop-up window visibility and plant properties. Follow the example below:</li>
       </ol>
       
        <div style="display: flex; flex-direction: column; align-items: center; width: 100%; font-size:0.75em">
             <pre><code class="language-markup">
-            <textarea class="myInput" rows="5" cols="50">showPlantInfo(plantName) {
+            <textarea class="myInput" rows="5" cols="50">showAloeVeraInfo() {
                   this.isPlantInfoVisible = true;
-
-                  const plantData = {
-                    aloeVera: {
-                      plantTitle: "Aloe Vera",
-                      waterNeeds: "Water once every two weeks",
-                      sunlightNeeds: "Bright, indirect sunlight",
-                      soilType: "Well-draining cactus mix",
-                      humidity: "Low to moderate",
-                      funFact: "Aloe Vera gel is commonly used for burns and skin care!",
-                      plantHealth: 80,
-                      plantImage: "images/aloeVera.jpg"
-                    },
-                    snakePlant: {
-                      plantTitle: "Snake Plant",
-                      waterNeeds: "Water once every 2-3 weeks",
-                      sunlightNeeds: "Low to bright, indirect light",
-                      soilType: "Free-draining potting mix",
-                      humidity: "Tolerates dry conditions",
-                      funFact: "Snake plants help improve indoor air quality by filtering toxins!",
-                      plantHealth: 60,
-                      plantImage: "images/snakePlant.jpg"
-                    }
-                  };
-
-                  // Update data properties with the selected plant's information
-                  if (plantData[plantName]) {
-                    this.plantTitle = plantData[plantName].plantTitle;
-                    this.waterNeeds = plantData[plantName].waterNeeds;
-                    this.sunlightNeeds = plantData[plantName].sunlightNeeds;
-                    this.soilType = plantData[plantName].soilType;
-                    this.humidity = plantData[plantName].humidity;
-                    this.funFact = plantData[plantName].funFact;
-                    this.plantHealth = plantData[plantName].plantHealth;
-                    this.plantImage = plantData[plantName].plantImage; 
-                  }
+                  this.plantTitle = "Aloe Vera";
+                  this.waterNeeds = "Water once every two weeks";
+                  this.sunlightNeeds = "Bright, indirect sunlight";
+                  this.soilType = "Well-draining cactus mix";
+                  this.humidity = "Low to moderate";
+                  this.funFact = "Aloe Vera gel is commonly used for burns and skin care!";
+                  this.plantHealth = 80;
+                  this.plantImage = "images/aloeVera.jpg";
                 }
-
-            
-            
-            
             </textarea>
             </code></pre>
             </div>
-      
-      
+     
       <h5>
          Test the Plant Info Feature
       </h5>
@@ -826,7 +785,6 @@ Users can click on a plant to display its care instructions inside the Plant Inf
       <ol>
       <li>Click different plants and verify that the Plant Info Window updates with the correct details</li>
       <li>Ensure the window appears when clicking a plant and remains hidden otherwise</li>
-      <li>Test adding new plants to the plantData list and confirm they display properly</li>      
       </ol>
       
       <h4>
