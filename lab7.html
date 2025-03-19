@@ -438,17 +438,71 @@ Users can interact with buttons on each region’s page to display more informat
       </ol>
       
       <h4>
-        4. Open File
+        4. Open  ocument Function 
       </h4>
       
       <p>
-        Instructions coming soon!
+        Users can open the text they have written.
+
       </p>
+      <h5>
+        Implement the Open Text File Functionality
+      </h5>
+      
+      <ol>
+        <li> Add a file input element inside the clip icon group (clipIcon) like this:</li>
+        
+          <div style="display: flex; flex-direction: column; align-items: center; width: 100%; font-size:0.75em; ">
+            <pre><code class="language-markup">
+            <textarea class="myInput" rows="5" cols="50">  <g id="clipIcon">
+                <circle id="Ellipse 5" cx="62.5" cy="565.5" r="42.5" fill="#31E2DF"/>
+                <image href="images/clipIcon.svg" x="44.04" y="536.83" width="36.46" height="58.33"/>
+                <foreignObject x="20" y="523" width="85" height="85">
+                  <label xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%; display: block; cursor: pointer;">
+                    <input type="file" style="opacity: 0; position: absolute; width: 100%; height: 100%; cursor: pointer;" />
+                  </label>
+                </foreignObject>
+              </g>
+
+            </textarea>
+            </code></pre>
+            </div>
+        
+        
+        <li>Add v-on:change="openTextFile" to the input to trigger a method that reads the selected file</li>
+        <li>Define the openTextFile method in Vue’s methods section with the following code:</li>
+      </ol>
+      
+         <div style="display: flex; flex-direction: column; align-items: center; width: 100%; font-size:0.75em; ">
+            <pre><code class="language-markup">
+            <textarea class="myInput" rows="5" cols="50"> openTextFile(event) {
+                        const file = event.target.files[0];  
+                        if (!file) return;  // Exit if no file is selected  
+
+                        const reader = new FileReader();  
+                        reader.onload = (e) => {  
+                          // Load file content into the currently active textarea  
+                          if (this.documentOne === true) {
+                            this.documentOneContent = e.target.result;
+                          } else if (this.documentTwo === true) {
+                            this.documentTwoContent = e.target.result;
+                          } else if (this.documentThree === true) {
+                            this.documentThreeContent = e.target.result;
+                          } else {
+                            this.documentFourContent = e.target.result;
+                          }
+                        };  
+                        reader.readAsText(file);  // Read file as plain text  
+                      }
+
+            </textarea>
+            </code></pre>
+            </div>
       
      <h4>
        5. Dictionary Function
       </h4>
-      
+     
 <!--       <p>
         Users can save keywords and their definitions and toggle between input mode and viewing saved definitions.
       </p> -->
@@ -753,10 +807,64 @@ Users can interact with objects (e.g., picture frames, teddy bear, sun, clock) a
         4. Dietary Restrictions
       </h4>
       
+            
       <p>
-        Coming soon!
+      Users should be able to filter recipes based on their dietary preferences: DF → Dairy-Free; GF → Gluten-Free; V → Vegetarian.
       </p>
       
+      <h5>
+        Add Click Events to Dietary Restriction Buttons
+      </h5>
+      
+      <ol>
+        <li>Locate the dietary restriction buttons inside the "dietaryRestrictions" group</li>
+        <li>Add v-on:click to each button to toggle its selection:</li>
+        <ul>
+          <li>DF Button (dfButton) → v-on:click="toggleDF"</li>
+          <li>GF Button (gfButton) → v-on:click="toggleGF"</li>
+          <li>V Button (vButton) → v-on:click="toggleV"</li>
+        </ul>
+        <li>Define Vue data properties for each restriction (isDFSelected, isGFSelected, isVSelected) and set them to false by default</li>
+      </ol>
+      
+      <h5>
+        Implement the Toggle Methods for Filters
+      </h5>
+      
+      <ol>
+        <li>Define methods to toggle each dietary filter between true and false:</li>
+        <ul>
+          <li>toggleDF() { this.isDFSelected = !this.isDFSelected; }</li>
+          <li>toggleGF() { this.isGFSelected = !this.isGFSelected; }</li>
+          <li>toggleV() { this.isVSelected = !this.isVSelected; }</li>
+        </ul>
+         <li>Use conditional styling (v-bind:style) to indicate when a button is active:</li>
+        <ul>
+        <li>Example: Change the fill color when selected (fill="#FFD700" for active)</li>  
+        </ul>
+        
+        </ol> 
+        <h5>
+          Filter Recipes Based on Dietary Restrictions
+        </h5>
+        <ol>
+          <li>Update the recipe buttons dynamically to only show recipes that fit both price and dietary restrictions</li>
+         <ul>
+           <li>If isDFSelected is true, only show Dairy-Free recipes</li>
+           <li>If isGFSelected is true, only show Gluten-Free recipes</li>
+           <li>If isVSelected is true, only show Vegetarian recipes</li>
+          </ul>
+        </ol>
+       
+     <h5>
+       Test the Dietary Filters
+      </h5> 
+      <ol>
+        <li>Click the DF, GF, and V buttons to ensure they toggle on/off</li>
+        <li>Verify that only recipes matching the selected filters appear</li>
+        <li>Ensure users can select multiple filters simultaneously (e.g., Gluten-Free + Vegetarian)</li>  
+      </ol>
+
       <h4>
         5. Grocery List
       </h4>
