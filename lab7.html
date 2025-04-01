@@ -154,13 +154,13 @@
       <li>Define one method for each button that updates the displayed activity</li>
     </ol>
       
-      <h4>
+<!--       <h4>
         5. Reset Data After Specific Day Time
       </h4>
       
       <p>
         Coming soon!
-      </p>
+      </p> -->
   </div>
 
 <!--   Explore Toronto App     -->
@@ -400,7 +400,7 @@ Users can interact with buttons on each region’s page to display more informat
       </ol>
       
         <div style="display: flex; flex-direction: column; align-items: center; width: 100%; font-size:0.75em; ">
-            <pre><code class="language-markup">
+            <pre><code class="language-js">
             <textarea class="myInput" rows="5" cols="50">downloadText() {
             
                 // Choose content based on active tab using ternary operators
@@ -474,7 +474,7 @@ Users can interact with buttons on each region’s page to display more informat
       </ol>
       
          <div style="display: flex; flex-direction: column; align-items: center; width: 100%; font-size:0.75em; ">
-            <pre><code class="language-markup">
+            <pre><code class="language-js">
             <textarea class="myInput" rows="5" cols="50"> openTextFile(event) {
                         const file = event.target.files[0];  
                         if (!file) return;  // Exit if no file is selected  
@@ -503,37 +503,119 @@ Users can interact with buttons on each region’s page to display more informat
        5. Dictionary Function
       </h4>
      
-<!--       <p>
-        Users can save keywords and their definitions and toggle between input mode and viewing saved definitions.
-      </p> -->
-      
       <p>
-        Instructions coming soon!
+        Users can save keywords and their definitions and toggle between input mode and viewing saved definitions.
       </p>
-<!--       <h5>
-        Bind Input Fields to Vue Data
-      </h5>
-      
-      <ol>
-        <li>Use v-model to bind the &lt;input&gt;field to a newKeyword data property</li>
-        <li>Use v-model to bind the &lt;textarea&gt; to a newDefinition data property.</li>
-      </ol>
       
       <h5>
-        Store and Display Definitions
+        Set up the Data Structure
+      </h5>
+        
+In the data() section of your Vue component, you'll need an array to store the keywords and their definitions
+        
+         <div style="display: flex; flex-direction: column; align-items: center; width: 100%; font-size:0.75em; ">
+            <pre><code class="language-js">
+            <textarea class="myInput" rows="5" cols="50">  
+    keyword: "",  // Stores the current keyword entered by the user
+    definition: "",  // Stores the current definition entered by the user
+    dictionary: []  // Stores an array of objects, each containing a keyword and its definition
+
+            </textarea>
+            </code></pre>
+            </div>
+        
+      <h5>
+        Create Methods to Add Keywords and Definitions
       </h5>
       
-      <li>Define a data property called dictionary as an empty object {}</li>
-      <li>Ensure the &lt;p&gt; element displays the saved definitions using Vue’s text interpolation ({{ dictionary[keyword] }})</li>
+      <p>
+        You will need a method to handle the saving of the keyword and its definition when the user submits the form. Here's how you can define this method:
+      </p>
+      
+      <div style="display: flex; flex-direction: column; align-items: center; width: 100%; font-size:0.75em; ">
+            <pre><code class="language-js">
+            <textarea class="myInput" rows="5" cols="50">  
+addKeyword() {
+    if (this.keyword && this.definition) {
+      this.dictionary.push({
+        keyword: this.keyword,
+        definition: this.definition
+      });
+      this.keyword = "";  // Clear the keyword input field
+      this.definition = "";  // Clear the definition input field
+    }
+  }
+            </textarea>
+            </code></pre>
+            </div>
+      
+      <p>
+        This method checks if both the keyword and definition fields are filled out. If they are, it adds an object to the dictionary array, which stores the keyword and its definition. Then, it clears the input fields for the next entry.
+      </p>
+      
+      <h5>
+         Bind the Data to the Input Fields
+      </h5>
+      
+      
+      <p>
+        You need to bind the input fields and the textarea to the Vue data properties. This ensures that when the user types into the fields, the data is updated dynamically.</p>
+      
+      <ol>
+        
+        <li>  Add <code>v-model="keyword"</code> keyword input and and <code>v-model="definition"</code> to the textarea</li>
+        <li>Add the follwing code after the keword definition area. This code will display a button that when clicked will save the keyword and definition:</li>
+      
+        
+        
+        <div style="display: flex; flex-direction: column; align-items: center; width: 100%; font-size:0.75em; ">
+            <pre><code class="language-markup">
+            <textarea class="myInput" rows="5" cols="50">  
+    <!-- Button to Add Keyword -->
+<foreignObject x="1115" y="640" width="300" height="30">
+    <button @click="addKeyword"
+            style="width: 100%; height: 100%; font-family: IBM Plex Sans; font-size: 16px; background: #4CAF50; color: white; border: none; padding: 10px;">
+        Add Keyword
+    </button>
+</foreignObject>
+            </textarea>
+            </code></pre>
+            </div>
+    
+      </ol>
+      
+      <h5>Display the List of Keywords and Definitions</h5>
+      
+      <p>
+        Now, you need to display the list of saved keywords and their definitions. Paste the following code after the button you added in the previous step:
+      </p>
+      
+        
+        <div style="display: flex; flex-direction: column; align-items: center; width: 100%; font-size:0.75em; ">
+            <pre><code class="language-markup">
+            <textarea class="myInput" rows="5" cols="50">  
+    <!-- Display List of Keywords and Definitions -->
+<foreignObject x="1115" y="180" width="300" height="400">
+    <ul style="font-family: IBM Plex Sans; font-size: 16px; background: white; color: black; padding: 10px; list-style-type: none; overflow: auto;">
+        <li v-for="(item, index) in dictionary" :key="index" style="margin-bottom: 10px;">
+            <strong>{{ item.keyword }}</strong>: {{ item.definition }}
+        </li>
+    </ul>
+</foreignObject>
+            </textarea>
+            </code></pre>
+            </div>
+      
+      
       
       <h5>
         Toggle Between Input and Definition View
       </h5>
       
       <li>Define a data property showInput and set it to true by default</li>
-      <li>Add v-show="showInput" to the &lt;input&gt; and &lt;textarea&gt; elements</li>
-      <li>Add v-show="!showInput" to the &lt;p&gt; element displaying the definitions</li>
-      <li>Add a Toggle Button with v-on:click="showInput = !showInput" to switch views</li> -->
+      <li>Add v-show="showInput" to the &lt;input&gt;, &lt;textarea&gt;, and button elements</li>
+      <li>Add v-show="!showInput" to the &lt;ul&gt; element displaying the definitions</li>
+      <li>Add v-on:click="showInput = !showInput" to the text icon button to toggle between the input and display areas</li> 
       
       <h4>
         6. Font Selection
@@ -791,11 +873,171 @@ Users can click on a plant to display its care instructions inside the Plant Inf
       5.  Bulletin Board 
       </h4>
       
-      <p>
-        Coming soon!
-      </p>
-      </div>
+      <ol>
+<li>Paste the bulletin board code under after the last page of your project:</li>        
       
+
+     <div style="display: flex; flex-direction: column; align-items: center; width: 100%; font-size:0.75em">
+            <pre><code class="language-markup">
+            <textarea class="myInput" rows="5" cols="50"><svg  viewBox="0 0 1440 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="Bulletin Board">
+          <rect x="25" y="25" width="1390" height="974" fill="#D1A481"/>
+          <rect x="25" y="25" width="1390" height="974" stroke="#5A3600" stroke-width="50"/>
+
+          <!-- Post-It 1 -->
+          <g id="post-it 1">
+            <g id="Rectangle 41" filter="url(#filter4_d_40_14)">
+              <rect x="196" y="212" width="300" height="300" fill="#F7EFDC"/>
+            </g>
+            <g id="Ellipse 15" filter="url(#filter5_d_40_14)">
+              <circle cx="345.5" cy="243.5" r="12.5" fill="#CB7287"/>
+            </g>
+            <foreignObject x="196" y="212" width="300" height="300">
+              <input type="file" ref="file1" style="width: 100%; height: 100%; opacity: 0; cursor: pointer;"
+                     @change="handleFileChange($event, 'postIt1Image')" accept="image/*"/>
+            </foreignObject>
+            <image v-if="postIt1Image" :x="196" :y="212" width="300" height="300" :href="postIt1Image"/>
+          </g>
+
+          <!-- Post-It 2 -->
+          <g id="post-it 2">
+            <g id="Rectangle 43" filter="url(#filter2_d_40_14)">
+              <rect x="551" y="575" width="300" height="300" fill="#F7EFDC"/>
+            </g>
+            <g id="Ellipse 16" filter="url(#filter3_d_40_14)">
+              <circle cx="700.5" cy="613.5" r="12.5" fill="#CB7287"/>
+            </g>
+            <foreignObject x="551" y="575" width="300" height="300">
+              <input type="file" ref="file2" style="width: 100%; height: 100%; opacity: 0; cursor: pointer;"
+                     @change="handleFileChange($event, 'postIt2Image')" accept="image/*"/>
+            </foreignObject>
+            <image v-if="postIt2Image" :x="551" :y="575" width="300" height="300" :href="postIt2Image"/>
+          </g>
+
+          <!-- Post-It 3 -->
+          <g id="post-it 3">
+            <g id="Rectangle 42" filter="url(#filter0_d_40_14)">
+              <rect x="909" y="170" width="300" height="300" fill="#F7EFDC"/>
+            </g>
+            <g id="Ellipse 17" filter="url(#filter1_d_40_14)">
+              <circle cx="1071.5" cy="199.5" r="12.5" fill="#CB7287"/>
+            </g>
+            <foreignObject x="909" y="170" width="300" height="300">
+              <input type="file" ref="file3" style="width: 100%; height: 100%; opacity: 0; cursor: pointer;"
+                     @change="handleFileChange($event, 'postIt3Image')" accept="image/*"/>
+            </foreignObject>
+            <image v-if="postIt3Image" :x="909" :y="170" width="300" height="300" :href="postIt3Image"/>
+          </g>
+
+          <!-- Back Button -->
+          <g id="back button">
+            <circle id="Ellipse 4" cx="83" cy="83" r="20" fill="#F7EFDC"/>
+            <text id="&#60;" fill="#CB7287" xml:space="preserve" style="white-space: pre" font-family="Indie Flower" font-size="35" letter-spacing="0em">
+              <tspan x="62" y="91.4525"> &#60;</tspan>
+            </text>
+          </g>
+        </g>
+        <defs>
+        <filter id="filter0_d_40_14" x="905" y="170" width="308" height="308" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dy="4"/>
+        <feGaussianBlur stdDeviation="2"/>
+        <feComposite in2="hardAlpha" operator="out"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_40_14"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_40_14" result="shape"/>
+        </filter>
+        <filter id="filter1_d_40_14" x="1055" y="187" width="33" height="33" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dy="4"/>
+        <feGaussianBlur stdDeviation="2"/>
+        <feComposite in2="hardAlpha" operator="out"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_40_14"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_40_14" result="shape"/>
+        </filter>
+        <filter id="filter2_d_40_14" x="547" y="575" width="308" height="308" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dy="4"/>
+        <feGaussianBlur stdDeviation="2"/>
+        <feComposite in2="hardAlpha" operator="out"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_40_14"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_40_14" result="shape"/>
+        </filter>
+        <filter id="filter3_d_40_14" x="684" y="601" width="33" height="33" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dy="4"/>
+        <feGaussianBlur stdDeviation="2"/>
+        <feComposite in2="hardAlpha" operator="out"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_40_14"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_40_14" result="shape"/>
+        </filter>
+        <filter id="filter4_d_40_14" x="192" y="212" width="308" height="308" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dy="4"/>
+        <feGaussianBlur stdDeviation="2"/>
+        <feComposite in2="hardAlpha" operator="out"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_40_14"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_40_14" result="shape"/>
+        </filter>
+        <filter id="filter5_d_40_14" x="329" y="231" width="33" height="33" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dy="4"/>
+        <feGaussianBlur stdDeviation="2"/>
+        <feComposite in2="hardAlpha" operator="out"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_40_14"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_40_14" result="shape"/>
+        </filter>
+        </defs>
+        </svg>
+            </textarea>
+            </code></pre>
+            </div>
+      
+          <li>Add the following data properties to the data() section:</li>
+      
+      <div style="display: flex; flex-direction: column; align-items: left; width: 100%; font-size:0.75em">
+            <pre><code class="language-js">
+            <textarea class="myInput" rows="5" cols="50">postIt1Image: null,
+            postIt2Image: null,
+            postIt3Image: null
+            </textarea>
+            </code></pre>
+            </div>
+      
+         <li>Add the following method:</li>
+      
+      <div style="display: flex; flex-direction: column; align-items: left; width: 100%; font-size:0.75em">
+            <pre><code class="language-js">
+            <textarea class="myInput" rows="5" cols="50">handleFileChange(event, imageKey) {
+                  const file = event.target.files[0];
+                  if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                      this[imageKey] = e.target.result; 
+                    };
+                    reader.readAsDataURL(file);
+                  }
+                }
+            </textarea>
+            </code></pre>
+            </div>
+      
+      
+          </ol>
+      
+        </div>
+          
        <button type="button" class="collapsible-question" style="background: #9694FF !important; color: white !important">
     <b>🥕 Rapid Recipes App - Suggested Workflow</b>
   </button>
@@ -942,14 +1184,14 @@ Users can click on a plant to display its care instructions inside the Plant Inf
         <li>Ensure users can select multiple filters simultaneously (e.g., Gluten-Free + Vegetarian)</li>  
       </ol>
 
-      <h4>
+<!--       <h4>
         5. Grocery List
       </h4>
       
       <p>
         Coming soon!
       </p>
-
+ -->
   </div>
         
         
