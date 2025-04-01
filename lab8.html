@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+
+    <link rel="icon" href="https://glitch.com/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--
+      This is the page head - it contains info the browser uses
+      Like the title, which appears on the browser tab but not inside the page
+      Further down you'll see the content that displays in the page
+    -->
+    <title>Python Basics</title>
+
+    <!-- The website stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- The website JavaScript file -->
+        <script src="script.js" defer></script>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-python.min.js"></script>
+
+    <!--
+      The body includes the content you see in the page
+      Each element is defined using tags, like this <div></div>
+      The attributes like class="wrapper" let us style elements in the CSS
+    -->
+    <div class="wrapper">
+      <div class="content" role="main">
+        <h1 class="title">Python Basics</h1>
+        
+        <div class="instructions">
+          <p style="margin-left: 0">
+            
+            
+            <b>Due date:</b> <u>Individual submission</u> by March 8 by the end of the day (11:59 pm).  
+            <br><br>
+
+            <b>Grace period:</b> 1 week (7 days) without penalty.  
+            <br><br>
+
+            <b>After grace period:</b> There is no after grace period for this assignment.
+          </p>
+        </div>
+      </div>
+      
+      
+      
+
+        <!-- lab starts here  -->
+        <div class="instructions">
+          <hr>
+          <h2 class="nocount">General Description</h2>
+
+          <p style="margin-left: 0">This final lab serves as an introduction to Python, providing you with an opportunity to apply your coding knowledge to a new language. The exercises in this lab are simple and intended to reinforce core programming concepts by drawing connections to previous languages studied in the course such as JavaScript.
+            
+</p>
+          
+          
+          <h2 class="nocount">Learning Objectives</h2>
+          
+
+          <ul>
+            <li>Get introduced to Python syntax and its programming structures</li>
+            <li>Compare similar coding patterns/strucrures seen in previous languages like JavaScript</li>
+           
+          </ul>
+          
+
+          <!-- contents           -->
+          <h2 class="nocount">Table of Contents</h2>
+          <hr />
+
+          <ol>
+            
+              <li><a href="#introduction">What is Python</a></li>
+            <li><a href="#prerequisite">Pre-requisites:  Installing Python</a></li>                       
+              <li><a href="#1activity"> Running Your first Python Program</a></li>
+            <li><a href="#2activity">Variables and Data Types</a></li>
+            <li><a href="#3activity"> Getting User Input</a></li>  
+            <li><a href="#4activity"> Basic Math Operations</a></li>
+            <li><a href="#5activity"> If-Else Conditions</a></li>
+              <li><a href="#6activity"> Defining Functions</a></li>            
+            <li><a href="#conclusion">Assignment submission and assessment</a></li>
+
+          </ol>
+
+          
+          <h2 id="introduction">What is Python</h2>
+            <hr />
+          
+          <div class="definition">
+            <p>
+             <i class="fa fa-quote-left" style="font-size:48px"></i> Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. Python was conceived in the late 1980s by the Dutch programmer Guido van Rossum. Python 2.0 was released in 2000 and Python 3.0 was released in 2008
+              <a href="https://en.wikipedia.org/wiki/Python_(programming_language)"
+                target="_blank">... click to read the full article</a>
+            </p>
+          </div>   
+         
+<h2 id="prerequisite">Pre-requisites:  Installing Python</h2>
+            <hr />
+          
+      <div id="app">
+
+        <ol>
+        <li>Open VS Code Terminal to check if Python is aready installed by typing:     
+          <br><br>  <code>python --version</code> or  <code>python3 --version</code>
+  <br><br></li>
+          <li>If the terminal displays the version, it means you already have Python installed and can jump to the next section <i>Basic Python Exercises</i></li>
+          <li>If the terminal displays an error, follow the instructions below to install Python</li>
+      </ol>
+ 
+  <button type="button" class="collapsible-question" style="background: lightblue; color:black" >
+    <b>Windows Installation</b>
+  </button>
+
+    <div class="additionalInfo">
+    
+<ol>
+  <li>Go to the official Python website: <a href="https://www.python.org/downloads/"
+                                            target="_blank">https://www.python.org/downloads/</a></li>
+
+  <li>Click on the Download Python button (it should detect the latest version for Windows automatically)</li>
+
+  <li>Open the downloaded file and check the box "Add Python to PATH" before clicking Install Now</li>
+
+  <li>Wait for the installation to complete and then open the VS Code Terminal to check if Python is installed by running: 
+  <br><br>  <code>python --version</code></li>
+  <br><br>
+  
+
+  <li>If the terminal displays the version, that means Python was installed correctly</li>
+      </ol>
+        
+        </div>
+
+          
+  <button type="button" class="collapsible-question" style="background: lightgray !important; color:black">
+    <b>macOS Installation</b>
+  </button>
+
+    <div class="additionalInfo">
+      <ol>
+        
+      
+      
+    <li>Go to the official Python website: <a href="https://www.python.org/downloads/"
+                                            target="_blank">https://www.python.org/downloads/</a></li>
+
+  <li>Click on the Download Python button (it should detect the latest version for macOS automatically)</li>
+
+  <li>Open the downloaded .pkg file and follow the installation instructions</li>
+
+  <li>Wait for the installation to complete and then open the VS Code Terminal to check if Python is installed by running:     <br><br>  <code>python3 --version</code>
+  <br><br></li>
+  <li>If the terminal displays the version, that means Python was installed correctly</li>
+      </ol>
+        </div>
+        
+       
+
+        
+        <h2 id="1activity">Running Your first Python Program</h2>
+        <hr>
+            
+            <ol>
+              <li>Open VS Code and create a new file called first-program.py</li>
+              <li>Write the following code inside:  </li>
+              
+            <div style="display: flex; flex-direction: column; align-items: left; width: 100%; font-size:0.75em;">
+            <pre><code class="language-python">print("Hello, Python!")</code></pre>
+            </div>
+              <li>Save the file and open the VS Code Terminal</li>
+              <li>In Windows, run the script by typing:</li>
+              
+              <div style="display: flex; flex-direction: column; align-items: left; width: 100%; font-size:0.75em;">
+            <pre><code class="language-python">python first-program.py</code></pre>
+              </div>
+                
+                <li>In macOSC, run the script by typing:</li>
+                
+            <div style="display: flex; flex-direction: column; align-items: left; width: 100%; font-size:0.75em;">
+            <pre><code class="language-python">python3 first-program.py</code></pre>
+            </div>
+              <li>After running the program you should see "Hello, Python" printed in the terminal. This means the program ran successfully</li>              
+            </ol>
+        
+        <img style="padding-left: 5%; width: 70%" src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/first-program.png?v=1743542528974">
+        
+        
+        <button type="button" class="collapsible-question"><i class="fa fa-star-o" style="font-size:24px"></i> <b> Challenge 1: Write a program that prints your name and favorite hobby (click to see instructions)
+</b></button>
+        <div class="additionalInfo">         
+          <p>
+            Modify <code>print("Hello, Python!")</code> to print your name and favorite hobby.
+          </p>
+        </div>
+        
+        
+        
+        <h2 id="2activity">Data Types and Variables</h2>
+        <hr>
+            
+        <p>
+          <b>Data Types</b> in Python are the type of values a program can use. Similarly to Vue.js, values can be text enclosed in quotes (e.g., "hello"), numbers (e.g., 3.14), and booleans (e.g., True/False).
+          <br><br>
+          <b>Variables</b> are used to store values that can be referenced and manipulated in a program. Just like in Vue.js, where we define properties in the data() function, Python variables store values that our program can use and modify.
+          
+          <br><br>
+          For example, in Vue, we may define:
+          
+        </p>
+          
+            <div style="display: flex; flex-direction: column; align-items: left; width: 100%; font-size:0.75em;">
+            <pre><code class="language-js">
+const app = Vue.createApp({
+  data() {
+    return {
+      name: 'Alice',
+      age: 20
+    };
+  }
+};</code></pre>
+        </div>
+        
+        <p>In Python, the equivalent would be:</p>
+              
+                <div style="display: flex; flex-direction: column; align-items: left; width: 100%; font-size:0.75em;">
+            <pre><code class="language-python">
+name = "Alice"
+age = 20</code></pre>
+              </div>
+                 
+          
+          <p>
+            To practice variables and data types in Python, let's create a program that stores someones age and hometown in variables and prints them:
+          </p>
+          
+          <ol>
+            <li>create a new file called variables.py</li>
+            <li>Type the following code inside the file:</li>
+              <div style="display: flex; flex-direction: column; align-items: left; width: 100%; font-size:0.75em;">
+            <pre><code class="language-python">
+name = "Alice"
+age = 20
+hometown = "Toronto"
+print("My name is", name + ".", "I am", age, "years old and from", hometown)
+</code></pre>
+              </div>
+            <li>Save the file</li>
+            
+            <li>In Windows, run the script by typing:</li>
+              
+              <div style="display: flex; flex-direction: column; align-items: left; width: 100%; font-size:0.75em;">
+            <pre><code class="language-python">python variables.py</code></pre>
+              </div>
+                
+                <li>In macOSC, run the scrit by typing:</li>
+            
+            <div style="display: flex; flex-direction: column; align-items: left; width: 100%; font-size:0.75em;">
+            <pre><code class="language-python">
+python3 variables.py
+</code></pre>
+              </div>
+            <li>After running the program you should see "My name is Alice. I am 20 years old and from Toronto" printed in the terminal. This means the program ran successfully</li>
+          </ol>
+          
+          <button type="button" class="collapsible-question"><i class="fa fa-star-o" style="font-size:24px"></i> <b> Challenge 2: Create a program that stores your name, age and hometown in variables and prints them (click to see instructions)
+</b></button>
+        <div class="additionalInfo">         
+          <p>
+            Modify the variables <code>name</code>, <code>age</code> and <code>hometown</code> from the exercise above to print your name, age, and hometown.
+          </p>
+        </div>
+          
+          <h2 id="3activity"> Interactivity: Getting User Input </h2>
+          <hr>
+          
+          
+          <p>
+            Python allows for interactivity through user input, similar to how Vue.js enables dynamic updates through v-on:click and v-model. However, in Vue, user input updates data properties in real time, whereas in Python, we capture input with the input() function and store it in a variable for later use.
+            
+            <br><br>
+To practice getting user input, let's write a program that asks for the user's name and greets them:
+          </p>
+          
+          <ol>
+            <li>Create a new file called user-input.py</li>
+            <li>Type the following code inside the file:</li>
+          
+          <div style="display: flex; flex-direction: column; align-items: left; width: 100%; font-size:0.75em;">
+            <pre><code class="language-python">
+name = input("What is your name? ")
+print("Hello, " + name + "!")
+</code></pre>
+            </div>
+            
+            <li>Save the file changes</li>
+          <li>In Windows, run the script by typing:</li>
+              
+              <div style="display: flex; flex-direction: column; align-items: left; width: 100%; font-size:0.75em;">
+            <pre><code class="language-python">python user-input.py</code></pre>
+              </div>
+                
+                <li>In macOSC, run the script by typing:</li>
+            
+            <div style="display: flex; flex-direction: column; align-items: left; width: 100%; font-size:0.75em;">
+            <pre><code class="language-python">
+python3 user-input.py
+</code></pre>
+              </div>
+            
+            <li>After running the program you should request you to type your name by asking "What is your name?". After typing your name and pressing enter, the program should greet you like the example below:</li>
+            
+            </ol>
+        
+        <img style="padding-left: 5%; width: 70%" src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/add.png?v=1743542754403">
+        
+        
+  <h2 id="4activity"> Basic Math Operations</h2>
+        <hr>
+        
+        <p>
+          Python supports fundamental math operations, similar to JavaScript:
+        </p>
+        
+        <ul>
+          <li>Addition (+)</li>
+          <li>Subtraction (-)</li>
+          <li>Multiplication (*)</li>
+          <li>Division (/)</li>
+        </ul>
+
+
+<p>
+To practice math operations, let's create a simple calculator that adds two numbers: 
+        </p>
+        
+        <ol>
+            <li>create a new file called add-numbers.py</li>
+            <li>Type the following code inside the file:</li>
+          
+      <div style="display: flex; flex-direction: column; align-items: left; width: 100%; font-size:0.75em;">
+            <pre><code class="language-python">
+num1 = int(input("Enter first number: "))
+num2 = int(input("Enter second number: "))
+sum = num1 + num2
+print("The sum is:", sum)
+</code></pre>
+              </div>
+        
+          
+          <li>Save the file changes</li>
+           <li>In Windows, run the script by typing:</li>
+              
+              <div style="display: flex; flex-direction: column; align-items: left; width: 100%; font-size:0.75em;">
+            <pre><code class="language-python">python add-numbers.py</code></pre>
+              </div>
+                
+                <li>In macOSC, run the script by typing:</li>
+            
+
+        
+         <div style="display: flex; flex-direction: column; align-items: left; width: 100%; font-size:0.75em;">
+            <pre><code class="language-python">
+python3 add-numbers.py
+</code></pre>
+              </div>
+            
+          <li>After running the program you should be asked to enter the first and second number. After typing the numbers, the program should print the sum of both numbers</li>
+        </ol>
+        
+         
+          <img style="padding-left: 5%; width: 70%" src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/add2.png?v=1743543142743">
+        
+        
+        
+        <button type="button" class="collapsible-question"><i class="fa fa-star-o" style="font-size:24px"></i> <b> Challenge 3: Create a program that multiply two numbers and prints the result (click to see instructions)
+</b></button>
+        <div class="additionalInfo">         
+          <p>
+            Modify the <code>sum = num1 + num2</code> and <code>print("The sum is:", sum)</code> from the code above to multiply two numbers and print the result
+          </p>
+        </div>
+        
+        
+        <h2 id="5activity">
+          If-Else Conditions
+        </h2>
+        
+        <p>
+          Conditional statements in Python allow us to execute different code based on certain conditions. The if statement checks if a condition is true, and the else statement executes code when the condition is false. This is similar to JavaScript's ternary operator (condition ? trueValue : falseValue), but in Python, we use explicit if-else blocks.
+        </p>
+        
+        <p>
+          To practice if-else conditions, let's write a program that checks if a number is greater than 10:
+        </p>
+        
+         <ol>
+            <li>create a new file called condition.py</li>
+            <li>Type the following code inside the file:</li>
+           
+            <div style="display: flex; flex-direction: column; align-items: left; width: 100%; font-size:0.75em;">
+            <pre><code class="language-python">
+num = int(input("Enter a number: "))
+if num &gt; 10:
+    print("Your number is greater than 10")
+else:
+    print("Your number is not greater than 10")
+</code></pre>
+              </div>
+           
+             <li>Save the file changes</li>
+           <li>In Windows, run the script by typing:</li>
+              
+              <div style="display: flex; flex-direction: column; align-items: left; width: 100%; font-size:0.75em;">
+            <pre><code class="language-python">python condition.py</code></pre>
+              </div>
+                
+                <li>In macOSC, run the script by typing:</li>
+
+        
+         <div style="display: flex; flex-direction: column; align-items: left; width: 100%; font-size:0.75em;">
+            <pre><code class="language-python">
+python3 condition.py
+</code></pre>
+              </div>
+            
+          <li>After running the program you should be asked to enter a number for the program to check if the condition is met</li>
+        </ol>
+        
+        <img style="padding-left: 5%; width: 70%" src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/condition.png?v=1743542894921">
+        
+        
+           <button type="button" class="collapsible-question"><i class="fa fa-star-o" style="font-size:24px"></i> <b> Challenge 4: Create a program that checks wether the input number is equal to 10 (click to see instructions)
+</b></button>
+        <div class="additionalInfo">         
+          <p>
+            Modify <code>if num &gt; 10:</code> to check if the input number is equal to 10 
+          </p>
+        </div>
+       
+        
+        <h2 id="6activity">
+          Creating Functions
+        </h2>
+          
+        <p>
+          Functions in Python are similar to methods in Vue.js, where a set of tasks or actions are defined and triggered by events
+        </p>
+        
+        <p>
+          Let's define a function that greets the user:
+        </p>
+        
+        
+           <ol>
+            <li>create a new file called greetings.py</li>
+            <li>Type the following code inside the file:</li>
+           
+            <div style="display: flex; flex-direction: column; align-items: left; width: 100%; font-size:0.75em;">
+            <pre><code class="language-python">
+def greet(name):
+    print(f"Hello, {name}!")
+
+user_name = input("Enter your name: ")
+greet(user_name)
+</code></pre>
+              </div>
+           
+           <li>Save the file and run the script by typing the following in VS Code terminal:</li>
+
+           <li>Save the file changes</li>
+           <li>In Windows, run the script by typing:</li>
+              
+              <div style="display: flex; flex-direction: column; align-items: left; width: 100%; font-size:0.75em;">
+            <pre><code class="language-python">python greetings.py</code></pre>
+              </div>
+                
+                <li>In macOSC, run the script by typing:</li>
+         <div style="display: flex; flex-direction: column; align-items: left; width: 100%; font-size:0.75em;">
+            <pre><code class="language-python">
+python3 greetings.py
+</code></pre>
+              </div>
+            
+          <li>After running the program you should be asked to enter your name for the program to greet you by your name</li>
+        </ol>
+        
+        <!--  conclusion          -->
+          
+          <h2 id="conclusion">Assignment submission and assessment</h2>
+          <hr />
+
+          <ol>
+            <li><b>Save</b> all your Python files inside a folder, including <i>first-program.py, variables.py, user-input.py, add-numbers.py, condition.py, and greetings.py</i> </li>
+            <li><b>Zip</b> your folder and <b>submit</b> it to <b>Functionality Lab 1: Python Basics </b> on Avenue to Learn under Assessments &gt; Assignments </li>
+          </ol>
+          
+                  
+    <h3>Assessment Criteria</h3>
+
+    <ol>
+      <li><b>Code Validity (3 points):</b> All the files are saved with the extension .py. The code inside each file is properly indented following the examples and executes correctly in the terminal</li>
+      <li><b>Running Your first Python Program (1 point):</b> The file prints your name and favorite hobby</li>
+      <li><b>Data Types and Variables (2 points):</b> The files stores and prints your name, age, and hometown</li>
+      <li><b>Interactivity: Getting User Input (1 points):</b>The file asks the user name and greets them</li>      
+      <li><b> Basic Math Operations (1 point):</b> The file multiply two numbers and prints the result</li>
+        
+      <li><b>If-Else Condition (1 points): </b>The file checks if the input number is equal to 10</li>
+      <li><b> Creating Functions (1 point):</b> The file asks the user name and greets them</li>
+    </ol>
+    
+
+
+       
+        </div>
+      </div>
+    </div>
+<!-- footer -->
+    <footer class="footer">
+    </footer>
+    
+  </body>
+</html>
