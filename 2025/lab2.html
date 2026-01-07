@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+
+    <link rel="icon" href="https://glitch.com/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--
+      This is the page head - it contains info the browser uses
+      Like the title, which appears on the browser tab but not inside the page
+      Further down you'll see the content that displays in the page
+    -->
+    <title> Interface Design Lab 2: Figma </title>
+
+    <!-- The website stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- The website JavaScript file -->
+        <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!--
+      The body includes the content you see in the page
+      Each element is defined using tags, like this <div></div>
+      The attributes like class="wrapper" let us style elements in the CSS
+    -->
+    <div class="wrapper">
+      <div class="content" role="main">
+        <h1 class="title">	Interface Design Lab 2: Figma</h1>
+        
+        <div class="instructions">
+          <p style="margin-left: 0">
+            <b>Due date:</b> January 21 by the end of the day (11:59 pm).  
+            <br><br>
+
+            <b>Grace period:</b> 1 week (7 days) without penalty.  
+            <br><br>
+
+            <b>After grace period:</b> Submissions after the grace period will be penalized 5% for each additional day that they are overdue – including Saturdays and Sundays. Submissions made 1 week (7 days) after the grace period will not be accepted and will receive a 0% grade.          
+          </p>
+        </div>
+      </div>
+      
+      
+
+        <!-- lab starts here  -->
+        <div class="instructions">
+          <hr>
+                    <h2 class="nocount">General Description</h2>
+
+          <p style="margin-left: 0">
+            In this second lab, you will explore the “What You See is What You Get” approach to Scalable Vector Graphics using Figma.
+          </p>
+          
+          
+          <h2 class="nocount">Learning Objectives</h2>
+          <ol>
+            <li>Learn about Figma and experiment with its basic tools for SVG drawing</li>
+            <li>Combine multiple shapes to create complex SVG graphics</li>
+          </ol>
+
+          <!-- contents           -->
+          <h2 class="nocount">Table of Contents</h2>
+          <hr />
+
+          <ol>
+            
+            <li><a href="#introduction">What is Figma and how it relates to Scalable Vector Graphics</a></li>
+            <li><a href="#prerequisite">Pre-requisites: Create a Figma account and explore its interface</a></li>            
+<!--             <li><a href="#break">Break: Take a 15-minute break</a></li> -->
+            <li><a href="#1activity">Explore Figma's basic shapes</a></li>
+            <li><a href="#2activity">Export your Figma file as SVG and explore it in VS Code</a></li>
+            <li><a href="#3activity">Create a complex graphic by combining multiple shapes in Figma</a></li>
+<!--             <li><a href="#4activity">Animation</a></li> -->
+<!--             <li><a href="#5activity">Creative Project</a></li> -->
+            <li><a href="#conclusion">Assignment submission and assessment</a></li>
+            <li><a href="#extras">Continue learning</a></li>
+<!--             <li><a href="#solution">Solution</a></li> -->
+
+          </ol>
+
+          <!-- intro         -->
+          <h2 id="introduction">What is Figma and how it relates to Scalable Vector Graphics</h2>
+          <hr />
+
+          <div class="definition">
+            <p>
+              <i class="fa fa-quote-left" style="font-size: 48px"></i> Figma
+              allows people to create, share, and test designs for
+              websites, mobile apps, and other digital products and experiences.
+              It is a popular tool for designers, product managers, writers and
+              developers and helps anyone involved in the design process
+              to contribute, give feedback, and make better decisions, faster
+              <a
+                href="https://help.figma.com/hc/en-us/articles/14563969806359"
+                target="_blank"
+                >... click to read the full article</a
+              >
+            </p>
+          </div>
+<br>
+          <div class="myIframe">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Cx2dkpBxst8?si=RNQWz95expMF9Sip" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+            
+<h4>How Figma relates to Scalable Vector Graphics</h4>
+            <hr>
+            <ul>              
+              <li>When you create designs in Figma, you are essentially working with vector elements that can be exported as SVG files. </li>
+                <li>In Figma, when you drag a rectangle or adjust its properties, you are actually creating and modifying SVG code behind the scenes. For example, when you:</li>
+              <ul>
+                <li>Draw a rectangle, Figma creates a <code class="code-custom-style">&lt;rect&gt; </code>element </li>
+                <li>Round its corners, Figma adds <code class="code-custom-style">rx</code> and <code class="code-custom-style">ry</code> attributes</li>
+                <li>Change its color, Figma modifies the <code class="code-custom-style">fill</code> attribute</li>
+                </ul>
+             <li>Figma is a "What You See Is What You Get" (WYSIWYG) interface where you manipulate visual elements directly and see exactly how the final result will look while you are working. </li>
+            </ul>
+
+          
+              <!-- prerequisites         -->
+          <h2 id="prerequisite">Pre-requisites: Create a Figma account and explore its interface</h2>
+          <hr />
+             
+            <p>
+              
+              Start by creating a <b>free Figma account</b> using your McMaster
+            email. <br> 
+              Follow the instructions from this link:
+            <a
+              href="https://help.figma.com/hc/en-us/articles/360039811114"
+              target="_blank"
+              >https://help.figma.com/hc/en-us/articles/360039811114</a
+            >
+          </p>
+
+          <h3>Explore Figma's Interface</h3>
+          <hr />
+          
+          Read the links below to learn about different sections of Figma's interface.
+          <ol>
+            <li>
+              Access design tools from the <b>toolbar</b>: 
+              <a
+                href="https://help.figma.com/hc/en-us/articles/360041064174-Access-design-tools-from-the-toolbar"
+                target="_blank"
+                >https://help.figma.com/hc/en-us/articles/360041064174-Access-design-tools-from-the-toolbar</a
+              >
+            </li>
+            <li>
+              View layers and pages in the <b>navigation panel (left sidebar)</b>:
+              <a
+                href="https://help.figma.com/hc/en-us/articles/360039831974-View-layers-and-pages-in-the-left-sidebar"
+                target="_blank"
+                >https://help.figma.com/hc/en-us/articles/360039831974-View-layers-and-pages-in-the-left-sidebar</a
+              >
+            </li>
+            <li>
+              Use the <b>properties panel (right sidebar)</b> with edit access:
+              <a
+                href="https://help.figma.com/hc/en-us/articles/360039832014-Design-prototype-and-explore-layer-properties-in-the-right-sidebar"
+                target="_blank"
+                >https://help.figma.com/hc/en-us/articles/360039832014-Design-prototype-and-explore-layer-properties-in-the-right-sidebar</a
+              >
+            </li>
+<!--             <li>
+              Adjust your zoom and view options:
+              <a
+                href="https://help.figma.com/hc/en-us/articles/360041065034-Adjust-your-zoom-and-view-options"
+                target="_blank"
+              >
+                https://help.figma.com/hc/en-us/articles/360041065034-Adjust-your-zoom-and-view-options</a
+              >
+            </li> -->
+          </ol>
+            
+          
+
+          <!--  activity1          -->
+
+          <h2 id="1activity">Explore Figma's basic shapes</h2>
+          <hr />
+
+          <ol>
+            <li><b>Open Figma</b> and select <b>Create New &gt; Design File</b></li>
+            <li><b>Name your file:</b> Use the <b>navigation panel (left panel)</b> to name your file "lab2 - basic shapes"</li>
+            <li><b>Create a frame:</b> Use the <b>Frame Tool in the toolbar</b> to draw a frame with dimensions 1100 x 500.</li>
+            <li><b>Draw shapes:</b> Inside the frame, use the <b>Shape Tools</b> to draw a <b>square</b>, a <b>circle</b>, an <b>ellipse</b>, a <b>line</b>, a <b>triangle</b>, and a <b>pentagon</b></li>
+              <li>Refer to this tutorial for guidance:  <a href="https://help.figma.com/hc/en-us/articles/360040450133-Shape-tools">https://help.figma.com/hc/en-us/articles/360040450133-Shape-tools</a></li>
+            <li>At the end of the exercise, your Figma project should look like the example shown below</li>
+          </ol>
+            <img  src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/Screenshot%20from%202025-01-08%2013-17-45.png?v=1736360283404">
+
+          <hr>
+          <h3>Styling</h3>
+          
+           <ol>
+             <li><b>Click on any shape</b> to activate its properties in the <b>Properties Panel (right sidebar)</b></li>
+             <li><b>Change the color</b> of each shape using <b>Fill</b> option on the <b>properties panel</b></li>
+              <li>At the end of the exercise, your Figma project should be similar the example shown below</li>
+          </ol>
+            <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/Screenshot%20from%202025-01-08%2015-23-15.png?v=1736367804325">
+          
+             <button type="button" class="collapsible-question"><i class="fa fa-question-circle-o"></i> <b>Curious about shape transformations in Figma?</b></button>
+        <div class="additionalInfo">           
+            <p>
+            Continue exploring Figma to transform your shapes into the design shown below
+          </p>
+        <br>
+        <img src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/Screenshot%20from%202025-01-08%2015-32-39.png?v=1736368453162">
+        </div>
+          
+                    <!--  activity 2          -->
+  <h2 id="2activity">Export your Figma file as SVG and explore it in VS Code</h2>
+          <hr />         
+          
+          <p>
+            Follow the interactive tutorial below to learn how to export your Figma file as an SVG.
+          </p>
+          
+          <div style="width:60%">
+          <div style="max-width: 100%; width: 800px; margin: 0 auto;"> <div style="display: none;"> <p style="display: none; text-align: center; margin-top: 10px;"> <i style="font-style: italic; font-weight: bold; color: #CCCCCC; font-size: 18px;">6 STEPS</i> </p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 1. Click the frame that contains all the shapes </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2493912&step_number=1&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 1 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 2. Locate the Export option at the bottom of the properties panel (right sidebar) </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2493912&step_number=2&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 2 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 3. Click to see the format options </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2493912&step_number=3&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 3 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 4. Select the SVG format </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2493912&step_number=4&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 4 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 5. Click Export and save the file in your computer </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2493912&step_number=5&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 5 image" /></p> <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 6. That's it. You're done. </p> <p style="text-align: center;"><img src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2493912&step_number=6&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5" style="max-width: 100%;max-height: 100%;border: none;" alt="Step 6 image" /></p> </div> </div> <h3 style="display: none; font-size: 18px; margin-top: 89px; margin-bottom: 15px;"> Here's an interactive tutorial </h3> <i style="display: none; font-size: 15px; margin-top: 0; margin-bottom: 43px;">** Best experienced in Full Screen (click the icon in the top right corner before you begin) **</i> <p style="display: none;"> <a href="https://www.iorad.com/player/2493912/Export-your-Figma-file-to-SVG">https://www.iorad.com/player/2493912/Export-your-Figma-file-to-SVG</a> </p> <p class="skiptranslate" style="border: 0; min-width: 100%; margin-bottom: 0; height: 501px;"><iframe src="https://www.iorad.com/player/2493912/Export-your-Figma-file-to-SVG?src=iframe&oembed=1" width="100%" height="500px" style="width: 100%; height: 500px; " referrerpolicy="strict-origin-when-cross-origin" frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen" allow="camera; microphone; clipboard-write;" sandbox="allow-scripts allow-forms allow-same-origin allow-presentation allow-downloads allow-modals allow-popups allow-popups-to-escape-sandbox allow-top-navigation allow-top-navigation-by-user-activation"></iframe></p> <div style="display: none;font-size: 18px; text-align: center;font-family: 'Libre Franklin', sans-serif;"> <br><br> <b style="font-weight: bold; color: #CCCCCC;"> Next step </b> <br><br> <div style="display: inline-block;"> <div style="display: table-row;"> <a style="display: table-cell;" href="http://ior.ad/live/asMo" target="_blank"> <img src="https://www.iorad.com/golive.svg" style="border: none;" alt="Go Live" /> </a> </div> </div> </div>
+          
+            </div>
+          
+          <hr>
+          <h3> Explore the SVG file in VS Code</h3>
+          
+          
+           <ol>   
+             <li>Open your exported SVG file by navigating to <b>VS Code &gt; File &gt; Open File</b></li>
+              <li>Read the code and see if you can identify <b>elements</b> and <b>attributes</b> similar to those from the previous lab</li> 
+             <li>What are these elements and attributes?</li>
+          </ol>
+          
+          
+          
+          <!--  activity 3          -->
+  <h2 id="3activity">Create a complex graphic by combining multiple shapes in Figma</h2>
+          <hr />          
+        
+          <ol>
+            <li>
+              <b>Create a new file:</b> Go to  <b><img src="https://cdn.glitch.global/eed6951b-68b3-49ce-bd86-8f99d8db706c/figmaicon.svg?v=1698699444344" style="width:2%; padding:0%"> -&gt; File -&gt; New Design File</b>
+            </li>
+            <li><b>Name your file:</b> Set the name to "lab2-potion"</li>
+            <li><b>Follow the tutorial:</b> Use the following tutorial to guide you through the process:
+            <a href="https://help.figma.com/hc/en-us/articles/13543867954711-Create-an-illustration-in-Figma-design" 
+               target="_blank">https://help.figma.com/hc/en-us/articles/13543867954711-Create-an-illustration-in-Figma-design</a></li>
+            <li><b>Export your illustration:</b> Save your illustration in SVG format</li>
+            <li>By the end of the exercise, your illustration should look like the one shown beloW</li>
+            <li><b>Optional:</b> Open your exported SVG file in VS Code to explore its code</li>
+          </ol>
+          
+          <img style="width:30%" src="https://cdn.glitch.global/9aaa64dd-f9ab-42a9-9a2a-665879d0b643/potion.png?v=1736381204231">
+
+         
+<!--  conclusion          -->
+          
+          <h2 id="conclusion">Assignment submission and assessment</h2>
+          <hr />
+<!--           <h3>
+            Submission 
+          </h3>
+ -->
+          <p>
+            <b>Submit</b> your <b>"lab2 - basic shapes.svg"</b> and <b>"lab2 - potion.svg"</b> files to the <b>"Interface Design Lab 2: Figma"</b> folder on Avenue to Learn under Assessments &gt; Assignments. 
+          </p>
+          
+          <h3>
+            Assessment 
+          </h3>
+          <ol>
+            <li><b>File Validity:</b> Both SVG files must be correctly exported as SVG and open without errors in a web browser or image viewer (2.5 points)</li>
+            <li><b>Figma's Basic Shapes:</b> The file "lab2 - basic shapes.svg" includes all shapes specified in Section 3: "Explore Figma's Basic Shapes" (2.5 points).</li>
+           
+            <li><b>Complex Graphics:</b> The file "lab2 - potion.svg" includes all shapes specified in Section 5: "Combine Multiple Shapes to Create Complex Graphics" (5 points)</li>
+<!--             <li><b>Structure:</b> The file contains a single main &lt;svg&gt; tag, and all shapes are coded within this tag (2.5 points</li> -->
+          </ol>
+  
+        
+          
+          <h2 id="extras">Continue learning</h2>
+          <hr />
+          <p>
+           Check out these activities if you want to continue learning.
+          </p>
+          
+          <ol>
+            <li><b>Read</b> the full article from the section <a href="#introduction">What is Figma and how it relates to Scalable Vector Graphics</a></li>
+            <li><b>Learn</b> how to create Pixel Art and explore Figma tools like <b>layout grids and pixel grid</b>: 
+               <a href="https://help.figma.com/hc/en-us/articles/14794362149015-Create-pixel-art-in-Figma-Design" target="_blank"
+                >https://help.figma.com/hc/en-us/articles/14794362149015-Create-pixel-art-in-Figma-Design</a></li>
+          </ol>
+       
+          
+        </div>
+      </div>
+<!-- footer -->
+    <footer class="footer">
+    </footer>
+  </body>
+</html>
