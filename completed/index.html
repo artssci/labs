@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collection Card</title>
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap"
+    rel="stylesheet">
+  <script src="app.js" defer></script>
+
+</head>
+
+<style>
+  .stranger-title {
+    font-family: 'EB Garamond', serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(229, 9, 20, 0.7);
+    /* Adds a subtle red glow */
+  }
+</style>
+
+<body>
+  <div id="app">
+    <v-app theme="light">
+      <v-main>
+
+       <v-card width="400" class="mx-auto bg-red elevation-12" > 
+          
+          <v-card-title>
+            {{ name }}
+          </v-card-title>
+
+          <v-card-subtitle>
+            {{birthday}} {{ birthplace }}
+          </v-card-subtitle>
+
+          <v-card-text>
+            {{ bio }}
+          </v-card-text>
+
+          <v-img :src="image"> </v-img>
+
+        </v-card>
+      </v-main>
+    </v-app>
+  </div>
+</body>
+
+</html>

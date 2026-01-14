@@ -51,47 +51,47 @@
         });
       }
 
- var coll = document.getElementsByClassName("collapsible-question");
-      var i;
+//  var coll = document.getElementsByClassName("collapsible-question");
+//       var i;
 
-      for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function () {
-          this.classList.toggle("active-collapsible-question");
-          var content = this.nextElementSibling;
-          if (content.style.display === "block") {
-            content.style.display = "none";
-          } else {
-            content.style.display = "block";
-          }
-        });
-      }
+//       for (i = 0; i < coll.length; i++) {
+//         coll[i].addEventListener("click", function () {
+//           this.classList.toggle("active-collapsible-question");
+//           var content = this.nextElementSibling;
+//           if (content.style.display === "block") {
+//             content.style.display = "none";
+//           } else {
+//             content.style.display = "block";
+//           }
+//         });
+//       }
 
- var coll = document.getElementsByClassName("collapsible-question-blue");
-      var i;
+//  var coll = document.getElementsByClassName("collapsible-question-blue");
+//       var i;
 
-      for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function () {
-          this.classList.toggle("active-collapsible-question");
-          var content = this.nextElementSibling;
-          if (content.style.display === "block") {
-            content.style.display = "none";
-          } else {
-            content.style.display = "block";
-          }
-        });
-      }
+//       for (i = 0; i < coll.length; i++) {
+//         coll[i].addEventListener("click", function () {
+//           this.classList.toggle("active-collapsible-question");
+//           var content = this.nextElementSibling;
+//           if (content.style.display === "block") {
+//             content.style.display = "none";
+//           } else {
+//             content.style.display = "block";
+//           }
+//         });
+//       }
 
- var coll = document.getElementsByClassName("collapsible-question-yellow");
-      var i;
+//  var coll = document.getElementsByClassName("collapsible-question-yellow");
+//       var i;
 
-      for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function () {
-          this.classList.toggle("active-collapsible-question");
-          var content = this.nextElementSibling;
-          if (content.style.display === "block") {
-            content.style.display = "none";
-          } else {
-            content.style.display = "block";
-          }
-        });
-      }
+//       for (i = 0; i < coll.length; i++) {
+//         coll[i].addEventListener("click", function () {
+//           this.classList.toggle("active-collapsible-question");
+//           var content = this.nextElementSibling;
+//           if (content.style.display === "block") {
+//             content.style.display = "none";
+//           } else {
+//             content.style.display = "block";
+//           }
+//         });
+//       }

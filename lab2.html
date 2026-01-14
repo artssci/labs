@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+
+  <link rel="icon" href="https://glitch.com/favicon.ico" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=refresh" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <title>Lab 2: Creating a Collectible Card</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="content" role="main">
+      <h1 class="title">Lab 2: Creating a Collectible Card</h1>
+
+
+      <div class="instructions">
+        <hr>
+        <h2 class="nocount">General Description</h2>
+        <p style="margin-left: 0"> Over the next two labs, you will build a <a
+            href="https://en.wikipedia.org/wiki/Trading_card" target="_blank">collectible card</a> (Lab 1) and a
+          card gallery (Lab
+          2) to house your collection. <br> <br>
+
+          In this first lab, you will practice working with <a href="https://www.w3schools.com/js/js_variables.asp"
+            target="_blank">variables</a> and <a href="https://www.w3schools.com/js/js_datatypes.asp"
+            target="_blank">data types</a>, specifically string. Once your data is defined, you will build a card
+          interface to display your JavaScript
+          values. </p>
+
+        <h2 class="nocount">Learning Objectives</h2>
+        <ol>
+          <li>Define and organize information using JavaScript variables and data types.</li>
+          <li>Render JavaScript data within a card using the <a href="https://vuetifyjs.com/en/"
+              target="_blank">Vuetify</a>
+            user <a href="https://en.wikipedia.org/wiki/User_interface" target="_blank">interface library</a>.</li>
+        </ol>
+
+        <h2 class="nocount">Table of Contents</h2>
+        <hr />
+        <ol>
+          <li><a href="#1">Choose a Theme</a></li>
+          <li><a href="#2">Describe Your Theme with Variables</a></li>
+          <li><a href="#3">Setup Starter Vuetify Code</a></li>
+          <li><a href="#4">Display Your Theme Data in a Card</a></li>
+          <li><a href="#5">Style the Card</a></li>
+          <li><a href="#6">Optional Challenge: Explore More Styling Options and Create Another Card</a></li>
+          <li><a href="#conclusion">Wrap Up & Saving Your Work</a></li>
+        </ol>
+
+        <h2 id="1">Choose a Theme</h2>
+        <hr>
+
+
+        <div class="definition">
+          <p>
+            <i class=""></i> Collectible cards can feature a wide variety of themes, such as
+            video game characters, professional athletes,
+            movie stars, or even categories like rare plants, vintage cameras, or books.
+          </p>
+        </div>
+
+        <ol>
+          <li><b>Brainstorm</b> a theme for your collection. While this lab uses characters
+            from the "Stranger Things" series as an example, you are encouraged to adapt the theme to a subject that
+            interests you. </li>
+          <li><b>Identify</b> 4-6 characteristics that describe your character or category (e.g., name, birthday,
+            release year, a short
+            description, etc).</li>
+          <li><b>Find and download</b> an image online that represents your chosen subject.</li>
+        </ol>
+
+        <div style="width: 100%; height: auto; display: flex;">
+          <img style="width: 50%; margin: auto;" src="images/cards-example.png" />
+        </div>
+
+        <h2 id="2">Describe Your Theme with Variables</h2>
+        <hr />
+        <p>In this step you will save the 4-6 characteristics from the step above into variables.</p>
+
+        <ol>
+          <li><b>Open</b> VS code and create a new file: <code>File > New Text File</code>. Save the file as
+            <code>app.js</code>
+          </li>
+          <li><b>Think of</b> variable names that could represent the 4-6 characteristics and type them in the file. See
+            example below:</li>
+        </ol>
+
+        <pre><code class="language-javascript" >
+const name = "Robin Buckley"; 
+const birthday = "March 10, 1968";
+const birthplace = "Hawkins, Indiana";
+const bio = "A clever and multilingual employee at Scoops Ahoy who becomes an essential member of the Hawkins crew after helping decode a secret Russian transmission.";
+const image = "robin-buckley.jpg"; 
+        </code></pre>
+
+        <h2 id="3">Setup Starter Vuetify Code</h2>
+        <hr>
+
+        <div class="definition">
+          <p>
+            <i class=""></i> Vuetify library that allows us to load pre-built
+            components, also known as <a href="https://www.techtarget.com/whatis/definition/widget"
+              target="_blank">widgets</a>, to create complex
+            user interfaces. This includes components/widgets such as <strong>interactive cards, navigation bars, data
+              tables,
+              buttons, and layout grids.</strong> <a href="https://vuetifyjs.com/en/" target="_blank">... click to learn
+              more</a>
+          </p>
+
+        </div>
+
+        <p> In this step, you will configure the boilerplate code, that is, the essential 'starter code' required to
+          connect Vuetify to your JavaScript file. </p>
+
+        <h3>Setup Vuetify Boilerplate Code in Your JavaScript File</h3>
+
+
+        <ol>
+          <li>In your app.js file, place the following starter code at the top, before your
+            variables: </li>
+
+          <pre><code class="language-javascript"> 
+const { createApp } = Vue;
+const { createVuetify } = Vuetify;
+const vuetify = createVuetify();
+</code></pre>
+
+          <li>In this same file, wrap your variables in a <code>App</code> structure so Vuetify can recognize
+            them. This includes returning your variables to make them available/accessible to display in the card that
+            we will create in step 4. Follow the example code below:</li>
+
+          <pre><code class="language-javascript"> 
+const App = {
+ setup() {
+
+  const name = "Robin Buckley";
+  const birthday = "March 10, 1968";
+  const birthplace = "Hawkins, Indiana";
+  const bio = "A clever and multilingual employee...";
+  const image = "images/robin-buckley.jpg";
+
+ return {
+   name,
+   birthday,
+   birthplace,
+   bio,
+   image
+  }
+ }
+}
+
+          </code></pre>
+
+
+          <li>Finally, add the following code at the end of the JavaScript file to connect the app logic to an HTML
+            file, which we will create in step 3.2:</li>
+
+          <pre><code class="language-javascript"> 
+createApp(App).use(vuetify).mount('#app');
+ </code></pre>
+
+        </ol>
+
+        <h3>Setup HTML Boilerplate Code</h3>
+
+        <div class="definition">
+          <p>
+            <i class=""></i> Before we can see our character card, we need a place for it to live. This is where <a href="https://en.wikipedia.org/wiki/HTML" target="_blank">
+              HTML
+              (HyperText Markup Language)
+            </a> comes in to help us structure our document.
+
+            <br><br>
+
+            In a Vuetify project, think of HTML as the skeleton of your application. While JavaScript
+            (your
+            app.js) handles the data and the logic, the HTML file provides the actual
+            containers/components/widgets
+            where
+            that data will be displayed.
+          </p>
+        </div>
+
+
+
+
+
+        <ol>
+          <li>In VS Code, create a new text file named <code>index.html</code>.</li>
+          <li>VS code allow us to generate the HTML starter code automatically by typing <code>!</code> and pressing
+            <code>Enter</code> (Windows) or
+            <code>Return</code> (Mac). If you do this, you should see a structure like the one below:
+          </li>
+
+          <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+          <br>
+
+          <details class="info-box">
+            <summary>
+              <i class="fa fa-info-circle"></i> <b>What does this HTML code mean?</b>
+            </summary>
+            <div class="additionalInfo">
+              <p>This infographic explains how the different lines of code work together!</p>
+              <img src="images/html-infographic.png" alt="HTML Infographic" />
+
+            </div>
+          </details>
+
+
+          <br><br>
+
+          <li>Inside the <code>&lt;head&gt;</code> section, add the following links to load Vuetify components, styles,
+            and icons:</li>
+
+          <pre><code class="language-html">
+&lt;link href="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.css" rel="stylesheet"&gt;
+&lt;link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.x/css/materialdesignicons.min.css" rel="stylesheet"&gt;
+&lt;script src="https://unpkg.com/vue@3/dist/vue.global.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.js"&gt;&lt;/script&gt;
+</code></pre>
+
+          <li>Finally, add the following line immediately after the libraries in the
+            <code>&lt;head&gt;</code>. This will connect your JavaScript file (app.js). Please, ensure your file is
+            named exactly <code>app.js</code>:
+          </li>
+
+          <pre><code class="language-html">
+  &lt;script src="app.js" defer&gt;&lt;/script&gt;
+    </code></pre>
+        </ol>
+
+        <h2 id="4">Display Your Theme Data in a Card</h2>
+        <hr>
+
+        <div class="definition">
+          <p>
+            <i class=""></i> It is time to build the actual card! In this step, you will code the actual sections of a
+            card and will display you variables' data/values in these sections. Finally, you will visualize your card in
+            a browser.
+          </p>
+        </div>
+
+
+        <ol>
+          <li>Find the <code>&lt;body&gt;</code> tag in your index.html file. Inside it, add a <code>&lt;div&gt;</code>
+            with the command <code>id</code> and the value <code>"app"</code>. This is where the app is initialized and
+            is required for every app project.
+          </li>
+
+          <pre><code class="language-html">
+  &lt;div id="app"&gt;
+  &lt;/div&gt;
+  </code></pre>
+
+          <li>Inside your <code>&lt;div&gt;</code> add the <code>&lt;v-app&gt;</code> and <code>&lt;v-main&gt;</code>
+            tags. This is also required for every Vuetify project.
+            <ul>
+              <li>&lt;v-app&gt;: It sets up the base styles (like fonts and
+                colors).</li>
+
+              <li>&lt;v-main&gt;: This tells Vuetify where your content lives.</li>
+            </ul>
+          </li>
+          <pre><code class="language-html">
+&lt;v-app&gt;
+  &lt;v-main&gt;
+    &lt;/v-main&gt;
+&lt;/v-app&gt;
+</code></pre>
+
+          <li>Inside <code>&lt;v-main&gt;</code>, we will add a <code>&lt;v-card&gt;</code>. This is what will display a
+            card!</li>
+
+          <pre><code class="language-html">
+&lt;v-app&gt;
+  &lt;v-main&gt;
+  &lt;v-card&gt;
+   &lt;/v-card&gt;
+    &lt;/v-main&gt;
+&lt;/v-app&gt;
+</code></pre>
+
+          <li>Inside your &lt;v-card&gt; add the sections: <code> &lt;v-card-title&gt;</code>,
+            <code>&lt;v-card-subtitle&gt;</code>, <code>&lt;v-card-text&gt;</code>, and <code>&lt;v-img</code>.
+            <ul>
+              <li>To show the data from your app.js file, place your variables names inside double curly braces {{ }},
+                one at a time. This procedure will replace the name of the variable with its actual value.</li>
+              <li>For images, we use a colon (<code>:</code>) before <code>src</code> to return the variable from the
+                JavaScript file.</li>
+            </ul>
+          </li>
+
+          <pre><code class="language-html">
+&lt;v-card&gt;
+  &lt;v-card-title&gt;
+   {{ name }} 
+  &lt;/v-card-title&gt;
+
+  &lt;v-card-subtitle&gt;
+    {{birthday}} {{ birthplace }}
+  &lt;/v-card-subtitle&gt;
+
+  &lt;v-card-text&gt;
+    {{ bio }}
+  &lt;/v-card-text&gt;
+
+  &lt;v-img :src="image"&gt; &lt;/v-img&gt;
+
+&lt;/v-card&gt;
+</code></pre>
+
+          <details class="info-box">
+            <summary>
+              <i class="fa fa-info-circle"></i> <b>What is the anatomy of a card?</b>
+            </summary>
+            <div class="additionalInfo">
+              <p>Go to this link to learn about the different parts of a card: <br>
+                <a href="https://vuetifyjs.com/en/components/cards/#anatomy"
+                  target="_blank">https://vuetifyjs.com/en/components/cards/#anatomy</a>
+              </p>
+
+            </div>
+          </details>
+          <br>
+
+          <li>To see your work, save your changes and open a new tab in your browser (Chrome recommended). Then, press
+            Ctrl + O (Windows) or Cmd + O (Mac) and select your index.html file.
+            <ul>
+              <li>Alternatively, you can open the folder where you saved your work and simply drag the index.html file
+                directly into your browser window.</li>
+            </ul>
+          </li>
+
+
+
+          <div style="width: 100%; height: auto; display: flex;">
+            <img style="width: 70%; margin: auto;" src="images/card-non-styled.png" />
+          </div>
+
+          <div class="tip"> <strong>💡 Troubleshooting Tip:</strong> If you see a blank page, make sure you have saved
+            both your app.js and index.html files (Ctrl + S). Also, check that your app.js and index.html are in the
+            same folder!
+          </div>
+
+        </ol>
+
+        <h2 id="5">Style the Card</h2>
+        <hr />
+
+        <p>Vuetify provides additional commands that go inside the components to style them. In this step, you will
+          resize and ceter your card, and play with the background color and elevation.
+        </p>
+
+        <ol>
+          <li><b>Sizing the Card:</b> By default, your card is very wide. Use the command <code>width</code> and a value
+            such as <code>"400"</code> to limit the card width.
+            <ul>
+              <li>You can try other values to see how the card resizes accordingly. You can also use percentages like
+                <code>"25%"</code>.
+              </li>
+            </ul>
+
+            <pre><code class="language-html">
+&lt;v-card width="400"&gt;
+            </code></pre>
+          </li>
+
+          <div class="tip"> <strong>💡 Troubleshooting Tip:</strong> To see your changes in style, refresh <span
+              class="material-symbols-outlined">refresh</span> the page after saving your changes in the HTML file.
+          </div>
+          <br>
+
+
+          <li><b>Centering the Card:</b> By default, your card appears on the left side of the browser. Use the command
+            <code>class</code> and a value such as <code>"mx-auto"</code>, which allows to center elements
+            horizontally (x axis).
+            <ul>
+              <li>
+                Check other spacing values here: <a href="https://vuetifyjs.com/en/styles/spacing/#usage"
+                  target="_blank">https://vuetifyjs.com/en/styles/spacing/#usage</a>.
+              </li>
+            </ul>
+            <pre><code class="language-html">
+&lt;v-card width="400" class="mx-auto"&gt; 
+            </code></pre>
+
+          <li><b>Changing Background Color:</b> You can change the background color using the same <code>class</code>
+            command. Just add the value <code>bg-</code> followed by a color name like <code>red</code>.
+            <ul>
+              <li>Explore other colors here: <a href="https://vuetifyjs.com/en/styles/colors/#material-colors"
+                  target="_blank">https://vuetifyjs.com/en/styles/colors/#material-colors</a>.</li>
+            </ul>
+
+
+
+            <pre><code class="language-html">
+&lt;v-card width="400" class="mx-auto bg-red" &gt; 
+            </code></pre>
+          </li>
+
+          <li><b>Adding Elevation:</b> Elevation is a shadow that will make the card pop off the page. In the
+            <code>class</code> command, add the value
+            <code>elevantion-</code> and a number up to 24.
+
+            <pre><code class="language-html">
+&lt;v-card width="400" class="mx-auto" color="red elevation-12" &gt; 
+            </code></pre>
+          </li>
+
+          <div style="width: 100%; height: auto; display: flex;">
+            <img style="width: 80%; margin: auto;" src="images/card-styled.png" />
+          </div>
+
+        </ol>
+
+        <h2 id="6">Optional Challenge: Explore More Styling Options and Create Another Card</h2>
+        <hr>
+
+          <div class="definition">
+          <p>
+            <i class=""></i>   Try the following activities if you are up for a challenge, otherwise, jump to the final section "Wrap Up &
+          Saving Your Work" below.
+          </p>
+        </div>
+
+
+        <h3>Styling Activities</h3>
+        <ul>
+          <li><b>Explore spacing:</b> Explore Vuetify documentation to learn how to add margins/spacing
+            <br> <a href="https://vuetifyjs.com/en/styles/spacing/#usage"
+              target="_blank">https://vuetifyjs.com/en/styles/spacing/#usage</a>
+          </li>
+          <li><b>Change the text color:</b> Explore Vuetify documentation to learn how to change the text color <br>
+            <a href="https://vuetifyjs.com/en/styles/colors/#classes"
+              target="_blank">https://vuetifyjs.com/en/styles/colors/#classes</a>
+          </li>
+          <li><b>Change the text size:</b> Explore Vuetify documentation to learn how to change the text size <br>
+            <a href="https://vuetifyjs.com/en/styles/text-and-typography/#usage"
+              target="_blank">https://vuetifyjs.com/en/styles/text-and-typography/#usage</a>
+          </li>
+        </ul>
+
+
+
+        <h3>Create Another Card</h3>
+        <p> Now that you have one card working, try adding a second character or item to your collection! This will test
+          your ability to link new data from JavaScript to your HTML. </p>
+
+        <ol>
+          <li> Create new variables in your app.js file (e.g., <code>name2</code>, <code>bio2</code>,
+            <code>image2</code>).
+            <ul>
+              <li> You must add these new names to the
+                <code>return { ... }</code> block at the bottom of your <code>setup()</code> function, or the HTML won't
+                be able to "see" them.
+              </li>
+            </ul>
+          </li>
+          <li> Back in the index file, find the closing <code>&lt;/v-card&gt;</code> of your first card. </li>
+          <li> Immediately below that closing tag, create a new card starting with another <code>&lt;v-card&gt;</code>.
+
+
+            <pre><code class="language-html">
+&lt;!-- First Card --&gt;
+&lt;v-card width="400class="mx-auto bg-red elevation-12" &gt;
+  &lt;v-card-title&gt;{{ name }}&lt;/v-card-title&gt;
+  &lt;!-- Other sections (title, sub-title, image, etc) --&gt;
+&lt;/v-card&gt;
+
+&lt;!-- Second Card Starts Here --&gt;
+&lt;v-card width="400" class="mx-auto mt-5 bg-blue" &gt;
+  &lt;v-img :src="image2" height="200" cover&gt;&lt;/v-img&gt;
+  &lt;v-card-title&gt;{{ name2 }}&lt;/v-card-title&gt;
+  &lt;v-card-text&gt;{{ bio2 }}&lt;/v-card-text&gt;
+&lt;/v-card&gt;
+</code></pre>
+          </li>
+
+        </ol>
+
+
+        <h2 id="conclusion">Wrap Up & Saving Your Work</h2>
+        <hr />
+
+        <p> Congratulations! Today, you bridged the gap between raw data (JavaScript) and visual design (Vuetify/HTML) by coding a styled collectible card.
+        </p>
+
+        <h3>What You Achieved Today:</h3>
+        <ul>
+          <li><strong>Data Storage:</strong> You used JavaScript variables to store character information using text (<code>string</code> data type).
+          </li>
+          <li><strong>App Setup:</strong> You connected a JavaScript file to an HTML file using boilerplate/starte code.
+          </li>
+          <li><strong>Component Architecture:</strong> You used Vuetify tags like <code>&lt;v-card&gt;</code> and
+            <code>&lt;v-img&gt;</code> to build a professional UI.
+          </li>
+          <li><strong>Attribute Binding:</strong> You used <code>{{ }}</code> and <code>:src</code> to dynamically pull data from your JavaScript file.</li>
+        </ul>
+
+        <div class="tip"> <strong>Next Steps:</strong> We aren't finished with our collection yet! In Part 2 of this
+          lab
+          next week, you will learn how to handle multiple cards at once using <strong>Arrays</strong> and
+          <strong>Loops</strong>, and you will code additionally interactivity.
+        </div>
+
+        <h3>Save for Next Week:</h3>
+        <p> There is no formal submission today, however, please ensure your project is saved correctly in your
+            computer and ready to use next class.
+        </ol>
+      </div>
+    </div>
+
+    <footer class="footer">
+    </footer>
+  </div>
+</body>
+
+</html>
