@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+  <link rel="icon" href="https://glitch.com/favicon.ico" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=refresh" />
+  <title>Lab 3: Building a Card Gallery</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="content" role="main">
+      <h1 class="title">Lab 3: Building a Card Gallery</h1>
+
+      <div class="instructions">
+        <hr>
+        <h2 class="nocount">General Description</h2>
+        <p style="margin-left: 0">
+          In the previous lab, you created a single collectible card.
+          Today, you will upgrade your project into a <strong>Card Gallery</strong>.
+          <br><br>
+          You will learn how to manage multiple items using <strong>Arrays</strong> and <strong>Objects</strong>, and
+          use the <strong>Vuetify Grid system</strong> to automatically organize your cards into rows and columns that
+          look great on any screen size.
+        </p>
+
+        <h2 class="nocount">Learning Objectives</h2>
+        <ol>
+          <li>Organize multiple data entries using a JavaScript <strong>Array of Objects</strong>.</li>
+          <li>Use Vuetify <code>v-for</code> <strong>loop</strong> to dynamically generate a list of cards.</li>
+          <li>Implement a responsive layout using Vuetify's <strong>Grid System</strong>.</li>
+
+        </ol>
+
+        <h2 class="nocount">Table of Contents</h2>
+        <hr />
+        <ol>
+          <li><a href="#1">Expanding Your Data Collection</a></li>
+          <li><a href="#2">Organizing Data with an Array of Objects</a></li>
+          <li><a href="#3">Generating Cards with the v-for Loop</a></li>
+          <li><a href="#4">Styling and Layout for the Card Gallery</a></li>
+          <li><a href="#5">Adding a Global App Bar</a></li>
+          <li><a href="#optional-challenge">Optional Challenge: Dynamic Counters</a></li>
+          <li><a href="#6">Publishing Your Gallery With GitHub Pages</a></li>
+          <li><a href="#conclusion">Wrap Up & Sharing Your Work</a></li>
+        </ol>
+
+        <h2 id="1">Expanding Your Data Collection</h2>
+        <hr>
+
+        <div class="definition">
+          <p>
+            <i class=""></i>In Lab 1, you created a single card. Now, we are going to build a full gallery. To make your
+            gallery look great, you need a larger set of data to loop through.
+          </p>
+        </div>
+
+        <ol>
+          <li><b>Identify</b> another 6-8 items (characters, athletes, plants, etc.) that fit your chosen
+            theme from lab 1.
+            <ul>
+              <li>To make your cards look consistent, every item in your collection must have the
+                same fields (e.g., name, birthplace, bio, etc). </li>
+            </ul>
+          </li>
+
+          <li><b>Download</b> an image for each new item. For the best-looking gallery:
+            <ul>
+              <li>Try to find images that are the same shape (all horizontal or all vertical).</li>
+              <li>For better organization, save all your images into a dedicated folder named <b>images</b>. Create this
+                folder in the same place where your index.html and app.js files are located.</li>
+            </ul>
+          </li>
+        </ol>
+
+
+
+        <h2 id="2">Organizing Data with an Array of Objects</h2>
+        <hr>
+        <div class="definition">
+          <p>
+            An <a href="https://www.w3schools.com/js/js_arrays.asp" target="_blank"><strong>Array</strong></a> is like a
+            <b>container that holds a list of items</b>. Array uses square brackets <code>[ ]</code> to hold the items.
+            <br>
+            An <a href="https://www.w3schools.com/js/js_objects.asp" target="_blank"><strong>Object</strong></a> is a
+            <b>variable that can hold many variables</b>. Objects use
+            curly braces <code>{}</code> to group the variables (e.g., name, bio, and image).
+          </p>
+        </div>
+
+        <p>In this step, you will create a single array that holds multiple objects, with each object containing your
+          variables.</p>
+
+        <ol>
+          <li><b>Open</b> your <code>app.js</code> file from Lab 1.</li>
+          <li><b>Wrap</b> the variables from your first card inside an object:
+            <ul>
+              <li>Place the variables inside curly brackets <code>{ }</code></li>
+              <li>Remove the <code>const</code> keywords</li>
+              <li>Change the asignment operator of each variable from <code>=</code> to <code>:</code></li>
+              <li>Separate the variables with commas so the computer knows where one ends and the next begins</li>
+            </ul>
+
+
+            <pre><code class="language-javascript">
+{
+name: "Robin Buckley",
+info: "March 10, 1968 | Hawkins",
+bio: "A clever and multilingual employee at Scoops Ahoy...",
+image: "images/robin.jpg"
+}
+</code></pre>
+
+            <br>
+            <div class="tip"> <strong>💡</strong> Inside curly braces, we use a colon : to connect a label to its data.
+              Think of it like a name tag: the label is on the left, and the data is on the right.
+            </div>
+            <br>
+
+          </li>
+
+
+          <li>
+            <b>Repeat</b> the process with the rest of your items, using the same variable names (e.g., name, info, bio,
+            image)
+            for each object:
+
+            <pre><code class="language-javascript">
+{
+name: "Robin Buckley",
+info: "March 10, 1968 | Hawkins",
+bio: "A clever and multilingual employee at Scoops Ahoy...",
+image: "images/robin.jpg"
+}
+
+{
+name: "Steve Harrington",
+info: "1966 | Hawkins",
+bio: "Former high school king turned babysitter extraordinaire...",
+image: "images/steve.jpg"
+}
+
+{
+name: "Dustin Henderson",
+info: "1971 | Hawkins",
+bio: "The brains of the operation with a love for science...",
+image: "images/dustin.jpg"
+}
+</code></pre>
+          </li>
+
+          <li> <b>Wrap</b> the objects inside an array:
+            <ul>
+              <li>Place the objects inside square brackets <code>[ ]</code></li>
+              <li>Separate the objects with commas so the computer knows where one ends and the next begins</li>
+              <li>Give the array a name using the <code>const</code> keyword</li>
+            </ul>
+
+
+            <pre><code class="language-javascript">
+const collection = [
+            {
+            name: "Robin Buckley",
+            info: "March 10, 1968 | Hawkins",
+            bio: "A clever and multilingual employee at Scoops Ahoy...",
+            image: "images/robin.jpg"
+            }, // <--- Don't forget the comma!
+            {
+            name: "Steve Harrington",
+            info: "1966 | Hawkins",
+            bio: "Former high school king turned babysitter extraordinaire...",
+            image: "images/steve.jpg"
+            },
+            {
+            name: "Dustin Henderson",
+            info: "1971 | Hawkins",
+            bio: "The brains of the operation with a love for science...",
+            image: "images/dustin.jpg"
+            }
+    ]
+</code></pre>
+          </li>
+
+          <li> Finally, <b>add</b> the name of your array to the <code>return</code> section at the bottom of your
+            app.js. This will ensure your array is accessible from
+            the index.html file in the next step.
+
+            <pre><code class="language-javascript">
+return {
+  collection
+}
+    </code></pre>
+          </li>
+
+        </ol>
+
+
+
+        <h2 id="3">Generating Cards with the v-for Loop</h2>
+        <hr />
+
+        <div class="definition">
+          <p>
+            In Lab 1, you had to code each Vuetify card individually. With <code>v-for</code>, you only write the card
+            (or any component)
+            <strong>once</strong>, and it gets repeated for every item in your array!
+          </p>
+        </div>
+
+
+
+        <ol>
+          <li>Open your <code>index.html</code> from lab 1.</li>
+          <li>Inside your <code>&lt;v-card&gt;</code>, add the <code>v-for</code> command with the value "item in
+            collection".
+
+            <div class="tip">
+              <strong>💡</strong> If you are using a different name in your array in step 2 above, use
+              that name
+              instead of "collection". For example if your array name is "characters", then type "item in characters"
+            </div>
+
+            <pre><code class="language-html">
+&lt;v-card v-for="item in collection" width="400" class="mx-auto bg-red elevation-12"  &gt;
+        </code></pre>
+          </li>
+
+          <li>Add an identifier to each of the cards using the <code>key</code> command with a value such as
+            "item.name".
+            <ul>
+              <li>The keyword <code>item</code> followed by a dot <code>.</code> provides access to the
+                <code>name</code> variable from the object in turn.
+              </li>
+              <li>Add a colon <code>:</code> to the <code>key</code> command to reach/read the data from the
+                <code>name</code> variable in your object.
+              </li>
+            </ul>
+
+            <pre><code class="language-html">
+&lt;v-card v-for="item in collection" :key="item.name" width="400" class="mx-auto bg-red elevation-12"  &gt;
+        </code></pre>
+          </li>
+
+          <li>Add the <code>item.</code> keyword before each of your variables in the card. This allows reading the
+            variable inside the object in turn.
+
+            <pre><code class="language-html">
+  &lt;v-card-title&gt; {{ item.name }} &lt;/v-card-title&gt;
+  &lt;v-card-subtitle&gt; {{ item.birthplace }} &lt;/v-card-subtitle&gt;
+  &lt;v-card-text&gt; {{ item.bio }} &lt;/v-card-text&gt;
+  &lt;v-img :src="item.image" height="200" cover&gt;&lt;/v-img&gt;
+        </code></pre>
+
+
+            <br>
+            <details class="info-box">
+              <summary>
+                <i class="fa fa-info-circle"></i> <b>What is the dot <code>.</code> doing?</b>
+              </summary>
+              <div class="additionalInfo">
+                <p>The dot is called a property accessor. It provides access to an object's properties/variables.</p>
+
+                <p>The syntax is:</p>
+
+                <pre><code class="language-javascript">
+objectName.propertyName
+        </code></pre>
+
+                <p>Check full explanation here: <br>
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors"
+                    target="_blank">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors</a>
+                </p>
+
+              </div>
+            </details>
+            <br><br>
+          </li>
+
+          <li>To see your work, save your changes and open a new tab in your browser (Chrome recommended). Then, press
+            Ctrl + O (Windows) or Cmd + O (Mac) and select your index.html file.
+            <ul>
+              <li>Alternatively, you can open the folder where you saved your work and simply drag the index.html file
+                directly into your browser window.</li>
+            </ul>
+          </li>
+
+          <div style="width: 100%; height: auto; display: flex;">
+            <img style="width: 70%; margin: auto;" src="images/cards-vertically-stacked.gif" />
+          </div>
+        </ol>
+
+
+
+        <h2 id="4">Styling and Layout for the Card Gallery</h2>
+        <hr>
+
+        <h3>Aligning Your Card horizontally</h3>
+
+        <div class="definition">
+          <p>
+            Vuetify uses a <a href="https://vuetifyjs.com/en/components/grids/#usage">12-column grid system</a>. It uses
+            <strong>v-row</strong> which is a container for columns, and <strong>v-col</strong> which defines how much
+            space an
+            element takes.
+          </p>
+        </div>
+
+        <ol>
+          <li>Wrap your <code>&lt;v-card&gt;</code> inside a <code>&lt;v-container&gt;</code>, a
+            <code>&lt;v-row&gt;</code>, and <code>&lt;v-col&gt;</code>.
+          </li>
+
+          <pre><code class="language-html">
+&lt;v-container&gt;
+  &lt;v-row&gt;
+    &lt;v-col&gt;
+      
+      &lt;v-card v-for="item in collection" :key="item.name" width="400" class="mx-auto bg-red elevation-12"  &gt;
+        &lt;v-card-title&gt;{{ item.name }}&lt;/v-card-title&gt;
+        &lt;v-card-subtitle&gt;{{item.birthday}} {{ item.birthplace }}&lt;/v-card-subtitle&gt;
+        &lt;v-card-text&gt;{{ item.bio }}&lt;/v-card-text&gt;
+        &lt;v-img :src="item.image"&gt; &lt;/v-img&gt;
+      &lt;/v-card&gt;
+
+    &lt;/v-col&gt;
+  &lt;/v-row&gt;
+&lt;/v-container&gt;
+        </code></pre>
+
+
+          <li>Move the <code>v-for</code> and the <code>:key</code> from the <code>&lt;v-card&gt;</code> to the
+            <code>&lt;v-col&gt;</code>. This
+            will make Vuetify to create
+            a new column for every card.
+          </li>
+
+          <pre><code class="language-html">
+&lt;v-container&gt;
+  &lt;v-row&gt;
+    &lt;v-col v-for="item in collection" :key="item.name" &gt;
+      
+      &lt;v-card width="400" class="mx-auto bg-red elevation-12"  &gt;
+      &lt;v-card-title&gt;{{ item.name }}&lt;/v-card-title&gt;
+        &lt;v-card-subtitle&gt;{{item.birthday}} {{ item.birthplace }}&lt;/v-card-subtitle&gt;
+        &lt;v-card-text&gt;{{ item.bio }}&lt;/v-card-text&gt;
+        &lt;v-img :src="item.image"&gt; &lt;/v-img&gt;
+      &lt;/v-card&gt;
+
+    &lt;/v-col&gt;
+  &lt;/v-row&gt;
+&lt;/v-container&gt;
+        </code></pre>
+
+          <li>Inside <code>&lt;v-col&gt;</code> add the command <code>cols</code> and the value <code>"3"</code>. This
+            will divide the grid into 4 colums (12/3 = 4), placing one card per column.</li>
+
+          <pre><code class="language-html">
+&lt;v-col cols="3" v-for="item in collection" :key="item.name" &gt;
+        </code></pre>
+
+
+          <li>Finally, see <b>save</b> your changes and <b>refresh</b> the browser to see your cards horizontally
+            aligned.</li>
+
+          <div style="width: 100%; height: auto; display: flex;">
+            <img style="width: 70%; margin: auto;" src="images/cards-horizontally-3-columns.png" />
+          </div>
+        </ol>
+
+        <h3>Styling the Cards</h3>
+
+
+        <ol>
+          <li><b>Remove Fixed Width:</b> Delete the <code>width</code> and the <code>mx-auto</code> from your
+            <code> &lt;v-card&gt;</code>.
+
+            <div class="tip"><strong>💡</strong> In a grid, the column (v-col) should decide how wide the card is. If you keep a fixed width
+              (e.g., "400"),
+              the card will overflow of its column on smaller screens or look off-center. By removing it, the card will
+              automatically fill the column perfectly.
+            </div>
+
+            <pre><code class="language-html">      
+  &lt;v-card class="bg-red elevation-12"&gt;
+        </code></pre>
+
+          </li>
+
+          <li><b>Standardize the Height:</b>Add height="500" to your <code>&lt;v-card&gt;</code>.
+
+            <div class="tip"><strong>💡</strong> Because some characters have short bios and others have long ones, your cards will
+              naturally
+              be
+              different lengths. This creates an uneven look where the rows don't line up. Setting a fixed height forces
+              every card to be identical, creating a clean, professional gallery.</div>
+
+            <pre><code class="language-html">      
+&lt;v-card height="500" class="bg-red elevation-12"&gt;
+        </code></pre>
+
+          </li>
+
+          <!-- <li><b>Control the Gaps:</b> In <code>&lt;v-row&gt;</code>, add the command <code>class</code> and a value of
+            <code>"ga-2"</code>.
+
+            <div class="tip">Play with values from from 0 to 16 (More infor here: <br>
+               <a
+                href="https://vuetifyjs.com/en/styles/spacing/#usage"
+                target="_blank">https://vuetifyjs.com/en/styles/spacing/#usage</a></div>
+
+
+            <pre><code class="language-html">
+  &lt;v-row class="ga-2"&gt;  
+        </code></pre>
+
+          </li>
+ -->
+
+          <li><b>Save you changes and refresh</b> the page to see the results.
+
+            <div style="width: 100%; height: auto; display: flex;">
+              <img style="width: 70%; margin: auto;" src="images/cards-horizontally-3-columns -w-styling.png" />
+            </div>
+          </li>
+
+
+        </ol>
+
+
+
+        <section id="5">
+          <h2>Adding A Global App Bar</h2>
+          <hr>
+
+          <p>Let's create an app bar where we can add the title of our app.</p>
+
+          <ol>
+            <li>
+              Below <code>&lt;v-app&gt;</code>, add <code>&lt;v-app-bar&gt;</code>.
+              <pre><code class="language-html">      
+  &lt;v-app-bar&gt;
+  &lt;/v-app-bar&gt;
+        </code></pre>
+            </li>
+
+            <li>
+              Inside <code>&lt;v-app-bar&gt;</code>, add <code>&lt;v-app-bar-title&gt;</code> and type a title inside.
+
+              <pre><code class="language-html">      
+  &lt;v-app-bar&gt;
+    &lt;v-app-bar-title&gt; 
+     Stranger Things Gallery
+    &lt;/v-app-bar-title&gt;  
+  &lt;/v-app-bar&gt;
+        </code></pre>
+            </li>
+
+
+            <div style="width: 100%; height: auto; display: flex;">
+              <img style="width: 70%; margin: auto;" src="images/app-bar.png" />
+            </div>
+
+            <!-- <li>
+              <strong>Add a Spacer:</strong> Use the <code>&lt;v-spacer&gt;&lt;/v-spacer&gt;</code> tag after your
+              title. This acts like a "spring" that pushes everything after it to the right side of the bar.
+            </li> -->
+            <!-- <li>
+              <strong>Create the Shuffle Button:</strong> Add a <code>&lt;v-btn&gt;</code> with an
+              <code>@click="shuffleCards"</code> attribute. This tells Vue to run your shuffle logic whenever the button
+              is clicked.
+            </li> -->
+            <!-- <li>
+              <strong>Wrap Content in v-main:</strong> Wrap your <code>&lt;v-container&gt;</code> inside a
+              <code>&lt;v-main&gt;</code> tag. This ensures your cards don't get hidden underneath the floating App Bar.
+            </li> -->
+          </ol>
+        </section>
+
+        <section id="optional-challenge">
+          <h2> Optional Challenge: Change the App Bar Color and Add a Footer</h2>
+          <hr>
+
+          <h3>Change the App Bar Color</h3>
+
+          <p>Ready to go the extra mile? Let's customize the app bar using Vuetify's built-in color utilities and Google
+            Fonts.</p>
+
+          <ol>
+            <li>
+              <strong>Change the App Bar Background Color:</strong> Explore Vuetify documentation to learn how to change
+              the background color <br>
+              <a
+                href="https://vuetifyjs.com/en/styles/colors/#classes">https://vuetifyjs.com/en/styles/colors/#classes</a>
+            </li>
+            <li>
+              <strong>Change the App Bar Text Color:</strong> Explore Vuetify documentation to learn how to change the
+              text color <br>
+              <a
+                href="https://vuetifyjs.com/en/styles/colors/#classes">https://vuetifyjs.com/en/styles/colors/#classes</a>
+            </li>
+          </ol>
+
+
+          <h3>Create a Footer</h3>
+          <p> Now that you have one card working, try adding a footer at the bootom of the app to display your name and
+            the current date. This will test
+            your ability to code Vuetify components on your own. </p>
+
+          <ol>
+
+            <li>
+              Explore Vuetify documentation to learn how to add a footer <br>
+              <a href="https://vuetifyjs.com/en/components/footers/">https://vuetifyjs.com/en/components/footers/</a>
+            </li>
+            <li>
+              Inside the footer type your name and the date.
+            </li>
+        </section>
+
+
+        <section id="6">
+          <h2>Publishing Your Gallery With GitHub Pages</h2>
+          <hr>
+
+          <div class="definition">
+            <p>
+              Now that your Stranger Things gallery is complete, let's put it on the internet for everyone to see!
+              <br><br>
+              To publish your page you will use GitHub Pages, which is a site hosting service designed to host personal,
+              organization pages directly from a GitHub repository. It is a simple, free way to publish websites online.
+            </p>
+          </div>
+          <ol>
+            <li><b>Go to</b> <a href="https://github.com/" target="_blank">https://github.com/</a>.</li>
+            <li><b>Create</b> an account using <b>your McMaster email</b>.</li>
+            <li><b>Follow</b> the interactive tutorial below to learn how to setup a GitHub repository and upload and
+              publish your app.</li>
+
+          </ol>
+
+
+          <div style="max-width: 100%; width: 800px; margin: 0 auto;">
+            <div style="display: none;">
+              <p style="display: none; text-align: center; margin-top: 10px;"> <i
+                  style="font-style: italic; font-weight: bold; color: #CCCCCC; font-size: 18px;">24 STEPS</i> </p>
+              <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 1. Click <b
+                  style="font-weight:normal;color:#FF00D6">Sign up </b>and create an account </p>
+              <p style="text-align: center;"><img
+                  src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2671569&step_number=1&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5"
+                  style="max-width: 100%;max-height: 100%;border: none;" alt="" /></p>
+              <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 2. <b
+                  style="font-weight:normal;color:#FF00D6">Sign in</b>, after creating your account </p>
+              <p style="text-align: center;"><img
+                  src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2671569&step_number=2&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5"
+                  style="max-width: 100%;max-height: 100%;border: none;" alt="" /></p>
+              <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 3. Click <b
+                  style="font-weight:normal;color:#FF00D6">Create new (+)</b> </p>
+              <p style="text-align: center;"><img
+                  src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2671569&step_number=3&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5"
+                  style="max-width: 100%;max-height: 100%;border: none;" alt="" /></p>
+              <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 4. Click <b
+                  style="font-weight:normal;color:#FF00D6">New repository</b> </p>
+              <p style="text-align: center;"><img
+                  src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2671569&step_number=4&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5"
+                  style="max-width: 100%;max-height: 100%;border: none;" alt="" /></p>
+              <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 5. Add a name to
+                your <b style="font-weight:normal;color:#FF00D6"></b>project. For example "Stranger Things Gallery" </p>
+              <p style="text-align: center;"><img
+                  src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2671569&step_number=5&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5"
+                  style="max-width: 100%;max-height: 100%;border: none;" alt="" /></p>
+              <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 6. Add a simple
+                description to your project. </p>
+              <p style="text-align: center;"><img
+                  src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2671569&step_number=6&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5"
+                  style="max-width: 100%;max-height: 100%;border: none;" alt="" /></p>
+              <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 7. <span><span>Make
+                    sure visibility is set to <b
+                      style="font-weight:normal;color:#FF00D6">Public</b></span><span></span></span> </p>
+              <p style="text-align: center;"><img
+                  src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2671569&step_number=7&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5"
+                  style="max-width: 100%;max-height: 100%;border: none;" alt="" /></p>
+              <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 8. Scroll down and
+                click <b style="font-weight:normal;color:#FF00D6">Create repository</b> </p>
+              <p style="text-align: center;"><img
+                  src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2671569&step_number=8&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5"
+                  style="max-width: 100%;max-height: 100%;border: none;" alt="" /></p>
+              <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 9. In the next
+                window, click <b style="font-weight:normal;color:#FF00D6">uploading an existing file</b> </p>
+              <p style="text-align: center;"><img
+                  src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2671569&step_number=9&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5"
+                  style="max-width: 100%;max-height: 100%;border: none;" alt="" /></p>
+              <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 10. Drag and drop
+                your index.html and app.js files as well as the images folder </p>
+              <p style="text-align: center;"><img
+                  src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2671569&step_number=10&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5"
+                  style="max-width: 100%;max-height: 100%;border: none;" alt="" /></p>
+              <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 11. Scroll down and
+                click <b style="font-weight:normal;color:#FF00D6">Commit changes</b> </p>
+              <p style="text-align: center;"><img
+                  src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2671569&step_number=11&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5"
+                  style="max-width: 100%;max-height: 100%;border: none;" alt="" /></p>
+              <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 12. To publish your
+                app, click <b style="font-weight:normal;color:#FF00D6">Settings</b> </p>
+              <p style="text-align: center;"><img
+                  src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2671569&step_number=12&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5"
+                  style="max-width: 100%;max-height: 100%;border: none;" alt="" /></p>
+              <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 13. Scroll down and
+                click <b style="font-weight:normal;color:#FF00D6">Pages</b> </p>
+              <p style="text-align: center;"><img
+                  src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2671569&step_number=13&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5"
+                  style="max-width: 100%;max-height: 100%;border: none;" alt="" /></p>
+              <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 14. Select <b
+                  style="font-weight:normal;color:#FF00D6">Deploy from a branch</b> </p>
+              <p style="text-align: center;"><img
+                  src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2671569&step_number=14&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5"
+                  style="max-width: 100%;max-height: 100%;border: none;" alt="" /></p>
+              <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 15. Under Branch,
+                click <b style="font-weight:normal;color:#FF00D6">None &gt;</b> <b
+                  style="font-weight:normal;color:#FF00D6">main</b> </p>
+              <p style="text-align: center;"><img
+                  src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2671569&step_number=15&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5"
+                  style="max-width: 100%;max-height: 100%;border: none;" alt="" /></p>
+              <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 16. Click <b
+                  style="font-weight:normal;color:#FF00D6">Save</b> </p>
+              <p style="text-align: center;"><img
+                  src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2671569&step_number=16&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5"
+                  style="max-width: 100%;max-height: 100%;border: none;" alt="" /></p>
+              <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 17. Go back to your
+                project's page by clicking the project's name at the top </p>
+              <p style="text-align: center;"><img
+                  src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2671569&step_number=17&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5"
+                  style="max-width: 100%;max-height: 100%;border: none;" alt="" /></p>
+              <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 18. Click the gear
+                icon in the About section on the right </p>
+              <p style="text-align: center;"><img
+                  src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2671569&step_number=18&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5"
+                  style="max-width: 100%;max-height: 100%;border: none;" alt="" /></p>
+              <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 19. Click <b
+                  style="font-weight:normal;color:#FF00D6">Use your GitHub Pages website</b> </p>
+              <p style="text-align: center;"><img
+                  src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2671569&step_number=19&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5"
+                  style="max-width: 100%;max-height: 100%;border: none;" alt="" /></p>
+              <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 20. Click <b
+                  style="font-weight:normal;color:#FF00D6">Save changes</b> </p>
+              <p style="text-align: center;"><img
+                  src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2671569&step_number=20&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5"
+                  style="max-width: 100%;max-height: 100%;border: none;" alt="" /></p>
+              <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 21. You'll see a
+                small orange dot next to your latest commit (near the top of the repository) implying your app is being
+                processed. Wait 2–3 minutes; once it turns into a green checkmark, your site is ready! </p>
+              <p style="text-align: center;"><img
+                  src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2671569&step_number=21&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5"
+                  style="max-width: 100%;max-height: 100%;border: none;" alt="" /></p>
+              <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 22. After 2-3
+                minutes, click the link under the About section to see your app online. </p>
+              <p style="text-align: center;"><img
+                  src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2671569&step_number=22&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5"
+                  style="max-width: 100%;max-height: 100%;border: none;" alt="" /></p>
+              <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 23. </p>
+              <p style="text-align: center;"><img
+                  src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2671569&step_number=23&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5"
+                  style="max-width: 100%;max-height: 100%;border: none;" alt="" /></p>
+              <p style='font-size: 15px; line-height: 136%; margin-top: 59px; margin-bottom: 51px;'> 24. That's it.
+                You're done. </p>
+              <p style="text-align: center;"><img
+                  src="https://www.iorad.com/api/tutorial/stepScreenshot?tutorial_id=2671569&step_number=24&width=800&height=600&mobile_width=450&mobile_height=400&apply_resize=true&min_zoom=0.5"
+                  style="max-width: 100%;max-height: 100%;border: none;" alt="" /></p>
+            </div>
+          </div>
+          <h3 style="display: none; font-size: 18px; margin-top: 89px; margin-bottom: 15px;"> Here's an interactive
+            tutorial </h3>
+          <p style="display: none;"> <a
+              href="https://www.iorad.com/player/2671569/Publishing-Your-Gallery-Using-GitHub?iframeHash=watchsteps-1">https://www.iorad.com/player/2671569/Publishing-Your-Gallery-Using-GitHub?iframeHash=watchsteps-1</a>
+          </p>
+          <p class="skiptranslate" style="border: 0; min-width: 100%; margin-bottom: 0; height: 501px;"><iframe
+              src="https://www.iorad.com/player/2671569/Publishing-Your-Gallery-Using-GitHub?iframeHash=watchsteps-1&src=iframe&oembed=1"
+              width="100%" height="500px" style="width: 100%; height: 500px; "
+              referrerpolicy="strict-origin-when-cross-origin" frameborder="0"
+              webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"
+              allowfullscreen="allowfullscreen" allow="camera; microphone; clipboard-write;"
+              sandbox="allow-scripts allow-forms allow-same-origin allow-presentation allow-downloads allow-modals allow-popups allow-popups-to-escape-sandbox allow-top-navigation allow-top-navigation-by-user-activation"></iframe>
+          </p>
+          <div style="display: none;font-size: 18px; text-align: center;font-family: 'Libre Franklin', sans-serif;">
+            <br><br> <b style="font-weight: bold; color: #CCCCCC;"> Next step </b> <br><br>
+            <div style="display: inline-block;">
+              <div style="display: table-row;"> <a style="display: table-cell;" href="http://ior.ad/live/bcZP"
+                  target="_blank"> <img src="https://www.iorad.com/golive.svg" style="border: none;" alt="Go Live" />
+                </a> </div>
+            </div>
+          </div>
+        </section>
+
+
+
+        <section id="conclusion">
+          <h2>Wrap Up & Sharing Your Work</h2>
+          <hr />
+          <p>You have reached the end of this lab! </p>
+
+          <h3>Today's Achievements:</h3>
+          <ul>
+            <li><strong>Organizing Data:</strong> You structured complex information using an <strong>Array of
+                Objects</strong>, allowing each card item to have their own unique properties like name, bio, and image.
+            </li>
+            <li><strong>Smart Looping:</strong> You used the <code>v-for</code> directive to automatically generate a
+              card for every item in your array, keeping your code clean and efficient.</li>
+            <li><strong>Dynamic Layouts:</strong> You explored the Vuetify Grid and used <code>ga-</code> classes to
+              control spacing between your columns.</li>
+            <li><strong>Web Publishing:</strong> You successfully launched your app live via GitHub Pages for the world
+              to see!</li>
+          </ul>
+
+
+          <div class="sharing-instructions"
+            style="background-color: #fff4e5; padding: 15px; border: 2px dashed #ff9800; border-radius: 8px;">
+            <h3>📢 Share Your Gallery!</h3>
+            <p>It's time to show off your gallery. Please follow these steps:</p>
+            <ol>
+              <li>Copy your live <strong>GitHub Pages URL</strong> (the one that ends in <code>.github.io</code>).</li>
+              <li>Post your link on our <strong>Class Gallery Board</strong> here:
+                <a href="https://tinyurl.com/lab-2-and-3-showcase"
+                  target="_blank"><strong>https://tinyurl.com/lab-2-and-3-showcase</strong></a>
+              </li>
+              <li>Once you've posted, click on other classmates' links to explore their galleries.</li>
+            </ol>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

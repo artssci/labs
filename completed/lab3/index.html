@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collection Card</title>
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap"
+    rel="stylesheet">
+  <script src="app.js" defer></script>
+
+</head>
+
+<style>
+  .stranger-title {
+    font-family: 'EB Garamond', serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(229, 9, 20, 0.7);
+    /* Adds a subtle red glow */
+  }
+
+  /* This is the magic class that animates the move */
+  .fade-move {
+    transition: transform 0.6s ease;
+  }
+</style>
+
+<body>
+  <div id="app">
+    <v-app>
+
+      <v-app-bar>        
+        <v-app-bar-title>
+          Stranger Things Gallery
+        </v-app-bar-title>
+        
+      </v-app-bar>
+
+      <!-- <v-app-bar color="black" elevation="5">
+        <v-app-bar-title class="stranger-title">Stranger Things Gallery</v-app-bar-title>
+        <v-spacer></v-spacer>
+        <v-btn icon="mdi-shuffle" @click="shuffleCards" color="red"></v-btn>
+      </v-app-bar>
+       -->
+      <v-main>
+
+        <v-container>
+
+          <v-row>
+            <v-col v-for="item in collection" :key="item.name" cols="3">
+
+              <!-- <v-card width="400" class="mx-auto" color="red elevation-12"> -->
+              <v-card height="500" class="bg-red elevation-12">
+
+                <v-card-title>
+                  {{ item.name }}
+                </v-card-title>
+
+                <v-card-subtitle>
+                  {{item.birthday}} {{ item.birthplace }}
+                </v-card-subtitle>
+
+                <v-card-text>
+                  {{ item.bio }}
+                </v-card-text>
+
+
+                <v-img :src="item.image"> </v-img>
+
+
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-container>
+
+      </v-main>
+
+      <v-footer class="mx-auto d-flex ga-2">
+        <span>Made by Luis. </span>
+        <span>January 2026.</span>
+      </v-footer>
+    </v-app>
+  </div>
+</body>
+
+</html>
