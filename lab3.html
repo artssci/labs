@@ -27,8 +27,7 @@
           Today, you will upgrade your project into a <strong>Card Gallery</strong>.
           <br><br>
           You will learn how to manage multiple items using <strong>Arrays</strong> and <strong>Objects</strong>, and
-          use the <strong>Vuetify Grid system</strong> to automatically organize your cards into rows and columns that
-          look great on any screen size.
+          use the <strong>Vuetify Grid system</strong> to automatically organize your cards into rows and columns.
         </p>
 
         <h2 class="nocount">Learning Objectives</h2>
@@ -47,7 +46,7 @@
           <li><a href="#3">Generating Cards with the v-for Loop</a></li>
           <li><a href="#4">Styling and Layout for the Card Gallery</a></li>
           <li><a href="#5">Adding a Global App Bar</a></li>
-          <li><a href="#optional-challenge">Optional Challenge: Dynamic Counters</a></li>
+          <li><a href="#optional-challenge">Optional Challenge: Change the App Bar Color and Add a Footer</a></li>
           <li><a href="#6">Publishing Your Gallery With GitHub Pages</a></li>
           <li><a href="#conclusion">Wrap Up & Sharing Your Work</a></li>
         </ol>
@@ -57,8 +56,8 @@
 
         <div class="definition">
           <p>
-            <i class=""></i>In Lab 1, you created a single card. Now, we are going to build a full gallery. To make your
-            gallery look great, you need a larger set of data to loop through.
+            <i class=""></i>In Lab 1, you created a single card. Now, we are going to build a full gallery where you
+            will need a larger set of data to loop through.
           </p>
         </div>
 
@@ -120,8 +119,9 @@ image: "images/robin.jpg"
 
             <br>
             <div class="tip"> <strong>💡</strong> Inside curly braces, we use a colon : to connect a label to its data.
-              Think of it like a name tag: the label is on the left, and the data is on the right.
-            </div>
+              A colon is similar to the equal sign used in the past lab. Both assign values to a label/container (see <a
+                href="https://www.w3schools.com/js/js_assignment.asp"
+                target="_blank">https://www.w3schools.com/js/js_assignment.asp</a>) </div>
             <br>
 
           </li>
@@ -210,7 +210,7 @@ return {
           <p>
             In Lab 1, you had to code each Vuetify card individually. With <code>v-for</code>, you only write the card
             (or any component)
-            <strong>once</strong>, and it gets repeated for every item in your array!
+            <strong>once</strong>, and it gets repeated for every item in your array.
           </p>
         </div>
 
@@ -222,7 +222,7 @@ return {
             collection".
 
             <div class="tip">
-              <strong>💡</strong> If you are using a different name in your array in step 2 above, use
+              <strong>💡 Tip:</strong> If you are using a different name in your array in step 2 above, use
               that name
               instead of "collection". For example if your array name is "characters", then type "item in characters"
             </div>
@@ -381,7 +381,9 @@ objectName.propertyName
           <li><b>Remove Fixed Width:</b> Delete the <code>width</code> and the <code>mx-auto</code> from your
             <code> &lt;v-card&gt;</code>.
 
-            <div class="tip"><strong>💡</strong> In a grid, the column (v-col) should decide how wide the card is. If you keep a fixed width
+            <div class="tip"><strong>💡 Explanation:</strong> In a grid, the column (v-col) should decide how wide the
+              card is. If
+              you keep a fixed width
               (e.g., "400"),
               the card will overflow of its column on smaller screens or look off-center. By removing it, the card will
               automatically fill the column perfectly.
@@ -395,7 +397,9 @@ objectName.propertyName
 
           <li><b>Standardize the Height:</b>Add height="500" to your <code>&lt;v-card&gt;</code>.
 
-            <div class="tip"><strong>💡</strong> Because some characters have short bios and others have long ones, your cards will
+            <div class="tip"><strong>💡 Explanation:</strong> Because some characters have short bios and others have
+              long ones, your
+              cards will
               naturally
               be
               different lengths. This creates an uneven look where the rows don't line up. Setting a fixed height forces
@@ -439,7 +443,14 @@ objectName.propertyName
           <h2>Adding A Global App Bar</h2>
           <hr>
 
-          <p>Let's create an app bar where we can add the title of our app.</p>
+          <div class="definition">
+            <p>
+              An app bar is a dedicated container, located at the top of an app screen, that
+              provides branding, screen titles, navigation, and access to key actions. In this step, we will use
+              Vuetify's <code>&lt;v-app&gt;</code> and <code>&lt;v-app-bar-title&gt;</code>.
+            </p>
+          </div>
+
 
           <ol>
             <li>
@@ -489,8 +500,7 @@ objectName.propertyName
 
           <h3>Change the App Bar Color</h3>
 
-          <p>Ready to go the extra mile? Let's customize the app bar using Vuetify's built-in color utilities and Google
-            Fonts.</p>
+          <p>Ready to go the extra mile? Check the following activities to continue practicing.</p>
 
           <ol>
             <li>
@@ -531,10 +541,10 @@ objectName.propertyName
 
           <div class="definition">
             <p>
-              Now that your Stranger Things gallery is complete, let's put it on the internet for everyone to see!
+              Now that your gallery is complete, let's put it on the internet for everyone to see!
               <br><br>
-              To publish your page you will use GitHub Pages, which is a site hosting service designed to host personal,
-              organization pages directly from a GitHub repository. It is a simple, free way to publish websites online.
+              To publish your page you will use GitHub Pages, which is a site hosting service designed to host pages
+              directly from a GitHub repository. It is a simple, free way to publish websites online.
             </p>
           </div>
           <ol>
