@@ -18,51 +18,33 @@
         <v-app>
             <v-main>
 
+                <v-btn icon="mdi-information" class="bg-yellow" style="position:absolute;  z-index: 1; left: 12.64%; top:17.10%;"
+                    @click="toggleOpenCloseReferenceCard"></v-btn>
 
-                <!-- <v-btn position="absolute" style="top: 15%; left: 10%;" @click="openInformationCard"> open Information
-                    Card</v-btn> -->
-
-
-                <v-btn style="position:absolute;  z-index: 1; left: 12.64%; top:17.10%;" @click="toggleOpenCloseReferenceCard">Reference Card</v-btn>
-
-                <!-- <v-dialog v-model="showReferenceCard" width="25%" class="text-center"> -->
-                <!-- <v-dialog v-model="showReferenceCard"> -->
-                <v-card v-if="showReferenceCard" style="position:absolute; left: 10.81%; top:24.35%; z-index: 1;">
+                <v-card width="25%" class="bg-yellow" v-if="showReferenceCard" style="position:absolute; left: 10.81%; top:24.35%; z-index: 1;">
                     <v-card-title>Reference Card</v-card-title>
                     <v-card-subtitle>{{ plantName }}</v-card-subtitle>
                     <v-card-text>
                         {{actionReference1}}, {{actionReference2}}, and {{actionReference3}}
                     </v-card-text>
                 </v-card>
-                <!-- </v-dialog> -->
 
-                <!-- <v-btn style="position: absolute; top: 22%; left: 50%;" @click="openPlantCard">Open Plant Card</v-btn> -->
+                <v-btn icon="mdi-flower-poppy" class="bg-green" style="position:absolute; z-index: 1; left: 70.99%; top: 23.73%;"
+                    @click="toggleOpenCloseActionCard"></v-btn>
 
-                <v-btn style="position:absolute; z-index: 1; left: 70.99%; top: 23.73%;" @click="toggleOpenCloseActionCard">Gameplay Card</v-btn>
-
-                <!-- <v-dialog v-model="showPlantCard" width="25%" class="text-center"> -->
-                <v-card style="position:absolute; z-index: 1; left: 70%; top: 31.28%;" v-if="showActionCard">
+                <v-card width="25%" class="bg-green text-center" style="position:absolute; z-index: 1; left: 70%; top: 31.28%;" v-if="showActionCard">
                     <v-card-title>{{ plantName }}</v-card-title>
-                    <v-btn @click="recordUserAction('water')">water</v-btn>
-                    <v-btn @click="recordUserAction('prune')">prune</v-btn>
-                    <v-btn @click="recordUserAction('fertilize')">fertilize</v-btn>
+                    <v-btn  @click="recordUserAction('water')">water</v-btn>
+                    <v-btn  @click="recordUserAction('prune')">prune</v-btn>
+                    <v-btn  @click="recordUserAction('fertilize')">fertilize</v-btn>
                     <v-card-text>
                         {{result}}
                     </v-card-text>
 
                     <v-card-actions>
-                        <v-btn @click="validateResult">Validate result</v-btn>
+                        <v-btn class="bg-white" @click="validateResult">Validate result</v-btn>
                     </v-card-actions>
                 </v-card>
-                <!-- </v-dialog> -->
-
-
-                <!-- <v-dialog v-model="showResultCard" width="25%" class="text-center"> -->
-                <!-- <v-card v-if="showResultCard">
-                    <v-card-text>
-                        {{result}}
-                    </v-card-text>
-                </v-card> -->
 
 
                 <v-img :src="image" @click="findCoordinates"></v-img>
