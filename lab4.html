@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>Lab 4: Building a Flower Shop Game</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="content" role="main">
+            <h1 class="title">Lab 4: Building a Point-and-Click Game</h1>
+
+            <div class="instructions">
+                <hr>
+                <h2 class="nocount">General Description</h2>
+                <p style="margin-left: 0">
+                    Over the next two labs, you will transition from displaying static cards to building a simple <b>interactive
+                        game</b>.
+                    <!-- You will create a "Flower Shop" simulator where the user must perform actions in a
+                    specific order to keep a plant alive. -->
+                    <br><br>
+                    You will get introduced to the concepts of <b>functions</b>, <b>conditional logic</b>, and
+                    <b>reactivity</b> to
+                    handle changes in the user interface and validate user choices, respectively.
+                </p>
+
+                <h2 class="nocount">Learning Objectives</h2>
+                <ol>
+                    <li>Manage application reactivity and state using JavaScript functions.</li>
+                    <li>Implement conditional logic (if/else) to create user conditions and toggles.
+                    </li>
+                    <!-- <li>Apply absolute positioning and Vuetify styling to create a game environment.</li> -->
+                </ol>
+
+                <h2 class="nocount">Table of Contents</h2>
+                <hr />
+                <ol>
+                    <li><a href="#1">Pre-requisite: Setup Your Project</a></li>
+                    <li><a href="#2">Choose a Theme</a></li>
+                    <li><a href="#3">Create Reference Card</a></li>
+                    <li><a href="#4">Create Gameplay Card</a></li>
+                    <li><a href="#5">Validate and Show Result</a></li>
+                    <li><a href="#6">Styling the Game Environment</a></li>
+                    <li><a href="#7">Optional Challenge</a></li>
+                </ol>
+
+
+
+                <h2 id="1"> Pre-requisite: Setup Your Project</h2>
+                <hr>
+
+                <ol>
+                    <li>Create a new folder for this lab. </li>
+                    <li>Inside your new folder create the app.js and index.html files with their starter/boilerplate
+                        code. Refer to <a href="https://artssci.github.io/labs/lab2.html#3" target="blank"> Lab 2,
+                            section
+                            "Setup Starter Vuetify Code"
+                        </a>to complete this step.</li>
+                    <ul>
+                        <li>Finally, in the section <code>const { createApp} = Vue</code> in app.js, import the
+                            <code>ref</code> command which we will use in the next
+                            steps below:
+                        </li>
+
+                        <pre><code class="language-html">
+const { createApp, ref } = Vue;
+        </code></pre>
+                    </ul>
+
+                </ol>
+
+                <!--  -->
+
+
+                <h2 id="2"> Choose a Theme</h2>
+                <hr>
+                <div class="definition">
+                    <p>Point-and-click adventure games are those where the player controls their character
+                        through a computer mouse. Often,
+                        these games come down to collecting items for the character's inventory, and figuring when is
+                        the right time to use that item; the player would need to use clues from the visual elements of
+                        the game, descriptions of the various items, and dialogue from other characters to figure this
+                        out. <a href="https://en.wikipedia.org/wiki/Adventure_game#Point-and-click_adventure_games"
+                            target="_blank"> Read more</a>.</p>
+                </div>
+
+                <p> In this lab, the player will consult a reference card to learn a plant's needs and then click the
+                    correct actions in the right order to help it grow. You can use this same theme or
+                    choose
+                    a different one of your own, as long as it follows the same logical steps.</p>
+
+                <ol>
+                    <li><b>Brainstorm</b> a theme for your interactive game. While this lab uses "Plant Care" as an
+                        example, you are encouraged to adapt the theme to any subject (e.g., Space Repair, Cooking, or
+                        Pet Care).</li>
+                    <li><b>Identify</b> one primary <b>subject</b> and <b>3-4 action verbs</b> that the user must
+                        perform in a
+                        specific order to succeed (e.g., "Pour," "Mix," "Bake"). See more examples in the table below.
+                    </li>
+                    <!-- <li><b>Find and download</b> a high-quality background image online that represents your game’s
+                        environment (e.g., a garden, a kitchen, or a laboratory).</li> -->
+
+                    <table style="width: 100%; border-collapse: collapse; margin: 20px 0; text-align: left;">
+                        <thead>
+                            <tr style="background-color: #f2f2f2; border-bottom: 2px solid #ddd;">
+                                <th style="padding: 12px; border: 1px solid #ddd;">Theme</th>
+                                <th style="padding: 12px; border: 1px solid #ddd;">Subject</th>
+                                <th style="padding: 12px; border: 1px solid #ddd;">Action Verb 1</th>
+                                <th style="padding: 12px; border: 1px solid #ddd;">Action Verb 2</th>
+                                <th style="padding: 12px; border: 1px solid #ddd;">Action Verb 3</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid #ddd;"><b>Plant Care</b></td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Lily</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Water</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Prune</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Fertilize</td>
+                            </tr>
+                            <tr style="background-color: #fafafa;">
+                                <td style="padding: 10px; border: 1px solid #ddd;"><b>Bakery</b></td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Cake</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Whisk</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Knead</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Bake</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid #ddd;"><b>Space Repair</b></td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Satellite</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Calibrate</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Recharge</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Deploy</td>
+                            </tr>
+                            <tr style="background-color: #fafafa;">
+                                <td style="padding: 10px; border: 1px solid #ddd;"><b>Coffee Shop</b></td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Latte</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Grind</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Steam</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Pour</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                </ol>
+
+                <div style="width: 100%; height: auto; display: flex;">
+                    <img style="width: 50%; margin: auto;" src="images/click and point game.jpeg" />
+                </div>
+
+                <!--  -->
+                <h2 id="3">Create Reference Card</h2>
+                <hr>
+                <div class="definition">
+                    <p>The "reference card" will act as the manual for your game. It will tell the player the sequence
+                        of actions
+                        they have to follow to succeed.</p>
+                </div>
+
+                <h3>Describe the Subject and Action Verbs with Variables</h3>
+
+                <ol>
+                    <li><b>In app.js</b>, define your subject's name and the action verbs using variables. Refer to <a
+                            href="https://artssci.github.io/labs/lab2.html#2" target="_blank">Lab
+                            2, section "Describe Your
+                            Theme With Variables"</a>, to complete this step. </li>
+                    <!-- 
+                <pre><code class="language-javascript">
+// Inside setup()
+const plantName = "lily";
+const careInstructions = ["water", "sun", "fertilize"];
+        </code></pre> -->
+
+                    <!-- <li><b>In index.html</b>, start with a Vuetify <code>v-dialog</code>.</li>
+
+
+                    <pre><code class="language-html">
+&lt;v-dialog&gt;
+   &lt;/v-dialog&gt;
+        </code></pre> -->
+
+
+                    <li>In <b>index.html</b>, add a card to display your variables using
+                        <code>{{ }}</code> to pull the data from app.js. Refer to <a
+                            href="https://artssci.github.io/labs/lab2.html#4" target="_blank">Lab
+                            2, section "Display Your Theme Data in a Card
+                            "</a>, to complete this step.
+                    </li>
+                    <!-- <li>Finally, wrap your card inside a <code>v-dialog</code> to ...</li>
+
+                    <pre><code class="language-html">               
+&lt;v-dialog&gt;
+  &lt;/v-dialog&gt;
+        
+                    </code></pre> -->
+
+
+                </ol>
+
+                <!-- <pre><code class="language-html">
+&lt;v-dialog&gt;
+    &lt;v-card&gt;
+        &lt;v-card-title&gt;Plant Care Information&lt;/v-card-title&gt;
+        &lt;v-card-text&gt;
+            {{ plantName }} {{ careInstructions[0] }} {{ careInstructions[1] }} {{ careInstructions[2] }}
+        &lt;/v-card-text&gt;
+    &lt;/v-card&gt;
+&lt;/v-dialog&gt;
+        </code></pre> -->
+
+                <div style="width: 100%; height: auto; display: flex;">
+                    <img style="width: 80%; margin: auto;" src="images/reference-card.png" />
+                </div>
+
+                <h3>Adding Toggle Functionality to Open/Close the Reference Card</h3>
+                <hr />
+
+                <p>In this step you will create a <b>reactive variable</b> and a <b>function</b> to toggle between
+                    <code>true</code> and <code>false</code> to
+                    open or
+                    close your reference card. You will then connect this function to a button using <code>v-btn</code>.
+                </p>
+
+                <ol>
+                    <li>Create a new variable with a name like <code>showReferenceCard</code> and an
+                        initial value of <code>false</code>.
+                    </li>
+
+
+                    <pre><code class="language-javascript">
+const showReferenceCard = false
+    </code></pre>
+
+
+
+                    <li>Inside your <code>v-card</code> from the previous step, add the command <code>v-if</code>
+                        and the name of your
+                        variable as the value. If you refresh the page, you should see your card disappear.</li>
+
+
+                    <pre><code class="language-html">
+    &lt;v-card v-if="showReferenceCard"&gt;
+        </code></pre>
+
+                    <div class="tip" style="margin-bottom: 1rem">
+                        <strong>💡 Coding Concept:</strong> The command <code>v-if</code> is used for <b>conditional
+                            rendering</b>.
+                        When <code>showPlantCard</code> is <code>true</code>, Vuetify adds the card to the page; when it
+                        is
+                        <code>false</code>,
+                        Vuetify removes it.
+                    </div>
+
+
+                    <li>Now, let's define a function to toggle <code>showReferenceCard</code> between <code>false</code>
+                        and <code>true</code> to allow the card to open or close. In app.js, create an
+                        empty function with a name like <code>toggleOpenCloseReferenceCard</code>. Follow the example
+                        below:
+                    </li>
+
+
+
+
+                    <pre><code class="language-javascript">
+function toggleOpenCloseReferenceCard() {}
+        </code></pre>
+
+                    <div class="tip" style="margin-bottom: 1rem">
+                        <strong>💡 Coding Concept:</strong> A function is a resusable code block
+                        designed to perform a particular task.
+                    </div>
+
+                    <li>Inside the function, add an <code>if-else</code> statement to alternate from <code>false</code>
+                        to <code>true</code> each time the function is executed/triggered. Follow
+                        the example below:</li>
+
+                    <pre><code class="language-javascript">
+function toggleOpenCloseReferenceCard() {
+    if (showReferenceCard.value == false) {showReferenceCard.value = true} 
+    else {showReferenceCard.value = false}
+}
+        </code></pre>
+
+                    <div class="tip" style="margin-bottom: 1rem">
+                        <strong>💡 Coding Concept:</strong> An if-else statement allows to run
+                        different code for different conditions. The syntax is the following:
+
+                        <pre><code class="language-javascript">
+if (condition) {// code to execute if the condition is true} 
+else {// code to execute if the condition is false}
+        </code></pre>
+                    </div>
+
+
+                    <li>To trigger the function, add a button using <code>v-btn</code> and the command
+                        <code>@click</code> with the name of your function as the value.
+                    </li>
+
+                    <pre><code class="language-html">
+&lt;v-btn @click="toggleOpenCloseReferenceCard"&gt;Reference Card&lt;/v-btn&gt;
+        </code></pre>
+
+
+                    <div class="tip" style="margin-bottom: 1rem">
+                        <strong>💡 Coding Concept:</strong> @click allows to trigger a function with a button.
+                    </div>
+
+
+
+                    <li>Update your <code>showReferenceCard</code> variable value by adding the keyword
+                        <code>ref</code>. This makes the <b>variable reactive</b>, ensuring that when you click the
+                        toggle
+                        button, the interface updates automatically.
+                    </li>
+                    <pre><code class="language-javascript">
+const showReferenceCard = ref(false); 
+    </code></pre>
+
+
+                    <div class="tip" style="margin-bottom: 1rem">
+                        <strong>💡 Coding Concept:</strong> When creating apps, there
+                        is a concept called <code>reactivity</code>, where values like the one
+                        inside your variable <code>showReferenceCard</code> can change behind the scenes when the user
+                        interacts with it. ref() is used to create a <b>reactive reference</b> to
+                        any value including strings, numbers, booleans, objects, and arrays.
+                    </div>
+
+
+
+                    <li>Now, save your changes, refresh your page in the browser, and click the button to see your card
+                        open and close. </li>
+
+
+                    <div style="width: 100%; height: auto; display: flex;">
+                        <img style="width: 80%; margin: auto;" src="images/toggle-reference-card.gif" />
+                    </div>
+
+                </ol>
+
+
+
+
+
+                <h2 id="4">Create Gameplay Card</h2>
+                <hr />
+                <p>In this step, you'll build the gameplay card with action buttons and a function to save the user's
+                    choices.</p>
+
+
+
+                <h3>Create Variables to Save the User Actions</h3>
+
+                <ol>
+                    <li>In app.js, create the reactive variables to save the user's choices. Since no actions have been
+                        taken yet,
+                        set these
+                        variables to <code>null</code> as a placeholder until the user starts clicking the buttons.
+                        Follow the example below:</li>
+                </ol>
+
+                <pre><code class="language-javascript">
+const userAction1 = ref(null)
+const userAction2 = ref(null)
+const userAction3 = ref(null)
+      </code></pre>
+
+                <div class="tip" style="margin-bottom: 1rem">
+                    <strong>💡 Coding Concept:</strong>A <code>null</code> value denotes the absence of a
+                    value or serves as a placeholder
+                    for a value that isn't present but might be present in the future.
+                </div>
+
+
+                <h3>Create a Function to Record the User Actions</h3>
+
+                <p>Now, define a function that records each click. When a player selects an action like "water" or
+                    "prune", the function will save that choice into your variables from the previous step.</p>
+
+                <ol>
+                    <li>
+                        Define an
+                        empty function with a name like <code>recordUserAction</code>.
+                    </li>
+
+                    <pre><code class="language-javascript">
+function recordUserAction() {}
+        </code></pre>
+
+                    <li>
+                        Add a parameter to the function. Name the parameter something like <code>action</code>.
+                    </li>
+
+                    <pre><code class="language-javascript">
+function recordUserAction(action) {}
+        </code></pre>
+
+                    <div class="tip" style="margin-bottom: 1rem">
+                        <strong>💡 Coding Concept:</strong> <b>Parameters</b> allow you to pass or send values to a
+                        function.
+                        Parameters are listed inside the parentheses in the function definition.
+                    </div>
+
+                    <li>
+                        Inside the function, add an <code>if-else</code> statement to check your variables in order.
+                        If a variable is empty (<code>null</code>), the function will fill it with the clicked action.
+                    </li>
+
+                    <pre><code class="language-javascript">
+function recordUserAction(action) {
+    if (userAction1.value === null) {
+        userAction1.value = action;
+    } else if (userAction2.value === null) {
+        userAction2.value = action;
+    } else if (userAction3.value === null) {
+        userAction3.value = action;
+    }
+}     
+</code></pre>
+
+                    <div class="tip">
+                        <strong>💡 Logic Check:</strong> The <code>else if</code> is important in this function, since
+                        it will tell the
+                        computer to stop looking once it finds the first empty slot (variable).
+                    </div>
+                </ol>
+
+                <h3>Create Card with Action Buttons</h3>
+
+                <p>Now, let's create the card containing the action buttons. These buttons will trigger the recording
+                    function you created in the previous step.</p>
+
+                <ol>
+                    <li>In index.html, create a new card. Use your subject’s name as the title, then add
+                        a button for each action. See the example below:</li>
+
+                    <pre><code class="language-html">
+&lt;v-card&gt;
+    &lt;v-card-title&gt;{{ plantName }}&lt;/v-card-title&gt;
+    &lt;v-btn&gt;water&lt;/v-btn&gt;
+    &lt;v-btn&gt;prune&lt;/v-btn&gt;
+    &lt;v-btn&gt;fertilize&lt;/v-btn&gt;
+&lt;/v-card>
+</code></pre>
+
+                    <li>
+                        Add the <code>@click</code> command to each button using your <code>recordUserAction</code>
+                        function. Be sure to pass the
+                        action name inside single quotes so the function knows which button was clicked. Follow the
+                        example below:
+                    </li>
+                    <pre><code class="language-html">
+&lt;v-card&gt;
+    &lt;v-card-title&gt;{{ plantName }}&lt;/v-card-title&gt;
+    &lt;v-btn @click="recordUserAction('water')"&gt;water&lt;/v-btn&gt;
+    &lt;v-btn @click="recordUserAction('prune')"&gt;prune&lt;/v-btn&gt;
+    &lt;v-btn @click="recordUserAction('fertilize')"&gt;fertilize&lt;/v-btn&gt;
+&lt;/v-card>
+</code></pre>
+                </ol>
+
+                <h3>Adding Toggle Functionality to Open/Close the Gameplay Card</h3>
+
+                <ol>
+                    <li>Following step 3.2 above, create a new variable and function that uses an <code>if-else</code>
+                        statement
+                        to toggle between <code>true</code> and <code>false</code>. Then, connect this
+                        variable and function to the card and the new button using <code>v-if</code> and
+                        <code>@click</code>, respectively.
+                    </li>
+                </ol>
+
+
+
+                <div style="width: 100%; height: auto; display: flex;">
+                    <img style="width: 80%; margin: auto;" src="images/toggle-action-card.gif" />
+                </div>
+
+
+                <h2 id="5">Validate and Show Result</h2>
+                <hr>
+
+                <p>To tell the player if they succeeded, we need a variable to store the 'success/fail' message and a
+                    function that compares
+                    the actions to the reference card.</p>
+
+
+                <ol>
+                    <li>In <code>app.js</code>, create a new variable called <code>result</code> with a
+                        <code>null</code> value.
+                    </li>
+
+                    <pre><code class="language-javascript">
+const result = ref(null)
+ </code></pre>
+
+                    <li>Create a function with a name like <code>validateResult</code>. This function will use an
+                        <code>if-else</code>
+                        statement to check if all three user actions match the correct references.
+                    </li>
+
+                    <pre><code class="language-javascript"> 
+function validateResult() {
+     if (userAction1.value === actionReference1 && 
+         userAction2.value === actionReference2 && 
+         userAction3.value === actionReference3) {
+    result.value = "Your plant is thriving!";
+} else {
+    result.value = "Your plant withered.";
+}
+} </code></pre>
+
+                    <div class="tip" style="margin-bottom: 1rem;"> <strong>💡 Logic Symbols:</strong>
+                        <ul>
+                            <li><code>===</code> checks for equality. It checks if the value on the left is <b>exactly
+                                    the
+                                    same</b> as the value on the right.</li>
+                            <li><code>&&</code> allows us to check multiple conditions at once. The whole
+                                statement is only true if <b>every</b> part is true.</li>
+                        </ul>
+                    </div>
+
+
+                    <li>Now that we have the validate-result logic, let's visualize it. Inside the gameplay card, add a
+                        <code>&lt;v-card-text&gt;</code> to display the
+                        <code>result</code> variable to the player.
+
+                    </li>
+                    <pre><code class="language-html"> 
+&lt;v-card-text&gt; 
+  {{ result }} 
+&lt;/v-card-text&gt; 
+</code></pre>
+
+                    <li>Finally, inside your gameplay card, add a <code>v-card-actions</code> and a <code>v-btn</code>
+                        to
+                        trigger
+                        the validation function using the
+                        <code>@click</code>
+                        command.
+                    </li>
+
+                    <pre><code class="language-html"> 
+&lt;v-card-actions&gt; 
+  &lt;v-btn @click="validateResult"&gt;Validate Result&lt;/v-btn&gt; 
+&lt;/v-card-actions&gt;
+</code></pre>
+
+
+                    <div style="width: 100%; height: auto; display: flex;">
+                        <img style="width: 80%; margin: auto;" src="images/validate-result.gif" />
+                    </div>
+
+
+                </ol>
+
+
+
+                <!--  -->
+                <h2 id="6">Styling the Game Environment</h2>
+                <hr>
+                <p>In this step, you will transform your user interface into a game world using a background image,
+                    positioning your buttons, and styling your cards.</p>
+
+                <h3>Add a Background Image</h3>
+                <ol>
+                    <li>Find an image online related to your theme and subjects. Save your image in your lab folder. For
+                        this lab, I am using a flower shop image from <a href="https://www.freepik.com/"
+                            target="_blank">https://www.freepik.com/</a>, since the theme is "Plant
+                        Care" and the subjects are plants,</li>
+
+                    <li>Create a variable to store your image and <code>&lt;v-img&gt;</code> to display it. Refer to <a
+                            href="https://artssci.github.io/labs/lab2.html#4" target="blank"> Lab 2,
+                            section
+                            "Display Your Theme Data in a Card"
+                        </a>to complete this step.</li>
+                    </li>
+
+
+                    <div style="width: 100%; height: auto; display: flex;">
+                        <img style="width: 80%; margin: auto;" src="images/background-image.png" />
+                    </div>
+
+                </ol>
+
+                <h3>Positioning the Buttons</h3>
+                <p>
+                    Last lab, we used Vuetify's 12-column grid, which allows organizing elements in a structured grid.
+                    This time, however, we need the buttons to layer in different places on top of our image. To achieve
+                    this, we will
+                    use <b>absolute positioning</b>, a system that is based on screen coordinates.
+                </p>
+                <ol>
+                    <li>In app.js, add the following helper function that will allow you to locate the screen
+                        coordinates:</li>
+
+                    <pre><code class="language-javascript"> 
+function findCoordinates(event) {
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
+    const xPercent = (event.clientX / windowWidth) * 100;
+    const yPercent = (event.clientY / windowHeight) * 100;
+    console.log(`X: ${xPercent.toFixed(2)}%, Y: ${yPercent.toFixed(2)}%`);
+}
+</code></pre>
+
+                    <li>Add this function to your <code>v-image</code> to trigger it using <code>@click</code>.</li>
+
+                    <pre><code class="language-html"> 
+&lt;v-img :src="image" @click="findCoordinates"&gt;&lt;/v-img&gt;
+                        </code></pre>
+
+
+                    <li>To print the coordinates, open the browser console tools in your browser. Click the three dots
+                        on the
+                        top right, then More Tools, then Developer Tools. See video guide below:</li>
+
+
+                    <div style="width: 100%; height: auto; display: flex;">
+                        <img style="width: 80%; margin: auto;" src="images/find-coordinates.gif" />
+                    </div>
+
+                    <li>Now that you have the x and y coordinates, start by adding the command <code>style</code> with
+                        the value
+                        <code>position:absolute;</code> and <code>z-index:1;</code> to the reference card button you
+                        created before.
+                    </li>
+
+                    <pre><code class="language-javascript"> 
+&lt;v-btn style="position:absolute; z-index:1;" @click="toggleOpenCloseReferenceCard"&gt;Reference Card&lt;/v-btn&gt;
+</code></pre>
+
+                    <div class="tip" style="margin-bottom: 1rem;"> <strong>💡 Styling Concept:</strong> The z-index
+                        command
+                        specifies the stack order of an element. An element with greater stack order is always in front
+                        of
+                        an element with a lower stack order.
+                    </div>
+
+
+                    <li>Then, inside <code>style</code> add your <b>x coordinate</b> to the command <code>left</code>
+                        and your <b>
+                            y
+                            coordinate
+                        </b> to the command <code>top</code>:</li>
+
+                    <pre><code class="language-javascript"> 
+&lt;v-btn style="position:absolute; z-index:1; left: 12.64%; top:17.10%;" @click="toggleOpenCloseReferenceCard"&gt;Reference Card&lt;/v-btn&gt;
+</code></pre>
+
+
+
+                    <li>Repeat the same process with the reference card, the gameplay button, and the gameplay card.
+                    </li>
+
+                    <div style="width: 100%; height: auto; display: flex;">
+                        <img style="width: 80%; margin: auto;" src="images/positioned-cards.png" />
+                    </div>
+
+
+                </ol>
+
+                <h3>Styling Your Cards </h3>
+                <ol>
+                    <li>Modify the width and color of your cards. Refer to Refer to <a
+                            href="https://artssci.github.io/labs/lab2.html#5" target="blank"> Lab 2,
+                            section
+                            "Style the Card"
+                        </a>to complete this step.
+                    </li>
+                </ol>
+
+                <h2 id="4">Challenge: Expand Your Game</h2>
+                <hr>
+                <div class="definition">
+                    <p>Try expanding your game by adding more subjects to the reference card and more gameplay cards.
+                    </p>
+                </div>
+
+                <h2 id="conclusion">Wrap Up & Saving Your Work</h2>
+                <hr />
+                <p>Congratulations! You've reached the end of this lab.
+                </p>
+
+                <h3>What You Achieved Today:</h3>
+                <ul>
+                    <li>
+                        <b>State Management:</b> You used ref() to create "reactive" variables that allow the website to
+                        update
+                        instantly when data changes.
+                    </li>
+                    <li>
+                        <b>Game Logic & Validation:</b> You built a function using Conditional Statements
+                        (if-else) and
+                        logical Operators (&&) to determine a win or loss.
+
+                    </li>
+
+                    <li>
+                        <b>Responsive Positioning:</b> You used math and screen percentages to place elements precisely
+                        so your
+                        game works on any screen size.
+                    </li>
+                </ul>
+
+                <div class="tip"> <strong>Next Steps:</strong> We aren't finished with our game yet! In Part 2, you will
+                    practice adding more gameplay cards using <strong>Arrays</strong> and
+                    <strong>Loops</strong>.
+                </div>
+
+                <h3>Save for Next Week:</h3>
+                <p> There is no formal submission today, however, please ensure your project is saved correctly in your
+                    computer and ready to use next class.
+                    </ol>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

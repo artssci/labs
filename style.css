@@ -117,7 +117,8 @@ END Glitch hello-app default styles
 body {
   font-family: 'Courier New', monospace;
   background-color: var(--color-bg);
-  counter-reset: h2counter h3counter;
+  /* counter-reset: h2counter h3counter; */
+  counter-reset: h2counter;
 }
 
 /* Page structure */
@@ -194,7 +195,7 @@ h1 {
 
 /* 1. Reset the child level on the parent */
 h2 {
-  counter-reset: h3counter;
+counter-reset: h3counter !important; /* Added !important to force the reset */
 }
 
 /* 2. Handle the visual number and incrementing separately */
@@ -211,6 +212,7 @@ h2.nocount:before {
 
 /* 4. Repeat for h3 */
 h3 {
+  
   counter-reset: h4counter;
 }
 

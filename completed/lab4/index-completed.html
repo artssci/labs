@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.js"></script>
+  <script src="app-completed.js" defer></script>
+
+</head>
+
+<body>
+  <div id="app">
+    <v-app theme="light">
+      <v-main class="bg-grey-lighten-2" @click="getCoordinates">
+
+
+        <v-img src="images/flower-shop.jpg"></v-img>
+
+
+        <v-app-bar>
+          
+          <v-app-bar-title>Plant Care Game</v-app-bar-title>
+          Status: {{ revivedCount }} / 2 Plants Healthy
+          <!-- <v-btn icon="mdi-information-box" @click="instructions = !instructions"></v-btn> -->
+          <!-- <span v-if="revivedCount === 2" class="text-success font-weight-bold">WINNER! ALL PLANTS REVIVED!</span> -->
+        </v-app-bar>
+
+        <!-- <v-dialog v-model="instructions" max-width="400">
+          <v-card>
+            <v-card-title class="bg-green">Instructions</v-card-title>
+            <v-card-text>
+              Take care of the plants by chatting with the plant employee and clicking the buttons in the correct order.
+            </v-card-text>
+            <v-card-actions>
+              <v-btn @click="instructions = false">Close</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog> -->
+
+        <!--plant care instructions -->
+        <v-btn position="absolute" style="top: 15%; left: 10%;" icon="mdi-chat-question" @click="openManual"></v-btn>
+
+        <!-- plant care instructions dialog -->
+        <v-dialog v-model="manualOpen" max-width="400">
+          <v-card>
+            <v-card-title class="bg-green">Care Order</v-card-title>
+            <v-card-text>
+              <v-list lines="two">
+                <v-list-item v-for="p in plants" :key="p.name">
+                  <v-list-item-title>{{ p.name }}</v-list-item-title>
+                  <v-list-item-subtitle>{{ p.careOrder[0]}} first, {{ p.careOrder[1]}} after, and {{ p.careOrder[2]}} at the end.</v-list-item-subtitle>
+                </v-list-item>
+              </v-list>
+            </v-card-text>
+            <v-card-actions>
+              <v-btn @click="manualOpen = false">Close</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+
+
+        <!-- plant1  button -->
+
+        <v-icon icon="mdi-arrow-down-drop-circle" style="position: absolute; top: 22%; left: 50%;"
+          @click="selectPlant(0)">
+        </v-icon>
+
+        <!-- plant 2 button -->
+
+        <v-icon icon="mdi-arrow-down-drop-circle" style="position: absolute; top: 22%; left: 78.05%;"
+          @click="selectPlant(1)">
+        </v-icon>
+
+        <v-dialog v-model="actionOpen" max-width="400">
+          <v-card v-if="activePlantIndex !== null">
+            <v-card-title class="bg-purple text-center">{{ plants[activePlantIndex].name }}</v-card-title>
+            <v-card-text class="text-center">
+              <v-btn v-for="action in careActions" :key="action.name" :icon="action.icon" :color="action.color"
+                class="ma-2" @click="addAction(action.name)"></v-btn>
+            </v-card-text>
+            <v-card-actions>
+              <v-btn color="error" variant="text" @click="closeActionDialog">Cancel</v-btn>
+              <v-spacer></v-spacer>
+              <v-btn color="success" variant="elevated" @click="validateSequence">Check answer</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+
+      </v-main>
+    </v-app>
+  </div>
+
+
+</body>
+
+</html>

@@ -1,170 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <link href="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.x/css/materialdesignicons.min.css" rel="stylesheet">
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.js"></script>
-  <style>
-    /* Making it feel like a game viewport */
-    .game-window {
-      max-width: 900px;
-      margin: 20px auto;
-      border: 8px solid #2c3e50;
-      box-shadow: 0 0 50px rgba(0,0,0,0.8);
-      position: relative;
-    }
-    .glint {
-      cursor: pointer;
-      filter: drop-shadow(0 0 5px gold);
-    }
-    /* The invisible lock area on the door */
-    .lock-target {
-      position: absolute;
-      top: 45%;
-      left: 48%;
-      width: 60px;
-      height: 80px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.05);
-      border: 2px dashed rgba(255,255,255,0.2);
-    }
-    .lock-target.active {
-      background: rgba(0, 255, 0, 0.2);
-      border-color: #4CAF50;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.js"></script>
+    <script src="app.js" defer></script>
+
+    <title>Document</title>
 </head>
+
 <body>
-  <div id="app">
-    <v-app theme="dark" class="bg-grey-darken-4">
-      <v-main>
-        <div class="rounded-xl overflow-hidden">
-          
-          <v-img 
-            src="images/dungeon.jpg"
-            height="550"
-            cover
-          >
-            <div style="position: absolute; top: 20px; right: 20px; z-index: 5;">
-              <v-progress-circular
-                v-model="timeRemaining"
-                :color="timeColor"
-                size="70"
-                width="7"
-              >
-                {{ Math.ceil(timeRemaining / 10) }}
-              </v-progress-circular>
-            </div>
+    <div id="app">
+        <v-app>
+            <v-main>
 
-            <v-icon
-              v-if="!inventory.includes('Key')"
-              icon="mdi-key-variant"
-              color="yellow-darken-2"
-              size="40"
-              class="glint"
-              style="position: absolute; bottom: 15%; left: 25%;"
-              @click="pickUpItem('Key')"
-            ></v-icon>
 
-            <div 
-              class="lock-target"
-              @dragover.prevent="isOverLock = true"
-              @dragleave="isOverLock = false"
-              @drop="onUnlock"
-              :class="{ 'active': isOverLock }"
-            ></div>
+                <!-- <v-btn position="absolute" style="top: 15%; left: 10%;" @click="openInformationCard"> open Information
+                    Card</v-btn> -->
 
-            <v-overlay :model-value="gameState !== 'playing'" persistent class="align-center justify-center">
-               <v-card width="400" class="text-center pa-6">
-                 <v-card-title class="text-h4">{{ endTitle }}</v-card-title>
-                 <v-card-text class="text-body-1">{{ endText }}</v-card-text>
-                 <v-btn color="primary" block @click="resetGame">Try Again</v-btn>
-               </v-card>
-            </v-overlay>
 
-          </v-img>
+                <v-btn style="position:absolute;  z-index: 1; left: 12.64%; top:17.10%;" @click="toggleOpenCloseReferenceCard">Reference Card</v-btn>
 
-          <v-sheet height="80" color="grey-darken-4" class="d-flex align-center px-4">
-            <span class="text-overline mr-4">Backpack:</span>
-            <v-chip
-              v-for="item in inventory"
-              :key="item"
-              draggable="true"
-              @dragstart="onDragKey"
-              color="amber"
-              variant="elevated"
-              prepend-icon="mdi-key"
-            >
-              DRAG ME TO THE DOOR
-            </v-chip>
-            <span v-if="inventory.length === 0" class="text-caption text-grey">Empty... find something to use.</span>
-          </v-sheet>
+                <!-- <v-dialog v-model="showReferenceCard" width="25%" class="text-center"> -->
+                <!-- <v-dialog v-model="showReferenceCard"> -->
+                <v-card v-if="showReferenceCard" style="position:absolute; left: 10.81%; top:24.35%; z-index: 1;">
+                    <v-card-title>Reference Card</v-card-title>
+                    <v-card-subtitle>{{ plantName }}</v-card-subtitle>
+                    <v-card-text>
+                        {{actionReference1}}, {{actionReference2}}, and {{actionReference3}}
+                    </v-card-text>
+                </v-card>
+                <!-- </v-dialog> -->
 
-        </div>
-      </v-main>
-    </v-app>
-  </div>
+                <!-- <v-btn style="position: absolute; top: 22%; left: 50%;" @click="openPlantCard">Open Plant Card</v-btn> -->
 
-  <script>
-    const { createApp, ref, computed, onMounted } = Vue;
-    const { createVuetify } = Vuetify;
+                <v-btn style="position:absolute; z-index: 1; left: 70.99%; top: 23.73%;" @click="toggleOpenCloseActionCard">Gameplay Card</v-btn>
 
-    const app = createApp({
-      setup() {
-        const inventory = ref([]);
-        const timeRemaining = ref(100);
-        const isOverLock = ref(false);
-        const gameState = ref('playing'); // playing, won, lost
+                <!-- <v-dialog v-model="showPlantCard" width="25%" class="text-center"> -->
+                <v-card style="position:absolute; z-index: 1; left: 70%; top: 31.28%;" v-if="showActionCard">
+                    <v-card-title>{{ plantName }}</v-card-title>
+                    <v-btn @click="recordUserAction('water')">water</v-btn>
+                    <v-btn @click="recordUserAction('prune')">prune</v-btn>
+                    <v-btn @click="recordUserAction('fertilize')">fertilize</v-btn>
+                    <v-card-text>
+                        {{result}}
+                    </v-card-text>
 
-        const timeColor = computed(() => {
-          if (timeRemaining.value > 60) return 'green';
-          if (timeRemaining.value > 30) return 'orange';
-          return 'red';
-        });
+                    <v-card-actions>
+                        <v-btn @click="validateResult">Validate result</v-btn>
+                    </v-card-actions>
+                </v-card>
+                <!-- </v-dialog> -->
 
-        const endTitle = computed(() => gameState.value === 'won' ? 'ESCAPE!' : 'CAUGHT!');
-        const endText = computed(() => gameState.value === 'won' ? 'You unlocked the door just in time!' : 'The guards arrived before you could get out.');
 
-        // Timer Logic
-        onMounted(() => {
-          setInterval(() => {
-            if (gameState.value === 'playing') {
-              timeRemaining.value -= 0.5;
-              if (timeRemaining.value <= 0) gameState.value = 'lost';
-            }
-          }, 100);
-        });
+                <!-- <v-dialog v-model="showResultCard" width="25%" class="text-center"> -->
+                <!-- <v-card v-if="showResultCard">
+                    <v-card-text>
+                        {{result}}
+                    </v-card-text>
+                </v-card> -->
 
-        const pickUpItem = (item) => {
-          inventory.value.push(item);
-        };
 
-        const onDragKey = (e) => {
-          e.dataTransfer.setData('text', 'Key');
-        };
+                <v-img :src="image" @click="findCoordinates"></v-img>
+            </v-main>
+        </v-app>
+    </div>
 
-        const onUnlock = (e) => {
-          const item = e.dataTransfer.getData('text');
-          if (item === 'Key') {
-            gameState.value = 'won';
-          }
-        };
 
-        const resetGame = () => {
-          inventory.value = [];
-          timeRemaining.value = 100;
-          gameState.value = 'playing';
-        };
-
-        return { 
-          inventory, timeRemaining, timeColor, pickUpItem, 
-          onDragKey, onUnlock, isOverLock, gameState, endTitle, endText, resetGame 
-        };
-      }
-    });
-
-    app.use(createVuetify()).mount('#app');
-  </script>
 </body>
+
 </html>

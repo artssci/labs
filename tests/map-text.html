@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>#map { height: 500px; border-radius: 12px; }</style>
+</head>
+<body>
+    <div id="app">
+        <v-app>
+            <v-main>
+                <v-container>
+                    <v-card class="mx-auto" max-width="900">
+                        <v-card-title class="text-h5">Investigación ArtSci 3C03</v-card-title>
+                        <v-card-subtitle>Contrasta las capas usando el selector arriba a la derecha</v-card-subtitle>
+                        
+                        <v-card-text>
+                            <div id="map"></div>
+                        </v-card-text>
+                    </v-card>
+                </v-container>
+            </v-main>
+        </v-app>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        const { createApp, onMounted, ref } = Vue;
+        const { createVuetify } = Vuetify;
+
+        createApp({
+            setup() {
+                const map = ref(null);
+
+                onMounted(() => {
+                    // 1. Inicializar mapa
+                    map.value = L.map('map').setView([43.65, -79.38], 4); // Vista general Canadá
+
+                    // 2. Fondo del mapa (Tile Layer)
+                    const baseLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map.value);
+
+                    // --- EJEMPLO PARA EL EQUIPO DE BALLENAS/BUQUES ---
+                    // Grupo de capa para Ballenas
+                    const whalesLayer = L.layerGroup([
+                        L.circle([48.42, -64.48], {radius: 50000, color: 'blue', fillOpacity: 0.5}).bindPopup('Zona de Ballenas Azules'),
+                        L.circle([44.50, -63.50], {radius: 30000, color: 'blue', fillOpacity: 0.5}).bindPopup('Avistamientos recientes')
+                    ]);
+
+                    // Grupo de capa para Buques (una línea)
+                    const shipsLayer = L.layerGroup([
+                        L.polyline([[40.71, -74.00], [45.50, -63.50], [51.50, -0.12]], {color: 'red', weight: 3}).bindPopup('Ruta de Carga Atlántica')
+                    ]);
+
+                    // 3. Añadir el control de capas (Layer Control)
+                    const overlayMaps = {
+                        "Avistamiento de Ballenas": whalesLayer,
+                        "Rutas de Buques": shipsLayer
+                    };
+
+                    L.control.layers(null, overlayMaps).addTo(map.value);
+                    
+                    // Activamos una por defecto
+                    whalesLayer.addTo(map.value);
+                });
+
+                return {};
+            }
+        }).use(createVuetify()).mount('#app');
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.js"></script>
+    <script src="app.js" defer></script>
+    <title>Document</title>
+
+    <style scoped>
+        /* Optional styling to make it feel more like a shop */
+        .v-container {
+            max-width: 1200px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div id="app">
+        <v-app>
+            <v-main class="bg-grey-lighten-3">
+                <v-container fluid>
+                    <v-row>
+                        <v-col cols="12" md="3">
+                            <v-card height="100%" class="d-flex flex-column align-center pa-4">
+                                <v-icon size="100" color="brown">mdi-bookshelf</v-icon>
+                                <h2 class="text-h5 my-4">Library</h2>
+
+                                <v-btn color="success" prepend-icon="mdi-book-open-variant" size="large"
+                                    @click="openManual">
+                                    Plant Care Book
+                                </v-btn>
+
+                                <v-divider class="my-6 w-100"></v-divider>
+
+                                <div class="text-subtitle-1 mb-2">Shop Restoration</div>
+                                <v-stepper v-model="revivedCount" :items="['Start', '1 Revived', 'All Happy!']"
+                                    hide-actions class="w-100"></v-stepper>
+                            </v-card>
+                        </v-col>
+
+                        <v-col cols="12" md="9">
+                            <v-card height="100%" class="pa-6 overflow-hidden" style="background: #fdf6e3;">
+                                <div class="text-h4 mb-6 text-center">Sunny's Flower Shop</div>
+
+                                <v-row justify="center">
+                                    <v-col v-for="(plant, index) in plants" :key="index" cols="12" sm="6"
+                                        class="text-center">
+                                        <v-card variant="outlined" class="pa-4 bg-white">
+                                            <v-img :src="plant.isAlive ? plant.colorImg : plant.deadImg" height="200"
+                                                cover></v-img>
+
+                                            <v-chip :color="plant.isAlive ? 'green' : 'grey'" class="mt-4" size="large"
+                                                @click="selectPlant(plant)">
+                                                <v-icon start>{{ plant.isAlive ? 'mdi-flower' : 'mdi-flower-outline'
+                                                    }}</v-icon>
+                                                {{ plant.name }} ({{ plant.isAlive ? 'Healthy' : 'Needs Care' }})
+                                            </v-chip>
+                                        </v-card>
+                                    </v-col>
+                                </v-row>
+                            </v-card>
+                        </v-col>
+                    </v-row>
+
+                    <v-dialog v-model="manualOpen" max-width="500">
+                        <v-card>
+                            <v-card-title class="bg-success text-white">Care Instructions</v-card-title>
+                            <v-card-text class="pa-4">
+                                <div v-for="p in plants" :key="p.name" class="mb-4">
+                                    <p class="text-h6"><strong>{{ p.name }}</strong></p>
+                                    <p>Follow this order: <v-chip size="small" variant="outlined">{{ p.sequence.join(` ➔
+                                            `)
+                                            }}</v-chip></p>
+                                </div>
+                            </v-card-text>
+                            <v-card-actions>
+                                <v-spacer></v-spacer>
+                                <v-btn color="success" @click="manualOpen = false">Close Book</v-btn>
+                            </v-card-actions>
+                        </v-card>
+                    </v-dialog>
+
+                    <v-dialog v-model="actionOpen" max-width="400" persistent>
+                        <v-card v-if="selectedPlant">
+                            <v-card-title>Caring for {{ selectedPlant.name }}</v-card-title>
+                            <v-card-text class="text-center">
+                                <p class="mb-4">Select the actions in the correct order:</p>
+                                <div class="d-flex justify-space-around mb-4">
+                                    <v-btn icon="mdi-water" color="blue" @click="recordAction('Water')"></v-btn>
+                                    <v-btn icon="mdi-sun-side-original" color="orange"
+                                        @click="recordAction('Sun')"></v-btn>
+                                    <v-btn icon="mdi-shuttlecock" color="brown"
+                                        @click="recordAction('Fertilize')"></v-btn>
+                                </div>
+                                <p class="text-caption text-grey">Current Sequence: {{ userSequence.join(' > ') }}</p>
+                            </v-card-text>
+                            <v-card-actions>
+                                <v-btn color="error" variant="text" @click="closeActionDialog">Stop & Reset</v-btn>
+                                <v-spacer></v-spacer>
+                                <v-btn color="primary" @click="checkSequence">Finish</v-btn>
+                            </v-card-actions>
+                        </v-card>
+                    </v-dialog>
+                </v-container>
+            </v-main>
+        </v-app>
+    </div>
+
+
+
+
+
+
+</body>
+
+</html>
