@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>Lab 5: Scaling Your Game World</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="content" role="main">
+            <h1 class="title">Lab 5: Scaling Your Game World</h1>
+
+            <div class="instructions">
+                <hr>
+                <h2 class="nocount">General Description</h2>
+                <p style="margin-left: 0">
+                    In Lab 4, you built a single-subject interactive game. In this lab, you will learn how to
+                    <b>scale</b> your game by moving from individual variables to <b>Arrays of Objects</b>.
+                    <br><br>
+                    By the end of this lab, your game will handle multiple subjects simultaneously. You will also track
+                    game progress and provide real-time feedback to the player.
+                </p>
+
+                <h2 class="nocount">Learning Objectives</h2>
+                <ol>
+                    <li>Organize complex data using <b>Arrays of Objects</b> to represent multiple game subjects.</li>
+                    <li>Use <code>v-for</code> loops to dynamically generate buttons and cards.</li>
+                    <li>Implement State Management by using <b>parameters</b> to track a selected subject and handle
+                        individual gameplay logic.
+                    </li>
+                    <!-- <li>Display <b>game progress</b> across multiple levels.</li> -->
+                </ol>
+
+                <h2 class="nocount">Table of Contents</h2>
+                <hr />
+                <ol>
+                    <li><a href="#1">Reusing and Extending Lab 4</a></li>
+                    <li><a href="#2">Expanding Your Data Through Arrays and Objects</a></li>
+                    <li><a href="#3">Dynamic Reference Cards</a></li>
+                    <li><a href="#4">Dynamic Gameplay Cards</a></li>
+                    <li><a href="#5">Dynamic Validation & State Reset</a></li>
+                    <li><a href="#6">Track Game Progress </a></li>
+                    <li><a href="#7">Optional Challenge: Completing the Player Experience</a></li>
+                    <li><a href="#conclusion">Wrap Up & Sharing Your Work</a></li>
+                </ol>
+
+
+
+
+                <h2 id="1">Reusing and Extending Lab 4</h2>
+                <hr>
+
+                <p>In this lab, you will continue working on the index.html and app.js files you started last week. You
+                    <b>don't</b> need
+                    to create a new folder or new index or app files since you will expand the code you wrote in Lab 4.
+                </p>
+
+                <ol>
+                    <li>Open your <b>Lab 4 folder</b> in VS Code editor: File > Open Folder.</li>
+                    <li>Open your <code>app.js</code> and <code>index.html</code> files.</li>
+                    <div class="tip" style="margin-top: 1rem; margin-bottom: 1rem">💡 Before making changes, ensure your
+                        project from
+                        last week is running correctly
+                        in the browser before moving on to the next steps below.
+                    </div>
+
+                </ol>
+
+
+                <!--  -->
+
+                <h2 id="2">Expanding Your Data Through Arrays and Objects</h2>
+                <hr>
+
+                <div class="definition">
+                    <p> In Lab 4, you used individual variables (like <code>plantName</code>) to handle a single
+                        subject.
+                        To scale our game, we need to group all the data for <b>multiple subjects</b> into an <b>Array
+                            of Objects</b>. </p>
+                </div>
+
+                <h3>Expanding Your Collection</h3>
+                <ol>
+                    <li>Identify a couple more subjects (e.g., more plants) to
+                        add to
+                        your game for a total of <b>3 - 4 subjects</b>.</li>
+                    <li>Brainstorm a unique 3-step action sequence for each new subject. (Example: If a
+                        Lily
+                        needs "Water, Prune, Fertilize," perhaps a Marigold needs "Prune, Water, Fertilize").
+                    </li>
+
+                    <div class="tip" style="margin-top: 1rem; margin-bottom: 1rem">💡 For simplicity, use the same
+                        actions, but only change the sequence order.
+                    </div>
+
+                    <li>Find the coordinates using the <code>findCoordinates</code> function you created
+                        in Lab 4
+                        to determine where the buttons and cards for your new subjects should appear on your background
+                        image.
+                        Write down the <b>X%</b> and <b>Y%</b> for each button and card. Refer to <a
+                            href="https://artssci.github.io/labs/lab4.html#6" target="_blank">Lab 4, section 6.2
+                            Positioning the Buttons and Cards</a> to complete this step.</li>
+                </ol>
+
+                <h3>Organizing Data with an Array of Objects</h3>
+                <p>You will now create a single array called <code>subjects</code> that holds all the game
+                    data you defined in the previous step.</p>
+
+                <ol>
+                    <li>Open your <code>app.js</code> file.</li>
+                    <li>Follow the steps from <a href="https://artssci.github.io/labs/lab3.html#2" target="_blank">Lab
+                            3, Section 2</a> to wrap your variables into an Array of
+                        Objects. </li>
+                    <li>Ensure every object in your array includes the same fields, including the x and y
+                        coordinates from the step above. See example below:
+                    </li>
+                </ol>
+
+                <pre><code class="language-javascript"> 
+const subjects = [ 
+                    { plantName: "Lily", 
+                    actionReference1: "water", 
+                    actionReference2: "prune", 
+                    actionReference3: "fertilize", 
+                    buttonX: "49.89%", 
+                    buttonY: "18.34%", 
+                    cardX: "49.77%", 
+                    cardY: "24.35%"
+                    }, 
+                    { plantName: "Marigold", 
+                    actionReference1: "prune", 
+                    actionReference2: "water", 
+                    actionReference3: "fertilize", 
+                    buttonX: "80%", 
+                    buttonY: "70%",
+                    cardX: "79.87%", 
+                    cardY: "79.51%" 
+                    },
+                    { plantName: "Tulip", 
+                    actionReference1: "fertilize", 
+                    actionReference2: "water", 
+                    actionReference3: "prune", 
+                    buttonX: "60%", 
+                    buttonY: "20%", 
+                    cardX: "75.06%", 
+                    cardY: "56.70%"
+                    
+                    }
+                ] 
+    </code></pre>
+
+                <div class="tip"> <strong>💡 Reminders:</strong> <br><br>
+                    1. Once you have created this array, you can <b>delete</b>
+                    the old single variables (like <code>const plantName = "Lily"</code>) from your code. They
+                    are now
+                    safely stored inside your array.
+                    <br><br>
+                    2. Update your <code>return</code> block to include the name of your collection (e.g.,
+                    <code>subjects</code>) and remove any
+                    old variables you deleted.
+                </div>
+
+
+
+                <!--  -->
+                <h2 id="3">Dynamic Reference Card</h2>
+                <hr>
+
+                <div class="definition">
+                    <p> In Lab 4, your Reference Card only showed the information for one subject. Now that you
+                        have a
+                        collection of subjects, you need a way to display all of them at once. To achieve this, you will
+                        include a <code>v-list</code> in your <code>v-card</code> and use <code>v-for</code> to loop
+                        over
+                        your array of objects.
+
+                </div>
+
+                <h3>Using v-list and v-for</h3>
+
+                <!-- <p>In this step, you will update your Reference Card in <code>index.html</code>. We will use a
+                    <b>Vuetify List</b>, which is a specialized component for displaying rows of information.
+                </p> -->
+
+                <ol>
+                    <li>Locate your Reference Card <code>&lt;v-card&gt;</code> in
+                        <code>index.html</code>.
+
+                    <li>Replace the <code>v-card</code> elements with
+                        <code>v-list</code> and its elements: <code>v-list-item</code>,
+                        <code>v-list-item-title</code>, and <code>v-list-item-subtitle</code>. Follow
+                        the
+                        example below:
+                    </li>
+
+                    <pre><code class="language-html"> 
+&lt;v-card&gt; 
+  &lt;v-card-title&gt;Reference Card&lt;/v-card-title&gt; 
+    &lt;v-list&gt;
+       &lt;v-list-item&gt; 
+         &lt;v-list-item-title&gt; 
+           {{ plantName }}
+          &lt;/v-list-item-title&gt; 
+          &lt;v-list-item-subtitle&gt; 
+            {{actionReference1 }}, {{ actionReference2 }} and {{ actionReference3 }}
+          &lt;/v-list-item&gt; 
+    &lt;/v-list&gt; 
+&lt;/v-card&gt; </code></pre>
+
+                    <li>Apply a <code>v-for</code> loop to the <code>v-list-item</code> to render a separate row for
+                        each of your
+                        objects. Refer to <a href="https://artssci.github.io/labs/lab3.html#3" target="_blank">
+                            Lab 3, step 3. Generating Cards with the v-for Loop</a> to complete this step.</li>
+
+                    <div class="tip" style="margin-bottom: 1rem; margin-top: 1rem;"> <strong>💡 Reminder:</strong> Use
+                        the Dot notation to access the object's data.
+                    </div>
+
+                    <li><b>Save and Open</b> your Reference Card in the browser. You should now see
+                        a list
+                        of
+                        all your subjects and their secret action sequences!</li>
+
+                    <div class="tip" style="margin-bottom: 1rem; margin-top: 1rem;"> <strong>💡 Troubleshooting
+                            tip:</strong> If your list looks
+                        empty, check your <code>app.js</code> return block
+                        to make
+                        sure <code>subjects</code> is being exported correctly.</div>
+                </ol>
+
+
+                <div style="width: 100%; height: auto; display: flex;">
+                    <img style="width: 80%; margin: auto;" src="images/lab5/step3.png" />
+                </div>
+                <!--  -->
+
+                <h2 id="4">Dynamic Gameplay Cards</h2>
+                <hr>
+
+                <div class="definition">
+                    <p>
+                        In this section, you will generate multiple gameplay buttons and cards with dynamic open/close
+                        states and location coordinates.
+                        To achieve this, you will perform four key upgrades:</p>
+                    <ul>
+                        <li>Move the <code>showGameplayCard</code> variable inside each
+                            individual subject object.</li>
+                        <li>Update your <code>toggleOpenCloseGameplayCard</code> function to use
+                            parameters so it knows which specific subject is being clicked.
+                        </li>
+                        <li>Use a <code>v-for</code> loop to automatically
+                            generate buttons and cards for every subject.</li>
+                        <li>Apply dynamic <code>style</code> to place each button and
+                            card exactly where it belongs on the game board.</li>
+                    </ul>
+                </div>
+                <h3>Move the <code>showGameplayCard</code> Variable Inside Each Object</h3>
+                <ol>
+                    <li>In app.js, locate the variable you created to open/close the gameplay card
+                        (it might be named
+                        <code>showGameplayCard</code> or something similar).
+                    </li>
+                    <li>Add this variable to all of your objects, to control if they open/close individually. Follow the
+                        example below for each
+                        object:</li>
+
+                    <pre><code class="language-javascript"> 
+                {
+                plantName: "Lily",
+                actionReference1: "water",
+                actionReference2: "prune",
+                actionReference3: "fertilize",
+                buttonX: "49.89%",
+                buttonY: "18.34%",
+                cardX: "49.77%",
+                cardY: "24.35%", 
+                showGameplayCard: ref(false)
+                }
+                     </code></pre>
+
+                </ol>
+
+                <h3>Update the <code>toggleOpenCloseGameplayCard</code> Function to Use
+                    Parameters
+                </h3>
+
+                <p>In Lab 4, you should also have created a function that toggles the true/false state of the
+                    <code>showGameplayCard</code> variable above. You are now going to modify
+                    that
+                    function to identify what subject the user has clicked and open the card accordingly.
+                </p>
+
+                <ol>
+                    <li>In app.js, locate the <code>toggleOpenCloseGameplayCard()</code> function (it might have a
+                        different name in your code).
+                    </li>
+                    <li>Update this function to accept a
+                        <b>parameter</b> to pass the
+                        specific subject when a given gameplay button is clicked. Call this parameter
+                        something like <code>subject</code>. Follow example below:
+
+                        <pre><code class="language-javascript">function toggleOpenCloseGameplayCard(subject)</code></pre>
+                    </li>
+
+                    <div class="tip" style="margin-bottom: 1rem">
+                        <strong>💡 Concept Reminder:</strong> In JavaScript, <b>parameters</b> allow you to pass or send
+                        values to a
+                        function.
+                        Parameters are listed inside parentheses, after the function's name.
+                    </div>
+
+
+                    <li>Modify the <code>if-else</code> statement inside that function, by adding
+                        the parameter followed by the dot notation to access the <code>showGameplayCard</code> value of
+                        the clicked subject. Follow the example below:
+
+                        <pre><code class="language-javascript">
+if (subject.showGameplayCard.value == false) {
+    subject.showGameplayCard.value = true
+} 
+    else {
+        subject.showGameplayCard.value = false
+}
+                       </code></pre>
+                    </li>
+                </ol>
+
+
+
+                <h3>Use <code>v-for</code> to Generate Buttons and Cards for Each Subject</h3>
+
+                <p>In previous labs you have used <code>v-for</code> to generate multiple copies of a single component,
+                    like you did with the <code>v-card</code>. In this step you will generate multiple buttons and cards
+                    with the same <code>v-for</code>. To achieve this, you will start by wrapping your gameplay
+                    <code>v-btn</code> and <code>v-card</code> inside a container using <code>v-sheet</code>.
+                </p>
+                <ol>
+                    <li>In your index.html, locate your gameplay button and card, and wrap them inside a
+                        <code>v-sheet</code> container. Follow the example below:
+                    </li>
+
+
+
+                    <pre><code class="language-html">
+&lt;v-sheet&gt;
+
+    &lt;!-- YOUR EXISTING BUTTON CODE HERE --&gt;
+
+    &lt;!-- YOUR EXISTING CARD CODE HERE --&gt;
+    <!-- &lt;v-btn @click="toggleOpenCloseGameplayCard" style="position:absolute; z-index: 1; left: 70.99%; top: 23.73%;"&gt;Gameplay Card&lt;/v-btn&gt;
+    &lt;v-card v-if="showGameplayCard" style="position:absolute; z-index: 1; left: 70%; top: 31.28%;">
+        &lt;v-card-title&gt;{{ plantName }}&lt;/v-card-title&gt;
+        &lt;v-btn @click="recordUserAction('water')"&gt;water&lt;/v-btn&gt;
+        &lt;v-btn @click="recordUserAction('prune')"&gt;prune&lt;/v-btn&gt;
+        &lt;v-btn @click="recordUserAction('fertilize')"&gt;fertilize&lt;/v-btn&gt;
+        &lt;v-card-text&gt;
+            {{result}}
+        &lt;/v-card-text&gt;
+        &lt;v-card-actions&gt;
+            &lt;v-btn @click="validateResult">Validate result&lt;/v-btn&gt;
+        &lt;/v-card-actions&gt;
+    &lt;/v-card&gt; -->
+&lt;/v-sheet&gt;
+
+</code></pre>
+
+                    <div class="tip" style="margin-bottom: 1rem;"> 💡 <code>v-sheet</code> is a generic container for
+                        content and Vuetify components.
+                        More info here: <a href="https://vuetifyjs.com/en/components/sheets/#guide"
+                            target="_blank">https://vuetifyjs.com/en/components/sheets/#guide</a>.
+                    </div>
+
+
+                    <li>Now, apply a <code>v-for</code> to the <code>v-sheet</code> to render a separate button and a
+                        card for
+                        each of your objects. Refer to <a href="https://artssci.github.io/labs/lab3.html#3"
+                            target="_blank">
+                            Lab 3, step 3. Generating Cards with the v-for Loop</a> to complete this step.
+                    </li>
+
+                    <!-- <pre><code class="language-html">
+&lt;v-sheet v-for="subject in subjects" :key="subject.plantName"&gt;
+</code></pre> -->
+
+                    <div class="tip" style="margin-bottom: 1rem; margin-top: 1rem;"> <strong>💡 Reminder:</strong> Use
+                        the Dot notation to access the object's data.
+                    </div>
+                    <li>Finally, inside your gameplay <code>v-btn</code>, locate the
+                        <code>toggleOpenCloseGameplayCard</code> function call. Update it to include the
+                        <strong>parameter</strong> that represents your object. See example below:
+                    </li>
+
+                    <pre><code class="language-html">
+&lt;v-btn @click="toggleOpenCloseGameplayCard(subject)"&gt;
+</code></pre>
+
+                    <div class="tip" style="margin-top: 1rem;">
+                        <strong>💡 Matching your Alias:</strong> The parameter you pass into the function <strong>must
+                            match</strong> the alias you created in your <code>v-for</code> loop.
+                        <br><br>
+                        If your loop says <code>v-for="subject in subjects"</code>, you must pass <code>subject</code>.
+                        If you named it <code>v-for="item in subjects"</code>, then you would pass <code>item</code>.
+                    </div>
+
+                    <!-- <li>Remember to access the object's data using the dot notation in your card. For example:</li>
+                    <pre><code class="language-html">
+&lt;v-card  v-if="subject.showGameplayCard.value"&gt;
+&lt;v-card-title&gt;{{ subject.plantName }}&lt;/v-card-title&gt;</code></pre> -->
+
+                </ol>
+
+                <h3>Apply Dynamic Style to Place Gameplay Buttons and Cards</h3>
+
+                <p>At the beginninig of this lab, you added <code>buttonX</code>, <code>buttonY</code>,
+                    <code>cardX</code>, and <code>cardY</code> to each of your objects. In this step, you will apply
+                    those
+                    coordinates to the gameplay <code>v-btn</code> and <code>v-card</code>. You
+                    will use a "two-style" approach,
+                    using a standard <code>style</code> for the <b>static</b> layout rules and a
+                    <code>:style</code> for the dynamic layout rules (i.e., the objects' coordinates).
+                </p>
+
+                <ol>
+
+                    <li>In your gameplay <code>v-btn</code>, start by splitting the <code>position</code> and
+                        <code>z-index</code> from last week, into one
+                        <code>style</code> command. Then move the <code>left</code> and <code>top</code> into another
+                        one. See example below:
+                        <pre><code class="language-html">
+&lt;v-btn style="position:absolute; z-index: 1;" style="left: 70.99%; top: 23.73%;"&gt;Gameplay Card&lt;/v-btn&gt;
+            </code></pre>
+                    </li>
+
+                    <li>Add a colon <code>:</code> to the <code>style</code> command containing the
+                        <code>top</code> and <code>left</code>. This
+                        tells Vuetify that the values inside are no longer just text, but are now data coming from your
+                        objects in
+                        app.js.
+                        <pre><code class="language-html">
+&lt;v-btn style="position:absolute; z-index: 1;" :style="left: 70.99%; top: 23.73%;"&gt;Gameplay Card&lt;/v-btn&gt;
+            </code></pre>
+                    </li>
+
+                    <div class="tip" style="margin-bottom:1rem"> <strong>💡 Coding Concept:</strong> When you use a
+                        colon (e.g.,
+                        :src="imageSource"), Vuetify treats the value inside the quotes
+                        ("imageSource") as a JavaScript expression. This means imageSource should be a variable or a
+                        function defined in your app.js script, not a static value.
+                    </div>
+
+
+                    <li>Replace the hard-coded coordinates with the coordinates from your
+                        object using dot notation (e.g., <code>subject.buttonX</code> or <code>item.buttonX</code>).
+                        <pre><code class="language-html">
+&lt;v-btn style="position:absolute; z-index: 1;" :style="left: subject.buttonX; top: subject.buttonY;"&gt;Gameplay Card&lt;/v-btn&gt;
+            </code></pre>
+                    </li>
+
+                    <li>Finally, because we are calling multiple
+                        instructions at a time, we use <strong>curly braces { }</strong> and
+                        separate our properties with <strong>commas</strong> instead of semicolons. See example below:
+                        <pre><code class="language-html">
+&lt;v-btn style="position:absolute; z-index: 1;" :style="{ left: subject.buttonX, top: subject.buttonY }"&gt;Gameplay Card&lt;/v-btn&gt;
+            </code></pre>
+                    </li>
+
+                    <li>Repeat steps 1-4 to apply the object's <code>cardX</code> and
+                        <code>cardY</code> coordinates to your <code>v-card</code>.
+                </ol>
+
+
+
+                <div style="width: 100%; height: auto; display: flex;">
+                    <img style="width: 80%; margin: auto;" src="images/lab5/step4.gif" />
+                </div>
+
+
+                <!--  -->
+                <h2 id="5">Dynamic Validation & State Reset</h2>
+                <hr>
+                <div class="definition">
+                    <p> In this section you will upgrade the <code>result</code> variable and
+                        <code>validateResult</code> function to check against the action references of the specific
+                        subject being clicked. To achieve this, you will perform two upgrades:
+                    <ul>
+                        <li>Move the <code>result</code> variable inside each individual subject object.</li>
+                        <li>
+                            Update your <code>validateResult</code> function to use parameters so it knows which
+                            specific
+                            subject is being clicked and validated.
+                        </li>
+                        <li>Reset the user actions before the user clicks new actions.</li>
+                    </ul>
+                </div>
+
+                <h3>Move the <code>result</code> Variable Inside Each Object</h3>
+
+
+                <ol>
+                    <li>In app.js, locate the variable that stores your card result. You created this variable last week
+                        in lab 4.
+                    </li>
+                    <li>Move this variable to your objects to control the validated results individually. See example
+                        below:</li>
+
+                    <pre><code class="language-javascript"> 
+            {
+                plantName: "Lily",
+                actionReference1: "water",
+                actionReference2: "prune",
+                actionReference3: "fertilize",
+                buttonX: "49.89%",
+                buttonY: "18.34%",
+                cardX: "49.77%",
+                cardY: "24.35%",
+                showGameplayCard: ref(false),
+                result: ref(null)
+            }
+            </code></pre>
+
+                </ol>
+
+                <h3>Update the validateResult Function to Use Parameters</h3>
+                <ol>
+                    <li>
+                        Locate your <code>validateResult</code> function (it might have a different name in your code).
+                    </li>
+                    <li>Update this function to accept a parameter to pass the specific subject when the
+                        "validateResult" button of a given gameplay
+                        card is clicked. Call this parameter something like subject. Follow example below:</li>
+
+                    <pre><code class="language-javascript"> 
+function validateResult(subject)
+</code></pre>
+
+                    <li>In the <code>if-else</code> statement of your function, use dot notation to compare the user's
+                        actions
+                        against the action references inside the subject. Then, use dot notation again to
+                        update that specific subject's result message. See the example below:</li>
+
+                    <pre><code class="language-javascript"> 
+    if (userAction1.value === subject.actionReference1 && 
+        userAction2.value === subject.actionReference2 && 
+        userAction3.value === subject.actionReference3) {
+    
+        subject.result.value = "Your plant is thriving!"
+
+} else {
+    
+       subject.result.value = "Your plant withered."
+  }
+
+</code></pre>
+
+                    <li>In your <code>v-card</code><code> inside index.html</code>, find the "Validate
+                        Result" button.
+                    </li>
+                    <li>Pass the alias from your
+                        <code>v-for</code> loop (e.g., subject or item) into the function call.
+                    </li>
+
+                    <pre><code class="language-html">
+ &lt;v-btn @click="validateResult(subject)"&gt; Validate result &lt;/v-btn&gt; 
+ </code></pre>
+
+                    <div class="tip" style="margin-top: 1rem;">
+                        <strong>💡 Remember:</strong> Use the <code>v-for</code> alias and the dot notation in
+                        <code>result</code> in the <code>v-card</code> to
+                        display
+                        the result message tied to that specific object. See example below:
+                        <pre><code class="language-html">&lt;v-card-text&gt;  {{ subject.result }} &lt;/v-card-text&gt; 
+</code></pre>
+                    </div>
+                </ol>
+
+
+                <h3>Reset User Actions Before User Clicks New Actions.</h3>
+
+                <p>In this step, you will ensure the previous actions clicked reset before the user clicks new actions.
+                    <!-- <ul>
+                    <li>The reference card closes adding complexity making the user rely on their memory when selecting
+                        the order of actions.</li>
+                    <li>Ensure any previous actions clicked by the user should reset before the user clicks new actions.
+                    </li>
+                    <li>Rest the subject's result in case the user wants to try again after failing.</li>
+                </ul> -->
+                </p>
+                <ol>
+                    <li>In app.js, locate your <code>toggleOpenCloseGameplayCard</code> function.</li>
+                    <li>Inside the <code>if</code> section of your toggle function (the part that sets the card to
+                        true), reset the
+                        user action variables to <code>null</code>. This ensures that every time a user opens a card,
+                        their previous
+                        choices are cleared. Follow the example below:</li>
+
+
+                    <pre><code class="language-javascript"> 
+function toggleOpenCloseGameplayCard(subject) {
+    if (subject.showGameplayCard.value == false) {
+        subject.showGameplayCard.value = true;
+
+        // Reset the choices to null only when opening the card
+        userAction1.value = null;
+        userAction2.value = null;
+        userAction3.value = null;
+    } else {
+        subject.showGameplayCard.value = false;
+    }
+}
+</code></pre>
+
+                    <div style="width: 100%; height: auto; display: flex;">
+                        <img style="width: 80%; margin: auto;" src="images/lab5/step5.gif" />
+                    </div>
+
+
+                </ol>
+
+                <!--  -->
+
+                <h2 id="6">Track Game Progress</h2>
+                <hr>
+
+                <div class="definition">
+                    <p> In this step, you will add a
+                        <b>counter</b> to keep track of how many times the result valus has been true.
+                    </p>
+                </div>
+
+                <h3>Create the Counter Variable</h3>
+                <ol>
+                    <li>In app.js, create a new reactive variable called <code>savedCount</code>.</li>
+                    <li>Set its initial value to <code>0</code>.</li>
+
+                    <pre><code class="language-javascript"> const savedCount = ref(0); </code></pre>
+                </ol>
+
+                <h3>Incrementing the Score</h3>
+
+                <ol>
+                    <li>Find the <code>if</code> block in your <code>validateResult</code> function.</li>
+                    <li>Add a line of code to increase your <code>savedCount</code> by 1. Follow the example below:</li>
+
+                    <pre><code class="language-javascript">savedCount.value++
+                 </code></pre>
+
+
+
+                    <div class="tip" style="margin-top: 1rem;">
+                        <strong>💡 Coding Concept:</strong> <code>++</code> is called an <strong>increment
+                            operator</strong>. It adds 1 to its operand.
+                        Learn more here: <a href="https://www.w3schools.com/jsref/jsref_oper_increment.asp"
+                            target="_blank">https://www.w3schools.com/jsref/jsref_oper_increment.asp</a>.
+                    </div>
+
+                </ol>
+
+                <h3>Displaying the Score</h3>
+                <ol>
+                    <li>In <code>index.html</code>, add a <code>v-chip</code> and call the <code>savedCount</code>
+                        variable.
+                        section.
+                    </li>
+                    <li>Use absolute positioning and <code>z-index</code> to make sure it floats above all other
+                        elements. See example below:
+                    </li>
+
+                    <pre><code class="language-html">
+&lt;v-chip style="position: absolute; z-index: 1; left:0%; top:0%;"&gt;
+    Plants Saved: {{ savedCount }}
+&lt;/v-chip&gt;
+</code></pre>
+
+
+
+                    <div style="width: 100%; height: auto; display: flex;">
+                        <img style="width: 80%; margin: auto;" src="images/lab5/step6.gif" />
+                    </div>
+
+                </ol>
+                <!--  -->
+                <h2 id="7">Optional Challenge: Completing the Player Experience</h2>
+                <hr>
+
+                <div class="definition">
+                    <p> Now that your core game works, try the following challenges to increase the game complexity and
+                        polish the experience. </p>
+                </div>
+
+                <h3>Challenge 1: The Memory Challenge</h3>
+                <p>Currently, a player can keep their reference card open at the same time as the gameplay cards. To
+                    make the game more difficult, your task is to make the reference card close each time a gameplay
+                    button is clicked.</p>
+
+                <!-- <ul>
+                    <li><b>The Logic:</b> In <code>app.js</code>, locate your <code>toggleOpenCloseGameplayCard</code>
+                        function. You need to add a line of code that ensures the <code>showReferenceCard</code>
+                        variable is set to <code>false</code>. </li>
+                    <li><b>The Concept:</b> When the player clicks a "Gameplay Button" to start caring for a plant, the
+                        game should "hide" the answers. This forces the player to remember the correct actions they just
+                        saw on the reference card.</li>
+                    <li><b>The Trigger:</b> Inside your toggle function, ensure that whenever a
+                        <code>showGameplayCard</code> is opened (set to <code>true</code>), the corresponding
+                        <code>showReferenceCard</code> is automatically closed.</li>
+                </ul> -->
+
+                <h3>Challenge 2: App Bar & Icon Buttons</h3>
+                <p>Refine the interface by adding an app bar and replace all the buttons with icon buttons.</p>
+
+                <ul>
+                    <li>Check out the <a href="https://vuetifyjs.com/en/components/icon-buttons/#usage"
+                            target="_blank">Vuetify
+                            Icon
+                            Button documentation</a> to see how to use the <code>icon</code> property and choose
+                        the
+                        best icons for your actions here: <a href="https://mdisearch.com/"
+                            target="_blank">https://mdisearch.com/</a></li>
+                </ul>
+
+
+                <!-- <div class="tip"> <strong>💡 Pro-Tip:</strong> For the Victory Screen, think about adding a
+                    "Play Again"
+                    button inside the dialog that resets the <code>savedCount</code> and all the plants back to
+                    their
+                    original state! </div> -->
+
+                <h2 id="conclusion">Wrap Up & Sharing Your Work</h2>
+                <hr />
+                    <p>Congratulations, you've reached the end of this lab!  Here is the breakdown of the skills you practiced in this
+                        lab:</p>
+
+                    <ul>
+                        <li><strong>Data Architecture:</strong> You organized complex game data by migrating individual
+                            variables into a <strong>structured Array of Objects</strong>. This allows your code to
+                            manage dozens of subjects just as easily as one.</li>
+
+                        <li><strong>Dynamic Rendering:</strong> You used the <strong><code>v-for</code> loop</strong> to                            
+                            automatically generate unique buttons and cards for every object in your array.</li>
+
+                        <li><strong>Scalable State Management:</strong> You refactored your functions to use
+                            <strong>parameters</strong>. By passing a <code>subject</code> into your logic, you’ve
+                            learned how to track and update the state of a specific item within a larger collection.
+                        </li>
+
+                        <!-- <li><strong>Dynamic Styling:</strong> You practiced a <strong>"Two-Style" binding</strong>, using
+                            Vue to inject JavaScript data directly into CSS to position your game elements at unique
+                            coordinates on the screen.</li> -->
+                    </ul>
+                
+                    
+
+
+                <div class="sharing-instructions"
+                    style="background-color: #fff4e5; padding: 15px; border: 2px dashed #ff9800; border-radius: 8px;">
+                    <h3>📢 Share Your Game!</h3>
+                    <p>It's time to show off your game. Please follow these steps:</p>
+                    <ol>
+                        <li><b>Publish</b> your page to GitHub by creating a new repository. <a
+                                href="https://artssci.github.io/labs/lab3.html#6" target="_blank">Refer
+                                to Lab 3, Section 7. Publishing Your Gallery With GitHub Pages
+                            </a></li>
+                        <li><b>Copy</b> your live GitHub Pages URL (the one that ends in
+                            <code>.github.io</code>).
+                        </li>
+                        <li><b>Post</b> your link on our board here:
+                            <a href="https://tinyurl.com/lab-4-and-5-showcase"
+                                target="_blank">https://tinyurl.com/lab-4-and-5-showcase</a>
+                        </li>
+                        <li><b>Click</b> on other classmates' links to explore their games.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -18,10 +18,14 @@
         <v-app>
             <v-main>
 
-                <v-btn icon="mdi-information" class="bg-yellow" style="position:absolute;  z-index: 1; left: 12.64%; top:17.10%;"
+                <!-- reference card button -->
+                <v-btn icon="mdi-information" class="bg-yellow"
+                    style="position:absolute;  z-index: 1; left: 12.64%; top:17.10%;"
                     @click="toggleOpenCloseReferenceCard"></v-btn>
 
-                <v-card width="25%" class="bg-yellow" v-if="showReferenceCard" style="position:absolute; left: 10.81%; top:24.35%; z-index: 1;">
+                <!-- reference card -->
+                <v-card width="25%" class="bg-yellow" v-if="showReferenceCard"
+                    style="position:absolute; left: 10.81%; top:24.35%; z-index: 1;">
                     <v-card-title>Reference Card</v-card-title>
                     <v-card-subtitle>{{ plantName }}</v-card-subtitle>
                     <v-card-text>
@@ -29,14 +33,18 @@
                     </v-card-text>
                 </v-card>
 
-                <v-btn icon="mdi-flower-poppy" class="bg-green" style="position:absolute; z-index: 1; left: 70.99%; top: 23.73%;"
-                    @click="toggleOpenCloseActionCard"></v-btn>
+                <!-- gameplay card button -->
+                <v-btn icon="mdi-flower-poppy" class="bg-green"
+                    style="position:absolute; z-index: 1; left: 70.99%; top: 23.73%;"
+                    @click="toggleOpenCloseGameplayCard"></v-btn>
 
-                <v-card width="25%" class="bg-green text-center" style="position:absolute; z-index: 1; left: 70%; top: 31.28%;" v-if="showActionCard">
+                <!-- gameplay card -->
+                <v-card width="25%" class="bg-green text-center"
+                    style="position:absolute; z-index: 1; left: 70%; top: 31.28%;" v-if="showGameplayCard">
                     <v-card-title>{{ plantName }}</v-card-title>
-                    <v-btn  @click="recordUserAction('water')">water</v-btn>
-                    <v-btn  @click="recordUserAction('prune')">prune</v-btn>
-                    <v-btn  @click="recordUserAction('fertilize')">fertilize</v-btn>
+                    <v-btn @click="recordUserAction('water')">water</v-btn>
+                    <v-btn @click="recordUserAction('prune')">prune</v-btn>
+                    <v-btn @click="recordUserAction('fertilize')">fertilize</v-btn>
                     <v-card-text>
                         {{result}}
                     </v-card-text>
@@ -47,7 +55,8 @@
                 </v-card>
 
 
-                <v-img :src="image" @click="findCoordinates"></v-img>
+                <!-- background image -->
+                <v-img :src="backgroundImage" @click="findCoordinates"></v-img>
             </v-main>
         </v-app>
     </div>

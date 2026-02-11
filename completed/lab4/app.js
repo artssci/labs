@@ -11,17 +11,18 @@ const App = {
         const actionReference1 = "water"
         const actionReference2 = "prune"
         const actionReference3 = "fertilize"
-        // const careInstructions = ["water", "prune", "fertilize"]
         const showReferenceCard = ref(false)
         const userAction1 = ref(null)
         const userAction2 = ref(null)
         const userAction3 = ref(null)
-        const result = ref("")
-        const image = "images/flower-shop.jpg"
+        const result = ref(null)
+        const backgroundImage = "images/flower-shop.jpg"
 
 
         function toggleOpenCloseReferenceCard() {
-            if (showReferenceCard.value == false) { showReferenceCard.value = true }
+            if (showReferenceCard.value == false) {
+                showReferenceCard.value = true
+            }
             else { showReferenceCard.value = false }
         }
 
@@ -35,23 +36,16 @@ const App = {
             }
         }
 
-
         const showActionCard = ref(false)
 
         function toggleOpenCloseActionCard() {
             if (showActionCard.value == false) {
-                // actionList.value = []
                 showActionCard.value = true
             } else {
                 showActionCard.value = false
-                // actionList.value = []
             }
         }
 
-
-
-
-        // 2.3 validate and show result
         const showResultCard = ref(false)
 
         function validateResult() {
@@ -66,7 +60,6 @@ const App = {
             }
         }
 
-    
         function findCoordinates(event) {
             const windowWidth = window.innerWidth;
             const windowHeight = window.innerHeight;
@@ -76,16 +69,15 @@ const App = {
         }
 
         return {
-
             plantName,
-            // careInstructions,
+            backgroundImage,
             actionReference1,
             actionReference2,
             actionReference3,
             showReferenceCard,
+            showActionCard,
             toggleOpenCloseReferenceCard,
             toggleOpenCloseActionCard,
-            showActionCard,
             userAction1,
             userAction2,
             userAction3,
@@ -93,9 +85,7 @@ const App = {
             validateResult,
             result,
             showResultCard,
-            image,
             findCoordinates
-
         }
     }
 }
