@@ -50,7 +50,7 @@
                 <h2 class="nocount">Table of Contents</h2>
                 <hr />
                 <ol>
-                    <li><a href="#1">Pre-requisite: Setup Your Projec</a></li>
+                    <li><a href="#1">Pre-requisite: Setup Your Project</a></li>
                     <li><a href="#2">Choose a Theme</a></li>
                     <li><a href="#3">Visualizing Trends with Sparklines</a></li>
                     <li><a href="#4">Using Steppers For Multi-step Content</a></li>
@@ -185,6 +185,15 @@ const targets = [
                 <pre><code class="language-html">
 &lt;v-sparkline :model-value="target.trend" auto-draw &gt;&lt;/v-sparkline&gt;
 </code></pre>
+
+
+
+                <div style="width: 100%; height: auto; display: flex;">
+                    <img style="width: 80%; margin: auto;" src="images/lab6/step3.gif" />
+                </div>
+
+
+
                 <h2 id="4">Using Steppers For Multi-step Content</h2>
                 <hr>
 
@@ -305,6 +314,12 @@ const policies = [
 &lt;/v-stepper&gt;
 </code></pre>
 
+
+                <div style="width: 100%; height: auto; display: flex;">
+                    <img style="width: 80%; margin: auto;" src="images/lab6/step4.gif" />
+                </div>
+
+
                 <h2 id="5">Data Tables & Statistics</h2>
                 <hr>
                 <div class="definition">
@@ -342,19 +357,15 @@ const immigrationCountries = [
                     <li>Use the <code>:items</code> prop to connect the table to your array.</li>
                 </ol>
 
-                <!-- <div class="tip" style="margin-bottom: 1rem;">
-                    <strong>💡 Logic Check: Dynamic Headers</strong>
-
-
-
-                    One of the best features of the Vuetify Data Table is that you don't have to code the columns
-                    manually. If your object has a key named "country," Vuetify will automatically create a column named
-                    "Country" and fill it with the corresponding data.
-                </div> -->
-
+        
                 <pre><code class="language-html">
 &lt;v-data-table :items="immigrationCountries"&gt;&lt;/v-data-table&gt;
 </code></pre>
+
+
+                <div style="width: 100%; height: auto; display: flex;">
+                    <img style="width: 80%; margin: auto;" src="images/lab6/step5.png" />
+                </div>
 
                 <h2 id="6">Optional Challenge: Polishing the Dashboard</h2>
                 <hr>
