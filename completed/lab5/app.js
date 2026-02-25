@@ -11,7 +11,7 @@ const App = {
         // 4. modify the recordUserAction function, possibly including the index or subject's name  - done
 
 
-        // this a comment 
+        // this a comment!
 
         const showReferenceCard = ref(false)
         const showResultCard = ref(null)
@@ -22,6 +22,7 @@ const App = {
         const backgroundImage = "images/flower-shop.jpg"
         const finishedCount = ref(0)
         const showEndDialog = ref(false)
+        const showInstructions = ref(true)
         const subjects = [
             {
                 plantName: "Lily",
@@ -70,6 +71,11 @@ const App = {
             console.log(`X: ${xPercent.toFixed(2)}%, Y: ${yPercent.toFixed(2)}%`);
         }
 
+        function toggleOpenCloseInstructions() {
+            if (showInstructions.value === false) {
+                showInstructions.value = true
+            } else { showInstructions.value = false }
+        }
 
         function toggleOpenCloseReferenceCard() {
             if (showReferenceCard.value == false) {
@@ -78,31 +84,16 @@ const App = {
             else { showReferenceCard.value = false }
         }
 
-        // function toggleOpenCloseGameplayCard(item) {
-        //     if (showGameplayCard.value === false) {
-        //         // showGameplayCard.value = item;
-        //         // Reset actions for the new plant
-        //         userAction1.value = null;
-        //         userAction2.value = null;
-        //         userAction3.value = null;
-        //         result.value = null;
-        //     }
-        //     else {
-        //         showGameplayCard.value.item = true;
-        //     }
-        // }
-
-
         function toggleOpenCloseGameplayCard(subject) {
             // If the card is currently hidden (false), show it
             if (subject.showGameplayCard.value == false) {
                 subject.showGameplayCard.value = true;
 
                 // Reset the game logic so the new card starts fresh
-                // showReferenceCard.value = false
+                showReferenceCard.value = false
                 userAction1.value = null
                 userAction2.value = null
-                userAction3.value = null                
+                userAction3.value = null
                 // subject.result.value = null
             }
             // Otherwise (if it's already true), hide it
@@ -111,24 +102,6 @@ const App = {
             }
         }
 
-        // function toggleOpenCloseGameplayCard(item) {
-        //     // If the spotlight is NOT currently holding this specific plant...
-        //     if (showGameplayCard.value === true) {
-        //         showGameplayCard.value = item; // ...pick up the new plant
-
-        //         // Reset the game state for the new plant
-        //         userAction1.value = null;
-        //         userAction2.value = null;
-        //         userAction3.value = null;
-        //         result.value = null;
-        //         console.log(showGameplayCard.value.plantName, item.plantName)
-        //     }
-        //     else {
-        //         // If the plant we clicked is ALREADY the one in the spotlight, hide it
-        //         showGameplayCard.value = null;
-        //         console.log('else')
-        //     }
-        // }
 
         function recordUserAction(action) {
             if (userAction1.value === null) {
@@ -155,21 +128,9 @@ const App = {
                     showEndDialog.value = true;
                 }
             } else {
-                subject.result.value = "Your plant withered. Try again."               
+                subject.result.value = "Your plant withered. Try again."
             }
         }
-
-
-        // function validateResult(subject) {
-        //     if (userAction1.value === subject.actionReference1 &&
-        //         userAction2.value === subject.actionReference2 &&
-        //         userAction3.value === subject.actionReference3) {
-
-        //         subject.result.value = "Your plant is thriving!"
-        //     } else {
-        //         subject.result.value = "Your plant withered."
-        //     }
-        // }
 
 
         return {
@@ -177,6 +138,8 @@ const App = {
             backgroundImage,
             showReferenceCard,
             // showGameplayCard,
+            showInstructions,
+            toggleOpenCloseInstructions,
             toggleOpenCloseReferenceCard,
             toggleOpenCloseGameplayCard,
             userAction1,

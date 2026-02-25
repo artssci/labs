@@ -16,34 +16,61 @@
 <body>
     <div id="app">
         <v-app>
-            <!-- <v-app-bar class="bg-yellow" elevation="2">
-                <v-app-bar-title>Botanist Challenge</v-app-bar-title>
+            <v-app-bar class="bg-yellow" elevation="2">
+                <v-app-bar-title>The Botanist Challenge</v-app-bar-title>
 
                 <v-spacer></v-spacer>
 
-                <v-sheet color="transparent" class="text-body-2 text-center" max-width="300">
-                    Care for all 3 plants using the Reference Card sequences.
-                </v-sheet> 
 
-                <v-spacer></v-spacer>
-
-                
+                <v-btn icon @click="toggleOpenCloseInstructions">
+                    <v-icon>mdi-information</v-icon>
+                </v-btn>
             </v-app-bar>
- -->
+
             <v-main>
 
                 <!-- <v-container class="d-flex justify-center bg-green rounded-xl border"> -->
 
+                <!-- instructions dialog -->
+
+                <v-dialog v-model="showInstructions">
+                    <v-card class="text-body-1 text-center bg-yellow">
+                        <v-card-actions>
+                            <v-btn icon @click="toggleOpenCloseInstructions"><v-icon>mdi-close-circle</v-icon></v-btn>
+                        </v-card-actions>
+                        <v-card-title>
+                            Instructions:
+                        </v-card-title>
+                        <v-card-text>
+                            Care for all 3 plants using the Reference Card sequences.
+                            <br><br>
+                            <strong>Icons meaning:</strong>
+                            <br><br>
+
+                            Water: <v-icon>mdi-water-pump</v-icon>
+                            <br>
+                            Prune: <v-icon>mdi-scissors-cutting</v-icon>
+                            <br>
+                            Fertilize: <v-icon>mdi-sack</v-icon>
+
+
+
+
+                        </v-card-text>
+
+                    </v-card>
+                </v-dialog>
 
 
                 <!-- reference button -->
 
                 <v-btn class="bg-yellow" style="position:absolute;  z-index: 1; left: 12.64%; top:17.10%;"
-                    @click="toggleOpenCloseReferenceCard">Reference Card</v-btn>
+                    @click="toggleOpenCloseReferenceCard" icon>
+                    <v-icon>mdi-chat-question-outline</v-icon>
+                </v-btn>
 
                 <!-- reference card -->
-
-                <v-card width="15%" class="bg-yellow" v-if="showReferenceCard"
+                <v-card width="18%" class="bg-yellow" v-if="showReferenceCard"
                     style="position:absolute; left: 10.81%; top:24.35%; z-index: 1;">
                     <v-card-title>Reference Card</v-card-title>
                     <v-list>
@@ -57,78 +84,39 @@
                     </v-list>
                 </v-card>
 
-                <!-- gameplay card button -->
-
-                <!-- <v-btn v-for="item in subjects" :key="item.plantName" icon="mdi-flower-poppy" class="bg-green"
-                    :style="{ position: 'absolute', zIndex: 1, left: item.x , top: item.y }"
-                    @click="toggleOpenCloseGameplayCard(item)">Gameplay Card</v-btn> -->
-                <!-- 
-                <v-btn v-for="item in subjects" :key="item.plantName" class="bg-green"
-                    :style="{ position: 'absolute', zIndex: 1, left: item.x , top: item.y }"
-                    @click="toggleOpenCloseGameplayCard(item)">Gameplay Card</v-btn> -->
-
-                <!-- <v-btn v-for="item in subjects" :key="item.plantName" @click="toggleOpenCloseGameplayCard(item)"
-                    style="position: absolute; z-index: 1;" :style="{left: item.x,  top: item.y}" class="bg-green">Gameplay Card</v-btn> -->
-
-
-                <!-- gameplay card -->
-
-                <!-- <v-card v-for="item in subjects" :key="item.plantName"  width=" 15%" class="bg-green text-center"
-                    :style="{position:'absolute', zIndex: 1, left: showGameplayCard.x, top: showGameplayCard.y}"
-                    v-if="showGameplayCard">
-                    <v-card-title>{{ item.plantName }}</v-card-title> -->
-
-
-
-                <!-- <v-btn icon="mdi-water" @click="recordUserAction('water')"></v-btn>
-                    <v-btn icon="mdi-content-cut" @click="recordUserAction('prune')"></v-btn>
-                    <v-btn icon="mdi-shaker" @click="recordUserAction('fertilize')"></v-btn> -->
-                <!-- 
-                    <v-btn @click="recordUserAction('water')">water</v-btn>
-                    <v-btn @click="recordUserAction('prune')">prune</v-btn>
-                    <v-btn @click="recordUserAction('fertilize')">fertilize</v-btn>
-
-                    <v-card-text>{{ result }}</v-card-text>
-
-                    <v-card-actions class="justify-center">
-                        <v-btn class="bg-white" @click="validateResult">Validate Result</v-btn> -->
-                <!-- <v-btn class="bg-white" @click="selectedSubject = null">Close</v-btn> -->
-                <!-- </v-card-actions>
-                </v-card> -->
-
-                <!-- <v-sheet v-for="subject in subjects" :key="subject.plantName">
-
-                    <v-btn @click="toggleOpenCloseGameplayCard(subject)" class="game-element bg-green"
-                        style="position: absolute; z-index: 1;"
-                        :style="{ left: subject.buttonX, top: subject.buttonY }">
-                        {{ subject.plantName }}
+                <!-- gameplay cards -->
+                <v-sheet v-for="subject in subjects" :key="subject.plantName">
+                    <v-btn icon class="bg-green" style="position:absolute; z-index: 1;"
+                        :style="{left: subject.buttonX, top: subject.buttonY}"
+                        @click="toggleOpenCloseGameplayCard(subject)">
+                        <v-icon>
+                            mdi-flower-outline
+                        </v-icon>
                     </v-btn>
 
-                    <v-card v-if="subject.showGameplayCard.value" class="gameplay-card"
-                        style="position: absolute; z-index: 1;" :style="{ left: subject.cardX, top: subject.cardY }">
-
-                        <v-card-title>{{ subject.plantName }}</v-card-title>
-                    </v-card>
-
-                </v-sheet> -->
-
-
-                <v-sheet v-for="subject in subjects" :key="subject.plantName">
-                    <v-btn class="bg-green" style="position:absolute; z-index: 1;"
-                        :style="{left: subject.buttonX, top: subject.buttonY}"
-                        @click="toggleOpenCloseGameplayCard(subject)">Gameplay Card</v-btn>
-
-                    <v-card width="15%" class="bg-green text-center" style="position:absolute; z-index: 1;"
+                    <v-card width="15%" class="text-center" style="position:absolute; z-index: 1;"
                         :style="{left: subject.cardX, top: subject.cardY}" v-if="subject.showGameplayCard.value">
-                        <v-card-title>{{ subject.plantName }}</v-card-title>
-                        <v-btn @click="recordUserAction('water')">water</v-btn>
-                        <v-btn @click="recordUserAction('prune')">prune</v-btn>
-                        <v-btn @click="recordUserAction('fertilize')">fertilize</v-btn>
+
+                        <v-card-title class="bg-green mb-2">{{ subject.plantName }}</v-card-title>
+                        <v-btn class="bg-green" icon @click="recordUserAction('water')">
+                            <v-icon>mdi-water-pump</v-icon>
+                        </v-btn>
+                        <v-btn class="bg-green" icon @click="recordUserAction('prune')">
+                            <v-icon>mdi-scissors-cutting</v-icon>
+                        </v-btn>
+                        <v-btn class="bg-green" icon @click="recordUserAction('fertilize')">
+                            <v-icon>mdi-sack</v-icon>
+                        </v-btn>
                         <v-card-text>
                             {{subject.result}}
                         </v-card-text>
-                        <v-card-actions>
-                            <v-btn class="bg-white" @click="validateResult(subject)">Validate result</v-btn>
+                        <v-card-actions class="d-flex">
+                            <v-btn icon class="bg-green ma-auto" @click="validateResult(subject)">
+                                <v-icon>
+                                    mdi-check-decagram-outline
+                                </v-icon>
+
+                            </v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-sheet>
