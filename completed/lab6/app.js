@@ -30,40 +30,48 @@ const App = {
         description: 'The 2025-27 Levels Plan projects a decrease in overall permanent resident admissions to 395,000 in 2025, 380,000 in 2026 and 365,000 in 2027. Supporting the Canadian economy continues to be a key priority of this Levels Plan as the economic category represents the largest proportion of admissions each year, reaching nearly 62% by 2027. A greater share of economic admissions are allocated under “Federal Economic Priorities” to skilled workers with a focus on critical sectors, such as health care and skilled trades, in recognition of the importance of supporting these sectors.',
       }
     ];
+    // slot number function
+
+    function step(index) {
+      let stepNumber = index + 1
+      return "item." + stepNumber
+    }
+
 
     // immigration per province
 
-    const immigrationCountries = [
+    const immigrationByCountry = [
       {
         country: 'India',
-        Number: '147,190'
+        number: '147,190'
       },
       {
         country: 'Philippines',
-        Number: '188,805'
+        number: '188,805'
       },
       {
         country: 'China',
-        Number: '129,020'
+        number: '129,020'
       },
       {
         country: 'Syria',
-        Number: '29,945'
+        number: '29,945'
       },
       {
         country: 'Nigeria',
-        Number: '17,285'
+        number: '17,285'
       },
       {
         country: 'United States of America	',
-        Number: '33,060'
+        number: '33,060'
       }
     ]
 
     return {
       targets,
+      step,
       policies,
-      immigrationCountries
+      immigrationByCountry
     };
   }
 };

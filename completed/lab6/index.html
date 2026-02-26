@@ -39,8 +39,8 @@
 
                     <!-- stepper -->
                     <v-stepper :items="policies" class="mt-6">
-                        <template v-for="(policy, index) in policies" :key="index"
-                            v-slot:[`item.${index+1}`]="{ item }">
+                        <template v-for="(policy, index) in policies" :key="policy.title"
+                            v-slot:[step(index)]>
                             <v-card>
                                 <v-card-title>
                                     {{ policy.title }}
@@ -53,7 +53,7 @@
                     </v-stepper>
 
                     <!-- data table -->
-                    <v-data-table :items="immigrationCountries" class="mt-6"></v-data-table>
+                    <v-data-table :items="immigrationByCountry" class="mt-6"></v-data-table>
 
                 </v-container>
             </v-main>

@@ -22,30 +22,35 @@
                 <h2 class="nocount">General Description</h2>
                 <p style="margin-left: 0">
                     In this lab, you will build a <b>Data Dashboard</b> to visualize a topic of your
-                    choice. You will learn to use specialized Vuetify components to transform complex datasets into an
+                    choice. You will learn to use specialized Vuetify components like Sparkline, Stepper, and Data
+                    Table, to transform complex datasets into an
                     interactive user experience.
                     <br><br>
                     While you are free to select your own theme (e.g., Sports Stats, Financial Trends, or Environmental
-                    Data), this lab will use the <b>2025-2027 Canada Immigration Levels Plan</b> as the primary example
-                    to demonstrate how to map data to various UI components.
-                    <!-- <br><br>
-                    By the end of this lab, you will have a functional dashboard featuring <b>trend sparklines</b> for
-                    quick visual analysis, a <b>stepper</b> to guide users through complex processes, and a <b>data
-                        table</b> to organize detailed records. -->
+                    Data), this lab will use the <b><a
+                            href="https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/supplementary-immigration-levels-2025-2027.html"
+                            target="_blank">2025-2027 Canada Immigration Levels Plan</a></b> as the primary example
+                    to demonstrate how to map data to the different components.
                 </p>
 
                 <h2 class="nocount">Learning Objectives</h2>
-                <ol>
-                    <li>Implement <b>Time-Series Visualization</b> logic by mapping numeric arrays to the
+                <ul>
+                    <!-- <li>Implement <b>Time-Series Visualization</b> logic by mapping numeric arrays to the
                         <code>v-sparkline</code> component.
+                    </li> -->
+                    <!-- <li>Apply <b>Process Decomposition</b> by breaking down complex information into a sequential,
+                        state-driven workflow using <code>v-stepper</code>.</li> -->
+                    <li>Practice advanced <b>Data Structuring and Display</b> by organizing Objects into
+                        <code>v-sparkline</code>, <code>v-stepper</code>, and
+                        <code>v-data-table</code> components.
                     </li>
-                    <li>Apply <b>Process Decomposition</b> by breaking down complex information into a sequential,
-                        state-driven workflow using <code>v-stepper</code>.</li>
-                    <li>Practice <b>Data Structuring and Display</b> by organizing raw JSON/Objects into searchable and
-                        sortable interfaces using <code>v-data-table</code>.</li>
-                    <li>Refine <b>Component-Based Architecture</b> skills by nesting logic-heavy components within a
-                        clean, grid-based dashboard layout.</li>
-                </ol>
+                    <li>Implement logic to map numeric arrays directly to the v-sparkline component, turning raw numbers
+                        into visual stories.</li>
+
+
+                    <!-- <li>Refine <b>Component-Based Architecture</b> skills by nesting logic-heavy components within a
+                        clean, grid-based dashboard layout.</li> -->
+                </ul>
 
                 <h2 class="nocount">Table of Contents</h2>
                 <hr />
@@ -53,7 +58,7 @@
                     <li><a href="#1">Pre-requisite: Setup Your Project</a></li>
                     <li><a href="#2">Choose a Theme</a></li>
                     <li><a href="#3">Visualizing Trends with Sparklines</a></li>
-                    <li><a href="#4">Using Steppers For Multi-step Content</a></li>
+                    <li><a href="#4">Using Steppers For Sequencial Content</a></li>
                     <li><a href="#5">Data Tables & Statistics</a></li>
                     <li><a href="#6">Optional Challenge: Polishing the Dashboard</a></li>
                     <li><a href="#conclusion">Wrap Up & Sharing Your Work</a></li>
@@ -81,22 +86,26 @@
                     <p>A <b>Data Dashboard</b> is an information management tool that visually tracks, analyzes, and
                         displays metrics, and key data points. Dashboards use visual
                         elements like charts, tables, and progress trackers to help users understand complex information
-                        at a glance. <a href="https://en.wikipedia.org/wiki/Dashboard_(business)" target="_blank">Read
-                            more</a>.</p>
+                        at a glance. <a href="https://en.wikipedia.org/wiki/Dashboard_(business)" target="_blank">Click
+                            here to read
+                            more.</a></p>
                 </div>
 
                 <p>In this lab, you will build a dashboard that visualizes a specific topic using data-driven
-                    components. While this lab uses the <b>2025-2027 Canada Immigration Levels Plan</b> as the primary
-                    example, you are encouraged to choose a different theme that interests you, as long as it follows
+                    components. While this lab uses the <b><a
+                            href="https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/supplementary-immigration-levels-2025-2027.html"
+                            target="_blank">2025-2027 Canada Immigration Levels Plan</a></b> as the primary
+                    example, you are encouraged to choose a <b>different theme</b> that interests you, as long as it
+                    follows
                     the same data logic.</p>
 
                 <ol>
                     <li><b>Brainstorm</b> a theme for your dashboard. Think of topics that involve numbers over time or
-                        multi-step processes (e.g., Sports Season Stats, Global Climate Trends, Personal Finance).</li>
+                        sequencial processes (e.g., Sports Season Stats, Global Climate Trends, Personal Finance).</li>
                     <li><b>Identify</b> the following data components for your chosen theme:
                         <ul>
-                            <li><b>Trend Data:</b> At least 2 categories that have numeric values over a 3-year or
-                                3-month period (to be used in a sparkline).</li>
+                            <li><b>Trend Data:</b> At least 2 categories that have numeric values over a multi
+                                year/month/day period (to be used in a sparkline).</li>
                             <li><b>Process Steps:</b> A 3-4 step explanation of a policy, workflow, or guide related to
                                 your theme (to be used in a stepper).</li>
                             <li><b>Detail Records:</b> A list of at least 5-6 items with associated statistics (to be
@@ -148,10 +157,15 @@ const targets = [
                     The <code>trend</code> property is an <b>Array of Numbers</b>. Vuetify uses these numbers to plot
                     points on a graph. In the example above:
                     <ul>
-                        <li>The <b>first number</b> in the array represents the starting point (e.g., Year 1 (2025)).
+                        <li>The <b>first number</b> in the array represents the starting point (i.e., target numbers for
+                            2025).
                         </li>
-                        <li>The <b>last number</b> represents the end point (e.g., Year 3 (2027)).</li>
-                        <li>The sparkline automatically scales based on the highest and lowest values in your array.
+                        <li>The <b>second number</b> in the array represents the next point (i.e, target numbers for
+                            2026).
+                        </li>
+                        <li>The <b>last number</b> represents the end point (i.e., target numbers for 2027).</li>
+                        <li>The sparkline will plot them automatically, based on the highest and lowest values in your
+                            array.
                         </li>
                     </ul>
                 </div>
@@ -159,9 +173,12 @@ const targets = [
                 <h3>Render the Sparkline Cards</h3>
                 <ol>
                     <li>In <code>index.html</code>, use a <code>v-for</code> loop to generate a <code>v-card</code> for
-                        each object in your array. (Refer to <b>Lab 3, Section 3</b>).</li>
+                        each object in your array. Refer to <a href="https://artssci.github.io/labs/lab3.html#3"
+                            target="_blank">Lab 3, section 3. Generating Cards with the v-for Loop</a> to complete this
+                        step.</li>
                     <li>Inside the card, add the <code>&lt;v-sparkline&gt;</code> component.</li>
-                    <li>Connect your data using the <code>:model-value</code> property.</li>
+                    <li>Connect your data using the <code>:model-value</code> command, using the dot notation to access
+                        the object's data.</li>
                     <li>See example below:</li>
                 </ol>
 
@@ -194,13 +211,14 @@ const targets = [
 
 
 
-                <h2 id="4">Using Steppers For Multi-step Content</h2>
+                <h2 id="4">Using Steppers For Sequencial Content</h2>
                 <hr>
 
                 <div class="definition">
                     <p>A <b>Stepper</b> is a specialized component used to display content through a numbered sequence.
-                        This is an ideal logic for breaking down complex workflows, multi-step instructions, or long
-                        policy documents into digestible "chunks" that a user can navigate one at a time. While we use
+                        This is an ideal component for breaking down complex workflows, multi-step instructions and
+                        sequencial information into digestible chunks that a user can navigate one at a time. While we
+                        use
                         the Canada Immigration Plan categories as our example, you can use this for any sequential
                         information related to your theme.</p>
                 </div>
@@ -210,7 +228,8 @@ const targets = [
                     <li>In your <code>app.js</code>, create an <b>Array of Objects</b>. In this example, the array is
                         called <code>policies</code>.
                     </li>
-                    <li>Each object should contain at least, a <code>title</code> (used for the step label) and a
+                    <li>Each object should contain at least, a <code>title</code> (Vuetify will look specifically for
+                        this field to use for the step label) and a
                         <code>description</code> (the main content for that step). See example below:
                     </li>
                 </ol>
@@ -241,80 +260,83 @@ const policies = [
                 <ol>
                     <li>Use the <code>&lt;v-stepper&gt;</code> component
                         and use the <code>:items</code> command to generate the step headers.</li>
-                </ol>
 
-                <pre><code class="language-html">
+
+                    <pre><code class="language-html">
 &lt;v-stepper :items="policies"&gt;
-&lt;!-- Content goes here --&gt;
 &lt;/v-stepper&gt;
 </code></pre>
 
-                <div class="tip" style="margin-bottom: 1rem;">
-                    <strong>💡 What is :items?</strong>
-                    The <code>:items</code> command is used by the Stepper to automatically create the navigation header
-                    (the numbered circles and labels). In the example above, by passing it <code>policies</code>, the
-                    Stepper reads the
-                    "title" of each object to label the steps.
-                </div>
+                    <div class="tip" style="margin-bottom: 1rem;">
+                        <strong>💡 What is :items?</strong>
+                        The <code>:items</code> command is used by the Stepper to automatically create the navigation
+                        header. By default, the stepper looks for a <code>title</code> property inside each object of
+                        your array to label the steps.
+                    </div>
 
-                <ol start="2">
                     <li>Inside the stepper, add a <code>&lt;template&gt;</code> tag
                         and use <code>v-for</code> to loop through your array.</li>
-                </ol>
 
-                <pre><code class="language-html">
+                    <pre><code class="language-html">
 &lt;v-stepper :items="policies"&gt;
-&lt;template v-for="(policy, index) in policies" :key="index"&gt;
-&lt;!-- Content goes here --&gt;
-&lt;/template&gt;
+    &lt;template v-for="policy in policies" :key="policy.title"&gt;
+    &lt;/template&gt;
 &lt;/v-stepper&gt;
 </code></pre>
 
-                <div class="tip" style="margin-bottom: 1rem;">
-                    <strong>💡 What is &lt;template&gt;?</strong>
-                    In Vue, the <code>&lt;template&gt;</code> tag is an invisible wrapper. It also allows you to use
-                    directives like <code>v-for</code> or <code>v-if</code>.
-                </div>
+                    <li>Add an <code>index</code> to your <code>v-for</code>. This tracks the position of the current
+                        item (starting at 0), which we will need to identify each step.</li>
 
-
-                <ol start="3">
-                    <li>Add a dynamic <code>v-slot</code> to the template to ensure the content
-                        connects to the correct step number.</li>
-                </ol>
-
-
-                <pre><code class="language-html">
+                    <pre><code class="language-html">
 &lt;v-stepper :items="policies"&gt;
-&lt;template v-for="(policy, index) in policies" :key="index" v-slot:[item.${index+1}]&gt;
-&lt;!-- Content goes here --&gt;
-&lt;/template&gt;
+    &lt;template v-for="(policy, index) in policies" :key="policy.title"&gt;
+    &lt;/template&gt;
 &lt;/v-stepper&gt;
 </code></pre>
 
-                <div class="tip" style="margin-bottom: 1rem;">
-                    <strong>💡 What is v-slot:[item.${index+1}]?</strong>
-                    Vuetify Steppers use "slots" to decide where content appears. Because we are using a loop, we use
-                    backticks (template literals) to create a dynamic name: <code>item.1</code>, <code>item.2</code>,
-                    etc. This tells Vue: <i>"Put this specific object's data into the corresponding numbered step."</i>
-                </div>
+                    <li>In <strong>app.js</strong>, create a function to generate the step/item number dynamically.
+                        Vuetify expects the
+                        format <code>item.1</code>, <code>item.2</code>, etc.</li>
 
-                <ol start="4">
+                    <pre><code class="language-javascript">
+function step(index) {
+      let stepNumber = index + 1
+      return "item." + stepNumber
+    }
+</code></pre>
+
+                    <li>Add a dynamic <code>v-slot</code> to the template using the function created above. This ensures
+                        your content connects to the correct step number.</li>
+
+                    <pre><code class="language-html">
+&lt;v-stepper :items="policies"&gt;
+    &lt;template v-for="(policy, index) in policies" :key="policy.title" v-slot:[step(index)]&gt;
+    &lt;/template&gt;
+&lt;/v-stepper&gt;
+</code></pre>
+
+                    <div class="tip" style="margin-bottom: 1rem;">
+                        <strong>💡 Why the square brackets?</strong>
+                        Using <code>[step(index)]</code> tells Vue that the slot name is <strong>dynamic</strong>. It
+                        runs your function, gets the result (like <code>item.1</code>), and assigns the content to that
+                        specific step.
+                    </div>
+
                     <li>Finally, place a <code>v-card</code> inside the template to display
                         the information from your objects using dot notation.</li>
-                </ol>
 
-                <pre><code class="language-html">
+                    <pre><code class="language-html">
 &lt;v-stepper :items="policies"&gt;
-&lt;template v-for="(policy, index) in policies" :key="index" v-slot:[item.${index+1}]&gt;
-&lt;v-card&gt;
-&lt;v-card-title&gt;{{ policy.title }}&lt;/v-card-title&gt;
-&lt;v-card-text&gt;{{ policy.description }}&lt;/v-card-text&gt;
-&lt;/v-card&gt;
-&lt;/template&gt;
+    &lt;template v-for="(policy, index) in policies" :key="policy.title" v-slot:[step(index)]&gt;
+        &lt;v-card&gt;
+            &lt;v-card-title&gt;{{ policy.title }}&lt;/v-card-title&gt;
+            &lt;v-card-text&gt;{{ policy.description }}&lt;/v-card-text&gt;
+        &lt;/v-card&gt;
+    &lt;/template&gt;
 &lt;/v-stepper&gt;
 </code></pre>
 
-
+                </ol>
                 <div style="width: 100%; height: auto; display: flex;">
                     <img style="width: 80%; margin: auto;" src="images/lab6/step4.gif" />
                 </div>
@@ -325,41 +347,39 @@ const policies = [
                 <div class="definition">
                     <p>The final layer of a dashboard is the raw data. A <b>Data Table</b> is a powerful component that
                         automatically organizes an array of objects into rows and columns. This allows users to scan
-                        through large lists of information, compare specific values, and see the exact figures behind
-                        the trends shown in your sparklines.</p>
+                        through large lists of information and compare specific values.</p>
                 </div>
 
                 <h3>Organizing Your Dataset</h3>
                 <ol>
-                    <li>In your <code>app.js</code>, create an array that contains your detailed records. For our
-                        immigration example, we will call this <code>immigrationCountries</code>.</li>
+                    <li>In your <code>app.js</code>, create an array that contains your raw data. For our
+                        immigration example, we will call this <code>immigrationByCountry</code>.</li>
                     <li>Each object in your array should represent one row in the table. Ensure every object uses the
-                        same <b>fields</b> (e.g., <code>country</code> and <code>Number</code>), as these keys will
+                        same <b>fields</b> (e.g., <code>country</code> and <code>number</code>), as these keys will
                         become
                         the column headers.</li>
                 </ol>
 
                 <pre><code class="language-javascript">
-// Example: Top Source Countries for Canadian Immigration
-const immigrationCountries = [
-        { country: 'India', Number: '147,190' },
+const immigrationByCountry = [
+        { country: 'India', number: '147,190' },
         { country: 'Philippines', Number: '188,805' },
-        { country: 'China', Number: '129,020' },
-        { country: 'Syria', Number: '29,945' },
-        { country: 'Nigeria', Number: '17,285' },
-        { country: 'United States of America', Number: '33,060' }
+        { country: 'China', number: '129,020' },
+        { country: 'Syria', number: '29,945' },
+        { country: 'Nigeria', number: '17,285' },
+        { country: 'United States of America', number: '33,060' }
 ];
 </code></pre>
 
                 <h3>Displaying the Table</h3>
                 <ol>
-                    <li>In your <code>index.html</code>, add the <code>&lt;v-data-table&gt;</code> component.</li>
-                    <li>Use the <code>:items</code> prop to connect the table to your array.</li>
+                    <li>In your <code>index.html</code>, add a <code>v-data-table</code> component.</li>
+                    <li>Use the <code>:items</code> command to connect the table to your array.</li>
                 </ol>
 
-        
+
                 <pre><code class="language-html">
-&lt;v-data-table :items="immigrationCountries"&gt;&lt;/v-data-table&gt;
+&lt;v-data-table :items="immigrationByCountry"&gt;&lt;/v-data-table&gt;
 </code></pre>
 
 
@@ -370,7 +390,7 @@ const immigrationCountries = [
                 <h2 id="6">Optional Challenge: Polishing the Dashboard</h2>
                 <hr>
                 <div class="definition">
-                    <p>Now that your data is functional, try these challenges to enhance the visual and interactive
+                    <p>Now that your data is displayed, try these challenges to enhance the visual and interactive
                         aspects of your dashboard. </p>
                 </div>
 
@@ -398,8 +418,8 @@ const immigrationCountries = [
                 <ol>
                     <li>
                         Use
-                        <code>v-expansion-panels</code>. to make sections "collapsible" so the user can focus on one
-                        piece of data at a time. Follow Expansion Panels Documentation: <a
+                        <code>v-expansion-panels</code>. to make sections collapsible so the user can focus on one
+                        piece of data at a time. Follow Expansion Panels documentation: <a
                             href="https://vuetifyjs.com/en/components/expansion-panels/#api"
                             target="_blank">https://vuetifyjs.com/en/components/expansion-panels/#api.</a>
                     </li>
@@ -408,35 +428,35 @@ const immigrationCountries = [
                 <!--  -->
                 <h2 id="conclusion">Wrap Up & Sharing Your Work</h2>
                 <hr />
-                <p>Congratulations! You have successfully transitioned from building interactive games to engineering
-                    <b>Professional Data Dashboards</b>. In this lab, you mastered the following core development
+                <p>Congratulations! You have successfully built a
+                    <b>professionally looking data dashboard</b>. In this lab, you practiced the following
                     skills:
                 </p>
 
                 <ul>
                     <li>
-                        <strong>Time-Series Visualization:</strong> You implemented logic to map numeric arrays directly
-                        to the <code>v-sparkline</code> component, turning raw numbers into visual stories.
-                    </li>
                     <li>
                         <strong>Data Structuring & Display:</strong> You practiced organizing raw Objects into
                         high-performance, structured interfaces using the <code>v-data-table</code>.
                     </li>
-                    <li>
-                        <strong>Component-Based Architecture:</strong> You refined your ability to nest logic-heavy
-                        Vuetify components within a clean, grid-based dashboard layout.
+                    <strong>Time-Series Visualization:</strong> You implemented logic to map numeric arrays directly
+                    to the <code>v-sparkline</code> component, turning raw numbers into visual stories.
                     </li>
                 </ul>
 
                 <div class="sharing-instructions"
                     style="background-color: #fff4e5; padding: 15px; border: 2px dashed #ff9800; border-radius: 8px; margin-top: 20px;">
                     <h3>📢 Share Your Dashboard!</h3>
-                    <p>It's time to showcase your data visualization skills. Please follow these steps:</p>
+                    <p>Please follow these steps:</p>
                     <ol>
-                        <li><b>Publish</b> your dashboard to GitHub Pages.</li>
-                        <li><b>Copy</b> your live URL (the one ending in <code>.github.io</code>).</li>
-                        <li><b>Post</b> your link on the <b>Dashboard Showcase Board</b>: <a
-                                href="https://tinyurl.com/dashboard-showcase" target="_blank">https://tinyurl.com/dashboard-showcase</a></li>
+                        <li><b>Publish</b> your page to GitHub by creating a new repository. <a
+                                href="https://artssci.github.io/labs/lab3.html#6" target="_blank">Refer
+                                to Lab 3, Section 7. Publishing Your Gallery With GitHub Pages
+                            </a></li>
+                        <!-- <li><b>Copy</b> your live URL (the one ending in <code>.github.io</code>).</li> -->
+                        <li><b>Post</b> your URL on the <b>Dashboard Showcase Board</b>: <a
+                                href="https://tinyurl.com/dashboard-showcase"
+                                target="_blank">https://tinyurl.com/dashboard-showcase</a></li>
                         <li><b>Explore</b> your classmates' work posted in the whiteboard.</li>
                     </ol>
                 </div>
