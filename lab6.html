@@ -135,10 +135,9 @@
                     <li>In your <code>app.js</code>, create an <b>Array of Objects</b> with a <code>title</code>, a
                         <code>subtitle</code>, and a <code>trend</code> array. See example below:
                     </li>
-                </ol>
 
-                <pre><code class="language-javascript">
-const targets = [
+                    <pre><code class="language-javascript">
+const immigrationTargets = [
     {
     title: 'Temporary Resident Targets',
     subtitle: 'Plan for 2025 - 2027',
@@ -151,7 +150,6 @@ const targets = [
     }
     ];
 </code></pre>
-
                 <div class="tip" style="margin-top: 1rem; margin-bottom: 1rem">
                     <strong>💡 Understanding the Trend Array:</strong>
                     The <code>trend</code> property is an <b>Array of Numbers</b>. Vuetify uses these numbers to plot
@@ -169,6 +167,7 @@ const targets = [
                         </li>
                     </ul>
                 </div>
+                </ol>
 
                 <h3>Render the Sparkline Cards</h3>
                 <ol>
@@ -180,35 +179,33 @@ const targets = [
                     <li>Connect your data using the <code>:model-value</code> command, using the dot notation to access
                         the object's data.</li>
                     <li>See example below:</li>
-                </ol>
 
-                <pre><code class="language-html">
-&lt;v-sparkline :model-value="target.trend"&gt;&lt;/v-sparkline&gt;
+                    <pre><code class="language-html">
+&lt;v-sparkline :model-value="immigrationTargets.trend"&gt;&lt;/v-sparkline&gt;
 </code></pre>
 
-                <div class="definition" style="background-color: #e3f2fd; border-left: 5px solid #2196f3;">
-                    <strong>What is :model-value?</strong>
-                    In Vuetify, <code>:model-value</code> tells the sparkline what data
-                    it should be visualizing. In this case, <code>:model-value="target.trend"</code> tells the
-                    sparkline:
-                    <i>"Look at the trend array inside the current object and use those numbers to draw the line."</i>
-                </div>
+                    <div class="tip" style="margin-bottom: 1rem;">
+                        <strong>💡 What is :model-value?</strong>
+                        In Vuetify, <code>:model-value</code> tells the sparkline what data
+                        it should be visualizing. In this case, <code>:model-value="target.trend"</code> tells the
+                        sparkline:
+                        <i>"Look at the trend array inside the current object and use those numbers to draw the
+                            line."</i>
+                    </div>
 
-                <ol start="4">
                     <li>Add the command <code>auto-draw</code>. This tells the component to animate the line drawing
                         from left to right when the page loads.</li>
-                </ol>
 
-                <pre><code class="language-html">
-&lt;v-sparkline :model-value="target.trend" auto-draw &gt;&lt;/v-sparkline&gt;
+                    <pre><code class="language-html">
+&lt;v-sparkline :model-value="immigrationTargets.trend" auto-draw &gt;&lt;/v-sparkline&gt;
 </code></pre>
 
 
 
-                <div style="width: 100%; height: auto; display: flex;">
-                    <img style="width: 80%; margin: auto;" src="images/lab6/step3.gif" />
-                </div>
-
+                    <div style="width: 100%; height: auto; display: flex;">
+                        <img style="width: 80%; margin: auto;" src="images/lab6/step3.gif" />
+                    </div>
+                </ol>
 
 
                 <h2 id="4">Using Steppers For Sequencial Content</h2>
@@ -232,7 +229,6 @@ const targets = [
                         this field to use for the step label) and a
                         <code>description</code> (the main content for that step). See example below:
                     </li>
-                </ol>
 
                 <pre><code class="language-javascript">
 const policies = [
@@ -254,7 +250,7 @@ const policies = [
         }
 ];
 </code></pre>
-
+</ol>
                 <h3>Implementing the Stepper</h3>
 
                 <ol>
@@ -358,7 +354,6 @@ function step(index) {
                         same <b>fields</b> (e.g., <code>country</code> and <code>number</code>), as these keys will
                         become
                         the column headers.</li>
-                </ol>
 
                 <pre><code class="language-javascript">
 const immigrationByCountry = [
@@ -370,12 +365,12 @@ const immigrationByCountry = [
         { country: 'United States of America', number: '33,060' }
 ];
 </code></pre>
-
+</ol>
                 <h3>Displaying the Table</h3>
                 <ol>
                     <li>In your <code>index.html</code>, add a <code>v-data-table</code> component.</li>
                     <li>Use the <code>:items</code> command to connect the table to your array.</li>
-                </ol>
+                <
 
 
                 <pre><code class="language-html">
@@ -386,6 +381,7 @@ const immigrationByCountry = [
                 <div style="width: 100%; height: auto; display: flex;">
                     <img style="width: 80%; margin: auto;" src="images/lab6/step5.png" />
                 </div>
+                </ol>
 
                 <h2 id="6">Optional Challenge: Polishing the Dashboard</h2>
                 <hr>

@@ -15,45 +15,80 @@
 <body>
     <div id="app">
         <v-app>
-            <!-- <v-app-bar>
-                <v-app-bar-title>2025-2027 Canada Immigration Levels Plan</v-app-bar-title>
-            </v-app-bar> -->
+            <v-app-bar color="#D52B1E" elevation="2">
+                <v-app-bar-title class="text-white font-weight-bold">
+                    <v-icon icon="mdi-map-map-marker" class="mr-2"></v-icon>
+                    Canada Immigration Levels Plan 2025-2027
+                </v-app-bar-title>
+            </v-app-bar>
 
-            <v-main class="bg-grey-lighten-3">
+            <v-main class="bg-grey-lighten-4">
                 <v-container>
 
+                    <v-expansion-panels class="mb-4">
+                        <v-expansion-panel elevation="2">
+                            <v-expansion-panel-title collapse-icon="mdi-chart-line" expand-icon="mdi-chart-line" class="text-blue-grey-darken-3 font-weight-bold">
+                                Immigration Target Trends 2025-2027
+                            </v-expansion-panel-title>
+                            <v-expansion-panel-text>
+                                <v-row class="mt-2">
+                                    <v-col v-for="target in targets" :key="target.title" cols="12" md="6">
+                                        <v-card variant="outlined" class="border-opacity-25" color="blue-grey-darken-2">
+                                            <v-card-title class="text-subtitle-1">{{ target.title }}</v-card-title>
+                                            <v-card-subtitle class="pb-4">{{ target.subtitle }}</v-card-subtitle>
 
-                    <!-- sparkline -->
-                    <v-row>
-                        <v-col v-for="target in targets" :key="target.title" cols="6">
-                            <v-card>
-                                <v-card-title>{{ target.title }}</v-card-title>
-                                <v-card-subtitle class="pb-4">{{ target.subtitle }}</v-card-subtitle>
+                                            <v-sparkline 
+                                                :model-value="target.trend" 
+                                                color="#FF9800"
+                                                line-width="3"
+                                                padding="16"
+                                                smooth
+                                                auto-draw>
+                                            </v-sparkline>
+                                        </v-card>
+                                    </v-col>
+                                </v-row>
+                            </v-expansion-panel-text>
+                        </v-expansion-panel>
+                    </v-expansion-panels>
 
-                                <v-sparkline :model-value="target.trend" auto-draw></v-sparkline>
+                    <v-expansion-panels class="mb-4">
+                        <v-expansion-panel elevation="2">
+                            <v-expansion-panel-title collapse-icon="mdi-strategy" expand-icon="mdi-strategy" class="text-blue-grey-darken-3 font-weight-bold" >
+                                Policy Framework & Strategic Goals
+                            </v-expansion-panel-title>
+                            <v-expansion-panel-text>
+                                <v-stepper :items="policies" class="mt-4 border shadow-0" color="indigo-darken-2">
+                                    <template v-for="(policy, index) in policies" :key="index" v-slot:[step(index)]>
+                                        <v-card flat class="pa-2">
+                                            <v-card-title class="text-indigo-darken-4 px-0">
+                                                {{ policy.title }}
+                                            </v-card-title>
+                                            <v-card-text class="px-0 text-body-1" style="line-height: 1.6;">
+                                                {{ policy.description }}
+                                            </v-card-text>
+                                        </v-card>
+                                    </template>
+                                </v-stepper>
+                            </v-expansion-panel-text>
+                        </v-expansion-panel>
+                    </v-expansion-panels>
 
-                            </v-card>
-                        </v-col>
-                    </v-row>
-
-
-                    <!-- stepper -->
-                    <v-stepper :items="policies" class="mt-6">
-                        <template v-for="(policy, index) in policies" :key="policy.title"
-                            v-slot:[step(index)]>
-                            <v-card>
-                                <v-card-title>
-                                    {{ policy.title }}
-                                </v-card-title>
-                                <v-card-text>
-                                    {{policy.description}}
-                                </v-card-text>
-                            </v-card>
-                        </template>
-                    </v-stepper>
-
-                    <!-- data table -->
-                    <v-data-table :items="immigrationByCountry" class="mt-6"></v-data-table>
+                    <v-expansion-panels>
+                        <v-expansion-panel elevation="2">
+                            <v-expansion-panel-title collapse-icon="mdi-counter" expand-icon="mdi-counter" class="text-blue-grey-darken-3 font-weight-bold">
+                                Admission Numbers by Country
+                            </v-expansion-panel-title>
+                            <v-expansion-panel-text>
+                                <v-data-table 
+                                    :items="immigrationByCountry" 
+                                    class="mt-4 border" 
+                                    hover
+                                    density="comfortable">
+                                </v-data-table>
+                            </v-expansion-panel-text>
+                        </v-expansion-panel>
+                    </v-expansion-panels>
 
                 </v-container>
             </v-main>
