@@ -12,7 +12,14 @@ const App = {
 
 
         // this a comment!
-
+        const openDrawer = ref(false)
+        function toggleDrawer() {
+            if (openDrawer.value == false) {
+                openDrawer.value = true
+            } else {
+                openDrawer.value = false
+            }
+        }
         const showReferenceCard = ref(false)
         const showResultCard = ref(null)
         const userAction1 = ref(null)
@@ -134,6 +141,8 @@ const App = {
 
 
         return {
+            openDrawer, 
+            toggleDrawer,
             subjects,
             backgroundImage,
             showReferenceCard,

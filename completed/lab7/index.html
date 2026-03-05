@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.js"></script>
+    <script src="app.js" defer></script>
+
+    <title>Project Portfolio</title>
+</head>
+
+<body>
+    <div id="app">
+        <v-app>
+            <v-app-bar class="bg-deep-orange-darken-1" elevation="2">
+                <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
+                <v-app-bar-title class="font-weight-black">
+                    CODING PORTFOLIO</span>
+                </v-app-bar-title>
+            </v-app-bar>
+
+            <v-navigation-drawer v-model="openDrawer" class="bg-deep-orange-darken-1">
+
+                <v-list-item link title="Home" href="https://artssci.github.io/labs/completed/lab7/" prepend-icon="mdi-home"></v-list-item>
+                <v-divider></v-divider>
+                <v-list-item link title="Stranger Things" href="https://artssci.github.io/labs/completed/lab3/"
+                    prepend-icon="mdi-ghost"></v-list-item>
+                <v-list-item link title="Botanist Game" href="https://artssci.github.io/labs/completed/lab5/"
+                    prepend-icon="mdi-flower"></v-list-item>
+                <v-list-item link title="Immigration 2027" href="https://artssci.github.io/labs/completed/lab6/"
+                    prepend-icon="mdi-earth"></v-list-item>
+                <v-list-item link title="Collective App" href=""
+                    prepend-icon="mdi-fish"></v-list-item>
+            </v-navigation-drawer>
+
+            <v-main class="bg-yellow-lighten-5">
+                <v-container fluid class="pa-10">
+                    <v-row>
+                        <v-col cols="6" v-for="item in projects" :key="item.title">
+                            <v-card elevation="1">
+                                <v-img :src="item.image"></v-img>
+
+                                <v-card-title class="text-deep-orange-darken-1">
+                                    {{item.title}}
+                                </v-card-title>
+
+                                <v-card-text>
+                                    {{item.description}}
+                                </v-card-text>
+
+                                <v-card-actions class="pa-4">
+                                    <v-btn block class="bg-yellow-accent-4 font-weight-bold" variant="elevated"
+                                        rounded="lg">
+                                        View Project
+                                    </v-btn>
+                                </v-card-actions>
+                            </v-card>
+                        </v-col>
+                    </v-row>
+                </v-container>
+            </v-main>
+
+            <v-footer class="bg-deep-orange-darken-1">
+                <strong>ARTSSCI-3C03 Portfolio 2026.
+            </v-footer>
+        </v-app>
+    </div>
+</body>
+
+</html>

@@ -36,22 +36,31 @@
   <div id="app">
     <v-app>
 
-      <v-app-bar>        
+      <v-app-bar>
+        <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
         <v-app-bar-title>
           Stranger Things Gallery
         </v-app-bar-title>
-        
+
       </v-app-bar>
 
-      <!-- <v-app-bar color="black" elevation="5">
-        <v-app-bar-title class="stranger-title">Stranger Things Gallery</v-app-bar-title>
-        <v-spacer></v-spacer>
-        <v-btn icon="mdi-shuffle" @click="shuffleCards" color="red"></v-btn>
-      </v-app-bar>
-       -->
+      <v-navigation-drawer v-model="openDrawer">
+
+        <v-list-item link title="Home" href="https://artssci.github.io/labs/completed/lab7/"
+          prepend-icon="mdi-home"></v-list-item>
+        <v-divider></v-divider>
+        <v-list-item link title="Stranger Things" href="https://artssci.github.io/labs/completed/lab3/"
+          prepend-icon="mdi-ghost"></v-list-item>
+        <v-list-item link title="Botanist Game" href="https://artssci.github.io/labs/completed/lab5/"
+          prepend-icon="mdi-flower"></v-list-item>
+        <v-list-item link title="Immigration 2027" href="https://artssci.github.io/labs/completed/lab6/"
+          prepend-icon="mdi-earth"></v-list-item>
+        <v-list-item link title="Collective App" href="" prepend-icon="mdi-fish"></v-list-item>
+      </v-navigation-drawer>
+
       <v-main>
 
-        <v-container>
+        <v-container fluid>
 
           <v-row>
             <v-col v-for="item in collection" :key="item.name" cols="3">
@@ -60,7 +69,7 @@
               <v-card height="500" class="bg-red elevation-12">
 
                 <v-card-title>
-                   Name: {{ item.name }}
+                  Name: {{ item.name }}
                 </v-card-title>
 
                 <v-card-subtitle>

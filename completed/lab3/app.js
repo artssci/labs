@@ -4,6 +4,17 @@ const vuetify = createVuetify();
 
 const App = {
   setup() {
+
+    const openDrawer = ref(false)
+    function toggleDrawer() {
+      if (openDrawer.value == false) {
+        openDrawer.value = true
+      } else {
+        openDrawer.value = false
+      }
+    }
+
+
     // A single array containing multiple objects
     const collection = ref([
       {
@@ -48,10 +59,12 @@ const App = {
       collection.value.sort(random);
     }
 
-   
+
     return {
       collection,
-      shuffleCards
+      shuffleCards, 
+      openDrawer,
+      toggleDrawer
     }
   }
 }
