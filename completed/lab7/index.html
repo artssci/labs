@@ -24,17 +24,9 @@
             </v-app-bar>
 
             <v-navigation-drawer v-model="openDrawer" class="bg-deep-orange-darken-1">
-
-                <v-list-item link title="Home" href="https://artssci.github.io/labs/completed/lab7/" prepend-icon="mdi-home"></v-list-item>
+                <v-list-item href="https://artssci.github.io/labs/completed/lab7/">Home</v-list-item>
                 <v-divider></v-divider>
-                <v-list-item link title="Stranger Things" href="https://artssci.github.io/labs/completed/lab3/"
-                    prepend-icon="mdi-ghost"></v-list-item>
-                <v-list-item link title="Botanist Game" href="https://artssci.github.io/labs/completed/lab5/"
-                    prepend-icon="mdi-flower"></v-list-item>
-                <v-list-item link title="Immigration 2027" href="https://artssci.github.io/labs/completed/lab6/"
-                    prepend-icon="mdi-earth"></v-list-item>
-                <v-list-item link title="Collective App" href=""
-                    prepend-icon="mdi-fish"></v-list-item>
+                <v-list-item v-for="item in projects" :key="item.title" :href="item.url">{{item.title}}</v-list-item>
             </v-navigation-drawer>
 
             <v-main class="bg-yellow-lighten-5">
@@ -53,8 +45,7 @@
                                 </v-card-text>
 
                                 <v-card-actions class="pa-4">
-                                    <v-btn block class="bg-yellow-accent-4 font-weight-bold" variant="elevated"
-                                        rounded="lg">
+                                    <v-btn :href="item.url" block class="bg-yellow-accent-4">
                                         View Project
                                     </v-btn>
                                 </v-card-actions>
