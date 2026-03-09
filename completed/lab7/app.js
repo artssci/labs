@@ -15,7 +15,6 @@ const App = {
             }
         }
 
-
         const projects = [
           
             {
@@ -32,7 +31,7 @@ const App = {
             },
             {
                 title: "Immigration Trends Canada 2025 - 2027",
-                description: "This is a Data Dashboard visualizing the 2025-2027 Canada Immigration Level. I practiced using Vuetify components like Sparkline, Stepper, and Data Table, to transform complex datasets into an interactive user experience.",
+                description: "This is a Data Dashboard visualizing the 2025-2027 Canada Immigration Trends. I practiced using Vuetify components like Sparkline, Stepper, and Data Table, to transform complex datasets into an interactive user experience.",
                 image: "images/project3.png", 
                 url: "https://artssci.github.io/labs/completed/lab6/"
             },

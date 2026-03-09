@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>Lab 7: Building A Coding Inquiry Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="content" role="main">
+            <h1 class="title">Lab 7: Building A Coding Inquiry Portfolio</h1>
+
+            <div class="instructions">
+                <hr>
+                <h2 class="nocount">General Description</h2>
+                <p style="margin-left: 0">
+                    Welcome to your final lab! In this session, you will build a central <b>coding portfolio</b> to
+                    house the
+                    three primary projects you developed this semester.
+                    <br><br>
+                    You will design a homepage featuring interactive cards to showcase your work, and implement global
+                    navigation using an App Bar and Navigation Drawer in the homepage and on previous projects.
+                </p>
+
+                <h2 class="nocount">Learning Objectives</h2>
+                <ul>
+                    <li>Practice <b>layout management</b> by implementing an <code>v-app-bar</code> and
+                        <code>v-navigation-drawer</code>.
+                    </li>
+                    <li>Implement <b>global navigation logic</b> to allow users to switch between different hosted
+                        projects.</li>
+                    <li>Reflect on what you learned by writing <b>project descriptions</b> that highlight specific
+                        technical skills.</li>
+                </ul>
+
+                <h2 class="nocount">Table of Contents</h2>
+                <hr />
+                <ol>
+                    <li><a href="#1">Pre-requisite: Setup Your Project</a></li>
+                    <li><a href="#2">Project Audit: Lab Projects Completed and Published</a></li>
+                    <li><a href="#3">Structuring the Portfolio Content</a></li>
+                    <li><a href="#4">Creating the Project Gallery</a></li>
+                    <li><a href="#5">Building the Navigation Menu</a></li>
+                    <li><a href="#6">Retrofitting: Connecting the Suite</a></li>
+                    <li><a href="#7">Challenge: The Collective App</a></li>
+                    <li><a href="#conclusion">Wrap Up & Sharing Your Work</a></li>
+                </ol>
+
+
+                <h2 id="1"> Pre-requisite: Setup Your Project</h2>
+                <hr>
+                <ol>
+                    <li>Create a new folder for this final lab.</li>
+                    <li>Inside your new folder create the <code>app.js</code> and <code>index.html</code> files with
+                        their starter/boilerplate code. Refer to <a href="https://artssci.github.io/labs/lab2.html#3"
+                            target="blank"> Lab 2, section "Setup Starter Vuetify Code" </a> to complete this step.</li>
+                </ol>
+
+                <h2 id="2">Project Audit: Lab Projects Completed and Published</h2>
+                <hr>
+                <div class="definition">
+                    <p>Before you start building your portfolio, you must ensure your previous lab projects are
+                        completed and published.</p>
+                </div>
+
+                <ol>
+                    <li>Verify that your 3 previous projects are completed and published to <b>GitHub Pages</b>:
+                        <ul>
+                            <li><b>Project 1 (labs 2 & 3):</b> Card Collection</li>
+                            <li><b>Project 2 (labs 4 & 5):</b> Point-and-Click Game</li>
+                            <li><b>Project 3 (lab 6):</b> Data Dashboard</li>
+                        </ul>
+                    </li>
+                    <li>Keep your URLs ready. You will need the live links (ending in <code>.github.io</code>) to
+                        populate your data array.</li>
+
+
+                    <div class="tip" style="margin-top: 1rem;">
+                        <strong>💡 Remember:</strong> For detailed instruction on how to publish to GitHub refer
+                        to <a href="https://artssci.github.io/labs/lab3.html#6" target="_blank">Lab 3, Section 7.
+                            Publishing Your Gallery With GitHub Pages
+                        </a>
+                    </div>
+                </ol>
+
+                <h2 id="3">Structuring the Portfolio Content</h2>
+                <hr>
+
+                <div class="definition">
+                    <p>Before you build the interface, you need to organize our content through an <b>array of
+                            objects</b> that will drive both the homepage gallery and the navigation
+                        menu.
+                </div>
+
+                <ol>
+                    <li>In your <code>app.js</code>, create an <b>Array of Objects</b> called <code>projects</code>
+                        containing the details for your three completed labs. The example below includes fields like
+                        <code>title</code>, <code>description</code>, <code>whatILearned</code>, <code>image</code>, and
+                        <code>url</code>. Feel free to adjust as you see fit.
+                    </li>
+
+                    <pre><code class="language-javascript">
+const projects = [
+{
+title: "Stranger Things Card Collection",
+description: "A card gallery showcasing characters from the series Stranger Things.",
+whatILearned: "In this lab I explored how to write JavaScript variables, data types, and objects, and display them within a card using the Vuetify library.",
+image: "images/project1.png",
+url: "https://artssci.github.io/labs/completed/lab3/"
+},
+{
+title: "The Botanist Challenge Game",
+description: "In this game, the player consults a reference card to learn a plant's needs and then click the correct actions in the right order to help it grow.", 
+whatILearned: "I learned about functions, conditional logic, and reactivity to handle changes in the user interface and validate user choices.",
+image: "images/project2.png",
+url: "https://artssci.github.io/labs/completed/lab5/"
+},
+{
+title: "Immigration Trends Data Dashboard",
+description: "This is a Data Dashboard visualizing the 2025-2027 Canada Immigration Trends.",
+whatILearned: "I practiced using Vuetify components like Sparkline, Stepper, and Data Table to transform complex datasets into an interactive experience.",
+image: "images/project3.png",
+url: "https://artssci.github.io/labs/completed/lab6/"
+}
+]
+</code></pre>
+                </ol>
+
+                <h2 id="4">Creating the Project Gallery</h2>
+                <hr>
+
+                <div class="definition">
+                    <p>In this step you will combine the <code>v-for</code> loop with Vuetify's grid system
+                        (<code>v-row</code> and <code>v-col</code>),
+                        to generate a responsive layout that displays every project stored
+                        in your data array.
+                    </p>
+                </div>
+
+                <ol>
+                    <li>
+                        Use <code>v-row</code>, <code>v-col</code>, and <code>v-for</code> to generate a
+                        <code>v-card</code> for each project in your array. Refer to <a
+                            href="https://artssci.github.io/labs/lab3.html#3" target="_blank">Lab 3, section 3.
+                            "Generating Cards with the v-for Loop"</a> and <a
+                            href="https://artssci.github.io/labs/lab3.html#4" target="_blank">section 4. Styling and
+                            Layout for the Card Gallery</a> to complete this step.
+                    </li>
+
+                    <li>Once you have created the cards, use the <code>:href</code> command on the <code>v-card</code>
+                        component so that clicking
+                        anywhere on the card opens the project.</li>
+
+                    <pre><code class="language-html">
+&lt;v-card :href="item.url"&gt;
+
+    &lt;!-- Card content goes here --&gt;
+
+&lt;/v-card&gt;
+                    </code></pre>
+                </ol>
+
+                <h2 id="5">Building the Navigation Menu</h2>
+                <hr>
+                <div class="definition">
+                    <p>In this step, you will code a <code>v-app-bar</code> for your portfolio's title and a
+                        <code>v-navigation-drawer</code> for easy access to your projects. A <b>navigation drawer</b> is
+                        a side panel that provides a clean way to organize sections or pages of an app. It
+                        stays hidden until the user clicks the menu icon.
+                    </p>
+                </div>
+
+                <h3>Adding Toggle Functionality</h3>
+                <ol>
+                    <li>In <code>app.js</code>, create a reactive variable called <code>openDrawer</code> and set it
+                        to
+                        <code>false</code>.
+                    </li>
+                    <li>Create a function called <code>toggleDrawer</code> to toggle between <code>true</code> and
+                        <code>false</code> to open or close the side menu (i.e., the drawer).
+                    </li>
+
+
+                    <div class="tip" style="margin-top: 1rem;">
+                        <strong>💡 Tip:</strong> Refer to <a href="https://artssci.github.io/labs/lab4.html#3"
+                            target="_blank">Lab 3, Section 3.2 Adding Toggle Functionality to Open/Close the Reference
+                            Card</a>, to complete this step.
+
+                        </a>
+                    </div>
+
+                </ol>
+
+                <h3>Create the Navigation Drawer</h3>
+
+                <p>The drawer will act as a side menu that loops through your <code>projects</code> array to generate
+                    links.</p>
+
+                <ol>
+                    <li>Create a navigation drawer using <code>v-navigation-drawer</code>.</li>
+                    <pre><code class="language-html">
+&lt;v-navigation-drawer&gt;
+&lt;/v-navigation-drawer&gt;
+</code></pre>
+
+                    <li>Inside the drawer, use a <code>v-list-item</code> paired with a <code>v-for</code> loop to
+                        display each project's title.</li>
+                    <pre><code class="language-html">
+&lt;v-navigation-drawer&gt;
+    &lt;v-list-item v-for="item in projects" :key="item.title"&gt;
+    {{ item.title }}
+    &lt;/v-list-item&gt;
+&lt;/v-navigation-drawer&gt;
+</code></pre>
+
+
+                    <li>Use the <code>:href</code> attribute to ensure each list item links to the correct project URL.
+                    </li>
+                    <pre><code class="language-html">
+&lt;v-navigation-drawer&gt;
+    &lt;v-list-item v-for="item in projects" :key="item.title" :href="item.url"&gt;
+        {{ item.title }}
+    &lt;/v-list-item&gt;
+&lt;/v-navigation-drawer&gt;
+</code></pre>
+
+                    <li>Finally, connect the drawer to the variable <code>openDrawer</code> from above, using
+                        <code>v-model</code>.
+                    </li>
+
+                    <pre><code class="language-html">
+&lt;v-navigation-drawer v-model="openDrawer"&gt;
+    &lt;v-list-item v-for="item in projects" :key="item.title" :href="item.url"&gt;
+        {{ item.title }}
+    &lt;/v-list-item&gt;
+&lt;/v-navigation-drawer&gt;
+</code></pre>
+                </ol>
+
+                <h3>Create an App Bar</h3>
+
+                <p>The app bar sits at the top of the page and holds the "hamburger" menu icon that triggers the drawer.
+                </p>
+                <ol>
+                    <li>In <code>index.html</code>, add a <code>v-app-bar</code>, a <code>v-app-bar-nav-icon</code>, and
+                        a
+                        <code>v-app-bar-title</code>.
+                    </li>
+
+                    <pre><code class="language-html">
+&lt;v-app-bar&gt;
+    &lt;v-app-bar-nav-icon&gt;&lt;/v-app-bar-nav-icon&gt;
+    &lt;v-app-bar-title&gt;Coding Inquiry Portfolio&lt;/v-app-bar-title&gt;
+&lt;/v-app-bar&gt;
+</code></pre>
+
+                    <li>Finally, add an <code>@click</code> command in the <code>v-app-bar-nav-icon</code> to call your
+                        <code>toggleDrawer</code> function
+                        created above. By clicking this icon, you will open or close the navigation drawer.
+                    </li>
+
+                    <pre><code class="language-html">
+
+&lt;v-app-bar-nav-icon @click="toggleDrawer"&gt;&lt;/v-app-bar-nav-icon&gt;
+</code></pre>
+                </ol>
+
+
+
+                <h2 id="6">Retrofitting: Connecting the Suite</h2>
+                <hr>
+                <div class="definition">
+                    <p><b>Retrofitting</b> is the process of adding new features or technology to an older system. In
+                        this step, you will update your previous projects with your new navigation menu so users can
+                        jump between your projects and your homepage with ease.</p>
+                </div>
+                <ol>
+
+                    <li>Open your previous <b>Lab 3, Lab 5, and Lab 6</b> code files.</li>
+                    <li>Copy the <code>projects</code> array and the <code>toggleDrawer</code> function from your Lab 7
+                        <code>app.js</code> into the <code>app.js</code> files of your previous labs.
+                    </li>
+                    </li>
+                    <li>Copy the <code>v-app-bar</code> and <code>v-navigation-drawer</code> components into each of
+                        your project HTML files.</li>
+                    <ul>
+                        <li>Inside the <code>v-navigation-drawer</code> of your project pages, add a
+                            <code>v-list-item</code> <b>above</b> your loop that links back to your main Portfolio
+                            homepage.
+                        </li>
+                    </ul>
+                    <li>Re-publish your projects by uploading your files to the <b>same repositories</b> on GitHub.</li>
+                </ol>
+
+
+                <h2 id="7">Optional Challenge: The Collective App</h2>
+                <hr>
+                <p>Add a 4th item to your <code>projects</code> array for our <b>Global Maritime Commerce and Whale
+                        Risks Collective App</b>. To complete this step, you would need to publish it to GitHub.
+                    yet.
+                </p>
+
+
+
+                <h2 id="conclusion">Wrap Up & Sharing Your Work</h2>
+                <hr />
+                <p>Congratulations! You have successfully built a portfolio showcasing your coding inquiry projects.
+                    Here is the breakdown of the skills you practiced in this lab:</p>
+
+                <ul>
+                    <li><b>Layout Management:</b> You successfully implemented a <code>v-app-bar</code> and
+                        <code>v-navigation-drawer</code> to create a professional, mobile-friendly interface.</li>
+                    <li><b>Global Navigation Logic:</b> You engineered a seamless way for users to navigate between
+                        multiple hosted applications using a centralized data source.</li>
+                    <li><b>Technical Reflection:</b> You translated your coding experiences into descriptive narratives,
+                        highlighting the specific libraries and logic you mastered throughout the term.</li>
+                </ul>
+
+                <div class="sharing-instructions"
+                    style="background-color: #fff4e5; padding: 15px; border: 2px dashed #ff9800; border-radius: 8px; margin-top: 20px;">
+                    <h3> 📢 Share Your Portfolio</h3>
+                    <ol>
+                        <li><b>Publish</b> your Portfolio to GitHub Pages. <a
+                                href="https://artssci.github.io/labs/lab3.html#6" target="_blank">Refer
+                                to Lab 3, Section 7. Publishing Your Gallery With GitHub Pages
+                            </a></li>
+                        </li>
+                        <li><b>Post</b> your portfolio URL on the <b>Class Showcase Board</b>: <a href="YOUR_LINK_HERE" target="_blank"></a></li>
+                        <li><b>Explore</b> your classmates' work!
+                        </li>
+                    </ol>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

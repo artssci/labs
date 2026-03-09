@@ -49,6 +49,13 @@ to this section's matching END comment to see page-specific styles.
   /*     format("opentype"); */
 }
 
+ 
+a:link {
+  text-decoration: none;
+ 
+} 
+
+
 /* Our remix on glitch button */
 .btn--remix {
   padding: 0.75rem 1rem;
@@ -273,6 +280,12 @@ ol {
   width: 80%;
 }
 
+.tip a {
+  
+  color: var(--color-primary);
+
+}
+
 
 .additionalInfo {
   
@@ -287,11 +300,6 @@ ol {
 
 
 
-
-a:link {
-  text-decoration: none;
-
-}
 
 
 /* COLLAPSIBLE question  */
