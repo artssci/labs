@@ -28,8 +28,8 @@
 
             <!-- <v-navigation-drawer v-model="openDrawer" class="bg-deep-orange-darken-1"> -->
             <v-navigation-drawer v-model="openDrawer">
-                <v-list-item href="https://artssci.github.io/labs/completed/lab7/">Home</v-list-item>
-                <v-divider></v-divider>
+                <!-- <v-list-item href="https://artssci.github.io/labs/completed/lab7/">Home</v-list-item>
+                <v-divider></v-divider> -->
                 <v-list-item v-for="item in projects" :key="item.title" :href="item.url">
                     {{item.title}}
                 </v-list-item>
