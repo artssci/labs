@@ -15,44 +15,50 @@
 
 <body>
     <div id="app">
-         <v-app>
-        <!--    <v-app-bar class="bg-deep-orange-darken-1" elevation="2">
+        <v-app>
+            <!-- <v-app-bar class="bg-deep-orange-darken-1" elevation="2"> -->
+            <v-app-bar>
+
                 <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
-                <v-app-bar-title class="font-weight-black">
-                    CODING PORTFOLIO</span>
+                <!-- <v-app-bar-title class="font-weight-black"> -->
+                    <v-app-bar-title>
+                    CODING INQUIRY PORTFOLIO</span>
                 </v-app-bar-title>
             </v-app-bar>
 
-            <v-navigation-drawer v-model="openDrawer" class="bg-deep-orange-darken-1">
+            <!-- <v-navigation-drawer v-model="openDrawer" class="bg-deep-orange-darken-1"> -->
+            <v-navigation-drawer v-model="openDrawer">
                 <v-list-item href="https://artssci.github.io/labs/completed/lab7/">Home</v-list-item>
                 <v-divider></v-divider>
-                <v-list-item v-for="item in projects" :key="item.title" :href="item.url">{{item.title}}</v-list-item>
-            </v-navigation-drawer> -->
+                <v-list-item v-for="item in projects" :key="item.title" :href="item.url">
+                    {{item.title}}
+                </v-list-item>
+            </v-navigation-drawer>
 
-        <!-- <v-main class="bg-yellow-lighten-5"> -->
-        <v-main>
-            <!-- <v-container fluid class="pa-10"> -->
-            <v-container>
-                <v-row>
-                    <v-col cols="6" v-for="item in projects" :key="item.title">
-                        <v-card elevation="1" :href="item.url">
-                            <v-img :src="item.image"></v-img>
+            <!-- <v-main class="bg-yellow-lighten-5"> -->
+            <v-main>
+                <!-- <v-container fluid class="pa-10"> -->
+                <v-container>
+                    <v-row>
+                        <v-col cols="6" v-for="item in projects" :key="item.title">
+                            <v-card elevation="1" :href="item.url">
+                                <v-img :src="item.image"></v-img>
 
-                            <!-- <v-card-title class="text-deep-orange-darken-1"> -->
-                            <v-card-title >
-                                {{item.title}}
-                            </v-card-title>
+                                <!-- <v-card-title class="text-deep-orange-darken-1"> -->
+                                <v-card-title>
+                                    {{item.title}}
+                                </v-card-title>
 
-                            <v-card-text>
-                                {{item.description}}
-                            </v-card-text>
-                        </v-card>
-                    </v-col>
-                </v-row>
-            </v-container>
-        </v-main>
+                                <v-card-text>
+                                    {{item.description}}
+                                </v-card-text>
+                            </v-card>
+                        </v-col>
+                    </v-row>
+                </v-container>
+            </v-main>
 
-        <!-- <v-footer class="bg-deep-orange-darken-1">
+            <!-- <v-footer class="bg-deep-orange-darken-1">
             <strong>ARTSSCI-3C03 Portfolio 2026.
         </v-footer> -->
         </v-app>

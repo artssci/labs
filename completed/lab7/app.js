@@ -36,12 +36,12 @@ const App = {
                 url: "https://artssci.github.io/labs/completed/lab6/"
             },
 
-            {
-                title: "Global Maratime Commerce and Whale Risks Collective App",
-                description: "This is a collective app made by me and other students in ARTSSCI 3C03, with modules exploring the intersection of global maritime commerce and whale migration, challenging human-centric norms by prioritizing non-human life in the deep sea.",
-                image: "images/project4.png", 
-                url: ""
-            }
+            // {
+            //     title: "Global Maratime Commerce and Whale Risks Collective App",
+            //     description: "This is a collective app made by me and other students in ARTSSCI 3C03, with modules exploring the intersection of global maritime commerce and whale migration, challenging human-centric norms by prioritizing non-human life in the deep sea.",
+            //     image: "images/project4.png", 
+            //     url: ""
+            // }
         ]
 
         return {

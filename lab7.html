@@ -160,6 +160,8 @@ url: "https://artssci.github.io/labs/completed/lab6/"
                         component so that clicking
                         anywhere on the card opens the project.</li>
 
+
+
                     <pre><code class="language-html">
 &lt;v-card :href="item.url"&gt;
 
@@ -167,6 +169,24 @@ url: "https://artssci.github.io/labs/completed/lab6/"
 
 &lt;/v-card&gt;
                     </code></pre>
+
+                    <div class="tip" style="margin-bottom: 1rem;">
+                        <strong>💡 What is href:</strong> The <code>href</code> attribute specifies the URL (web
+                        address) of the page the link goes to. By adding this to your card, you make the entire card
+                        clickable.
+                        <ul>
+                            <li>
+                                When you add the colon (<code>:href</code>), it becomes <b>dynamic</b>. This tells Vuetify
+                                to
+                                look into your <code>app.js</code> and read the specific URL for each project in your
+                                array.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div style="width: 100%; height: auto; display: flex;">
+                        <img style="width: 80%; margin: auto;" src="images/lab7/step4.gif" />
+                    </div>
                 </ol>
 
                 <h2 id="5">Building the Navigation Menu</h2>
@@ -174,36 +194,27 @@ url: "https://artssci.github.io/labs/completed/lab6/"
                 <div class="definition">
                     <p>In this step, you will code a <code>v-app-bar</code> for your portfolio's title and a
                         <code>v-navigation-drawer</code> for easy access to your projects. A <b>navigation drawer</b> is
-                        a side panel that provides a clean way to organize sections or pages of an app. It
+                        a side panel that provides a way to organize sections, pages, or modules of an app. It
                         stays hidden until the user clicks the menu icon.
                     </p>
                 </div>
 
-                <h3>Adding Toggle Functionality</h3>
+                <h3>Adding Open/Close Functionality</h3>
                 <ol>
                     <li>In <code>app.js</code>, create a reactive variable called <code>openDrawer</code> and set it
                         to
                         <code>false</code>.
                     </li>
-                    <li>Create a function called <code>toggleDrawer</code> to toggle between <code>true</code> and
-                        <code>false</code> to open or close the side menu (i.e., the drawer).
-                    </li>
-
-
-                    <div class="tip" style="margin-top: 1rem;">
-                        <strong>💡 Tip:</strong> Refer to <a href="https://artssci.github.io/labs/lab4.html#3"
-                            target="_blank">Lab 3, Section 3.2 Adding Toggle Functionality to Open/Close the Reference
+                    <li>Create a function called <code>toggleDrawer</code> that allows the <code>openDrawer</code>
+                        variable to toggle between <code>true</code> and
+                        <code>false</code> (i.e., open or close). Refer to <a
+                            href="https://artssci.github.io/labs/lab4.html#3" target="_blank">Lab 3, Section 3.2 Adding
+                            Toggle Functionality to Open/Close the Reference
                             Card</a>, to complete this step.
-
-                        </a>
-                    </div>
-
+                    </li>
                 </ol>
 
                 <h3>Create the Navigation Drawer</h3>
-
-                <p>The drawer will act as a side menu that loops through your <code>projects</code> array to generate
-                    links.</p>
 
                 <ol>
                     <li>Create a navigation drawer using <code>v-navigation-drawer</code>.</li>
@@ -244,7 +255,9 @@ url: "https://artssci.github.io/labs/completed/lab6/"
     &lt;/v-list-item&gt;
 &lt;/v-navigation-drawer&gt;
 </code></pre>
+
                 </ol>
+
 
                 <h3>Create an App Bar</h3>
 
@@ -263,7 +276,7 @@ url: "https://artssci.github.io/labs/completed/lab6/"
 &lt;/v-app-bar&gt;
 </code></pre>
 
-                    <li>Finally, add an <code>@click</code> command in the <code>v-app-bar-nav-icon</code> to call your
+                    <li>Add an <code>@click</code> command in the <code>v-app-bar-nav-icon</code> to call your
                         <code>toggleDrawer</code> function
                         created above. By clicking this icon, you will open or close the navigation drawer.
                     </li>
@@ -272,6 +285,19 @@ url: "https://artssci.github.io/labs/completed/lab6/"
 
 &lt;v-app-bar-nav-icon @click="toggleDrawer"&gt;&lt;/v-app-bar-nav-icon&gt;
 </code></pre>
+
+
+                    <div style="width: 100%; height: auto; display: flex;">
+                        <img style="width: 80%; margin: auto;" src="images/lab7/step5.gif" />
+                    </div>
+
+
+                    <li>Finally, once your homepage is ready, publish it to GitHub Pages and save the URL; you will need
+                        it for the next step. <a href="https://artssci.github.io/labs/lab3.html#6" target="_blank">Refer
+                            to Lab 3, Section 7. Publishing Your Gallery With GitHub Pages.
+                        </a></li>
+                    </li>
+                    </li>
                 </ol>
 
 
@@ -284,7 +310,6 @@ url: "https://artssci.github.io/labs/completed/lab6/"
                         jump between your projects and your homepage with ease.</p>
                 </div>
                 <ol>
-
                     <li>Open your previous <b>Lab 3, Lab 5, and Lab 6</b> code files.</li>
                     <li>Copy the <code>projects</code> array and the <code>toggleDrawer</code> function from your Lab 7
                         <code>app.js</code> into the <code>app.js</code> files of your previous labs.
@@ -292,12 +317,21 @@ url: "https://artssci.github.io/labs/completed/lab6/"
                     </li>
                     <li>Copy the <code>v-app-bar</code> and <code>v-navigation-drawer</code> components into each of
                         your project HTML files.</li>
-                    <ul>
-                        <li>Inside the <code>v-navigation-drawer</code> of your project pages, add a
-                            <code>v-list-item</code> <b>above</b> your loop that links back to your main Portfolio
-                            homepage.
-                        </li>
-                    </ul>
+                    <li>Inside the <code>v-navigation-drawer</code> of your project pages, add a
+                        <code>v-list-item</code> <b>above</b> your loop that links back to your main Portfolio
+                        homepage.
+
+                        <pre><code class="language-html">
+&lt;v-navigation-drawer v-model="openDrawer"&gt;
+    &lt;v-list-item href="https://artssci.github.io/labs/completed/lab7/"&gt;Home&lt;/v-list-item&gt;
+    &lt;v-list-item v-for="item in projects" :key="item.title" :href="item.url"&gt;
+        {{item.title}}
+    &lt;/v-list-item&gt;
+&lt;/v-navigation-drawer&gt;
+            </code></pre>
+
+
+                    </li>
                     <li>Re-publish your projects by uploading your files to the <b>same repositories</b> on GitHub.</li>
                 </ol>
 
@@ -306,7 +340,7 @@ url: "https://artssci.github.io/labs/completed/lab6/"
                 <hr>
                 <p>Add a 4th item to your <code>projects</code> array for our <b>Global Maritime Commerce and Whale
                         Risks Collective App</b>. To complete this step, you would need to publish it to GitHub.
-                    yet.
+
                 </p>
 
 
@@ -317,26 +351,21 @@ url: "https://artssci.github.io/labs/completed/lab6/"
                     Here is the breakdown of the skills you practiced in this lab:</p>
 
                 <ul>
-                    <li><b>Layout Management:</b> You successfully implemented a <code>v-app-bar</code> and
-                        <code>v-navigation-drawer</code> to create a professional, mobile-friendly interface.
+                    <li><b>Global Navigation Logic:</b> You successfully implemented a <code>v-app-bar</code> and
+                        <code>v-navigation-drawer</code> for users to navigate between
+                        multiple applications/modules.
                     </li>
-                    <li><b>Global Navigation Logic:</b> You engineered a seamless way for users to navigate between
-                        multiple hosted applications using a centralized data source.</li>
                     <li><b>Technical Reflection:</b> You translated your coding experiences into descriptive narratives,
-                        highlighting the specific libraries and logic you mastered throughout the term.</li>
+                        highlighting the specific programming tools and logic you mastered throughout the term.</li>
                 </ul>
 
                 <div class="sharing-instructions"
                     style="background-color: #fff4e5; padding: 15px; border: 2px dashed #ff9800; border-radius: 8px; margin-top: 20px;">
                     <h3> 📢 Share Your Portfolio</h3>
                     <ol>
-                        <li><b>Publish</b> your Portfolio to GitHub Pages. <a
-                                href="https://artssci.github.io/labs/lab3.html#6" target="_blank">Refer
-                                to Lab 3, Section 7. Publishing Your Gallery With GitHub Pages
-                            </a></li>
-                        </li>
-                        <li><b>Post</b> your portfolio URL on the <b>Class Showcase Board</b>: <a href="YOUR_LINK_HERE"
-                                target="_blank"></a></li>
+                        <li><b>Post</b> your portfolio URL on the <b>Class Showcase Board</b>: <a
+                                href="https://tinyurl.com/coding-inquiry-portfolio"
+                                target="_blank">https://tinyurl.com/coding-inquiry-portfolio</a></li>
                         <li><b>Explore</b> your classmates' work!
                         </li>
                     </ol>
