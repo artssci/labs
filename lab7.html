@@ -23,16 +23,18 @@
                 <p style="margin-left: 0">
                     Welcome to your final lab! In this session, you will build a central <b>coding portfolio</b> to
                     house the
-                    three primary projects you developed this semester.
+                    three primary projects you developed this semester: the card gallery, the click-and-point game, and
+                    the data dashboard.
                     <br><br>
-                    You will design a homepage featuring interactive cards to showcase your work, and implement global
-                    navigation using an App Bar and Navigation Drawer in the homepage and on previous projects.
+                    You will achieve this by coding a homepage featuring interactive cards to showcase your work, and
+                    implement global
+                    navigation using an App Bar and a Navigation Drawer.
                 </p>
 
                 <h2 class="nocount">Learning Objectives</h2>
                 <ul>
-                    <li>Practice <b>layout management</b> by implementing an <code>v-app-bar</code> and
-                        <code>v-navigation-drawer</code>.
+                    <!-- <li>Practice <b>layout management</b> by implementing an <code>v-app-bar</code> and
+                        <code>v-navigation-drawer</code>. -->
                     </li>
                     <li>Implement <b>global navigation logic</b> to allow users to switch between different hosted
                         projects.</li>
@@ -46,7 +48,7 @@
                     <li><a href="#1">Pre-requisite: Setup Your Project</a></li>
                     <li><a href="#2">Project Audit: Lab Projects Completed and Published</a></li>
                     <li><a href="#3">Structuring the Portfolio Content</a></li>
-                    <li><a href="#4">Creating the Project Gallery</a></li>
+                    <li><a href="#4">Creating the Homepage Gallery</a></li>
                     <li><a href="#5">Building the Navigation Menu</a></li>
                     <li><a href="#6">Retrofitting: Connecting the Suite</a></li>
                     <li><a href="#7">Challenge: The Collective App</a></li>
@@ -58,43 +60,43 @@
                 <hr>
                 <ol>
                     <li>Create a new folder for this final lab.</li>
-                    <li>Inside your new folder create the <code>app.js</code> and <code>index.html</code> files with
+                    <li>Inside your new folder, create the <code>app.js</code> and <code>index.html</code> files with
                         their starter/boilerplate code. Refer to <a href="https://artssci.github.io/labs/lab2.html#3"
-                            target="blank"> Lab 2, section "Setup Starter Vuetify Code" </a> to complete this step.</li>
+                            target="blank"> Lab 2, section 3. Setup Starter Vuetify Code </a> to complete this step.
+                    </li>
                 </ol>
 
                 <h2 id="2">Project Audit: Lab Projects Completed and Published</h2>
                 <hr>
                 <div class="definition">
                     <p>Before you start building your portfolio, you must ensure your previous lab projects are
-                        completed and published.</p>
+                        completed and published:
+
+                    <ul>
+                        <li><b>Project 1 (labs 2 & 3):</b> Card Collection</li>
+                        <li><b>Project 2 (labs 4 & 5):</b> Point-and-Click Game</li>
+                        <li><b>Project 3 (lab 6):</b> Data Dashboard</li>
+                    </ul>
+                    </p>
                 </div>
 
                 <ol>
-                    <li>Verify that your 3 previous projects are completed and published to <b>GitHub Pages</b>:
-                        <ul>
-                            <li><b>Project 1 (labs 2 & 3):</b> Card Collection</li>
-                            <li><b>Project 2 (labs 4 & 5):</b> Point-and-Click Game</li>
-                            <li><b>Project 3 (lab 6):</b> Data Dashboard</li>
-                        </ul>
-                    </li>
-                    <li>Keep your URLs ready. You will need the live links (ending in <code>.github.io</code>) to
-                        populate your data array.</li>
-
-
-                    <div class="tip" style="margin-top: 1rem;">
-                        <strong>💡 Remember:</strong> For detailed instruction on how to publish to GitHub refer
+                    <li>Verify that your 3 previous projects are completed and published to <b>GitHub Pages</b>. Refer
                         to <a href="https://artssci.github.io/labs/lab3.html#6" target="_blank">Lab 3, Section 7.
-                            Publishing Your Gallery With GitHub Pages
-                        </a>
-                    </div>
+                            Publishing Your Gallery With GitHub Pages</a> to complete this step.
+                    </li>
+                    <li>Keep your URLs ready. You will need the links ending in <code>.github.io</code> to
+                        populate your data array in the step below.</li>
+
+
+
                 </ol>
 
                 <h2 id="3">Structuring the Portfolio Content</h2>
                 <hr>
 
                 <div class="definition">
-                    <p>Before you build the interface, you need to organize our content through an <b>array of
+                    <p>In this step, you will organize your content through an <b>array of
                             objects</b> that will drive both the homepage gallery and the navigation
                         menu.
                 </div>
@@ -133,7 +135,7 @@ url: "https://artssci.github.io/labs/completed/lab6/"
 </code></pre>
                 </ol>
 
-                <h2 id="4">Creating the Project Gallery</h2>
+                <h2 id="4">Creating the Homepage Gallery</h2>
                 <hr>
 
                 <div class="definition">
@@ -149,7 +151,7 @@ url: "https://artssci.github.io/labs/completed/lab6/"
                         Use <code>v-row</code>, <code>v-col</code>, and <code>v-for</code> to generate a
                         <code>v-card</code> for each project in your array. Refer to <a
                             href="https://artssci.github.io/labs/lab3.html#3" target="_blank">Lab 3, section 3.
-                            "Generating Cards with the v-for Loop"</a> and <a
+                            Generating Cards with the v-for Loop</a> and <a
                             href="https://artssci.github.io/labs/lab3.html#4" target="_blank">section 4. Styling and
                             Layout for the Card Gallery</a> to complete this step.
                     </li>
@@ -316,7 +318,8 @@ url: "https://artssci.github.io/labs/completed/lab6/"
 
                 <ul>
                     <li><b>Layout Management:</b> You successfully implemented a <code>v-app-bar</code> and
-                        <code>v-navigation-drawer</code> to create a professional, mobile-friendly interface.</li>
+                        <code>v-navigation-drawer</code> to create a professional, mobile-friendly interface.
+                    </li>
                     <li><b>Global Navigation Logic:</b> You engineered a seamless way for users to navigate between
                         multiple hosted applications using a centralized data source.</li>
                     <li><b>Technical Reflection:</b> You translated your coding experiences into descriptive narratives,
@@ -332,7 +335,8 @@ url: "https://artssci.github.io/labs/completed/lab6/"
                                 to Lab 3, Section 7. Publishing Your Gallery With GitHub Pages
                             </a></li>
                         </li>
-                        <li><b>Post</b> your portfolio URL on the <b>Class Showcase Board</b>: <a href="YOUR_LINK_HERE" target="_blank"></a></li>
+                        <li><b>Post</b> your portfolio URL on the <b>Class Showcase Board</b>: <a href="YOUR_LINK_HERE"
+                                target="_blank"></a></li>
                         <li><b>Explore</b> your classmates' work!
                         </li>
                     </ol>
