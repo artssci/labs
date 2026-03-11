@@ -10,24 +10,24 @@ const App = {
         // 3. make a gameplay card for each subject in the object - done
         // 4. modify the recordUserAction function, possibly including the index or subject's name  - done
 
-         const projects = [
-          
+        const projects = [
+
             {
                 title: "Stranger Things Card Collection",
                 description: "A card gallery showcasing characters from the series Stranger Things. In this lab I explored how to write JavaScript variables, data types, and objects, and display the within a card using the Vuetify user interface library.",
-                image: "images/project1.png", 
+                image: "images/project1.png",
                 url: "https://artssci.github.io/labs/completed/lab3/"
             },
             {
                 title: "The Botanist Challenge Game",
                 description: "In this game, the player consults a reference card to learn a plant's needs and then click the correct actions in the right order to help it grow. I learned about functions, conditional logic, and reactivity to handle changes in the user interface and validate user choices",
-                image: "images/project2.png", 
+                image: "images/project2.png",
                 url: "https://artssci.github.io/labs/completed/lab5/"
             },
             {
                 title: "Immigration Trends Canada 2025 - 2027",
                 description: "This is a Data Dashboard visualizing the 2025-2027 Canada Immigration Trends. I practiced using Vuetify components like Sparkline, Stepper, and Data Table, to transform complex datasets into an interactive user experience.",
-                image: "images/project3.png", 
+                image: "images/project3.png",
                 url: "https://artssci.github.io/labs/completed/lab6/"
             },
 
@@ -169,7 +169,7 @@ const App = {
 
 
         return {
-            openDrawer, 
+            openDrawer,
             toggleDrawer,
             subjects,
             backgroundImage,
@@ -188,7 +188,8 @@ const App = {
             showResultCard,
             findCoordinates,
             finishedCount,
-            showEndDialog
+            showEndDialog,
+            projects
         }
     }
 }

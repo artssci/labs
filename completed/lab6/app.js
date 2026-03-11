@@ -119,7 +119,8 @@ const App = {
       targets,
       step,
       policies,
-      immigrationByCountry
+      immigrationByCountry, 
+      projects
     };
   }
 };

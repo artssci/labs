@@ -92,7 +92,8 @@ const App = {
       collection,
       shuffleCards, 
       openDrawer,
-      toggleDrawer
+      toggleDrawer, 
+      projects
     }
   }
 }
