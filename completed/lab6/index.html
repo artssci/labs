@@ -26,9 +26,8 @@
 
             <v-navigation-drawer v-model="openDrawer" color="#D52B1E">
 
-                <v-list-item link title="Home" href="https://artssci.github.io/labs/completed/lab7/"
-                    prepend-icon="mdi-home"></v-list-item>
-                <v-divider></v-divider>
+                <v-list-item href="https://artssci.github.io/labs/completed/lab7/">Home</v-list-item>
+                <!-- <v-divider></v-divider> -->
                 <v-list-item v-for="item in projects" :key="item.title" :href="item.url">
                     {{item.title}}
                 </v-list-item>
